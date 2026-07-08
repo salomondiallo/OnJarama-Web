@@ -1,0 +1,4 @@
+﻿.button { display: inline-flex; align-items: center; justify-content: center; min-height: 46px; padding: 0 18px; border-radius: 999px; text-decoration: none; font-weight: 800; border: 1px solid transparent; }
+.button-primary { color: #172033; background: linear-gradient(135deg, var(--oj-gold), #fff0a8); box-shadow: 0 18px 36px rgba(242,207,99,.2); }
+.button-secondary { color: var(--oj-text); border-color: var(--oj-border); background: var(--oj-surface); }
+.button:focus-visible { outline: 3px solid rgba(56,189,248,.55); outline-offset: 3px; }

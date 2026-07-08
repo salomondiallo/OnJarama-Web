@@ -1,0 +1,13 @@
+﻿h1, h2, h3, p { margin-top: 0; }
+h1 { font-size: clamp(2.7rem, 8vw, 6.5rem); line-height: .92; letter-spacing: -.07em; margin-bottom: 24px; }
+h2 { font-size: clamp(2rem, 4.5vw, 4rem); line-height: 1; letter-spacing: -.05em; margin-bottom: 18px; }
+h3 { font-size: 1.35rem; margin-bottom: 12px; }
+p { color: var(--oj-muted); line-height: 1.7; }
+.section-kicker, .eyebrow {
+  color: var(--oj-gold);
+  text-transform: uppercase;
+  font-size: .78rem;
+  letter-spacing: .18em;
+  font-weight: 800;
+  margin-bottom: 14px;
+}

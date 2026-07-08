@@ -1,0 +1,23 @@
+﻿.hero {
+  width: min(1120px, calc(100% - 32px));
+  margin: 0 auto;
+  min-height: calc(100vh - 76px);
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(320px, .75fr);
+  gap: 42px;
+  align-items: center;
+  padding: 80px 0;
+}
+.hero__lead { font-size: clamp(1.05rem, 2vw, 1.28rem); max-width: 720px; }
+.hero__actions { display: flex; flex-wrap: wrap; gap: 14px; margin: 28px 0; }
+.trust-strip { display: flex; flex-wrap: wrap; gap: 10px; }
+.trust-strip span { border: 1px solid var(--oj-border); background: var(--oj-surface); padding: 9px 12px; border-radius: 999px; color: var(--oj-muted); }
+.hero__visual { display: grid; place-items: center; }
+.orbit-card { position: relative; width: min(390px, 88vw); aspect-ratio: 1; border: 1px solid var(--oj-border); border-radius: var(--oj-radius); background: linear-gradient(145deg, rgba(255,255,255,.12), rgba(255,255,255,.04)); box-shadow: var(--oj-shadow); }
+.orbit-center { position: absolute; inset: 50%; transform: translate(-50%, -50%); width: 104px; height: 104px; border-radius: 50%; display: grid; place-items: center; background: rgba(242,207,99,.18); border: 1px solid rgba(242,207,99,.45); color: var(--oj-gold); font-weight: 900; font-size: 2rem; }
+.orbit-dot { position: absolute; border: 1px solid var(--oj-border); background: rgba(6,17,31,.86); padding: 8px 12px; border-radius: 999px; color: var(--oj-text); font-size: .86rem; }
+.orbit-dot--one { left: 30px; top: 58px; }
+.orbit-dot--two { right: 22px; top: 96px; }
+.orbit-dot--three { left: 38px; bottom: 72px; }
+.orbit-dot--four { right: 26px; bottom: 58px; }
+@media (max-width: 860px) { .hero { grid-template-columns: 1fr; min-height: auto; padding: 56px 0; } }

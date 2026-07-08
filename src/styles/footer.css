@@ -1,0 +1,2 @@
+﻿footer { width: min(1120px, calc(100% - 32px)); margin: 0 auto; padding: 48px 0 56px; color: var(--oj-muted); border-top: 1px solid var(--oj-border); }
+footer strong { color: var(--oj-text); }
