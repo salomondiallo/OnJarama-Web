@@ -1,13 +1,13 @@
-﻿import { ecosystem } from "../data/ecosystem";
+import { ecosystem } from "../data/ecosystem";
 
 export function EcosystemSection() {
   return (
     <section id="ecosystem" className="section" aria-labelledby="ecosystem-title">
       <div className="section-heading">
-        <p className="section-kicker">Ã‰cosystÃ¨me</p>
+        <p className="section-kicker">Écosystème</p>
         <h2 id="ecosystem-title">Les piliers OnJarama</h2>
         <p>
-          Une architecture progressive oÃ¹ chaque application garde son rÃ´le tout en partageant une identitÃ© commune.
+          Une architecture progressive où chaque application garde son rôle tout en partageant une identité commune.
         </p>
       </div>
       <div className="ecosystem-grid">

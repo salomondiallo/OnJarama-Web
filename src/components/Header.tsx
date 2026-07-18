@@ -1,4 +1,4 @@
-﻿export function Header() {
+export function Header() {
   return (
     <header className="site-header" aria-label="Navigation principale OnJarama">
       <a className="skip-link" href="#main-content">Aller au contenu</a>
@@ -11,7 +11,7 @@
         </a>
         <nav className="main-nav" aria-label="Sections du portail">
           <a href="#about">Pourquoi</a>
-          <a href="#ecosystem">Ã‰cosystÃ¨me</a>
+          <a href="#ecosystem">Écosystème</a>
           <a href="#mission">Mission</a>
           <a href="#roadmap">Roadmap</a>
         </nav>

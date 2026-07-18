@@ -1,22 +1,22 @@
-﻿export const ecosystem = [
+export const ecosystem = [
   {
     name: "OnJarama Path",
     status: "Disponible",
-    description: "Finances personnelles, objectifs, budget et progression guidÃ©e.",
+    description: "Finances personnelles, objectifs, budget et progression guidée.",
   },
   {
     name: "OnJarama Academy",
-    status: "En construction avancÃ©e",
-    description: "Apprentissage, rÃ´les Ã©ducatifs, progression et fondations offline-first.",
+    status: "En construction avancée",
+    description: "Apprentissage, rôles éducatifs, progression et fondations offline-first.",
   },
   {
     name: "OJCS",
-    status: "En dÃ©veloppement",
-    description: "Services connectÃ©s, diaspora, ressources et dÃ©couvertes communautaires.",
+    status: "En développement",
+    description: "Services connectés, diaspora, ressources et découvertes communautaires.",
   },
   {
     name: "OnJarama Foundation",
     status: "Socle commun",
-    description: "Standards, design system, sÃ©curitÃ©, accessibilitÃ© et gouvernance technique.",
+    description: "Standards, design system, sécurité, accessibilité et gouvernance technique.",
   },
 ];
