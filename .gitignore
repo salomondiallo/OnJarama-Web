@@ -12,6 +12,13 @@ dist
 dist-ssr
 *.local
 
+# Local backups and archives
+.onjarama-backups/
+*.bak
+*.backup
+*.zip
+*.tmp
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

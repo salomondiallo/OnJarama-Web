@@ -9,7 +9,7 @@ export function HeroSection() {
           soutenir l’apprentissage, connecter les services et construire une progression durable.
         </p>
         <div className="hero__actions" aria-label="Actions principales">
-          <a className="button button-primary" href="#ecosystem">Explorer l’écosystème</a>
+          <a className="button button-primary" href="#ecosystem">Commencer</a>
           <a className="button button-secondary" href="#roadmap">Voir la trajectoire</a>
         </div>
         <div className="trust-strip" aria-label="Principes OnJarama">
