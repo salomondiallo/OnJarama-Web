@@ -2,7 +2,7 @@ export function VisionSection() {
   return (
     <section className="section" aria-labelledby="vision-title">
       <div className="section-heading">
-        <p className="section-kicker">Qualité d'usage</p>
+        <p className="section-kicker">Contrôle UX</p>
         <h2 id="vision-title">Lisible, cohérent, durable.</h2>
       </div>
       <div className="quality-grid">
