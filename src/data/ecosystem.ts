@@ -1,4 +1,16 @@
-export const ecosystem = [
+export type EcosystemItem = {
+  id: string;
+  name: string;
+  subtitle?: string;
+  status: string;
+  description: string;
+  href?: string;
+  isCurrent?: boolean;
+  kind?: "application" | "institutional";
+  actionLabel?: string;
+};
+
+export const ecosystem: EcosystemItem[] = [
   {
     id: "path",
     name: "OnJarama Path",
@@ -31,8 +43,12 @@ export const ecosystem = [
   {
     id: "foundation",
     name: "OnJarama Foundation",
-    status: "Socle commun",
-    description: "Standards partagés, sécurité et accessibilité : un socle passif, versionné et non intrusif.",
-    href: undefined as string | undefined,
+    subtitle: "Fondation et mission institutionnelle",
+    status: "Cadre institutionnel en développement",
+    description:
+      "Le socle institutionnel d’OnJarama, consacré à la mission sociale, à la gouvernance, aux partenariats et aux initiatives d’intérêt collectif.",
+    href: "#foundation-note",
+    kind: "institutional",
+    actionLabel: "Découvrir sa mission",
   },
 ];

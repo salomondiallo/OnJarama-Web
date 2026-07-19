@@ -6,6 +6,10 @@
 .ecosystem-card__link { display: inline-block; font-size: .84rem; font-weight: 700; color: var(--oj-blue); text-decoration: none; }
 .ecosystem-card__link:hover, .ecosystem-card__link:focus-visible { text-decoration: underline; }
 .ecosystem-card__action .ecosystem-card__link--pending { color: var(--oj-soft); font-weight: 600; text-transform: none; letter-spacing: normal; }
+.ecosystem-card--institutional { border-color: var(--oj-gold-strong); background: linear-gradient(160deg, rgba(242,207,99,.09), var(--oj-surface)); }
+.ecosystem-card__icon { display: inline-flex; color: var(--oj-gold); margin-bottom: 10px; }
+.ecosystem-card__subtitle { color: var(--oj-soft); font-size: .82rem; font-weight: 600; margin: -2px 0 4px; }
+.ecosystem-card__status--institutional { align-self: flex-start; margin-top: 12px; padding: 4px 12px; border: 1px solid var(--oj-gold-strong); border-radius: 999px; color: var(--oj-gold); font-size: .72rem; font-weight: 800; text-transform: uppercase; letter-spacing: .06em; }
 .foundation-note { margin-top: 22px; border: 1px solid var(--oj-border); background: var(--oj-surface); border-radius: var(--oj-radius-md); padding: 22px; }
 .foundation-note strong { display: block; color: var(--oj-gold); margin-bottom: 8px; }
 @media (max-width: 620px) { .ecosystem-grid { grid-template-columns: 1fr; } }
