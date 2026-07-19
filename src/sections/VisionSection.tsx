@@ -5,6 +5,9 @@ export function VisionSection() {
         <p className="section-kicker">Contrôle UX</p>
         <h2 id="vision-title">Lisible, cohérent, durable.</h2>
       </div>
+      <p className="section-text">
+        À terme, OnJarama Foundation portera la dimension institutionnelle et sociale de l’écosystème, en structurant son impact et ses partenariats.
+      </p>
       <div className="quality-grid">
         <article><strong>Lisibilité</strong><p>Hiérarchie claire, textes courts, contrastes renforcés.</p></article>
         <article><strong>Mobile</strong><p>Sections respirantes, navigation simple, boutons accessibles.</p></article>
