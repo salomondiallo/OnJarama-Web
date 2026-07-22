@@ -11,3 +11,6 @@ p { color: var(--oj-muted); line-height: 1.7; }
   font-weight: 800;
   margin-bottom: 14px;
 }
+.section h2{font-size:clamp(2.15rem,4vw,3.75rem);line-height:1.02;letter-spacing:-.045em}
+.section .section-kicker{margin-bottom:12px;font-size:.74rem;letter-spacing:.16em}
+@media(max-width:760px){.section h2{font-size:clamp(2rem,10vw,3rem);line-height:1.03}.section .section-kicker{font-size:.7rem}}

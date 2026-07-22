@@ -1,19 +1,24 @@
 ﻿.ecosystem-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 16px; }
 .ecosystem-card { display: flex; flex-direction: column; border: 1px solid var(--oj-border); background: var(--oj-surface); border-radius: var(--oj-radius-md); padding: 22px; min-height: 210px; transition: transform .22s ease, background .22s ease; }
-.ecosystem-card:hover { transform: translateY(-4px); background: var(--oj-surface-strong); }
+.ecosystem-card:has(.ecosystem-card__link:not(.ecosystem-card__link--pending)):hover { transform: translateY(-3px); border-color:rgba(56,189,248,.58); background: var(--oj-surface-strong); }
 .ecosystem-card span { color: var(--oj-green); font-size: .78rem; font-weight: 800; text-transform: uppercase; letter-spacing: .08em; }
 .ecosystem-card__action { margin-top: auto; padding-top: 14px; }
-.ecosystem-card__link { display: inline-block; font-size: .84rem; font-weight: 700; color: var(--oj-blue); text-decoration: none; }
+.ecosystem-card__link { display: inline-flex; min-height: 40px; align-items:center; font-size: .84rem; font-weight: 700; color: var(--oj-blue); text-decoration: none; }
 .ecosystem-card__link:hover, .ecosystem-card__link:focus-visible { text-decoration: underline; }
+.ecosystem-card__link:focus-visible{outline:3px solid #68d7f4;outline-offset:3px;border-radius:6px}
 .ecosystem-card__action .ecosystem-card__link--pending { color: var(--oj-soft); font-weight: 600; text-transform: none; letter-spacing: normal; }
 .ecosystem-card--institutional { border-color: var(--oj-gold-strong); }
 .ecosystem-card .ecosystem-card__icon { display: inline-flex; color: var(--oj-gold); margin-bottom: 10px; }
-.ecosystem-grid { grid-template-columns:repeat(5,minmax(0,1fr));align-items:start;gap:14px }
-.ecosystem-card { min-height:0;padding:18px }
+.ecosystem-grid { grid-template-columns:repeat(3,minmax(0,1fr));align-items:stretch;gap:16px }
+@media(min-width:901px){.ecosystem-grid{grid-template-columns:repeat(6,minmax(0,1fr))}.ecosystem-card{grid-column:span 2}.ecosystem-card:nth-child(4){grid-column:2/span 2}.ecosystem-card:nth-child(5){grid-column:4/span 2}}
+.ecosystem-card { min-height:250px;padding:22px }
 .ecosystem-card h3 { margin:9px 0 7px;font-size:1.05rem }
 .ecosystem-card p { margin:0;font-size:.9rem;line-height:1.5 }
-.ecosystem-card__action { margin-top:0;padding-top:11px }
+.ecosystem-card__action { margin-top:auto;padding-top:16px }
 .ecosystem-card .ecosystem-card__icon { margin-bottom:8px }
-@media(max-width:1100px){.ecosystem-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
-@media(max-width:820px){.ecosystem-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media(max-width:620px){.ecosystem-grid{grid-template-columns:1fr;gap:12px}.ecosystem-card{padding:16px}}
+.ecosystem-card:has(.ecosystem-card__link:not(.ecosystem-card__link--pending)){border-color:rgba(56,189,248,.42);background:linear-gradient(145deg,rgba(56,189,248,.11),rgba(255,255,255,.07))}
+.app:has(.tree-hero.is-day) .ecosystem-card{color:#173a36;border-color:rgba(83,119,105,.34);background:linear-gradient(145deg,rgba(235,243,233,.97),rgba(210,226,216,.95));box-shadow:0 16px 34px rgba(2,22,28,.18)}
+.app:has(.tree-hero.is-day) .ecosystem-card p{color:#345a55}.app:has(.tree-hero.is-day) .ecosystem-card>span{color:#0b7550}.app:has(.tree-hero.is-day) .ecosystem-card__action .ecosystem-card__link--pending{color:#526f69}.app:has(.tree-hero.is-day) .ecosystem-card--institutional{border-color:rgba(145,111,24,.62)}.app:has(.tree-hero.is-day) .ecosystem-card:has(.ecosystem-card__link:not(.ecosystem-card__link--pending)){border-color:rgba(8,111,151,.5);background:linear-gradient(145deg,rgba(218,240,237,.98),rgba(192,224,220,.95))}
+@media(max-width:900px){.ecosystem-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.ecosystem-card{min-height:230px}}
+@media(max-width:620px){.ecosystem-grid{grid-template-columns:1fr;gap:12px}.ecosystem-card{min-height:0;padding:18px}}
+@media(prefers-reduced-motion:reduce){.ecosystem-card:has(.ecosystem-card__link:not(.ecosystem-card__link--pending)):hover{transform:none}}

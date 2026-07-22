@@ -18,3 +18,4 @@ body {
 }
 a { color: inherit; }
 .app { min-height: 100vh; overflow-x: hidden; }
+main { background:linear-gradient(180deg,var(--oj-bg) 0,#081827 56%,#06111f 100%); }
