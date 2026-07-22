@@ -24,16 +24,20 @@ export function EcosystemSection() {
                 </svg>
               </span>
             ) : null}
-            <span>{item.status}</span>
+            <span>{item.statusLabel}</span>
             <h3>{item.name}</h3>
             <p>{item.description}</p>
-            {!item.isCurrent && (
-              <div className="ecosystem-card__action">
+            <div className="ecosystem-card__action">
+              {item.state === "ready" ? (
+                <a className="ecosystem-card__link" href={item.href}>
+                  {item.isCurrent ? "Vous êtes ici ↑" : "Ouvrir"}
+                </a>
+              ) : (
                 <span className="ecosystem-card__link ecosystem-card__link--pending">
-                  Lien officiel à venir
+                  Bientôt disponible
                 </span>
-              </div>
-            )}
+              )}
+            </div>
           </article>
         ))}
       </div>

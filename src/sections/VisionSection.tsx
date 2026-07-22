@@ -1,8 +1,8 @@
 export function VisionSection() {
   return (
-    <section className="section" aria-labelledby="vision-title">
+    <section id="vision" className="section" aria-labelledby="vision-title">
       <div className="section-heading">
-        <p className="section-kicker">Contrôle UX</p>
+        <p className="section-kicker">Notre vision</p>
         <h2 id="vision-title">Lisible, cohérent, durable.</h2>
       </div>
       <p className="section-text">

@@ -1,7 +1,7 @@
 ﻿import "./App.css";
 import { Header } from "./components/Header";
 import { Footer } from "./components/Footer";
-import { HeroSection } from "./sections/HeroSection";
+import { TreeHeroSection } from "./sections/TreeHeroSection";
 import { AboutSection } from "./sections/AboutSection";
 import { EcosystemSection } from "./sections/EcosystemSection";
 import { MissionSection } from "./sections/MissionSection";
@@ -13,7 +13,7 @@ function App() {
     <div className="app">
       <Header />
       <main id="main-content">
-        <HeroSection />
+        <TreeHeroSection />
         <AboutSection />
         <EcosystemSection />
         <MissionSection />

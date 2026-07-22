@@ -1,11 +1,16 @@
 export function Footer() {
   return (
     <footer className="site-footer">
-      <div>
+      <div className="site-footer__brand">
         <strong>ONJARAMA</strong>
-        <p>Votre parcours. Votre rythme.</p>
+        <p>Construisons ensemble l’avenir.</p>
       </div>
-      <p>Guinée • Québec • Canada</p>
+      <nav className="site-footer__nav" aria-label="Informations légales et soutien">
+        <a href="#">Confidentialité</a>
+        <a href="#">Cookies</a>
+        <a href="#mission">Nous soutenir</a>
+      </nav>
+      <p className="site-footer__locations">Guinée • Québec • Canada</p>
     </footer>
   );
 }
