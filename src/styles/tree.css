@@ -219,6 +219,10 @@
 @media(prefers-reduced-motion:reduce){.preview-card{animation:none!important}.preview-card__cta{transition:none!important}.preview-card__cta:hover,.preview-card__cta:active{transform:none!important}}
 @media(prefers-reduced-motion:reduce){.tree-fruit::before{transition:none!important;transform:none!important}.tree-fruit:hover,.tree-fruit:focus-visible,.tree-fruit:active,.tree-fruit.is-active{transform:translate(-50%,-50%)!important}}
 
+/* Quality gate: keep the complete introduction and mobile controls accessible. */
+.tree-hero__lead{display:block;overflow:visible;-webkit-box-orient:initial;-webkit-line-clamp:unset}
+@media(max-width:900px){.tree-sidebar__vision-link{display:inline-flex;min-height:44px;align-items:center}.project-item{min-height:44px}}
+
 /* Desktop framing pass. Mobile composition remains governed by the rules above. */
 @media(min-width:761px){
   .tree-hero{overflow-x:clip;padding-bottom:clamp(40px,4vw,64px)}

@@ -45,7 +45,8 @@
 #vision > .section-text { margin-bottom: 28px; }
 #roadmap { padding-bottom: clamp(68px, 8vw, 96px); }
 .app:has(.tree-hero.is-day) #about{border-bottom-color:rgba(192,218,207,.22)}
-.app:has(.tree-hero.is-day) .section-heading>p:last-child,.app:has(.tree-hero.is-day) .section-text,.app:has(.tree-hero.is-day) .mission-band>p:last-child{color:#c7dad4}
+.app:has(.tree-hero.is-day) .section-heading>p:last-child,.app:has(.tree-hero.is-day) .section-text{color:#c7dad4}
+.app:has(.tree-hero.is-day) .mission-band>p:last-child{color:#345a55}
 .app:has(.tree-hero.is-day) .quality-grid article,.app:has(.tree-hero.is-day) .timeline article{color:#173a36;border-color:rgba(83,119,105,.34);background:linear-gradient(145deg,rgba(235,243,233,.96),rgba(210,226,216,.94));box-shadow:0 16px 34px rgba(2,22,28,.18)}
 .app:has(.tree-hero.is-day) .quality-grid p,.app:has(.tree-hero.is-day) .timeline p{color:#345a55}
 .app:has(.tree-hero.is-day) .mission-band{color:#173a36;border-color:rgba(104,91,37,.38);background:linear-gradient(135deg,rgba(239,232,199,.96),rgba(207,229,220,.94));box-shadow:0 20px 48px rgba(2,22,28,.2)}
