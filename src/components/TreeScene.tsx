@@ -31,7 +31,7 @@ type TreeSceneProps = {
 export function TreeScene({ fruits, activeId, onActivate, onPreview }: TreeSceneProps) {
   return (
     <div className="tree-scene">
-      <svg className="tree-scene__art" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Vallée OnJarama avec cascade, cité futuriste, rivière et arbre monumental">
+      <svg className="tree-scene__art" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMin slice" role="img" aria-label="Vallée OnJarama avec cascade, cité futuriste, rivière et arbre monumental">
         <defs>
           <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop className="sky-top"/><stop className="sky-bottom" offset="100%"/></linearGradient>
           <linearGradient id="waterfall" x1="0" y1="0" x2="1" y2="0"><stop stopColor="#dffaff"/><stop offset="45%" stopColor="#74d4ef"/><stop offset="72%" stopColor="#efffff"/><stop offset="100%" stopColor="#409fc8"/></linearGradient>

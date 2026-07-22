@@ -201,3 +201,28 @@
 }
 @keyframes fruitGlowMobile{50%{box-shadow:0 0 0 3px rgba(75,211,244,.08),0 6px 16px rgba(30,177,233,.33)}}
 @media(prefers-reduced-motion:reduce){.tree-hero,.tree-scene svg *,.tree-fruit{transition:none!important}.waterfall__stream,.waterfall__mist,.river-flow__shine,.luminous-path__spark,.tree-fruit.is-ready{animation:none!important}}
+
+/* Desktop framing pass. Mobile composition remains governed by the rules above. */
+@media(min-width:761px){
+  .tree-hero{overflow-x:clip;padding-bottom:clamp(40px,4vw,64px)}
+  .tree-hero__panorama{
+    width:100%;
+    min-height:max(calc(100svh - 76px),clamp(700px,56.25vw,900px));
+    background:linear-gradient(90deg,#0d2a40 0,#0d2a40 88%,#102f45 100%);
+  }
+  .tree-hero.is-day .tree-hero__panorama{
+    background:linear-gradient(90deg,#6f9c8b 0,#6f9c8b 88%,#78a28f 100%);
+  }
+  .tree-scene{inset:0;overflow:hidden}
+  .tree-scene__art{object-position:center top}
+  .tree-hero__intro{
+    left:clamp(18px,2.25vw,38px);
+    bottom:clamp(28px,4vw,58px);
+    width:clamp(430px,31vw,510px);
+    background:color-mix(in srgb,var(--panel) 92%,transparent);
+  }
+  .future-apps{right:clamp(20px,2.5vw,44px)}
+  .tree-fruit.tree-fruit--academy{left:87.5%!important;top:28%!important}
+  .tree-fruit.tree-fruit--web{left:89.5%!important;top:49%!important}
+  .tree-hero__details{width:min(1180px,calc(100% - 48px))}
+}
