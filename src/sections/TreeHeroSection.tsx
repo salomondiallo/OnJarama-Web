@@ -40,7 +40,7 @@ export function TreeHeroSection() {
 
       <div className="tree-hero__details">
         <EcosystemSidebar items={ecosystem} activeId={activeId} onActivate={setActiveId} onPreview={setPreviewId} />
-        <ProjectPreviewCard item={previewItem} />
+        <ProjectPreviewCard key={previewItem.id} item={previewItem} />
       </div>
     </section>
   );

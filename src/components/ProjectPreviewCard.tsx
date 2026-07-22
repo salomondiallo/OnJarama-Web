@@ -12,24 +12,35 @@ type ProjectPreviewCardProps = {
 
 export function ProjectPreviewCard({ item }: ProjectPreviewCardProps) {
   const isReady = item.state === "ready";
+  const titleId = `preview-card-title-${item.id}`;
 
   return (
-    <div className="preview-card" role="status" aria-live="polite">
+    <section
+      className={`preview-card preview-card--${item.state}`}
+      aria-labelledby={titleId}
+      aria-live="polite"
+      aria-atomic="true"
+    >
       <div className="preview-card__head">
-        <span className="preview-card__acronym">{item.acronym}</span>
-        <div>
-          <p className={`preview-card__status ${STATE_LABEL_CLASS[item.state]}`}>{item.statusLabel}</p>
-          <h3 className="preview-card__title">{item.name}</h3>
+        <span className="preview-card__acronym" aria-hidden="true">{item.acronym}</span>
+        <div className="preview-card__identity">
+          <p className={`preview-card__status ${STATE_LABEL_CLASS[item.state]}`}>
+            <span className="preview-card__status-dot" aria-hidden="true" />
+            {item.statusLabel}
+          </p>
+          <h3 id={titleId} className="preview-card__title">{item.name}</h3>
         </div>
       </div>
       <p className="preview-card__text">{item.description}</p>
-      {isReady ? (
-        <a className="preview-card__cta" href={item.href}>
-          Explorer le portail
-        </a>
-      ) : (
-        <p className="preview-card__pending">Bientôt disponible — aucun lien public actif pour le moment.</p>
-      )}
-    </div>
+      <div className="preview-card__action">
+        {isReady ? (
+          <a className="preview-card__cta" href={item.href}>
+            Explorer le portail
+          </a>
+        ) : (
+          <p className="preview-card__pending">Bientôt disponible — aucun lien public actif pour le moment.</p>
+        )}
+      </div>
+    </section>
   );
 }
