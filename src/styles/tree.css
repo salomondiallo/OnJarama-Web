@@ -291,3 +291,24 @@
   .future-apps strong{font-size:.72rem}
   .future-apps>span:last-child{font-size:.65rem;line-height:1.3}
 }
+
+/* Institutional handoff: the project cards bridge the landscape and the page content. */
+.tree-hero{position:relative;background:linear-gradient(180deg,#0d2a40 0,#0b2638 58%,var(--oj-bg) 100%)}
+.tree-hero.is-day{background:linear-gradient(180deg,#6f9c8b 0,#315e59 42%,#102d35 72%,var(--oj-bg) 100%)}
+.tree-hero__panorama{box-shadow:0 22px 48px rgba(0,0,0,.22)}
+.tree-hero__details{position:relative;z-index:6}
+@media(min-width:901px){
+  .tree-hero{padding-bottom:clamp(42px,4vw,58px)}
+  .tree-hero__details{margin-top:-34px}
+  .tree-sidebar,.preview-card{box-shadow:0 24px 58px rgba(0,0,0,.32)}
+  .tree-hero.is-day .tree-sidebar,.tree-hero.is-day .preview-card{box-shadow:0 22px 48px rgba(3,25,31,.24)}
+}
+@media(max-width:900px){
+  .tree-hero{padding-bottom:38px}
+  .tree-hero__details{margin-top:12px}
+}
+@media(max-width:760px){
+  .tree-hero{padding-bottom:30px;background:linear-gradient(180deg,#0d2a40 0,#0b2638 52%,var(--oj-bg) 100%)}
+  .tree-hero.is-day{background:linear-gradient(180deg,#6f9c8b 0,#315e59 38%,#102d35 68%,var(--oj-bg) 100%)}
+  .tree-hero__details{margin-top:8px}
+}
