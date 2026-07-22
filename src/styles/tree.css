@@ -226,3 +226,51 @@
   .tree-fruit.tree-fruit--web{left:89.5%!important;top:49%!important}
   .tree-hero__details{width:min(1180px,calc(100% - 48px))}
 }
+
+/* Theme legibility pass. Composition, scene geometry and fruit positions are unchanged. */
+.tree-hero.is-night .tree-hero__intro{
+  border-color:rgba(224,239,242,.34);
+  background:rgba(5,20,31,.92);
+  box-shadow:0 22px 58px rgba(0,0,0,.38),0 0 0 1px rgba(255,255,255,.04) inset;
+}
+.tree-hero.is-day .tree-hero__intro{
+  border-color:rgba(32,72,65,.4);
+  background:rgba(245,250,239,.94);
+  box-shadow:0 20px 52px rgba(20,55,54,.24),0 0 0 1px rgba(255,255,255,.52) inset;
+}
+.tree-hero.is-night .tree-hero__eyebrow{color:#f0c85a;text-shadow:0 1px 8px rgba(0,0,0,.46)}
+.tree-hero.is-day .tree-hero__eyebrow{color:#725200;text-shadow:0 1px 0 rgba(255,255,255,.58)}
+.tree-hero.is-night .tree-hero__intro h1{text-shadow:0 2px 18px rgba(0,0,0,.5)}
+.tree-hero.is-day .tree-hero__intro h1{text-shadow:0 1px 0 rgba(255,255,255,.62)}
+.tree-hero.is-day .tree-hero__intro h1 span{color:#765600}
+.tree-hero__cta:not(.tree-hero__cta--primary){background:rgba(5,20,31,.28)}
+.tree-hero.is-day .tree-hero__cta:not(.tree-hero__cta--primary){border-color:rgba(93,67,0,.66);color:#183b37;background:rgba(255,255,255,.54)}
+.tree-hero__cta:hover{border-color:#f6d96f;background-color:rgba(255,255,255,.12)}
+.tree-hero__cta--primary:hover{color:#10251c;background:linear-gradient(135deg,#ffe698,#e2b23d)}
+.tree-hero.is-day .tree-hero__cta:not(.tree-hero__cta--primary):hover{background:#fff}
+.tree-hero__cta:focus-visible,.day-night-toggle button:focus-visible{outline-color:#8be8ff;box-shadow:0 0 0 2px rgba(4,25,35,.72)}
+.tree-hero.is-day .tree-hero__cta:focus-visible,.tree-hero.is-day .day-night-toggle button:focus-visible{outline-color:#075f76;box-shadow:0 0 0 2px rgba(255,255,255,.86)}
+.tree-hero.is-night .day-night-toggle{border-color:rgba(225,238,241,.3);background:rgba(0,11,20,.3)}
+.tree-hero.is-day .day-night-toggle{border-color:rgba(25,66,61,.32);background:rgba(25,66,61,.08)}
+.tree-hero.is-night .day-night-toggle button{color:#edf5f3}
+.tree-hero.is-day .day-night-toggle button{color:#214844}
+.day-night-toggle button:hover{background:rgba(255,255,255,.12)}
+.tree-hero.is-day .day-night-toggle button:hover{background:rgba(16,66,60,.12)}
+.day-night-toggle button.is-selected,.tree-hero.is-day .day-night-toggle button.is-selected{color:#14251d;background:#f0ce67;box-shadow:0 3px 12px rgba(0,0,0,.22)}
+.tree-hero.is-night .future-apps{border-color:rgba(224,239,242,.32);background:rgba(5,20,31,.9);box-shadow:0 12px 30px rgba(0,0,0,.34)}
+.tree-hero.is-day .future-apps{border-color:rgba(32,72,65,.38);background:rgba(245,250,239,.92);box-shadow:0 12px 28px rgba(20,55,54,.2)}
+.tree-hero.is-night .future-apps__symbols i{color:#f1ca61;border-color:rgba(241,202,97,.7)}
+.tree-hero.is-day .future-apps__symbols i{color:#725200;border-color:rgba(114,82,0,.58);background:rgba(255,255,255,.34)}
+.tree-inscription text{text-shadow:none}
+.is-day .tree-inscription text{filter:drop-shadow(0 1.4px .8px rgba(31,16,6,.76)) drop-shadow(0 -1px .6px rgba(255,220,135,.22))}
+.is-night .tree-inscription text{filter:drop-shadow(0 0 2px rgba(225,174,57,.3)) drop-shadow(0 1.7px 1px rgba(5,3,1,.94))}
+.tree-fruit__acronym{text-shadow:0 1px 2px rgba(0,0,0,.42)}
+.tree-fruit--academy .tree-fruit__acronym,.tree-fruit--ojcs-connect .tree-fruit__acronym,.tree-fruit--web .tree-fruit__acronym{text-shadow:0 1px 1px rgba(255,255,255,.34),0 1px 2px rgba(0,0,0,.25)}
+
+@media(max-width:760px){
+  .tree-hero__eyebrow{font-size:.68rem;line-height:1.35}
+  .tree-hero__lead{font-size:.82rem;line-height:1.42}
+  .tree-hero__cta{font-size:.72rem;line-height:1.2}
+  .future-apps strong{font-size:.72rem}
+  .future-apps>span:last-child{font-size:.65rem;line-height:1.3}
+}
