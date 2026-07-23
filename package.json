@@ -7,6 +7,7 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
+    "test:ojw:lot-13": "node scripts/architecture/ojw-lot-13-homepage-immersive-quality-closure.test.mjs",
     "preview": "vite preview"
   },
   "dependencies": {
