@@ -313,6 +313,39 @@
 }
 @media(max-width:760px){
   .tree-hero{padding-bottom:30px;background:linear-gradient(180deg,#0d2a40 0,#0b2638 52%,var(--oj-bg) 100%)}
-  .tree-hero.is-day{background:linear-gradient(180deg,#6f9c8b 0,#315e59 38%,#102d35 68%,var(--oj-bg) 100%)}
-  .tree-hero__details{margin-top:8px}
+.tree-hero.is-day{background:linear-gradient(180deg,#6f9c8b 0,#315e59 38%,#102d35 68%,var(--oj-bg) 100%)}
+.tree-hero__details{margin-top:8px}
+}
+
+/* OJW-LOT-14 — controlled life layers; scene geometry remains unchanged. */
+.waterfall__mist{transform-box:fill-box;transform-origin:center;animation-duration:7.2s}
+.waterfall__foam{fill:#e7fbff;opacity:.54;transform-box:fill-box;transform-origin:center;animation:foamDrift 5.8s ease-in-out -2.1s infinite}
+.is-day .waterfall__foam{fill:#fff;opacity:.7}.is-night .waterfall__foam{fill:#b9e2ef;opacity:.44}
+.river-flow__glint{fill:none;stroke:#e8fbff;stroke-width:3;stroke-linecap:round;stroke-dasharray:18 74;opacity:.34;animation:riverGlint 12.5s linear -4.3s infinite}
+.is-day .river-flow__glint{opacity:.55}.is-night .river-flow__glint{stroke:#a9d9e8;opacity:.3}
+.is-night .scene-birds{stroke:#b7d3d7}
+.scene-bird{transform-box:fill-box;transform-origin:center;will-change:transform}
+.scene-bird--one{animation:birdDriftOne 18s ease-in-out -7s infinite}
+.scene-bird--two{animation:birdDriftTwo 23s ease-in-out -16s infinite}
+.scene-bird--three{animation:birdDriftThree 20.5s ease-in-out -2s infinite}
+.tree-canopy{animation:canopyLight 12s ease-in-out infinite}
+.tree-fruit.is-development{animation:fruitBreathe 7.5s ease-in-out infinite}
+.tree-fruit.is-development:nth-of-type(2){animation-delay:-2.4s}.tree-fruit.is-development:nth-of-type(3){animation-delay:-5.1s}
+
+@keyframes foamDrift{0%,100%{transform:translateX(-7px) scaleX(.94);opacity:.42}50%{transform:translateX(12px) scaleX(1.08);opacity:.7}}
+@keyframes riverGlint{to{stroke-dashoffset:-184}}
+@keyframes canopyLight{0%,100%{filter:drop-shadow(-18px 20px 18px rgba(0,0,0,.2)) brightness(1)}55%{filter:drop-shadow(-18px 20px 18px rgba(0,0,0,.2)) brightness(1.045)}}
+@keyframes birdDriftOne{0%,100%{transform:translate(0) rotate(0)}38%{transform:translate(28px,-9px) rotate(-2deg)}72%{transform:translate(52px,5px) rotate(1deg)}}
+@keyframes birdDriftTwo{0%,100%{transform:translate(0) scale(.96)}45%{transform:translate(-34px,12px) scale(1)}76%{transform:translate(-58px,-4px) scale(.98)}}
+@keyframes birdDriftThree{0%,100%{transform:translate(0) rotate(0)}32%{transform:translate(22px,8px) rotate(2deg)}68%{transform:translate(46px,-12px) rotate(-1deg)}}
+@keyframes fruitBreathe{0%,100%{filter:brightness(.96);box-shadow:0 8px 22px rgba(0,0,0,.28)}50%{filter:brightness(1.06);box-shadow:0 8px 26px rgba(75,205,139,.34)}}
+
+@media(max-width:760px){
+  .scene-bird--three{display:none}
+  .scene-bird{animation-duration:28s}
+  .tree-canopy{animation-duration:17s}
+  .tree-fruit.is-development{animation-duration:10s}
+}
+@media(prefers-reduced-motion:reduce){
+  .tree-canopy,.waterfall__foam,.river-flow__glint,.scene-bird,.tree-fruit.is-development{animation:none!important}
 }

@@ -92,17 +92,23 @@ export function TreeScene({ fruits, activeId, onActivate, onPreview }: TreeScene
           <path className="waterfall__veil" d="M153 185c23 91-7 173 11 260 10 51-5 105-25 162M205 180c-2 115 37 196 5 424M266 176c35 116-13 223 25 431M326 173c-26 124 18 241-10 432"/>
           <path className="waterfall__stream waterfall__stream--one" d="M170 187c28 118-18 247 4 408"/><path className="waterfall__stream waterfall__stream--two" d="M287 180c-7 134 31 260-10 424"/>
           <g className="waterfall__mist"><ellipse cx="227" cy="614" rx="205" ry="67" fill="url(#mist)"/><ellipse cx="303" cy="605" rx="126" ry="45" fill="url(#mist)"/></g>
+          <g className="waterfall__foam"><ellipse cx="176" cy="613" rx="64" ry="9"/><ellipse cx="260" cy="619" rx="82" ry="11"/><ellipse cx="335" cy="612" rx="42" ry="7"/></g>
         </g>
 
         <path className="scene-ground" d="M0 570c250-65 405-3 590-15 234-15 352-100 558-58 180 37 290 4 452-50v453H0Z"/>
         <g className="river-flow" aria-hidden="true">
           <path className="river-flow__body" d="M86 605c176 38 332-18 469-31 135-13 199 3 271 61 85 69 182 75 315 81 143 7 233 50 305 184H690c-5-80-35-140-125-180-117-52-294-24-479-70Z" fill="url(#river)"/>
           <path className="river-flow__shine river-flow__shine--one" d="M260 612c170 11 292-55 469 40 130 70 239 70 390 89"/><path className="river-flow__shine river-flow__shine--two" d="M400 660c190-39 274 34 380 70 110 37 235 20 360 87"/>
+          <path className="river-flow__glint" d="M150 626c118 20 212-9 310-25m151 18c75 4 122 23 170 56m118 42c72 22 132 18 203 28"/>
           <path className="river-branch" d="M908 704c142 7 238-13 346-51 58-20 103-17 151 7"/><path className="river-branch-shine" d="M920 695c125 4 226-17 330-49 56-17 99-13 139 8"/>
         </g>
 
         <g className="luminous-path" aria-hidden="true"><path className="luminous-path__surface" d="M1510 900C1362 822 1218 769 1115 704 1060 650 1020 565 998 510l-25 13c24 68 49 157 85 232 105 71 200 104 288 145Z" fill="url(#pathSurface)"/><path className="luminous-path__edge" d="M1455 887c-154-86-269-115-375-184-48-45-69-117-94-191" filter="url(#softGlow)"/><path className="luminous-path__spark" d="M1455 887c-154-86-269-115-375-184-48-45-69-117-94-191"/></g>
-        <g className="scene-birds" aria-hidden="true"><path d="M630 245q16-14 32 0 16-14 32 0"/><path d="M710 205q13-12 26 0 13-12 26 0"/><path d="M785 250q11-10 22 0 11-10 22 0"/></g>
+        <g className="scene-birds" aria-hidden="true">
+          <path className="scene-bird scene-bird--one" d="M630 245q16-14 32 0 16-14 32 0"/>
+          <path className="scene-bird scene-bird--two" d="M710 205q13-12 26 0 13-12 26 0"/>
+          <path className="scene-bird scene-bird--three" d="M785 250q11-10 22 0 11-10 22 0"/>
+        </g>
 
         <g className="tree-canopy" aria-hidden="true">{[[1190,244,165],[1320,145,205],[1480,160,220],[1580,292,210],[1280,365,205],[1485,410,235],[1135,430,145]].map(([cx,cy,r], i) => <path key={`${cx}-${cy}`} d={`M${cx-r},${cy+15}C${cx-r*.92},${cy-r*.55} ${cx-r*.38},${cy-r} ${cx},${cy-r*.82}C${cx+r*.55},${cy-r*1.04} ${cx+r},${cy-r*.4} ${cx+r*.88},${cy+20}C${cx+r},${cy+r*.55} ${cx+r*.28},${cy+r} ${cx},${cy+r*.82}C${cx-r*.6},${cy+r} ${cx-r},${cy+r*.5} ${cx-r},${cy+15}Z`} fill="url(#leaf)" className={`canopy-cluster canopy-cluster--${i}`}/>)}</g>
         <g className="tree-branches" fill="none" stroke="url(#trunk)" strokeLinecap="round" aria-hidden="true">{fruits.map(item => { const p=FRUIT_LAYOUT[item.id]; return p ? <path key={item.id} d={branchPath(p.branch)} strokeWidth={item.id === "web" ? 42 : 34}/> : null; })}<path d="M1370 650C1290 500 1310 325 1265 205" strokeWidth="65"/><path d="M1380 620c65-170 120-270 185-350" strokeWidth="52"/></g>
