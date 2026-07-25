@@ -9,9 +9,10 @@ const OPTIONS: { value: DayNightPreference; label: string; icon: string }[] = [
 type DayNightToggleProps = {
   value: DayNightPreference;
   onChange: (value: DayNightPreference) => void;
+  onPrepare: (value: DayNightPreference) => void;
 };
 
-export function DayNightToggle({ value, onChange }: DayNightToggleProps) {
+export function DayNightToggle({ value, onChange, onPrepare }: DayNightToggleProps) {
   return (
     <fieldset className="day-night-toggle" aria-label="Choisir l’ambiance lumineuse">
       <legend className="sr-only">Ambiance lumineuse</legend>
@@ -22,6 +23,9 @@ export function DayNightToggle({ value, onChange }: DayNightToggleProps) {
           className={value === option.value ? "is-selected" : ""}
           aria-label={`Mode ${option.label.toLowerCase()}`}
           aria-pressed={value === option.value}
+          onPointerDown={() => onPrepare(option.value)}
+          onTouchStart={() => onPrepare(option.value)}
+          onFocus={() => onPrepare(option.value)}
           onClick={() => onChange(option.value)}
         >
           <span aria-hidden="true">{option.icon}</span>

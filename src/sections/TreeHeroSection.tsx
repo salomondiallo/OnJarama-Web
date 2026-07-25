@@ -1,10 +1,9 @@
 import { useMemo, useState } from "react";
 import { ecosystem } from "../data/ecosystem";
-import { EcosystemSidebar } from "../components/EcosystemSidebar";
+import { InstitutionalProjectBand } from "../components/InstitutionalProjectBand";
 import { TreeScene } from "../components/TreeScene";
-import { ProjectPreviewCard } from "../components/ProjectPreviewCard";
 import { DayNightToggle } from "../components/DayNightToggle";
-import { useDayNightMode } from "../hooks/useDayNightMode";
+import { useDayNightMode, type DayNightMode } from "../hooks/useDayNightMode";
 
 export function TreeHeroSection() {
   const foundation = useMemo(() => ecosystem.find((item) => item.kind === "institutional")!, []);
@@ -12,8 +11,8 @@ export function TreeHeroSection() {
   const defaultId = useMemo(() => ecosystem.find((item) => item.isCurrent)?.id ?? ecosystem[0].id, []);
   const [activeId, setActiveId] = useState(defaultId);
   const [previewId, setPreviewId] = useState<string | null>(null);
+  const [preparedMode, setPreparedMode] = useState<DayNightMode | null>(null);
   const { mode, preference, setPreference } = useDayNightMode();
-  const previewItem = ecosystem.find((item) => item.id === (previewId ?? activeId)) ?? ecosystem[0];
 
   return (
     <section id="top" className={`tree-hero premium-section is-${mode}`} data-light-mode={mode} aria-labelledby="immersive-hero-title">
@@ -26,21 +25,34 @@ export function TreeHeroSection() {
             <a className="tree-hero__cta tree-hero__cta--primary" href="#ecosystem">Découvrir l’écosystème</a>
             <a className="tree-hero__cta" href="#roadmap">Voir la roadmap</a>
           </div>
-          <DayNightToggle value={preference} onChange={setPreference} />
+          <DayNightToggle
+            value={preference}
+            onChange={setPreference}
+            onPrepare={(next) => setPreparedMode(next === "auto" ? mode : next)}
+          />
         </div>
 
-        <TreeScene foundation={foundation} fruits={fruits} activeId={activeId} onActivate={setActiveId} onPreview={setPreviewId} />
+        <TreeScene mode={mode} preparedMode={preparedMode} foundation={foundation} fruits={fruits} activeId={activeId} onActivate={setActiveId} onPreview={setPreviewId} />
 
-        <aside className="future-apps" aria-label="Applications futures hors écosystème OnJarama">
-          <span className="future-apps__symbols" aria-hidden="true"><i>◇</i><i>○</i><i>△</i></span>
-          <strong>Apps futures</strong>
-          <span>hors écosystème OnJarama</span>
-        </aside>
       </div>
 
-      <div className="tree-hero__details">
-        <EcosystemSidebar items={ecosystem} activeId={activeId} onActivate={setActiveId} onPreview={setPreviewId} />
-        <ProjectPreviewCard key={previewItem.id} item={previewItem} />
+      <div id="ecosystem" className="tree-hero__institutional" aria-labelledby="institutional-projects-title">
+        <div className="tree-hero__institutional-heading">
+          <div>
+            <p className="section-kicker">Écosystème institutionnel</p>
+            <h2 id="institutional-projects-title">Cinq projets, une vision commune</h2>
+          </div>
+          <aside className="future-apps" aria-label="Applications futures hors écosystème OnJarama">
+            <span className="future-apps__symbols" aria-hidden="true"><i>◇</i><i>○</i><i>△</i></span>
+            <span><strong>Apps futures</strong> · hors écosystème OnJarama</span>
+          </aside>
+        </div>
+        <InstitutionalProjectBand
+          items={ecosystem}
+          activeId={previewId ?? activeId}
+          onActivate={setActiveId}
+          onPreview={setPreviewId}
+        />
       </div>
     </section>
   );
