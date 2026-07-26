@@ -455,6 +455,26 @@
   .gfx02-life-layers .waterfall__stream,.gfx02-life-layers .river-flow__glint,.gfx02-life-layers .scene-bird,.gfx02-life-layers .scene-bird path{animation:none!important}
 }
 
+/* LOT-18-A: independent, low-amplitude life cycles on existing light layers. */
+.is-night .gfx02-city-light__accent{animation:cityLightBreathe 8.7s ease-in-out infinite}
+.is-night .gfx02-city-light__accent--two{animation-duration:11.4s;animation-delay:-4.1s}
+.is-night .gfx02-city-light__accent--three{animation-duration:13.2s;animation-delay:-8.6s}
+.is-night .gfx02-lamp-post__cap{animation:pathLampBreathe 9.6s ease-in-out infinite}
+.is-night .gfx02-lamp-post:nth-child(2n) .gfx02-lamp-post__cap{animation-duration:12.1s;animation-delay:-5.3s}
+.is-night .gfx02-lamp-post:nth-child(3n) .gfx02-lamp-post__cap{animation-duration:14.3s;animation-delay:-9.2s}
+.is-night .tree-fruit__visual{animation:fruitLightBreathe 10.8s ease-in-out infinite}
+.is-night .tree-fruit--academy .tree-fruit__visual{animation-duration:13.1s;animation-delay:-4.8s}
+.is-night .tree-fruit--ojcs-connect .tree-fruit__visual{animation-duration:11.7s;animation-delay:-7.2s}
+@keyframes cityLightBreathe{0%,100%{opacity:.72;transform:scale(.96)}52%{opacity:.94;transform:scale(1.04)}}
+@keyframes pathLampBreathe{0%,100%{opacity:.86;transform:scale(.97)}47%{opacity:1;transform:scale(1.03)}}
+@keyframes fruitLightBreathe{0%,100%{filter:brightness(.98)}56%{filter:brightness(1.055)}}
+@media(max-width:760px){
+  .is-night .gfx02-city-light__accent,.is-night .gfx02-lamp-post__cap,.is-night .tree-fruit__visual{animation-duration:15s}
+}
+@media(prefers-reduced-motion:reduce){
+  .gfx02-city-light__accent,.gfx02-lamp-post__cap,.tree-fruit__visual{animation:none!important}
+}
+
 /* OJW-LOT-17-A — institutional homepage composition; qualified scene layers stay unchanged. */
 .tree-hero__intro{
   width:clamp(440px,32vw,520px);

@@ -12,7 +12,7 @@ export function TreeHeroSection() {
   const [activeId, setActiveId] = useState(defaultId);
   const [previewId, setPreviewId] = useState<string | null>(null);
   const [preparedMode, setPreparedMode] = useState<DayNightMode | null>(null);
-  const { mode, preference, setPreference } = useDayNightMode();
+  const { mode, preference, setPreference, autoStrategy } = useDayNightMode();
 
   return (
     <section id="top" className={`tree-hero premium-section is-${mode}`} data-light-mode={mode} aria-labelledby="immersive-hero-title">
@@ -27,6 +27,8 @@ export function TreeHeroSection() {
           </div>
           <DayNightToggle
             value={preference}
+            resolvedMode={mode}
+            autoStrategy={autoStrategy}
             onChange={setPreference}
             onPrepare={(next) => setPreparedMode(next === "auto" ? mode : next)}
           />

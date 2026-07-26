@@ -7,6 +7,7 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
+    "test:ojw:lot-18-a": "node scripts/architecture/ojw-lot-18-a-organic-solar-auto.test.mjs",
     "test:ojw:lot-17-a": "node scripts/architecture/ojw-lot-17-a-homepage-institutional-layout.test.mjs",
     "test:ojw:lot-16-d-fix7": "node scripts/architecture/ojw-lot-16-d-fix7-single-initial-plate.test.mjs",
     "test:ojw:lot-16-a": "node scripts/architecture/ojw-lot-16-a-gfx02-web-qualification.test.mjs",
