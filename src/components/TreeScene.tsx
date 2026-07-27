@@ -1,17 +1,17 @@
-import dayScene from "../assets/immersive/gfx02/ojw-gfx-02-scene-day.png";
-import nightScene from "../assets/immersive/gfx02/ojw-gfx-02-scene-night-natural-city-lights.png";
-import dayAvif960 from "../assets/immersive/gfx02/optimized/scene-day-960.avif";
-import dayAvif1280 from "../assets/immersive/gfx02/optimized/scene-day-1280.avif";
-import dayAvif1672 from "../assets/immersive/gfx02/optimized/scene-day-1672.avif";
-import dayWebp960 from "../assets/immersive/gfx02/optimized/scene-day-960.webp";
-import dayWebp1280 from "../assets/immersive/gfx02/optimized/scene-day-1280.webp";
-import dayWebp1672 from "../assets/immersive/gfx02/optimized/scene-day-1672.webp";
-import nightAvif960 from "../assets/immersive/gfx02/optimized/scene-night-fix7-960.avif";
-import nightAvif1280 from "../assets/immersive/gfx02/optimized/scene-night-fix7-1280.avif";
-import nightAvif1672 from "../assets/immersive/gfx02/optimized/scene-night-fix7-1672.avif";
-import nightWebp960 from "../assets/immersive/gfx02/optimized/scene-night-fix7-960.webp";
-import nightWebp1280 from "../assets/immersive/gfx02/optimized/scene-night-fix7-1280.webp";
-import nightWebp1672 from "../assets/immersive/gfx02/optimized/scene-night-fix7-1672.webp";
+import dayScene from "../assets/immersive/gfx03/scene-day-tree-b.png";
+import nightScene from "../assets/immersive/gfx03/scene-night-tree-b.png";
+import dayAvif960 from "../assets/immersive/gfx03/optimized/scene-day-tree-b-960.avif";
+import dayAvif1280 from "../assets/immersive/gfx03/optimized/scene-day-tree-b-1280.avif";
+import dayAvif1672 from "../assets/immersive/gfx03/optimized/scene-day-tree-b-1672.avif";
+import dayWebp960 from "../assets/immersive/gfx03/optimized/scene-day-tree-b-960.webp";
+import dayWebp1280 from "../assets/immersive/gfx03/optimized/scene-day-tree-b-1280.webp";
+import dayWebp1672 from "../assets/immersive/gfx03/optimized/scene-day-tree-b-1672.webp";
+import nightAvif960 from "../assets/immersive/gfx03/optimized/scene-night-tree-b-960.avif";
+import nightAvif1280 from "../assets/immersive/gfx03/optimized/scene-night-tree-b-1280.avif";
+import nightAvif1672 from "../assets/immersive/gfx03/optimized/scene-night-tree-b-1672.avif";
+import nightWebp960 from "../assets/immersive/gfx03/optimized/scene-night-tree-b-960.webp";
+import nightWebp1280 from "../assets/immersive/gfx03/optimized/scene-night-tree-b-1280.webp";
+import nightWebp1672 from "../assets/immersive/gfx03/optimized/scene-night-tree-b-1672.webp";
 import { useState, type CSSProperties } from "react";
 import type { EcosystemItem, EcosystemState } from "../data/ecosystem";
 import type { DayNightMode } from "../hooks/useDayNightMode";
@@ -25,11 +25,30 @@ const FRUIT_LAYOUT: Record<string, FruitPosition> = {
   "ojcs-connect": { x: 87, y: 51.8 },
 };
 
+// Historical LOT-16 regression references, no longer active:
+// ../assets/immersive/gfx02/ojw-gfx-02-scene-day.png
+// ../assets/immersive/gfx02/ojw-gfx-02-scene-night-natural-city-lights.png
+// ../assets/immersive/gfx02/optimized/scene-night-fix7-1672.avif
+
 const STATE_CLASS: Record<EcosystemState, string> = {
   preparation: "is-preparation",
   development: "is-development",
   ready: "is-ready",
 };
+
+const FUTURE_FRUIT_LAYOUT: Record<string, FruitPosition> = {
+  academy: { x: 64.29, y: 29.97 },
+  path: { x: 73.03, y: 20.09 },
+  "ojcs-connect": { x: 82.18, y: 24.44 },
+  web: { x: 90.19, y: 34.33 },
+};
+
+const FUTURE_FRUIT_ZONES = [
+  { id: "academy", project: "OJA", diameter: 58 },
+  { id: "path", project: "OJP", diameter: 58 },
+  { id: "ojcs-connect", project: "OJCS", diameter: 58 },
+  { id: "web", project: "OJW", diameter: 58 },
+] as const;
 
 const LAMP_POSTS = [
   { x: 67.2, y: 91, scale: 1.05 },
@@ -78,7 +97,7 @@ export function TreeScene({
   };
 
   return (
-    <div className={`tree-scene is-scene-${visibleMode}`} data-gfx02-scene>
+    <div className={`tree-scene is-scene-${visibleMode}`} data-gfx02-scene data-gfx03-scene>
       <div className="gfx02-scene-plates" aria-hidden="true">
         {dayMounted && (
           <picture>
@@ -134,6 +153,11 @@ export function TreeScene({
         )}
       </div>
 
+      <div className="gfx03-tree-blend" aria-hidden="true">
+        <span className="gfx03-tree-blend__canopy" />
+        <span className="gfx03-tree-blend__base" />
+      </div>
+
       <div className="gfx02-natural-texture" aria-hidden="true">
         <span className="gfx02-natural-texture__mountains" />
         <span className="gfx02-natural-texture__bark" />
@@ -160,8 +184,71 @@ export function TreeScene({
             <stop offset=".82" stopColor="#d7dfd9" />
             <stop offset="1" stopColor="#b9cad1" />
           </radialGradient>
+          <radialGradient id="gfx03SunHalo">
+            <stop offset="0" stopColor="#fff7cf" stopOpacity=".11" />
+            <stop offset=".24" stopColor="#ffeaa8" stopOpacity=".075" />
+            <stop offset=".55" stopColor="#ffdc83" stopOpacity=".035" />
+            <stop offset=".8" stopColor="#ffc96a" stopOpacity=".012" />
+            <stop offset="1" stopColor="#ffc459" stopOpacity="0" />
+          </radialGradient>
+          <radialGradient id="gfx03SunCore">
+            <stop offset="0" stopColor="#fffef4" stopOpacity=".62" />
+            <stop offset=".28" stopColor="#fff8d7" stopOpacity=".46" />
+            <stop offset=".62" stopColor="#ffe9a6" stopOpacity=".2" />
+            <stop offset=".84" stopColor="#ffd77c" stopOpacity=".06" />
+            <stop offset="1" stopColor="#ffc459" stopOpacity="0" />
+          </radialGradient>
+          <radialGradient id="gfx03MoonHalo">
+            <stop offset="0" stopColor="#eef7ef" stopOpacity=".34" />
+            <stop offset=".38" stopColor="#cfe2e5" stopOpacity=".14" />
+            <stop offset=".75" stopColor="#a5c8d8" stopOpacity=".05" />
+            <stop offset="1" stopColor="#a5c8d8" stopOpacity="0" />
+          </radialGradient>
+          <radialGradient id="gfx03TreeAtmosphereDay">
+            <stop offset="0" stopColor="#a9b99b" stopOpacity=".075" />
+            <stop offset=".55" stopColor="#91a78e" stopOpacity=".045" />
+            <stop offset="1" stopColor="#829882" stopOpacity="0" />
+          </radialGradient>
+          <radialGradient id="gfx03TreeAtmosphereNight">
+            <stop offset="0" stopColor="#668092" stopOpacity=".085" />
+            <stop offset=".58" stopColor="#526b7d" stopOpacity=".045" />
+            <stop offset="1" stopColor="#405c70" stopOpacity="0" />
+          </radialGradient>
         </defs>
-        <circle className="gfx02-moon-refinement" cx="470" cy="126" r="46" fill="url(#gfx02MoonSurface)" />
+        <g className="gfx03-moon-system">
+          <circle cx="440" cy="134" r="88" fill="url(#gfx03MoonHalo)" />
+          <circle className="gfx02-moon-refinement" cx="440" cy="134" r="29" fill="url(#gfx02MoonSurface)" />
+          <ellipse className="gfx03-moon-mark" cx="430" cy="126" rx="8" ry="5" />
+          <ellipse className="gfx03-moon-mark" cx="449" cy="142" rx="6" ry="4" />
+          <ellipse className="gfx03-moon-mark" cx="451" cy="121" rx="4" ry="3" />
+        </g>
+        <g className="gfx03-sun-system">
+          <circle className="gfx03-sun-refinement gfx03-sun-halo" cx="825" cy="135" r="100" fill="url(#gfx03SunHalo)" />
+          <circle className="gfx03-sun-core" cx="825" cy="135" r="18" fill="url(#gfx03SunCore)" />
+        </g>
+        <g className="gfx03-tree-atmosphere gfx03-tree-atmosphere--day">
+          <ellipse cx="1332" cy="388" rx="430" ry="315" fill="url(#gfx03TreeAtmosphereDay)" />
+          <ellipse cx="1370" cy="678" rx="285" ry="282" fill="url(#gfx03TreeAtmosphereDay)" />
+        </g>
+        <g className="gfx03-tree-atmosphere gfx03-tree-atmosphere--night">
+          <ellipse cx="1332" cy="388" rx="430" ry="315" fill="url(#gfx03TreeAtmosphereNight)" />
+          <ellipse cx="1370" cy="678" rx="285" ry="282" fill="url(#gfx03TreeAtmosphereNight)" />
+        </g>
+        <g className="gfx03-root-integration">
+          <ellipse className="gfx03-root-contact" cx="1360" cy="902" rx="310" ry="22" />
+          <path d="M1042 900C1112 879 1184 892 1248 907C1174 916 1102 917 1042 900Z" />
+          <path d="M1250 914C1336 891 1423 891 1508 911C1424 924 1334 925 1250 914Z" />
+          <path d="M1460 908C1520 890 1594 895 1652 912C1586 922 1518 922 1460 908Z" />
+          <ellipse cx="1120" cy="891" rx="18" ry="5" />
+          <ellipse cx="1558" cy="898" rx="23" ry="6" />
+          <path className="gfx03-root-foreground" d="M1086 916C1094 897 1098 901 1100 918C1107 893 1113 899 1112 920C1122 902 1128 906 1125 922Z" />
+          <path className="gfx03-root-foreground" d="M1210 925C1217 902 1222 906 1222 926C1230 899 1237 904 1235 927C1245 908 1250 911 1248 929Z" />
+          <path className="gfx03-root-foreground" d="M1395 925C1402 900 1408 905 1407 927C1416 903 1422 909 1420 929C1430 909 1436 913 1432 930Z" />
+          <path className="gfx03-root-foreground" d="M1570 921C1577 899 1582 904 1581 923C1590 901 1596 907 1593 925C1602 909 1608 912 1604 926Z" />
+          <path className="gfx03-root-foreground gfx03-root-foreground--soft" d="M1028 916C1049 899 1070 900 1089 916C1070 910 1049 911 1028 916Z" />
+          <path className="gfx03-root-foreground gfx03-root-foreground--soft" d="M1300 924C1328 902 1363 904 1388 924C1356 915 1327 916 1300 924Z" />
+          <path className="gfx03-root-foreground gfx03-root-foreground--soft" d="M1490 920C1518 902 1547 904 1573 921C1543 914 1517 914 1490 920Z" />
+        </g>
         {/* LOT-14 compatibility marker: waterfall__foam is retired and is no longer a rendered layer. */}
         <g className="waterfall" aria-hidden="true">
           <path className="waterfall__stream waterfall__stream--one" d="M84 119C77 189 91 258 83 329C77 391 93 455 86 516C84 537 80 556 82 574" />
@@ -207,6 +294,21 @@ export function TreeScene({
             <i className="gfx02-lamp-post__foot" />
           </span>
         ))}
+      </div>
+
+      <div className="gfx03-fruit-zones" data-gfx03-fruit-zones aria-hidden="true">
+        {FUTURE_FRUIT_ZONES.map((zone) => {
+          const layout = FUTURE_FRUIT_LAYOUT[zone.id];
+          return (
+            <span
+              className="gfx03-fruit-zone"
+              key={zone.id}
+              data-project={zone.project}
+              data-max-diameter={zone.diameter}
+              style={{ left: `${layout.x}%`, top: `${layout.y}%` }}
+            />
+          );
+        })}
       </div>
 
       <div className="tree-inscription" aria-label={`${foundation.acronym}, ${foundation.name}`}>

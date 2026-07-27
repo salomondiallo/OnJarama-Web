@@ -641,3 +641,132 @@
   .institutional-card{transition:none!important}
   .institutional-card:hover,.institutional-card.is-active{transform:none}
 }
+
+/* OJW-GFX-04: approved GFX-03-G Tree B master and future fruit anchors. */
+.tree-scene[data-gfx03-scene]{
+  background:#071523;
+}
+.tree-hero.is-day .tree-scene[data-gfx03-scene]{
+  background:#769a87;
+}
+.tree-scene[data-gfx03-scene] .gfx02-scene-plate{
+  object-fit:contain;
+  object-position:center center;
+  inset:-1.25%;
+  width:102.5%;
+  height:102.5%;
+}
+.tree-scene[data-gfx03-scene] .gfx02-natural-texture,
+.tree-scene[data-gfx03-scene] .gfx02-city-light,
+.tree-scene[data-gfx03-scene] .gfx02-lamp-posts,
+.tree-scene[data-gfx03-scene] .tree-inscription,
+.tree-scene[data-gfx03-scene] .tree-fruit{
+  display:none;
+}
+.tree-scene[data-gfx03-scene] .gfx02-life-layers .waterfall,
+.tree-scene[data-gfx03-scene] .gfx02-life-layers .river-flow__glint{
+  display:none;
+}
+.tree-scene[data-gfx03-scene] .gfx02-moon-refinement{
+  filter:none;
+}
+.gfx03-tree-blend{
+  position:absolute;
+  inset:0;
+  z-index:2;
+  pointer-events:none;
+}
+.gfx03-tree-blend>span{
+  position:absolute;
+  display:block;
+  opacity:0;
+  transition:opacity .7s ease;
+  backdrop-filter:blur(.65px) saturate(.9) contrast(.94);
+  -webkit-backdrop-filter:blur(.65px) saturate(.9) contrast(.94);
+}
+.gfx03-tree-blend__canopy{
+  left:48%;
+  top:7%;
+  width:52%;
+  height:82%;
+  border-radius:48% 42% 44% 51%;
+  mask-image:radial-gradient(ellipse at 70% 48%,#000 18%,rgba(0,0,0,.82) 56%,transparent 94%);
+  background:rgba(139,151,118,.035);
+}
+.gfx03-tree-blend__base{
+  left:52%;
+  bottom:0;
+  width:48%;
+  height:35%;
+  mask-image:radial-gradient(ellipse at 72% 100%,#000 12%,rgba(0,0,0,.88) 55%,transparent 94%);
+  background:rgba(72,91,58,.065);
+}
+.tree-hero.is-day .gfx03-tree-blend>span{opacity:1}
+.tree-hero.is-night .gfx03-tree-blend>span{
+  opacity:.92;
+  background-color:rgba(55,75,84,.055);
+}
+.gfx03-sun-system,
+.gfx03-moon-system{
+  transition:opacity .7s ease;
+}
+.gfx03-sun-system{opacity:0}
+.tree-hero.is-day .gfx03-sun-system{opacity:1}
+.tree-hero.is-night .gfx03-sun-system{opacity:0}
+.gfx03-moon-system{opacity:0}
+.tree-hero.is-night .gfx03-moon-system{opacity:.92}
+.gfx03-moon-system .gfx02-moon-refinement{opacity:.92}
+.gfx03-moon-mark{fill:rgba(126,151,154,.14)}
+.gfx03-tree-atmosphere{opacity:0}
+.tree-hero.is-day .gfx03-tree-atmosphere--day{opacity:1}
+.tree-hero.is-night .gfx03-tree-atmosphere--night{opacity:1}
+.gfx03-root-integration{fill:rgba(30,48,25,.2)}
+.gfx03-root-contact{fill:rgba(15,24,13,.24)}
+.gfx03-root-foreground{fill:rgba(42,72,34,.56)}
+.gfx03-root-foreground--soft{fill:rgba(55,79,39,.34)}
+.tree-hero.is-night .gfx03-root-integration{fill:rgba(3,14,15,.28)}
+.tree-hero.is-night .gfx03-root-contact{fill:rgba(1,8,12,.34)}
+.tree-hero.is-night .gfx03-root-foreground{fill:rgba(12,31,29,.5)}
+.tree-hero.is-night .gfx03-root-foreground--soft{fill:rgba(9,25,24,.4)}
+.gfx03-fruit-zones{
+  position:absolute;
+  inset:0;
+  z-index:4;
+  visibility:hidden;
+  pointer-events:none;
+}
+.gfx03-fruit-zone{
+  position:absolute;
+  width:var(--gfx03-fruit-zone-diameter,58px);
+  height:var(--gfx03-fruit-zone-diameter,58px);
+  transform:translate(-50%,-50%);
+  border-radius:50%;
+}
+@media(max-width:760px){
+  .tree-scene[data-gfx03-scene]{
+    position:relative;
+    inset:auto;
+    order:0;
+    width:100%;
+    min-height:0;
+    aspect-ratio:1672/941;
+  }
+  .tree-scene[data-gfx03-scene] .gfx02-scene-plate{
+    object-fit:contain;
+    object-position:center center;
+    inset:-1.25%;
+    width:102.5%;
+    height:102.5%;
+  }
+}
+@media(prefers-reduced-motion:reduce){
+  .gfx03-sun-system,.gfx03-moon-system,.gfx03-tree-blend>span{transition:none}
+}
+@media(max-width:700px){
+  .gfx03-sun-halo,.gfx03-sun-core{
+    transform-box:fill-box;
+    transform-origin:center;
+  }
+  .gfx03-sun-halo{transform:scale(1.3)}
+  .gfx03-sun-core{transform:scale(2.2)}
+}
