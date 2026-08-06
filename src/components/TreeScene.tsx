@@ -1,17 +1,5 @@
-import dayScene from "../assets/immersive/gfx03/scene-day-tree-b.png";
-import nightScene from "../assets/immersive/gfx03/scene-night-tree-b.png";
-import dayAvif960 from "../assets/immersive/gfx03/optimized/scene-day-tree-b-960.avif";
-import dayAvif1280 from "../assets/immersive/gfx03/optimized/scene-day-tree-b-1280.avif";
-import dayAvif1672 from "../assets/immersive/gfx03/optimized/scene-day-tree-b-1672.avif";
-import dayWebp960 from "../assets/immersive/gfx03/optimized/scene-day-tree-b-960.webp";
-import dayWebp1280 from "../assets/immersive/gfx03/optimized/scene-day-tree-b-1280.webp";
-import dayWebp1672 from "../assets/immersive/gfx03/optimized/scene-day-tree-b-1672.webp";
-import nightAvif960 from "../assets/immersive/gfx03/optimized/scene-night-tree-b-960.avif";
-import nightAvif1280 from "../assets/immersive/gfx03/optimized/scene-night-tree-b-1280.avif";
-import nightAvif1672 from "../assets/immersive/gfx03/optimized/scene-night-tree-b-1672.avif";
-import nightWebp960 from "../assets/immersive/gfx03/optimized/scene-night-tree-b-960.webp";
-import nightWebp1280 from "../assets/immersive/gfx03/optimized/scene-night-tree-b-1280.webp";
-import nightWebp1672 from "../assets/immersive/gfx03/optimized/scene-night-tree-b-1672.webp";
+import dayScene from "../assets/immersive/gfx03/scene-day-tree-b-lamps-off.png";
+import nightScene from "../assets/immersive/gfx03/scene-night-tree-b-lamps-realistic.png";
 import { useState, type CSSProperties } from "react";
 import type { EcosystemItem, EcosystemState } from "../data/ecosystem";
 import type { DayNightMode } from "../hooks/useDayNightMode";
@@ -103,12 +91,12 @@ export function TreeScene({
           <picture>
             <source
               type="image/avif"
-              srcSet={`${dayAvif960} 960w, ${dayAvif1280} 1280w, ${dayAvif1672} 1672w`}
+              srcSet={`${dayScene} 960w, ${dayScene} 1280w, ${dayScene} 1672w`}
               sizes="100vw"
             />
             <source
               type="image/webp"
-              srcSet={`${dayWebp960} 960w, ${dayWebp1280} 1280w, ${dayWebp1672} 1672w`}
+              srcSet={`${dayScene} 960w, ${dayScene} 1280w, ${dayScene} 1672w`}
               sizes="100vw"
             />
             <img
@@ -129,12 +117,12 @@ export function TreeScene({
           <picture>
             <source
               type="image/avif"
-              srcSet={`${nightAvif960} 960w, ${nightAvif1280} 1280w, ${nightAvif1672} 1672w`}
+              srcSet={`${nightScene} 960w, ${nightScene} 1280w, ${nightScene} 1672w`}
               sizes="100vw"
             />
             <source
               type="image/webp"
-              srcSet={`${nightWebp960} 960w, ${nightWebp1280} 1280w, ${nightWebp1672} 1672w`}
+              srcSet={`${nightScene} 960w, ${nightScene} 1280w, ${nightScene} 1672w`}
               sizes="100vw"
             />
             <img

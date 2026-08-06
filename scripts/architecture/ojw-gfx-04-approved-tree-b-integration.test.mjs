@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { createHash } from "node:crypto";
-import { existsSync, readFileSync, statSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import { resolve } from "node:path";
 
 const root = resolve(import.meta.dirname, "../..");
@@ -10,12 +10,12 @@ const styles = read("src/styles/tree.css");
 
 const assets = {
   day: {
-    file: "src/assets/immersive/gfx03/scene-day-tree-b.png",
-    sha256: "F24BA313885AB5DA1BD5D4F730FA4B19ED5AECCA8FDA85EF8651C0738DED63AE",
+    file: "src/assets/immersive/gfx03/scene-day-tree-b-lamps-off.png",
+    sha256: "5BFAD6088003D392B4E8B8A02C924D4DE2569FA46AC9D1FBDBCEC8C93C688A7D",
   },
   night: {
-    file: "src/assets/immersive/gfx03/scene-night-tree-b.png",
-    sha256: "8DDB3662EDDD67784E0F9156432E6693321B92E2E6D0BF6EC55894ED40164775",
+    file: "src/assets/immersive/gfx03/scene-night-tree-b-lamps-realistic.png",
+    sha256: "37154349A90F54189F1D5FFB43C47EEBAFE6DB13AB919FF56165C59C4B10D027",
   },
 };
 
@@ -27,22 +27,14 @@ for (const [mode, asset] of Object.entries(assets)) {
   assert.equal(data.readUInt32BE(16), 1672);
   assert.equal(data.readUInt32BE(20), 941);
 
-  for (const width of [960, 1280, 1672]) {
-    for (const format of ["avif", "webp"]) {
-      const derivative = resolve(
-        root,
-        `src/assets/immersive/gfx03/optimized/scene-${mode}-tree-b-${width}.${format}`,
-      );
-      assert.ok(existsSync(derivative), `${mode} ${width} ${format} absent.`);
-      assert.ok(statSync(derivative).size > 0, `${mode} ${width} ${format} vide.`);
-    }
-  }
 }
 
-assert.match(scene, /assets\/immersive\/gfx03\/scene-day-tree-b\.png/);
-assert.match(scene, /assets\/immersive\/gfx03\/scene-night-tree-b\.png/);
+assert.match(scene, /assets\/immersive\/gfx03\/scene-day-tree-b-lamps-off\.png/);
+assert.match(scene, /assets\/immersive\/gfx03\/scene-night-tree-b-lamps-realistic\.png/);
+assert.doesNotMatch(scene, /optimized\/scene-(?:day|night)-tree-b/);
 assert.equal((scene.match(/type="image\/avif"/g) ?? []).length, 2);
 assert.equal((scene.match(/type="image\/webp"/g) ?? []).length, 2);
+assert.match(styles, /\.tree-scene\[data-gfx03-scene\] \.gfx02-lamp-posts[\s\S]*display:none/);
 assert.match(scene, /data-gfx03-scene/);
 assert.match(scene, /data-gfx03-fruit-zones/);
 

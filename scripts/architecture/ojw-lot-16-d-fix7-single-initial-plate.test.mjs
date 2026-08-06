@@ -34,6 +34,8 @@ assert.equal((scene.match(/960w,/g) ?? []).length, 4);
 assert.equal((scene.match(/1280w,/g) ?? []).length, 4);
 assert.equal((scene.match(/1672w/g) ?? []).length, 4);
 assert.equal((scene.match(/sizes="100vw"/g) ?? []).length, 4);
+assert.match(scene, /scene-day-tree-b-lamps-off\.png/);
+assert.match(scene, /scene-night-tree-b-lamps-realistic\.png/);
 assert.equal((scene.match(/src=\{(?:dayScene|nightScene)\}/g) ?? []).length, 2);
 assert.match(scene, /loading=\{mode === "day" \|\| preparedMode === "day" \? "eager" : "lazy"\}/);
 assert.match(scene, /loading=\{mode === "night" \|\| preparedMode === "night" \? "eager" : "lazy"\}/);
