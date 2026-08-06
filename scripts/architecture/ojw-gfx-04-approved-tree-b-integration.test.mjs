@@ -53,7 +53,7 @@ for (const project of ["OJA", "OJP", "OJCS", "OJW"]) {
 
 assert.match(
   styles,
-  /\.tree-scene\[data-gfx03-scene\] \.gfx02-scene-plate\{[^}]*object-fit:contain/,
+  /\.tree-scene\[data-gfx03-scene\] \.gfx02-scene-plate\{[^}]*object-fit:cover[^}]*object-position:center bottom/,
 );
 assert.match(
   styles,
@@ -66,10 +66,14 @@ assert.match(scene, /className="gfx02-moon-refinement"/);
 assert.match(scene, /className="gfx03-root-contact"/);
 assert.match(scene, /className="gfx03-sun-system"/);
 assert.match(scene, /className="gfx03-moon-system"/);
+assert.doesNotMatch(scene, /gfx03-moon-mark/);
+assert.match(scene, /<feTurbulence type="fractalNoise"[^>]*numOctaves="4"[^>]*seed="14"/);
+assert.match(scene, /filter="url\(#gfx03MoonTexture\)"/);
 assert.match(scene, /className="gfx03-root-integration"/);
 assert.match(scene, /className="gfx03-tree-atmosphere gfx03-tree-atmosphere--day"/);
 assert.match(scene, /className="gfx03-tree-atmosphere gfx03-tree-atmosphere--night"/);
 assert.match(scene, /className="gfx03-root-foreground"/);
+assert.equal((scene.match(/className="gfx03-root-moss/g) ?? []).length, 3);
 assert.match(scene, /className="gfx03-tree-blend"/);
 assert.match(scene, /className="gfx03-tree-blend__canopy"/);
 assert.match(scene, /className="gfx03-tree-blend__base"/);
@@ -82,7 +86,7 @@ assert.match(styles, /\.tree-hero\.is-night \.gfx03-moon-system\{/);
 assert.match(styles, /\.gfx03-root-contact\{/);
 assert.match(styles, /\.gfx03-root-foreground\{/);
 assert.match(styles, /\.gfx03-tree-blend\{/);
-assert.match(styles, /backdrop-filter:blur\(\.65px\) saturate\(\.9\) contrast\(\.94\)/);
+assert.match(styles, /backdrop-filter:blur\(\.8px\) saturate\(\.87\) contrast\(\.91\)/);
 assert.match(styles, /\.tree-hero\.is-day \.gfx03-tree-atmosphere--day\{/);
 assert.match(styles, /width:102\.5%/);
 

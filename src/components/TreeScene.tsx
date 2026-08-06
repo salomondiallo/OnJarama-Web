@@ -167,10 +167,10 @@ export function TreeScene({
       >
         <defs>
           <radialGradient id="gfx02MoonSurface" cx="38%" cy="34%" r="68%">
-            <stop offset="0" stopColor="#fffef0" />
-            <stop offset=".5" stopColor="#f1f3df" />
-            <stop offset=".82" stopColor="#d7dfd9" />
-            <stop offset="1" stopColor="#b9cad1" />
+            <stop offset="0" stopColor="#f0eedb" />
+            <stop offset=".38" stopColor="#dce0d4" />
+            <stop offset=".72" stopColor="#bdc7c4" />
+            <stop offset="1" stopColor="#91a5ad" />
           </radialGradient>
           <radialGradient id="gfx03SunHalo">
             <stop offset="0" stopColor="#fff7cf" stopOpacity=".11" />
@@ -192,6 +192,17 @@ export function TreeScene({
             <stop offset=".75" stopColor="#a5c8d8" stopOpacity=".05" />
             <stop offset="1" stopColor="#a5c8d8" stopOpacity="0" />
           </radialGradient>
+          <filter id="gfx03MoonTexture" x="-35%" y="-35%" width="170%" height="170%">
+            <feTurbulence type="fractalNoise" baseFrequency=".052 .071" numOctaves="4" seed="14" result="moonNoise" />
+            <feColorMatrix
+              in="moonNoise"
+              type="matrix"
+              values=".58 0 0 0 .08 0 .61 0 0 .09 0 0 .66 0 .11 0 0 0 .38 0"
+              result="moonTexture"
+            />
+            <feComposite in="moonTexture" in2="SourceGraphic" operator="in" result="moonTextureMasked" />
+            <feBlend in="SourceGraphic" in2="moonTextureMasked" mode="multiply" />
+          </filter>
           <radialGradient id="gfx03TreeAtmosphereDay">
             <stop offset="0" stopColor="#a9b99b" stopOpacity=".075" />
             <stop offset=".55" stopColor="#91a78e" stopOpacity=".045" />
@@ -205,10 +216,14 @@ export function TreeScene({
         </defs>
         <g className="gfx03-moon-system">
           <circle cx="440" cy="134" r="88" fill="url(#gfx03MoonHalo)" />
-          <circle className="gfx02-moon-refinement" cx="440" cy="134" r="29" fill="url(#gfx02MoonSurface)" />
-          <ellipse className="gfx03-moon-mark" cx="430" cy="126" rx="8" ry="5" />
-          <ellipse className="gfx03-moon-mark" cx="449" cy="142" rx="6" ry="4" />
-          <ellipse className="gfx03-moon-mark" cx="451" cy="121" rx="4" ry="3" />
+          <circle
+            className="gfx02-moon-refinement"
+            cx="440"
+            cy="134"
+            r="29"
+            fill="url(#gfx02MoonSurface)"
+            filter="url(#gfx03MoonTexture)"
+          />
         </g>
         <g className="gfx03-sun-system">
           <circle className="gfx03-sun-refinement gfx03-sun-halo" cx="825" cy="135" r="100" fill="url(#gfx03SunHalo)" />
@@ -223,7 +238,7 @@ export function TreeScene({
           <ellipse cx="1370" cy="678" rx="285" ry="282" fill="url(#gfx03TreeAtmosphereNight)" />
         </g>
         <g className="gfx03-root-integration">
-          <ellipse className="gfx03-root-contact" cx="1360" cy="902" rx="310" ry="22" />
+          <path className="gfx03-root-contact" d="M1048 902c55-18 111-8 161-3 49 5 92-7 142-9 65-2 111 15 166 12 55-3 102-10 153 5-66 15-143 11-210 10-77-1-145 8-221 4-67-4-132 2-191-19Z" />
           <path d="M1042 900C1112 879 1184 892 1248 907C1174 916 1102 917 1042 900Z" />
           <path d="M1250 914C1336 891 1423 891 1508 911C1424 924 1334 925 1250 914Z" />
           <path d="M1460 908C1520 890 1594 895 1652 912C1586 922 1518 922 1460 908Z" />
@@ -236,6 +251,9 @@ export function TreeScene({
           <path className="gfx03-root-foreground gfx03-root-foreground--soft" d="M1028 916C1049 899 1070 900 1089 916C1070 910 1049 911 1028 916Z" />
           <path className="gfx03-root-foreground gfx03-root-foreground--soft" d="M1300 924C1328 902 1363 904 1388 924C1356 915 1327 916 1300 924Z" />
           <path className="gfx03-root-foreground gfx03-root-foreground--soft" d="M1490 920C1518 902 1547 904 1573 921C1543 914 1517 914 1490 920Z" />
+          <path className="gfx03-root-moss" d="M1052 917c24-12 47-9 68-2 21 8 41 5 62-3-13 16-34 18-56 14-25-5-48 3-74-9Z" />
+          <path className="gfx03-root-moss gfx03-root-moss--soft" d="M1240 925c28-13 53-10 78-3 29 8 52 3 80-7-18 18-44 20-70 15-29-6-57 3-88-5Z" />
+          <path className="gfx03-root-moss" d="M1450 921c25-11 49-7 70-1 25 7 49 2 71-6-15 16-37 19-62 14-27-5-52 4-79-7Z" />
         </g>
         {/* LOT-14 compatibility marker: waterfall__foam is retired and is no longer a rendered layer. */}
         <g className="waterfall" aria-hidden="true">

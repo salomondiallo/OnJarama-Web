@@ -494,11 +494,11 @@
   background:#769a87;
 }
 .tree-scene[data-gfx03-scene] .gfx02-scene-plate{
-  object-fit:contain;
-  object-position:center center;
-  inset:-1.25%;
-  width:102.5%;
-  height:102.5%;
+  object-fit:cover;
+  object-position:center bottom;
+  inset:0;
+  width:100%;
+  height:100%;
 }
 .tree-scene[data-gfx03-scene] .gfx02-natural-texture,
 .tree-scene[data-gfx03-scene] .gfx02-city-light,
@@ -511,9 +511,7 @@
 .tree-scene[data-gfx03-scene] .gfx02-life-layers .river-flow__glint{
   display:none;
 }
-.tree-scene[data-gfx03-scene] .gfx02-moon-refinement{
-  filter:none;
-}
+.tree-scene[data-gfx03-scene] .gfx02-moon-refinement{filter:url(#gfx03MoonTexture) drop-shadow(0 0 8px rgba(196,218,224,.14))}
 .gfx03-tree-blend{
   position:absolute;
   inset:0;
@@ -525,30 +523,33 @@
   display:block;
   opacity:0;
   transition:opacity .7s ease;
-  backdrop-filter:blur(.65px) saturate(.9) contrast(.94);
-  -webkit-backdrop-filter:blur(.65px) saturate(.9) contrast(.94);
+  backdrop-filter:blur(.8px) saturate(.87) contrast(.91);
+  -webkit-backdrop-filter:blur(.8px) saturate(.87) contrast(.91);
 }
 .gfx03-tree-blend__canopy{
-  left:48%;
-  top:7%;
-  width:52%;
-  height:82%;
-  border-radius:48% 42% 44% 51%;
-  mask-image:radial-gradient(ellipse at 70% 48%,#000 18%,rgba(0,0,0,.82) 56%,transparent 94%);
-  background:rgba(139,151,118,.035);
+  left:51%;
+  top:5%;
+  width:49%;
+  height:84%;
+  border-radius:52% 39% 47% 55%;
+  mask-image:radial-gradient(ellipse at 72% 49%,#000 14%,rgba(0,0,0,.88) 52%,rgba(0,0,0,.34) 78%,transparent 97%);
+  background:rgba(123,143,111,.045);
 }
 .gfx03-tree-blend__base{
-  left:52%;
+  left:55%;
   bottom:0;
-  width:48%;
-  height:35%;
-  mask-image:radial-gradient(ellipse at 72% 100%,#000 12%,rgba(0,0,0,.88) 55%,transparent 94%);
-  background:rgba(72,91,58,.065);
+  width:45%;
+  height:32%;
+  border-radius:46% 54% 0 0;
+  mask-image:radial-gradient(ellipse at 74% 100%,#000 8%,rgba(0,0,0,.92) 48%,rgba(0,0,0,.38) 76%,transparent 98%);
+  background:rgba(66,89,55,.075);
 }
 .tree-hero.is-day .gfx03-tree-blend>span{opacity:1}
 .tree-hero.is-night .gfx03-tree-blend>span{
-  opacity:.92;
-  background-color:rgba(55,75,84,.055);
+  opacity:.94;
+  background-color:rgba(48,69,82,.07);
+  backdrop-filter:blur(.85px) saturate(.82) contrast(.9) brightness(.94);
+  -webkit-backdrop-filter:blur(.85px) saturate(.82) contrast(.9) brightness(.94);
 }
 .gfx03-sun-system,
 .gfx03-moon-system{
@@ -558,20 +559,23 @@
 .tree-hero.is-day .gfx03-sun-system{opacity:1}
 .tree-hero.is-night .gfx03-sun-system{opacity:0}
 .gfx03-moon-system{opacity:0}
-.tree-hero.is-night .gfx03-moon-system{opacity:.92}
-.gfx03-moon-system .gfx02-moon-refinement{opacity:.92}
-.gfx03-moon-mark{fill:rgba(126,151,154,.14)}
+.tree-hero.is-night .gfx03-moon-system{opacity:.88}
+.gfx03-moon-system .gfx02-moon-refinement{opacity:.86}
 .gfx03-tree-atmosphere{opacity:0}
 .tree-hero.is-day .gfx03-tree-atmosphere--day{opacity:1}
 .tree-hero.is-night .gfx03-tree-atmosphere--night{opacity:1}
 .gfx03-root-integration{fill:rgba(30,48,25,.2)}
-.gfx03-root-contact{fill:rgba(15,24,13,.24)}
+.gfx03-root-contact{fill:rgba(15,24,13,.2);filter:blur(2.4px)}
 .gfx03-root-foreground{fill:rgba(42,72,34,.56)}
 .gfx03-root-foreground--soft{fill:rgba(55,79,39,.34)}
+.gfx03-root-moss{fill:rgba(48,77,35,.42);filter:blur(.45px)}
+.gfx03-root-moss--soft{fill:rgba(70,91,48,.3)}
 .tree-hero.is-night .gfx03-root-integration{fill:rgba(3,14,15,.28)}
-.tree-hero.is-night .gfx03-root-contact{fill:rgba(1,8,12,.34)}
+.tree-hero.is-night .gfx03-root-contact{fill:rgba(1,8,12,.3);filter:blur(2.8px)}
 .tree-hero.is-night .gfx03-root-foreground{fill:rgba(12,31,29,.5)}
 .tree-hero.is-night .gfx03-root-foreground--soft{fill:rgba(9,25,24,.4)}
+.tree-hero.is-night .gfx03-root-moss{fill:rgba(8,28,26,.42)}
+.tree-hero.is-night .gfx03-root-moss--soft{fill:rgba(15,35,31,.34)}
 .gfx03-fruit-zones{
   position:absolute;
   inset:0;
