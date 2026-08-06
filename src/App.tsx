@@ -14,8 +14,8 @@ function App() {
       <Header />
       <main id="main-content">
         <TreeHeroSection />
-        <AboutSection />
         <EcosystemSection />
+        <AboutSection />
         <MissionSection />
         <VisionSection />
         <RoadmapSection />

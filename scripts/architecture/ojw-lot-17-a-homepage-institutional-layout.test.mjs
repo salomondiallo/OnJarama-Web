@@ -4,36 +4,38 @@ import { readFileSync } from "node:fs";
 const read = (file) => readFileSync(new URL(`../../${file}`, import.meta.url), "utf8");
 
 const hero = read("src/sections/TreeHeroSection.tsx");
-const band = read("src/components/InstitutionalProjectBand.tsx");
+const app = read("src/App.tsx");
+const section = read("src/sections/EcosystemSection.tsx");
 const ecosystem = read("src/data/ecosystem.ts");
 const scene = read("src/components/TreeScene.tsx");
 const treeCss = read("src/styles/tree.css");
+const cardsCss = read("src/styles/cards.css");
 const footer = read("src/components/Footer.tsx");
 const footerCss = read("src/styles/footer.css");
 
-assert.match(band, /PROJECT_ORDER\s*=\s*\["foundation",\s*"academy",\s*"path",\s*"ojcs-connect",\s*"web"\]/);
-assert.match(band, /data-project-count=\{orderedItems\.length\}/);
-assert.equal((ecosystem.match(/\bid:\s*"/g) ?? []).length, 5, "The institutional band source must contain exactly five projects");
+assert.match(section, /PROJECT_ORDER\s*=\s*\["academy",\s*"path",\s*"ojcs-connect",\s*"web"\]/);
+assert.match(section, /data-project-count=\{projects\.length\}/);
+assert.equal((ecosystem.match(/\bid:\s*"/g) ?? []).length, 5, "The ecosystem data source must retain all five institutional records");
 for (const acronym of ["OJF", "OJA", "OJP", "OJCS", "OJW"]) {
   assert.match(ecosystem, new RegExp(`acronym:\\s*"${acronym}"`));
 }
-assert.equal((`${hero}\n${band}`.match(/<h1\b/g) ?? []).length, 1, "The immersive homepage must render one H1");
+assert.equal((`${hero}\n${section}`.match(/<h1\b/g) ?? []).length, 1, "The immersive homepage must render one H1");
 
 assert.match(hero, /className="tree-hero__intro"/);
 assert.match(treeCss, /\.tree-hero__intro\{[\s\S]*background:rgba\(5,20,31,\.72\)/);
 assert.doesNotMatch(treeCss, /\.tree-hero__intro\{[^}]*background:\s*(?:#fff|white)/);
 
-assert.match(treeCss, /\.institutional-projects\{[\s\S]*grid-template-columns:repeat\(5,minmax\(0,1fr\)\)/);
-assert.match(treeCss, /@media\(max-width:760px\)\{[\s\S]*\.institutional-projects\{grid-template-columns:1fr/);
-assert.match(treeCss, /\.institutional-card:focus-visible\{/);
-assert.match(treeCss, /\.institutional-card\{[\s\S]*min-height:238px/);
+assert.doesNotMatch(treeCss, /\.institutional-projects|\.institutional-card|\.tree-hero__institutional/);
+assert.match(cardsCss, /grid-template-columns: repeat\(4, minmax\(0, 1fr\)\)/);
+assert.match(cardsCss, /@media \(max-width: 620px\)[\s\S]*grid-template-columns: 1fr/);
+assert.match(cardsCss, /\.ecosystem-card__link:focus-visible/);
 assert.match(treeCss, /\.tree-hero__cta\s*\{[^}]*min-height:48px/);
 assert.match(treeCss, /\.day-night-toggle button\s*\{[^}]*min-height:42px/);
 assert.match(treeCss, /@media\(max-width:760px\)\{[\s\S]*\.day-night-toggle button\{[^}]*min-height:44px/);
 
 assert.match(hero, /<DayNightToggle[\s\S]*value=\{preference\}[\s\S]*onChange=\{setPreference\}/);
-assert.match(hero, /Apps futures/);
-assert.match(hero, /<InstitutionalProjectBand/);
+assert.doesNotMatch(hero, /Apps futures|<InstitutionalProjectBand|Cinq projets, une vision commune/);
+assert.match(app, /<TreeHeroSection \/>[\s\S]*<EcosystemSection \/>/);
 assert.doesNotMatch(hero, /EcosystemSidebar|ProjectPreviewCard/);
 
 assert.match(scene, /ojw-gfx-02-scene-day\.png/);
@@ -52,6 +54,6 @@ assert.doesNotMatch(footer, /href="#"/);
 assert.doesNotMatch(footer, /Confidentialité|Cookies/);
 assert.match(footer, /href="#mission"/);
 assert.match(footerCss, /min-height:44px/);
-assert.match(treeCss, /@media\(prefers-reduced-motion:reduce\)\{[\s\S]*\.institutional-card/);
+assert.match(cardsCss, /@media \(prefers-reduced-motion: reduce\)[\s\S]*\.ecosystem-card/);
 
 console.log("OJW-LOT-17-A architecture checks passed.");

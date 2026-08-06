@@ -11,8 +11,8 @@ const packagePath = resolve(root, "package.json");
 const dayPath = resolve(root, "src/assets/immersive/gfx02/ojw-gfx-02-scene-day.png");
 const nightPath = resolve(root, "src/assets/immersive/gfx02/ojw-gfx-02-scene-night-natural-city-lights.png");
 const optimizedRoot = resolve(root, "src/assets/immersive/gfx02/optimized");
-const institutionalBandPath = resolve(root, "src/components/InstitutionalProjectBand.tsx");
 const institutionalHeroPath = resolve(root, "src/sections/TreeHeroSection.tsx");
+const ecosystemSectionPath = resolve(root, "src/sections/EcosystemSection.tsx");
 
 const scene = readFileSync(scenePath, "utf8");
 const styles = readFileSync(stylesPath, "utf8");
@@ -147,8 +147,8 @@ assert.equal((styles.match(/--stem-angle:(?:-?\d+deg)/g) ?? []).length >= 8, tru
 assert.match(styles, /\.tree-inscription\{[^}]*left:76%;top:66%/);
 assert.ok(scene.includes('className="tree-inscription"'));
 assert.ok(scene.includes('className="gfx02-lamp-posts"'));
-assert.ok(existsSync(institutionalBandPath), "La bande institutionnelle LOT-17-A doit être conservée.");
-assert.match(readFileSync(institutionalHeroPath, "utf8"), /<InstitutionalProjectBand/);
+assert.doesNotMatch(readFileSync(institutionalHeroPath, "utf8"), /<InstitutionalProjectBand|Cinq projets, une vision commune/);
+assert.match(readFileSync(ecosystemSectionPath, "utf8"), /PROJECT_ORDER = \["academy", "path", "ojcs-connect", "web"\]/);
 
 assert.doesNotMatch(scene, /https?:\/\//);
 assert.doesNotMatch(styles, /url\(\s*["']?https?:\/\//);

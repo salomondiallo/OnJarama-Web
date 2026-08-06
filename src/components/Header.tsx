@@ -27,7 +27,7 @@ export function Header() {
         </button>
         <nav id="main-navigation" className={`main-nav ${isMenuOpen ? "is-open" : ""}`} aria-label="Sections du portail">
           <a href="#about" onClick={closeMenu}>Pourquoi</a>
-          <a href="#ecosystem" onClick={closeMenu}>Écosystème</a>
+          <a href="#ecosystem-projects" onClick={closeMenu}>Écosystème</a>
           <a href="#vision" onClick={closeMenu}>Vision</a>
           <a href="#mission" onClick={closeMenu}>Mission</a>
           <a href="#roadmap" onClick={closeMenu}>Roadmap</a>

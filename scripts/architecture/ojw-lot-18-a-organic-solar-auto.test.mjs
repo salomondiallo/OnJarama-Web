@@ -14,6 +14,8 @@ const toggle = read("src/components/DayNightToggle.tsx");
 const scene = read("src/components/TreeScene.tsx");
 const styles = read("src/styles/tree.css");
 const hero = read("src/sections/TreeHeroSection.tsx");
+const app = read("src/App.tsx");
+const ecosystemSection = read("src/sections/EcosystemSection.tsx");
 
 const montreal = { latitude: 45.5017, longitude: -73.5673 };
 const conakry = { latitude: 9.6412, longitude: -13.5784 };
@@ -86,6 +88,8 @@ assert.match(scene, /type="image\/avif"[\s\S]*type="image\/webp"[\s\S]*src=\{day
 assert.match(scene, /scene-night-fix7-1672\.avif/);
 assert.doesNotMatch(scene, /fix6/i);
 assert.match(scene, /const visibleMode = loadedModes\.has\(mode\) \? mode : lastVisibleMode/);
-assert.match(hero, /<InstitutionalProjectBand/);
+assert.doesNotMatch(hero, /<InstitutionalProjectBand/);
+assert.match(app, /<TreeHeroSection \/>[\s\S]*<EcosystemSection \/>/);
+assert.match(ecosystemSection, /PROJECT_ORDER = \["academy", "path", "ojcs-connect", "web"\]/);
 
 console.log("OJW-LOT-18-A: calcul solaire saisonnier, confidentialité, timer unique et vie organique validés.");
