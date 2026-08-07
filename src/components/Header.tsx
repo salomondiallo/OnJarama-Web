@@ -1,7 +1,17 @@
 import { useState } from "react";
 import officialLogo from "../assets/brand/onjarama-official-logo.png";
+import { DayNightToggle } from "./DayNightToggle";
+import type { AutoStrategy, DayNightMode, DayNightPreference } from "../hooks/useDayNightMode";
 
-export function Header() {
+type HeaderProps = {
+  mode: DayNightMode;
+  preference: DayNightPreference;
+  autoStrategy: AutoStrategy;
+  onModeChange: (mode: DayNightPreference) => void;
+  onModePrepare: (mode: DayNightPreference) => void;
+};
+
+export function Header({ mode, preference, autoStrategy, onModeChange, onModePrepare }: HeaderProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const closeMenu = () => setIsMenuOpen(false);
 
@@ -32,6 +42,15 @@ export function Header() {
           <a href="#mission" onClick={closeMenu}>Mission</a>
           <a href="#roadmap" onClick={closeMenu}>Roadmap</a>
         </nav>
+        <div className={`site-header__ambience is-${mode}`}>
+          <DayNightToggle
+            value={preference}
+            resolvedMode={mode}
+            autoStrategy={autoStrategy}
+            onChange={onModeChange}
+            onPrepare={onModePrepare}
+          />
+        </div>
       </div>
     </header>
   );

@@ -1,26 +1,35 @@
 ﻿.site-header { position: sticky; top: 0; z-index: 50; backdrop-filter: blur(18px); background: rgba(6,17,31,.78); border-bottom: 1px solid var(--oj-border); }
-.site-header__inner { width: min(1120px, calc(100% - 32px)); margin: 0 auto; min-height: 76px; display: flex; align-items: center; justify-content: space-between; gap: 18px; }
+.site-header__inner { position:relative; width:100%; min-height:76px; display:grid; grid-template-columns:minmax(220px,1fr) auto minmax(220px,1fr); align-items:center; gap:18px; padding:0 clamp(18px,2.5vw,42px); }
 .brand { display: inline-flex; align-items: center; gap: 12px; text-decoration: none; font-weight: 700; letter-spacing: .16em; }
 .brand-logo { display: block; width: 54px; height: 54px; aspect-ratio: 1 / 1; flex: 0 0 54px; object-fit: contain; border: 1px solid rgba(242,207,99,.28); border-radius: 50%; box-shadow: 0 0 8px rgba(242,207,99,.12); }
 .brand-text { color: #f3e8c7; }
-.main-nav { display: flex; align-items: center; gap: 6px; }
+.main-nav { grid-column:2; display:flex; align-items:center; justify-content:center; gap:6px; }
 .main-nav a { text-decoration: none; color: var(--oj-muted); padding: 10px 12px; border-radius: 999px; }
 .main-nav a:hover, .main-nav a:focus-visible { color: var(--oj-text); background: var(--oj-surface); outline: none; }
 .menu-toggle { display:none; }
+.site-header__ambience{grid-column:3;justify-self:end;color:#edf5f3}
+.site-header__ambience .day-night-toggle{margin:0;background:rgba(0,11,20,.3);border-color:rgba(225,238,241,.3)}
+.site-header__ambience .day-night-toggle button{color:#edf5f3}
+.site-header__ambience .day-night-toggle button.is-selected{color:#14251d;background:#f0ce67}
 .skip-link { position: absolute; left: -999px; top: 8px; background: var(--oj-gold); color: #111827; padding: 10px 14px; border-radius: 999px; }
 .skip-link:focus { left: 16px; }
 @media (max-width: 760px) {
-  .site-header__inner { position:relative; width:calc(100% - 28px); min-height:76px; gap:0; }
+  .site-header__inner { width:100%; min-height:76px; grid-template-columns:1fr auto auto; gap:8px; padding:0 14px; }
   .brand { gap:9px; min-height:76px; }
   .brand-logo { width:44px; height:44px; flex-basis:44px; }
   .brand-text { font-size:.9rem; letter-spacing:.13em; }
-  .menu-toggle { display:grid; place-content:center; gap:5px; width:46px; height:46px; padding:0; border:1px solid rgba(242,207,99,.38); border-radius:14px; color:var(--oj-text); background:rgba(255,255,255,.06); cursor:pointer; }
+  .menu-toggle { grid-column:3;display:grid; place-content:center; gap:5px; width:44px; height:44px; padding:0; border:1px solid rgba(242,207,99,.38); border-radius:14px; color:var(--oj-text); background:rgba(255,255,255,.06); cursor:pointer; }
+  .site-header__ambience{grid-column:2;grid-row:1}
+  .site-header__ambience .day-night-toggle{gap:2px;padding:3px}
+  .site-header__ambience .day-night-toggle button{min-width:38px;min-height:38px;padding:0 7px;font-size:0}
+  .site-header__ambience .day-night-toggle button span{font-size:1rem}
   .menu-toggle span { display:block; width:21px; height:2px; border-radius:2px; background:currentColor; transition:transform .2s ease,opacity .2s ease; }
   .menu-toggle[aria-expanded="true"] span:first-child { transform:translateY(7px) rotate(45deg); }
   .menu-toggle[aria-expanded="true"] span:nth-child(2) { opacity:0; }
   .menu-toggle[aria-expanded="true"] span:last-child { transform:translateY(-7px) rotate(-45deg); }
   .menu-toggle:focus-visible { outline:3px solid #68d7f4; outline-offset:3px; }
-  .main-nav { position:absolute; top:68px; right:0; left:0; z-index:2; display:none; padding:8px; border:1px solid var(--oj-border); border-radius:16px; background:rgba(6,17,31,.97); box-shadow:0 18px 40px rgba(0,0,0,.35); }
+  .main-nav { position:absolute; top:68px; right:14px; left:14px; z-index:2; display:none; padding:8px; border:1px solid var(--oj-border); border-radius:16px; background:rgba(6,17,31,.97); box-shadow:0 18px 40px rgba(0,0,0,.35); }
   .main-nav.is-open { display:grid; }
   .main-nav a { display:flex; align-items:center; min-height:44px; padding:0 14px; }
 }
+@media (max-width:430px){.brand-text{display:none}.site-header__inner{grid-template-columns:1fr auto auto}.site-header__ambience .day-night-toggle button{min-width:34px;padding:0 6px}}

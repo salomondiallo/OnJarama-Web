@@ -12,6 +12,7 @@ const treeCss = read("src/styles/tree.css");
 const cardsCss = read("src/styles/cards.css");
 const footer = read("src/components/Footer.tsx");
 const footerCss = read("src/styles/footer.css");
+const header = read("src/components/Header.tsx");
 
 assert.match(section, /PROJECT_ORDER\s*=\s*\["academy",\s*"path",\s*"ojcs-connect",\s*"web"\]/);
 assert.match(section, /data-project-count=\{projects\.length\}/);
@@ -21,7 +22,8 @@ for (const acronym of ["OJF", "OJA", "OJP", "OJCS", "OJW"]) {
 }
 assert.equal((`${hero}\n${section}`.match(/<h1\b/g) ?? []).length, 1, "The immersive homepage must render one H1");
 
-assert.match(hero, /className="tree-hero__intro"/);
+assert.match(hero, /className="tree-hero__intro tree-hero__intro--option-b"/);
+assert.doesNotMatch(hero, /hero-card|data-editorial-layout|option-a/);
 assert.match(treeCss, /\.tree-hero__intro\{[\s\S]*background:rgba\(5,20,31,\.72\)/);
 assert.doesNotMatch(treeCss, /\.tree-hero__intro\{[^}]*background:\s*(?:#fff|white)/);
 
@@ -33,9 +35,10 @@ assert.match(treeCss, /\.tree-hero__cta\s*\{[^}]*min-height:48px/);
 assert.match(treeCss, /\.day-night-toggle button\s*\{[^}]*min-height:42px/);
 assert.match(treeCss, /@media\(max-width:760px\)\{[\s\S]*\.day-night-toggle button\{[^}]*min-height:44px/);
 
-assert.match(hero, /<DayNightToggle[\s\S]*value=\{preference\}[\s\S]*onChange=\{setPreference\}/);
+assert.match(header, /<DayNightToggle[\s\S]*value=\{preference\}[\s\S]*onChange=\{onModeChange\}/);
+assert.doesNotMatch(hero, /<DayNightToggle/);
 assert.doesNotMatch(hero, /Apps futures|<InstitutionalProjectBand|Cinq projets, une vision commune/);
-assert.match(app, /<TreeHeroSection \/>[\s\S]*<EcosystemSection \/>/);
+assert.match(app, /<TreeHeroSection mode=\{mode\} preparedMode=\{preparedMode\} \/>[\s\S]*<EcosystemSection \/>/);
 assert.doesNotMatch(hero, /EcosystemSidebar|ProjectPreviewCard/);
 
 assert.match(scene, /ojw-gfx-02-scene-day\.png/);

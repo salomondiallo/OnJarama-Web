@@ -89,7 +89,7 @@ assert.match(scene, /scene-night-fix7-1672\.avif/);
 assert.doesNotMatch(scene, /fix6/i);
 assert.match(scene, /const visibleMode = loadedModes\.has\(mode\) \? mode : lastVisibleMode/);
 assert.doesNotMatch(hero, /<InstitutionalProjectBand/);
-assert.match(app, /<TreeHeroSection \/>[\s\S]*<EcosystemSection \/>/);
+assert.match(app, /<TreeHeroSection mode=\{mode\} preparedMode=\{preparedMode\} \/>[\s\S]*<EcosystemSection \/>/);
 assert.match(ecosystemSection, /PROJECT_ORDER = \["academy", "path", "ojcs-connect", "web"\]/);
 
 console.log("OJW-LOT-18-A: calcul solaire saisonnier, confidentialité, timer unique et vie organique validés.");

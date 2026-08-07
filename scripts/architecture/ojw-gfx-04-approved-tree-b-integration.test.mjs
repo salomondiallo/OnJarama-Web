@@ -10,12 +10,12 @@ const styles = read("src/styles/tree.css");
 
 const assets = {
   day: {
-    file: "src/assets/immersive/gfx03/scene-day-tree-b-lamps-off.png",
-    sha256: "5BFAD6088003D392B4E8B8A02C924D4DE2569FA46AC9D1FBDBCEC8C93C688A7D",
+    file: "src/assets/immersive/gfx03/scene-day-tree-b-lamps-physically-off.png",
+    sha256: "B1902851361CC1E2F62868922FF34D32F3F41E879666EF6D7DD480A02DC572D8",
   },
   night: {
-    file: "src/assets/immersive/gfx03/scene-night-tree-b-lamps-realistic.png",
-    sha256: "37154349A90F54189F1D5FFB43C47EEBAFE6DB13AB919FF56165C59C4B10D027",
+    file: "src/assets/immersive/gfx03/scene-night-tree-b-lamps-physical-fix1.png",
+    sha256: "8BFCD438E6E70072E637F2355523BD2B746A4615CCBA5FB4D5978398E207EA5B",
   },
 };
 
@@ -29,8 +29,8 @@ for (const [mode, asset] of Object.entries(assets)) {
 
 }
 
-assert.match(scene, /assets\/immersive\/gfx03\/scene-day-tree-b-lamps-off\.png/);
-assert.match(scene, /assets\/immersive\/gfx03\/scene-night-tree-b-lamps-realistic\.png/);
+assert.match(scene, /assets\/immersive\/gfx03\/scene-day-tree-b-lamps-physically-off\.png/);
+assert.match(scene, /assets\/immersive\/gfx03\/scene-night-tree-b-lamps-physical-fix1\.png/);
 assert.doesNotMatch(scene, /optimized\/scene-(?:day|night)-tree-b/);
 assert.equal((scene.match(/type="image\/avif"/g) ?? []).length, 2);
 assert.equal((scene.match(/type="image\/webp"/g) ?? []).length, 2);
@@ -86,7 +86,9 @@ assert.match(styles, /\.tree-hero\.is-night \.gfx03-moon-system\{/);
 assert.match(styles, /\.gfx03-root-contact\{/);
 assert.match(styles, /\.gfx03-root-foreground\{/);
 assert.match(styles, /\.gfx03-tree-blend\{/);
-assert.match(styles, /backdrop-filter:blur\(\.8px\) saturate\(\.87\) contrast\(\.91\)/);
+assert.match(styles, /backdrop-filter:blur\(\.55px\) saturate\(\.84\) contrast\(\.9\) sepia\(\.025\)/);
+assert.match(scene, /className="gfx03-root-soil"/);
+assert.match(scene, /className="gfx03-root-stone"/);
 assert.match(styles, /\.tree-hero\.is-day \.gfx03-tree-atmosphere--day\{/);
 assert.match(styles, /width:102\.5%/);
 

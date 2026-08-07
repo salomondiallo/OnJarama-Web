@@ -7,6 +7,8 @@ const scene = read("src/components/TreeScene.tsx");
 const hero = read("src/sections/TreeHeroSection.tsx");
 const toggle = read("src/components/DayNightToggle.tsx");
 const styles = read("src/styles/tree.css");
+const app = read("src/App.tsx");
+const header = read("src/components/Header.tsx");
 
 assert.doesNotMatch(scene, /setTimeout|setInterval|requestIdleCallback/);
 assert.match(scene, /useState<Set<DayNightMode>>\(\(\) => new Set\(\)\)/);
@@ -16,7 +18,8 @@ assert.match(scene, /const nightMounted = mode === "night" \|\| preparedMode ===
 for (const event of ["onPointerDown", "onTouchStart", "onFocus"]) {
   assert.match(toggle, new RegExp(`${event}=\\{\\(\\) => onPrepare\\(option\\.value\\)\\}`));
 }
-assert.match(hero, /onPrepare=\{\(next\) => setPreparedMode\(next === "auto" \? mode : next\)\}/);
+assert.match(app, /onModePrepare=\{\(next\) => setPreparedMode\(next === "auto" \? mode : next\)\}/);
+assert.match(header, /onPrepare=\{onModePrepare\}/);
 assert.match(hero, /<TreeScene mode=\{mode\} preparedMode=\{preparedMode\}/);
 
 assert.match(scene, /const visibleMode = loadedModes\.has\(mode\) \? mode : lastVisibleMode/);
@@ -34,8 +37,8 @@ assert.equal((scene.match(/960w,/g) ?? []).length, 4);
 assert.equal((scene.match(/1280w,/g) ?? []).length, 4);
 assert.equal((scene.match(/1672w/g) ?? []).length, 4);
 assert.equal((scene.match(/sizes="100vw"/g) ?? []).length, 4);
-assert.match(scene, /scene-day-tree-b-lamps-off\.png/);
-assert.match(scene, /scene-night-tree-b-lamps-realistic\.png/);
+assert.match(scene, /scene-day-tree-b-lamps-physically-off\.png/);
+assert.match(scene, /scene-night-tree-b-lamps-physical-fix1\.png/);
 assert.equal((scene.match(/src=\{(?:dayScene|nightScene)\}/g) ?? []).length, 2);
 assert.match(scene, /loading=\{mode === "day" \|\| preparedMode === "day" \? "eager" : "lazy"\}/);
 assert.match(scene, /loading=\{mode === "night" \|\| preparedMode === "night" \? "eager" : "lazy"\}/);

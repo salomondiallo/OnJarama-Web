@@ -1,5 +1,5 @@
-import dayScene from "../assets/immersive/gfx03/scene-day-tree-b-lamps-off.png";
-import nightScene from "../assets/immersive/gfx03/scene-night-tree-b-lamps-realistic.png";
+import dayScene from "../assets/immersive/gfx03/scene-day-tree-b-lamps-physically-off.png";
+import nightScene from "../assets/immersive/gfx03/scene-night-tree-b-lamps-physical-fix1.png";
 import { useState, type CSSProperties } from "react";
 import type { EcosystemItem, EcosystemState } from "../data/ecosystem";
 import type { DayNightMode } from "../hooks/useDayNightMode";
@@ -254,6 +254,10 @@ export function TreeScene({
           <path className="gfx03-root-moss" d="M1052 917c24-12 47-9 68-2 21 8 41 5 62-3-13 16-34 18-56 14-25-5-48 3-74-9Z" />
           <path className="gfx03-root-moss gfx03-root-moss--soft" d="M1240 925c28-13 53-10 78-3 29 8 52 3 80-7-18 18-44 20-70 15-29-6-57 3-88-5Z" />
           <path className="gfx03-root-moss" d="M1450 921c25-11 49-7 70-1 25 7 49 2 71-6-15 16-37 19-62 14-27-5-52 4-79-7Z" />
+          <path className="gfx03-root-soil" d="M1035 925c18-13 39-14 57-5 17 8 33 7 51-2-8 17-27 20-47 16-22-5-41 2-61-9ZM1205 930c17-15 39-17 59-8 17 8 33 7 49-1-8 16-26 20-45 16-23-5-43 2-63-7Z" />
+          <path className="gfx03-root-soil gfx03-root-soil--soft" d="M1334 929c18-14 42-15 61-6 18 8 35 6 53-3-9 17-29 21-49 16-23-5-45 3-65-7ZM1510 925c18-13 39-14 57-5 17 8 34 6 51-2-8 16-27 20-47 16-22-5-41 2-61-9Z" />
+          <path className="gfx03-root-stone" d="M1166 917c8-8 19-8 27 0-3 9-21 11-27 0ZM1370 922c9-9 22-8 29 1-5 9-23 10-29-1ZM1522 916c7-7 17-6 23 1-5 7-18 8-23-1Z" />
+          <path className="gfx03-root-foreground" d="M1140 929c5-22 11-22 13 0 6-17 12-17 15 1 7-13 13-12 15 2ZM1450 931c5-20 11-21 13 0 7-18 13-17 15 2 7-14 14-13 16 1Z" />
         </g>
         {/* LOT-14 compatibility marker: waterfall__foam is retired and is no longer a rendered layer. */}
         <g className="waterfall" aria-hidden="true">

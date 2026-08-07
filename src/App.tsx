@@ -7,13 +7,24 @@ import { EcosystemSection } from "./sections/EcosystemSection";
 import { MissionSection } from "./sections/MissionSection";
 import { VisionSection } from "./sections/VisionSection";
 import { RoadmapSection } from "./sections/RoadmapSection";
+import { useDayNightMode, type DayNightMode } from "./hooks/useDayNightMode";
+import { useState } from "react";
 
 function App() {
+  const { mode, preference, setPreference, autoStrategy } = useDayNightMode();
+  const [preparedMode, setPreparedMode] = useState<DayNightMode | null>(null);
+
   return (
     <div className="app">
-      <Header />
+      <Header
+        mode={mode}
+        preference={preference}
+        autoStrategy={autoStrategy}
+        onModeChange={setPreference}
+        onModePrepare={(next) => setPreparedMode(next === "auto" ? mode : next)}
+      />
       <main id="main-content">
-        <TreeHeroSection />
+        <TreeHeroSection mode={mode} preparedMode={preparedMode} />
         <EcosystemSection />
         <AboutSection />
         <MissionSection />
