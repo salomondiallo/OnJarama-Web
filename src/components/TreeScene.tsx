@@ -1,8 +1,9 @@
-import dayScene from "../assets/immersive/gfx03/scene-day-tree-b-lamps-physically-off.png";
-import nightScene from "../assets/immersive/gfx03/scene-night-tree-b-lamps-physical-fix1.png";
-import { useState, type CSSProperties } from "react";
+import dayScene from "../assets/immersive/gfx04-r2/scene-day-treeless-panorama.png";
+import nightScene from "../assets/immersive/gfx04-r2/scene-night-treeless-panorama.png";
+import { useMemo, useState, type CSSProperties } from "react";
 import type { EcosystemItem, EcosystemState } from "../data/ecosystem";
-import type { DayNightMode } from "../hooks/useDayNightMode";
+import type { DayNightMode, DayNightPreference } from "../hooks/useDayNightMode";
+import { resolveLocalCelestialState } from "../utils/solarDayNight";
 
 type FruitPosition = { x: number; y: number };
 
@@ -51,6 +52,7 @@ const LAMP_POSTS = [
 
 type TreeSceneProps = {
   mode: DayNightMode;
+  preference: DayNightPreference;
   preparedMode: DayNightMode | null;
   foundation: EcosystemItem;
   fruits: EcosystemItem[];
@@ -61,6 +63,7 @@ type TreeSceneProps = {
 
 export function TreeScene({
   mode,
+  preference,
   preparedMode,
   foundation,
   fruits,
@@ -70,6 +73,15 @@ export function TreeScene({
 }: TreeSceneProps) {
   const [loadedModes, setLoadedModes] = useState<Set<DayNightMode>>(() => new Set());
   const [lastVisibleMode, setLastVisibleMode] = useState<DayNightMode>(mode);
+  const [clock] = useState(() => new Date());
+  const celestial = useMemo(() => {
+    if (preference === "auto") return resolveLocalCelestialState(clock);
+    return { phase: mode === "day" ? "day" as const : "night" as const, progress: 0.5 };
+  }, [clock, mode, preference]);
+  const sunX = -330 + celestial.progress * 680;
+  const sunY = 92 * Math.pow(Math.abs(celestial.progress - 0.5) * 2, 1.6);
+  const moonX = -300 + celestial.progress * 640;
+  const moonY = 78 * Math.pow(Math.abs(celestial.progress - 0.5) * 2, 1.5);
   const visibleMode = loadedModes.has(mode) ? mode : lastVisibleMode;
   const dayMounted = mode === "day" || preparedMode === "day" || loadedModes.has("day");
   const nightMounted = mode === "night" || preparedMode === "night" || loadedModes.has("night");
@@ -85,7 +97,7 @@ export function TreeScene({
   };
 
   return (
-    <div className={`tree-scene is-scene-${visibleMode}`} data-gfx02-scene data-gfx03-scene>
+    <div className={`tree-scene is-scene-${visibleMode} celestial-phase-${celestial.phase} ${preference === "auto" ? "is-celestial-auto" : "is-celestial-manual"}`} data-gfx02-scene data-gfx03-scene data-gfx04-r2-treeless>
       <div className="gfx02-scene-plates" aria-hidden="true">
         {dayMounted && (
           <picture>
@@ -214,7 +226,7 @@ export function TreeScene({
             <stop offset="1" stopColor="#405c70" stopOpacity="0" />
           </radialGradient>
         </defs>
-        <g className="gfx03-moon-system">
+        <g className="gfx03-moon-system" style={{ transform: `translate(${moonX}px, ${moonY}px)` }}>
           <circle cx="440" cy="134" r="88" fill="url(#gfx03MoonHalo)" />
           <circle
             className="gfx02-moon-refinement"
@@ -225,7 +237,7 @@ export function TreeScene({
             filter="url(#gfx03MoonTexture)"
           />
         </g>
-        <g className="gfx03-sun-system">
+        <g className="gfx03-sun-system" style={{ transform: `translate(${sunX}px, ${sunY}px)` }}>
           <circle className="gfx03-sun-refinement gfx03-sun-halo" cx="825" cy="135" r="100" fill="url(#gfx03SunHalo)" />
           <circle className="gfx03-sun-core" cx="825" cy="135" r="18" fill="url(#gfx03SunCore)" />
         </g>

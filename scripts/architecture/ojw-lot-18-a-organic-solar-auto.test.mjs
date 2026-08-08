@@ -5,6 +5,7 @@ import {
   findNextSolarBoundary,
   getNextFallbackBoundary,
   resolveFallbackDayNightMode,
+  resolveLocalCelestialState,
   resolveSolarDayNightMode,
 } from "../../src/utils/solarDayNight.ts";
 
@@ -55,12 +56,7 @@ assert.equal(resolveFallbackDayNightMode(new Date("2026-01-01T19:00:00")), "nigh
 assert.equal(resolveFallbackDayNightMode(new Date("2026-01-01T05:59:59")), "night");
 assert.ok(getNextFallbackBoundary(new Date("2026-01-01T18:00:00")) > new Date("2026-01-01T18:00:00"));
 
-assert.match(hook, /navigator\.permissions\.query\(\{ name: "geolocation" \}\)/);
-assert.match(hook, /status\.state === "granted"/);
-assert.match(hook, /status\.state !== "denied"/);
-assert.match(hook, /isExplicitAutoRequest/);
-assert.match(hook, /enableHighAccuracy: false/);
-assert.match(hook, /maximumAge:/);
+assert.doesNotMatch(hook, /navigator\.(?:permissions|geolocation)/);
 assert.doesNotMatch(hook, /localStorage\.(?:setItem|getItem)\([^)]*(?:latitude|longitude|coordinates)/i);
 assert.doesNotMatch(hook, /fetch\(|XMLHttpRequest|axios|setInterval/);
 assert.equal((hook.match(/window\.setTimeout/g) ?? []).length, 1);
@@ -73,6 +69,10 @@ assert.match(hook, /getTimezoneOffset/);
 assert.match(hook, /preference !== "auto"[\s\S]*clearBoundaryTimer/);
 assert.match(toggle, /Mode automatique/);
 assert.match(toggle, /ambiance actuelle/);
+assert.equal(resolveLocalCelestialState(new Date("2026-01-01T07:00:00")).phase, "morning");
+assert.equal(resolveLocalCelestialState(new Date("2026-01-01T12:00:00")).phase, "day");
+assert.equal(resolveLocalCelestialState(new Date("2026-01-01T17:30:00")).phase, "evening");
+assert.equal(resolveLocalCelestialState(new Date("2026-01-01T23:00:00")).phase, "night");
 
 assert.match(styles, /@keyframes waterfallOrganic/);
 assert.match(styles, /@keyframes riverGlint/);
@@ -85,11 +85,11 @@ assert.match(styles, /@media\(prefers-reduced-motion:reduce\)/);
 assert.match(styles, /\.gfx02-city-light__accent,.gfx02-lamp-post__cap,.tree-fruit__visual\{animation:none!important\}/);
 
 assert.match(scene, /type="image\/avif"[\s\S]*type="image\/webp"[\s\S]*src=\{dayScene\}/);
-assert.match(scene, /scene-night-fix7-1672\.avif/);
+assert.match(scene, /scene-night-treeless-panorama\.png/);
 assert.doesNotMatch(scene, /fix6/i);
 assert.match(scene, /const visibleMode = loadedModes\.has\(mode\) \? mode : lastVisibleMode/);
 assert.doesNotMatch(hero, /<InstitutionalProjectBand/);
-assert.match(app, /<TreeHeroSection mode=\{mode\} preparedMode=\{preparedMode\} \/>[\s\S]*<EcosystemSection \/>/);
+assert.match(app, /<TreeHeroSection mode=\{mode\} preference=\{preference\} preparedMode=\{preparedMode\} \/>[\s\S]*<EcosystemSection \/>/);
 assert.match(ecosystemSection, /PROJECT_ORDER = \["academy", "path", "ojcs-connect", "web"\]/);
 
 console.log("OJW-LOT-18-A: calcul solaire saisonnier, confidentialité, timer unique et vie organique validés.");

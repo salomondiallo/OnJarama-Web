@@ -1,4 +1,10 @@
 export type SolarMode = "day" | "night";
+export type CelestialPhase = "morning" | "day" | "evening" | "night";
+
+export type CelestialState = {
+  phase: CelestialPhase;
+  progress: number;
+};
 export type SolarCondition = "normal" | "polar-day" | "polar-night" | "invalid";
 
 export type CivilTwilight = {
@@ -74,6 +80,16 @@ export function resolveSolarDayNightMode(date: Date, latitude: number, longitude
 export function resolveFallbackDayNightMode(date: Date): SolarMode {
   const hour = date.getHours();
   return hour >= 6 && hour < 19 ? "day" : "night";
+}
+
+/** Local-clock visual phases; deliberately requires neither GPS nor network access. */
+export function resolveLocalCelestialState(date: Date): CelestialState {
+  const hour = date.getHours() + date.getMinutes() / 60;
+  if (hour >= 6 && hour < 10) return { phase: "morning", progress: (hour - 6) / 4 };
+  if (hour >= 10 && hour < 16) return { phase: "day", progress: (hour - 10) / 6 };
+  if (hour >= 16 && hour < 19) return { phase: "evening", progress: (hour - 16) / 3 };
+  const nightHour = hour >= 19 ? hour - 19 : hour + 5;
+  return { phase: "night", progress: Math.min(1, Math.max(0, nightHour / 11)) };
 }
 
 export function getNextLocalMidnight(date: Date) {

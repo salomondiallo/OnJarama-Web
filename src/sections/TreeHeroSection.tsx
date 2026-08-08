@@ -1,14 +1,15 @@
 import { useMemo, useState } from "react";
 import { ecosystem } from "../data/ecosystem";
 import { TreeScene } from "../components/TreeScene";
-import type { DayNightMode } from "../hooks/useDayNightMode";
+import type { DayNightMode, DayNightPreference } from "../hooks/useDayNightMode";
 
 type TreeHeroSectionProps = {
   mode: DayNightMode;
+  preference: DayNightPreference;
   preparedMode: DayNightMode | null;
 };
 
-export function TreeHeroSection({ mode, preparedMode }: TreeHeroSectionProps) {
+export function TreeHeroSection({ mode, preference, preparedMode }: TreeHeroSectionProps) {
   const foundation = useMemo(() => ecosystem.find((item) => item.kind === "institutional")!, []);
   const fruits = useMemo(() => ecosystem.filter((item) => item.kind !== "institutional"), []);
   const defaultId = useMemo(() => ecosystem.find((item) => item.isCurrent)?.id ?? ecosystem[0].id, []);
@@ -26,7 +27,7 @@ export function TreeHeroSection({ mode, preparedMode }: TreeHeroSectionProps) {
           </div>
         </div>
 
-        <TreeScene mode={mode} preparedMode={preparedMode} foundation={foundation} fruits={fruits} activeId={activeId} onActivate={setActiveId} onPreview={() => {}} />
+        <TreeScene mode={mode} preference={preference} preparedMode={preparedMode} foundation={foundation} fruits={fruits} activeId={activeId} onActivate={setActiveId} onPreview={() => {}} />
 
       </div>
     </section>

@@ -20,13 +20,13 @@ for (const event of ["onPointerDown", "onTouchStart", "onFocus"]) {
 }
 assert.match(app, /onModePrepare=\{\(next\) => setPreparedMode\(next === "auto" \? mode : next\)\}/);
 assert.match(header, /onPrepare=\{onModePrepare\}/);
-assert.match(hero, /<TreeScene mode=\{mode\} preparedMode=\{preparedMode\}/);
+assert.match(hero, /<TreeScene mode=\{mode\} preference=\{preference\} preparedMode=\{preparedMode\}/);
 
 assert.match(scene, /const visibleMode = loadedModes\.has\(mode\) \? mode : lastVisibleMode/);
 assert.match(scene, /onLoad=\{\(\) => markLoaded\("day"\)\}/);
 assert.match(scene, /onLoad=\{\(\) => markLoaded\("night"\)\}/);
 assert.match(scene, /next\.add\(loadedMode\)/);
-assert.match(scene, /className=\{`tree-scene is-scene-\$\{visibleMode\}`\}/);
+assert.match(scene, /tree-scene is-scene-\$\{visibleMode\}/);
 assert.match(styles, /\.tree-scene\.is-scene-day \.gfx02-scene-plate--day\{opacity:1\}/);
 assert.match(styles, /\.tree-scene\.is-scene-night \.gfx02-scene-plate--night\{opacity:1\}/);
 
@@ -37,8 +37,8 @@ assert.equal((scene.match(/960w,/g) ?? []).length, 4);
 assert.equal((scene.match(/1280w,/g) ?? []).length, 4);
 assert.equal((scene.match(/1672w/g) ?? []).length, 4);
 assert.equal((scene.match(/sizes="100vw"/g) ?? []).length, 4);
-assert.match(scene, /scene-day-tree-b-lamps-physically-off\.png/);
-assert.match(scene, /scene-night-tree-b-lamps-physical-fix1\.png/);
+assert.match(scene, /scene-day-treeless-panorama\.png/);
+assert.match(scene, /scene-night-treeless-panorama\.png/);
 assert.equal((scene.match(/src=\{(?:dayScene|nightScene)\}/g) ?? []).length, 2);
 assert.match(scene, /loading=\{mode === "day" \|\| preparedMode === "day" \? "eager" : "lazy"\}/);
 assert.match(scene, /loading=\{mode === "night" \|\| preparedMode === "night" \? "eager" : "lazy"\}/);

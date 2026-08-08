@@ -24,7 +24,7 @@ function App() {
         onModePrepare={(next) => setPreparedMode(next === "auto" ? mode : next)}
       />
       <main id="main-content">
-        <TreeHeroSection mode={mode} preparedMode={preparedMode} />
+        <TreeHeroSection mode={mode} preference={preference} preparedMode={preparedMode} />
         <EcosystemSection />
         <AboutSection />
         <MissionSection />

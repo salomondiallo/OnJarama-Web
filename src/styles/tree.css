@@ -511,6 +511,27 @@
 .tree-scene[data-gfx03-scene] .gfx02-life-layers .river-flow__glint{
   display:none;
 }
+.tree-scene[data-gfx04-r2-treeless] .gfx03-tree-blend,
+.tree-scene[data-gfx04-r2-treeless] .gfx03-tree-atmosphere,
+.tree-scene[data-gfx04-r2-treeless] .gfx03-root-integration{display:none}
+.tree-scene[data-gfx04-r2-treeless] .gfx03-sun-system,
+.tree-scene[data-gfx04-r2-treeless] .gfx03-moon-system{
+  transform-box:view-box;
+  transform-origin:center;
+  transition:opacity .7s ease,transform 60s linear;
+}
+.tree-scene[data-gfx04-r2-treeless].is-celestial-auto.is-scene-day .gfx03-sun-system{animation:gfx04R2SunArc 12h linear infinite}
+.tree-scene[data-gfx04-r2-treeless].is-celestial-auto.is-scene-night .gfx03-moon-system{animation:gfx04R2MoonArc 11h linear infinite}
+@keyframes gfx04R2SunArc{
+  0%{transform:translate(-330px,92px)}
+  50%{transform:translate(0,0)}
+  100%{transform:translate(350px,92px)}
+}
+@keyframes gfx04R2MoonArc{
+  0%{transform:translate(-300px,78px)}
+  50%{transform:translate(20px,0)}
+  100%{transform:translate(340px,78px)}
+}
 .tree-scene[data-gfx03-scene] .gfx02-moon-refinement{filter:url(#gfx03MoonTexture) drop-shadow(0 0 8px rgba(196,218,224,.14))}
 .gfx03-tree-blend{
   position:absolute;
@@ -631,6 +652,8 @@
 }
 @media(prefers-reduced-motion:reduce){
   .gfx03-sun-system,.gfx03-moon-system,.gfx03-tree-blend>span{transition:none}
+  .tree-scene[data-gfx04-r2-treeless] .gfx03-sun-system,
+  .tree-scene[data-gfx04-r2-treeless] .gfx03-moon-system{animation:none!important}
 }
 @media(max-width:700px){
   .gfx03-sun-halo,.gfx03-sun-core{
