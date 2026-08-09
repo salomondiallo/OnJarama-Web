@@ -762,9 +762,11 @@
 .tree-scene[data-gfx04-r2-treeless] .gfx03-lamp-path-light,
 .tree-scene[data-gfx04-r2-treeless] .gfx03-day-lamp-neutralizer,
 .tree-scene[data-gfx04-r2-treeless] .dynamic-sky__day-path-neutralizer{display:none!important}
+/* TABLET_768_DAY_GLASS_CONTAINED */
 @media(min-width:761px){
   .tree-scene[data-gfx04-r2-treeless] .dynamic-sky{clip-path:polygon(0 0,67% 0,67% 100%,0 100%)}
-  .tree-hero__intro--option-b{top:8%;right:2.7%;bottom:auto;left:auto;width:30.3%;min-height:56%;padding:0;border:0;transform:none;background:transparent!important;background-image:none!important;box-shadow:none!important;filter:none!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
+  .tree-hero__intro--option-b{top:8%;right:2.7%;bottom:auto;left:auto;width:30.3%;min-height:56%;padding:0;border:0;transform:none;background:transparent!important;background-color:transparent!important;background-image:none!important;box-shadow:none!important;filter:none!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important;transition:none!important}
+  .tree-hero__intro--option-b::before,.tree-hero__intro--option-b::after{content:none!important;background:none!important}
   .tree-hero__intro--option-b .tree-hero__eyebrow,
   .tree-hero__intro--option-b h1,
   .tree-hero__intro--option-b .tree-hero__lead{visibility:hidden!important;color:transparent!important;text-shadow:none!important;user-select:none}
@@ -777,8 +779,12 @@
 @media(min-width:761px) and (max-width:959px){
   .tree-hero__intro--option-b{top:8%;right:1.5%;width:34%;min-height:55%}
 }
+/* MOBILE_390_EDITORIAL_CARD_NO_OVERFLOW */
 @media(max-width:760px){
   .tree-hero__panorama{aspect-ratio:auto}
+  .tree-hero__intro--option-b{box-sizing:border-box;width:calc(100% - 16px);max-width:calc(100% - 16px);min-width:0;margin-inline:8px;overflow:hidden}
+  .tree-hero__intro--option-b h1{max-width:100%;overflow-wrap:normal;word-break:normal}
+  .tree-hero__intro--option-b .tree-hero__actions{min-width:0;width:100%}
   .tree-scene[data-gfx04-r2-treeless]{aspect-ratio:16/9;transform:none;margin-bottom:0}
   .tree-scene[data-gfx04-r2-treeless] .gfx02-scene-plate{object-position:27% center}
   .tree-scene[data-gfx04-r2-treeless] .gfx03-moon-system{transform:translate(42px,-72px)!important}

@@ -6,6 +6,7 @@ const root = resolve(import.meta.dirname, "../..");
 const read = (file) => readFileSync(resolve(root, file), "utf8");
 const scene = read("src/components/TreeScene.tsx");
 const styles = read("src/styles/tree.css");
+const headerStyles = read("src/styles/header.css");
 const engine = read("src/utils/dynamicSky.ts");
 const ecosystem = read("src/components/EcosystemSidebar.tsx");
 const hero = read("src/sections/TreeHeroSection.tsx");
@@ -66,6 +67,15 @@ assert.match(styles, /\[data-gfx04-r2-treeless\] \.gfx03-lamp-path-light,[\s\S]*
 assert.doesNotMatch(scene + styles, /gfx03-wet-reflections/);
 assert.match(styles, /prefers-reduced-motion:reduce[\s\S]*\.dynamic-sky \*/);
 assert.doesNotMatch(engine + scene, /fetch\(|XMLHttpRequest|geolocation|navigator\.permissions/);
+assert.match(styles, /TABLET_768_DAY_GLASS_CONTAINED/);
+assert.match(styles, /tree-hero__intro--option-b\{[^}]*background-color:transparent!important[^}]*transition:none!important/);
+assert.match(styles, /MOBILE_390_EDITORIAL_CARD_NO_OVERFLOW/);
+assert.match(styles, /width:calc\(100% - 16px\);max-width:calc\(100% - 16px\);min-width:0/);
+assert.match(headerStyles, /MOBILE_390_AMBIENCE_SELECTOR_VISIBLE/);
+assert.match(headerStyles, /grid-template-columns:40px minmax\(110px,1fr\) 40px/);
+assert.match(headerStyles, /HEADER_BREAKPOINT_767_768_769/);
+assert.match(headerStyles, /HEADER_BREAKPOINT_899_900_901/);
+assert.match(headerStyles, /@media \(max-width: 1023px\)/);
 assert.doesNotMatch(ecosystem, /dynamic-sky|cloudCover|precipitation/);
 
 console.log("OJW-DYNAMIC-SKY-03-PRE1: moteur interne, couches, fallback et reduced-motion valides.");

@@ -37,8 +37,8 @@ assert.match(treeCss, /\.day-night-toggle button\s*\{[^}]*min-height:42px/);
 assert.match(treeCss, /@media\(max-width:760px\)\{[\s\S]*\.day-night-toggle button\{[^}]*min-height:44px/);
 
 assert.match(header, /<DayNightToggle[\s\S]*value=\{preference\}[\s\S]*onChange=\{onModeChange\}/);
-assert.match(headerCss, /@media \(max-width: 900px\)[\s\S]*\.site-header__ambience\{grid-column:2;grid-row:1\}/);
-assert.match(headerCss, /@media \(max-width: 900px\)[\s\S]*\.menu-toggle \{[^}]*display:grid/);
+assert.match(headerCss, /@media \(max-width: 1023px\)[\s\S]*\.site-header__ambience\{grid-column:2;grid-row:1\}/);
+assert.match(headerCss, /@media \(max-width: 1023px\)[\s\S]*\.menu-toggle \{[^}]*display:grid/);
 assert.doesNotMatch(hero, /<DayNightToggle/);
 assert.doesNotMatch(hero, /Apps futures|<InstitutionalProjectBand|Cinq projets, une vision commune/);
 assert.match(app, /<TreeHeroSection mode=\{mode\} preference=\{preference\} preparedMode=\{preparedMode\} \/>[\s\S]*<EcosystemSection \/>/);
