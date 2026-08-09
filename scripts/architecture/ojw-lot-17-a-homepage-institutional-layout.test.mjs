@@ -13,6 +13,7 @@ const cardsCss = read("src/styles/cards.css");
 const footer = read("src/components/Footer.tsx");
 const footerCss = read("src/styles/footer.css");
 const header = read("src/components/Header.tsx");
+const headerCss = read("src/styles/header.css");
 
 assert.match(section, /PROJECT_ORDER\s*=\s*\["academy",\s*"path",\s*"ojcs-connect",\s*"web"\]/);
 assert.match(section, /data-project-count=\{projects\.length\}/);
@@ -36,6 +37,8 @@ assert.match(treeCss, /\.day-night-toggle button\s*\{[^}]*min-height:42px/);
 assert.match(treeCss, /@media\(max-width:760px\)\{[\s\S]*\.day-night-toggle button\{[^}]*min-height:44px/);
 
 assert.match(header, /<DayNightToggle[\s\S]*value=\{preference\}[\s\S]*onChange=\{onModeChange\}/);
+assert.match(headerCss, /@media \(max-width: 900px\)[\s\S]*\.site-header__ambience\{grid-column:2;grid-row:1\}/);
+assert.match(headerCss, /@media \(max-width: 900px\)[\s\S]*\.menu-toggle \{[^}]*display:grid/);
 assert.doesNotMatch(hero, /<DayNightToggle/);
 assert.doesNotMatch(hero, /Apps futures|<InstitutionalProjectBand|Cinq projets, une vision commune/);
 assert.match(app, /<TreeHeroSection mode=\{mode\} preference=\{preference\} preparedMode=\{preparedMode\} \/>[\s\S]*<EcosystemSection \/>/);
@@ -46,8 +49,8 @@ assert.match(scene, /ojw-gfx-02-scene-night-natural-city-lights\.png/);
 assert.equal((scene.match(/<picture>/g) ?? []).length, 2);
 assert.equal((scene.match(/type="image\/avif"/g) ?? []).length, 2);
 assert.equal((scene.match(/type="image\/webp"/g) ?? []).length, 2);
-assert.match(scene, /loading=\{mode === "day" \|\| preparedMode === "day" \? "eager" : "lazy"\}/);
-assert.match(scene, /loading=\{mode === "night" \|\| preparedMode === "night" \? "eager" : "lazy"\}/);
+assert.match(scene, /loading=\{targetMode === "day" \|\| preparedMode === "day" \? "eager" : "lazy"\}/);
+assert.match(scene, /loading=\{targetMode === "night" \|\| preparedMode === "night" \? "eager" : "lazy"\}/);
 assert.match(scene, /path:\s*\{\s*x:\s*71\.2,\s*y:\s*31\.8\s*\}/);
 assert.match(scene, /academy:\s*\{\s*x:\s*86\.1,\s*y:\s*25\s*\}/);
 assert.match(scene, /web:\s*\{\s*x:\s*71\.5,\s*y:\s*49\.8\s*\}/);

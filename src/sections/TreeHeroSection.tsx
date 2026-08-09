@@ -2,6 +2,7 @@ import { useMemo, useState } from "react";
 import { ecosystem } from "../data/ecosystem";
 import { TreeScene } from "../components/TreeScene";
 import type { DayNightMode, DayNightPreference } from "../hooks/useDayNightMode";
+import { resolveSkyPreviewMode } from "../utils/dynamicSky";
 
 type TreeHeroSectionProps = {
   mode: DayNightMode;
@@ -14,8 +15,9 @@ export function TreeHeroSection({ mode, preference, preparedMode }: TreeHeroSect
   const fruits = useMemo(() => ecosystem.filter((item) => item.kind !== "institutional"), []);
   const defaultId = useMemo(() => ecosystem.find((item) => item.isCurrent)?.id ?? ecosystem[0].id, []);
   const [activeId, setActiveId] = useState(defaultId);
+  const resolvedMode = resolveSkyPreviewMode(typeof window === "undefined" ? "" : window.location.search, mode);
   return (
-    <section id="top" className={`tree-hero premium-section is-${mode}`} data-light-mode={mode} aria-labelledby="immersive-hero-title">
+    <section id="top" className={`tree-hero premium-section is-${resolvedMode}`} data-light-mode={resolvedMode} aria-labelledby="immersive-hero-title">
       <div className="tree-hero__panorama">
         <div className="tree-hero__intro tree-hero__intro--option-b">
           <p className="tree-hero__eyebrow">OnJarama · Une vision qui prend racine</p>
@@ -27,7 +29,7 @@ export function TreeHeroSection({ mode, preference, preparedMode }: TreeHeroSect
           </div>
         </div>
 
-        <TreeScene mode={mode} preference={preference} preparedMode={preparedMode} foundation={foundation} fruits={fruits} activeId={activeId} onActivate={setActiveId} onPreview={() => {}} />
+        <TreeScene mode={resolvedMode} preference={preference} preparedMode={preparedMode} foundation={foundation} fruits={fruits} activeId={activeId} onActivate={setActiveId} onPreview={() => {}} />
 
       </div>
     </section>

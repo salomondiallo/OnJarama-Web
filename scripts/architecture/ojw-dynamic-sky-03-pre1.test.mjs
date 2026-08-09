@@ -1,0 +1,71 @@
+import assert from "node:assert/strict";
+import { readFileSync } from "node:fs";
+import { resolve } from "node:path";
+
+const root = resolve(import.meta.dirname, "../..");
+const read = (file) => readFileSync(resolve(root, file), "utf8");
+const scene = read("src/components/TreeScene.tsx");
+const styles = read("src/styles/tree.css");
+const engine = read("src/utils/dynamicSky.ts");
+const ecosystem = read("src/components/EcosystemSidebar.tsx");
+const hero = read("src/sections/TreeHeroSection.tsx");
+
+for (const value of ["CLEAR", "FEW", "SCATTERED", "OVERCAST", "NONE", "LIGHT_RAIN", "RAIN", "CRESCENT", "QUARTER", "GIBBOUS", "FULL", "MORNING", "DAY", "EVENING", "NIGHT", "HAZY", "WET"]) {
+  assert.ok(engine.includes(`"${value}"`), `Dimension Dynamic Sky absente: ${value}`);
+}
+assert.match(scene, /resolveInternalDynamicSky/);
+assert.match(scene, /data-dynamic-sky/);
+assert.match(scene, /data-cloud-cover=\{dynamicSky\.cloudCover\}/);
+assert.match(scene, /data-precipitation=\{dynamicSky\.precipitation\}/);
+assert.match(scene, /dynamic-sky__clouds--far/);
+assert.match(scene, /dynamic-sky__rain--near/);
+assert.match(scene, /dynamicSkyMoonPhaseMask/);
+assert.match(scene, /maskUnits="userSpaceOnUse"/);
+assert.match(scene, /CRESCENT: 448, QUARTER: 468, GIBBOUS: 500, FULL: 532/);
+assert.match(scene, /data-light-source=\{lightPhysics\.primarySource\}/);
+assert.match(scene, /const effectiveProgress = previewProgress \?\? celestial\.progress/);
+assert.doesNotMatch(scene, /gfx03-wet-reflections/);
+assert.match(scene, /gfx03-day-lamp-neutralizer/);
+assert.match(scene, /dynamic-sky__day-path-neutralizer/);
+assert.doesNotMatch(scene + styles, /gfx05-vegetation-chroma/);
+assert.equal((scene.match(/<ellipse className="gfx03-day-lamp-glass/g) ?? []).length, 8);
+assert.match(engine, /SOLAR_DIRECTIONAL_LIGHT/);
+assert.match(engine, /LUNAR_DIRECTIONAL_LIGHT/);
+assert.match(engine, /LANTERN_LOCAL_LIGHT/);
+assert.match(engine, /shadowX:\s*-sourceX/);
+assert.match(styles, /\[data-cloud-cover="OVERCAST"\]/);
+assert.match(styles, /\[data-precipitation="LIGHT_RAIN"\]/);
+assert.match(styles, /\.dynamic-sky__directional-shadow/);
+for (const daylightState of ["MORNING", "DAY", "EVENING"]) {
+  assert.match(styles, new RegExp(`data-time-of-day="${daylightState}"[\\s\\S]*gfx03-lamp-path-light`));
+}
+assert.match(styles, /\.tree-hero\.is-day \.gfx03-lamp-path-light/);
+assert.match(styles, /\.tree-hero\.is-day \.gfx03-day-lamp-neutralizer\{opacity:1\}/);
+assert.match(styles, /\.tree-hero\.is-night \.gfx03-day-lamp-neutralizer\{opacity:0!important\}/);
+assert.match(styles, /\.tree-hero\.is-day \.dynamic-sky__day-path-neutralizer\{opacity:1\}/);
+assert.match(styles, /\.tree-hero\.is-night \.dynamic-sky__day-path-neutralizer\{opacity:0!important\}/);
+assert.match(scene, /founder-canonical-day\.png/);
+assert.match(scene, /founder-canonical-night-no-moon\.png/);
+assert.doesNotMatch(scene, /dynamic-sky__moon-backing/);
+assert.match(scene, /data-celestial-source=\{dynamicSky\.celestialSource\}/);
+assert.match(engine, /type CelestialSource = "SUN" \| "MOON" \| "NONE"/);
+assert.match(engine, /resolvedDayNightMode/);
+assert.match(engine, /resolveSkyPreviewMode/);
+assert.match(engine, /"overcast-day"/);
+assert.match(engine, /"overcast-night"/);
+assert.match(hero, /resolveSkyPreviewMode/);
+assert.match(hero, /is-\$\{resolvedMode\}/);
+assert.match(styles, /data-celestial-source="SUN"[^}]*gfx03-moon-system\{opacity:0!important\}/);
+assert.match(styles, /data-celestial-source="MOON"[^}]*gfx03-sun-system\{opacity:0!important\}/);
+assert.match(styles, /data-cloud-cover="OVERCAST"\]\[data-celestial-source="SUN"\][^}]*gfx03-sun-system/);
+assert.match(styles, /data-cloud-cover="OVERCAST"\]\[data-celestial-source="MOON"\][^}]*gfx03-moon-system/);
+assert.doesNotMatch(styles, /data-cloud-cover="OVERCAST"\][^{]*gfx03-sun-system,[^{]*gfx03-moon-system/);
+assert.equal((scene.match(/gfx03-lamp-core gfx03-lamp-core--/g) ?? []).length, 8);
+assert.match(styles, /tree-hero__intro--option-b\{top:8%;right:2\.7%/);
+assert.match(styles, /\[data-gfx04-r2-treeless\] \.gfx03-lamp-path-light,[\s\S]*display:none!important/);
+assert.doesNotMatch(scene + styles, /gfx03-wet-reflections/);
+assert.match(styles, /prefers-reduced-motion:reduce[\s\S]*\.dynamic-sky \*/);
+assert.doesNotMatch(engine + scene, /fetch\(|XMLHttpRequest|geolocation|navigator\.permissions/);
+assert.doesNotMatch(ecosystem, /dynamic-sky|cloudCover|precipitation/);
+
+console.log("OJW-DYNAMIC-SKY-03-PRE1: moteur interne, couches, fallback et reduced-motion valides.");

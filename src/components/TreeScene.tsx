@@ -1,9 +1,10 @@
-import dayScene from "../assets/immersive/gfx04-r2/scene-day-treeless-panorama.png";
-import nightScene from "../assets/immersive/gfx04-r2/scene-night-treeless-panorama.png";
+import dayScene from "../assets/immersive/founder-canonical/founder-canonical-day.png";
+import nightScene from "../assets/immersive/founder-canonical/founder-canonical-night-no-moon.png";
 import { useMemo, useState, type CSSProperties } from "react";
 import type { EcosystemItem, EcosystemState } from "../data/ecosystem";
 import type { DayNightMode, DayNightPreference } from "../hooks/useDayNightMode";
 import { resolveLocalCelestialState } from "../utils/solarDayNight";
+import { applyDynamicSkyPreview, resolveInternalDynamicSky, resolveLightPhysics } from "../utils/dynamicSky";
 
 type FruitPosition = { x: number; y: number };
 
@@ -74,17 +75,36 @@ export function TreeScene({
   const [loadedModes, setLoadedModes] = useState<Set<DayNightMode>>(() => new Set());
   const [lastVisibleMode, setLastVisibleMode] = useState<DayNightMode>(mode);
   const [clock] = useState(() => new Date());
+  const previewToken = typeof window === "undefined" ? null : new URLSearchParams(window.location.search).get("sky-preview");
+  const previewProgress = previewToken === "morning" || previewToken === "solar-morning" ? 0.16
+    : previewToken === "day" ? 0.5
+      : previewToken === "evening" || previewToken === "solar-evening" ? 0.84
+        : previewToken === "moon-left" ? 0.2
+          : previewToken === "moon-right" ? 0.8
+            : null;
   const celestial = useMemo(() => {
     if (preference === "auto") return resolveLocalCelestialState(clock);
     return { phase: mode === "day" ? "day" as const : "night" as const, progress: 0.5 };
   }, [clock, mode, preference]);
-  const sunX = -330 + celestial.progress * 680;
-  const sunY = 92 * Math.pow(Math.abs(celestial.progress - 0.5) * 2, 1.6);
-  const moonX = -300 + celestial.progress * 640;
-  const moonY = 78 * Math.pow(Math.abs(celestial.progress - 0.5) * 2, 1.5);
-  const visibleMode = loadedModes.has(mode) ? mode : lastVisibleMode;
-  const dayMounted = mode === "day" || preparedMode === "day" || loadedModes.has("day");
-  const nightMounted = mode === "night" || preparedMode === "night" || loadedModes.has("night");
+  const dynamicSky = useMemo(
+    () => applyDynamicSkyPreview(
+      resolveInternalDynamicSky(clock, celestial.phase, preference === "auto" ? null : mode),
+      typeof window === "undefined" ? "" : window.location.search,
+    ),
+    [celestial.phase, clock, mode, preference],
+  );
+  const targetMode = dynamicSky.resolvedDayNightMode;
+  const effectiveProgress = previewProgress ?? celestial.progress;
+  const diagnosticSunLift = previewToken === "solar-morning" || previewToken === "solar-evening" ? -58 : 0;
+  const lightPhysics = useMemo(() => resolveLightPhysics(dynamicSky, effectiveProgress), [dynamicSky, effectiveProgress]);
+  const moonShadowX = { CRESCENT: 448, QUARTER: 468, GIBBOUS: 500, FULL: 532 }[dynamicSky.moonPhase];
+  const sunX = -330 + effectiveProgress * 680;
+  const sunY = 92 * Math.pow(Math.abs(effectiveProgress - 0.5) * 2, 1.6) + diagnosticSunLift;
+  const moonX = -300 + effectiveProgress * 640;
+  const moonY = 78 * Math.pow(Math.abs(effectiveProgress - 0.5) * 2, 1.5);
+  const visibleMode = loadedModes.has(targetMode) ? targetMode : lastVisibleMode;
+  const dayMounted = targetMode === "day" || preparedMode === "day" || loadedModes.has("day");
+  const nightMounted = targetMode === "night" || preparedMode === "night" || loadedModes.has("night");
 
   const markLoaded = (loadedMode: DayNightMode) => {
     setLoadedModes((current) => {
@@ -93,11 +113,32 @@ export function TreeScene({
       next.add(loadedMode);
       return next;
     });
-    if (loadedMode === mode) setLastVisibleMode(loadedMode);
+    if (loadedMode === targetMode) setLastVisibleMode(loadedMode);
   };
 
   return (
-    <div className={`tree-scene is-scene-${visibleMode} celestial-phase-${celestial.phase} ${preference === "auto" ? "is-celestial-auto" : "is-celestial-manual"}`} data-gfx02-scene data-gfx03-scene data-gfx04-r2-treeless>
+    <div
+      className={`tree-scene is-scene-${visibleMode} celestial-phase-${celestial.phase} ${preference === "auto" ? "is-celestial-auto" : "is-celestial-manual"}`}
+      data-gfx02-scene
+      data-gfx03-scene
+      data-gfx04-r2-treeless
+      data-dynamic-sky
+      data-time-of-day={dynamicSky.timeOfDay}
+      data-cloud-cover={dynamicSky.cloudCover}
+      data-precipitation={dynamicSky.precipitation}
+      data-moon-phase={dynamicSky.moonPhase}
+      data-atmosphere={dynamicSky.atmosphere}
+      data-celestial-source={dynamicSky.celestialSource}
+      data-light-source={lightPhysics.primarySource}
+      style={{
+        "--light-source-x": lightPhysics.sourceX,
+        "--shadow-x": lightPhysics.shadowX,
+        "--shadow-length": lightPhysics.shadowLength,
+        "--directional-intensity": lightPhysics.directionalIntensity,
+        "--cloud-transmission": lightPhysics.cloudTransmission,
+        "--moon-phase-intensity": lightPhysics.moonPhaseIntensity,
+      } as CSSProperties}
+    >
       <div className="gfx02-scene-plates" aria-hidden="true">
         {dayMounted && (
           <picture>
@@ -114,13 +155,13 @@ export function TreeScene({
             <img
               className="gfx02-scene-plate gfx02-scene-plate--day"
               src={dayScene}
-              width="1672"
-              height="941"
+              width="1586"
+              height="429"
               alt=""
               aria-hidden="true"
               decoding="async"
-              loading={mode === "day" || preparedMode === "day" ? "eager" : "lazy"}
-              fetchPriority={mode === "day" || preparedMode === "day" ? "high" : "low"}
+              loading={targetMode === "day" || preparedMode === "day" ? "eager" : "lazy"}
+              fetchPriority={targetMode === "day" || preparedMode === "day" ? "high" : "low"}
               onLoad={() => markLoaded("day")}
             />
           </picture>
@@ -140,17 +181,31 @@ export function TreeScene({
             <img
               className="gfx02-scene-plate gfx02-scene-plate--night"
               src={nightScene}
-              width="1672"
-              height="941"
+              width="1586"
+              height="464"
               alt=""
               aria-hidden="true"
               decoding="async"
-              loading={mode === "night" || preparedMode === "night" ? "eager" : "lazy"}
-              fetchPriority={mode === "night" || preparedMode === "night" ? "high" : "low"}
+              loading={targetMode === "night" || preparedMode === "night" ? "eager" : "lazy"}
+              fetchPriority={targetMode === "night" || preparedMode === "night" ? "high" : "low"}
               onLoad={() => markLoaded("night")}
             />
           </picture>
         )}
+      </div>
+
+      <div className="dynamic-sky" aria-hidden="true">
+        <div className="dynamic-sky__atmosphere" />
+        <div className="dynamic-sky__clouds dynamic-sky__clouds--far"><i /><i /></div>
+        <div className="dynamic-sky__clouds dynamic-sky__clouds--mid"><i /><i /><i /></div>
+        <div className="dynamic-sky__clouds dynamic-sky__clouds--near"><i /><i /></div>
+        <div className="dynamic-sky__mist" />
+        <div className="dynamic-sky__directional-light" />
+        <div className="dynamic-sky__directional-shadow" />
+        <div className="dynamic-sky__day-path-neutralizer" />
+        <div className="dynamic-sky__rain dynamic-sky__rain--far" />
+        <div className="dynamic-sky__rain dynamic-sky__rain--mid" />
+        <div className="dynamic-sky__rain dynamic-sky__rain--near" />
       </div>
 
       <div className="gfx03-tree-blend" aria-hidden="true">
@@ -215,6 +270,10 @@ export function TreeScene({
             <feComposite in="moonTexture" in2="SourceGraphic" operator="in" result="moonTextureMasked" />
             <feBlend in="SourceGraphic" in2="moonTextureMasked" mode="multiply" />
           </filter>
+          <mask id="dynamicSkyMoonPhaseMask" maskUnits="userSpaceOnUse" x="0" y="0" width="1672" height="941">
+            <circle cx="440" cy="134" r="46" fill="white" />
+            <ellipse cx={moonShadowX} cy="134" rx="45" ry="47" fill="black" />
+          </mask>
           <radialGradient id="gfx03TreeAtmosphereDay">
             <stop offset="0" stopColor="#a9b99b" stopOpacity=".075" />
             <stop offset=".55" stopColor="#91a78e" stopOpacity=".045" />
@@ -232,10 +291,12 @@ export function TreeScene({
             className="gfx02-moon-refinement"
             cx="440"
             cy="134"
-            r="29"
+            r="46"
             fill="url(#gfx02MoonSurface)"
             filter="url(#gfx03MoonTexture)"
+            mask="url(#dynamicSkyMoonPhaseMask)"
           />
+          <circle className="dynamic-sky__moon-earthshine" cx="440" cy="134" r="46" fill="url(#gfx02MoonSurface)" />
         </g>
         <g className="gfx03-sun-system" style={{ transform: `translate(${sunX}px, ${sunY}px)` }}>
           <circle className="gfx03-sun-refinement gfx03-sun-halo" cx="825" cy="135" r="100" fill="url(#gfx03SunHalo)" />
@@ -283,6 +344,28 @@ export function TreeScene({
           <path className="gfx03-lamp-pool gfx03-lamp-pool--6" d="M731 738c12-8 38-7 53 2 8 4 5 10-6 13-18 6-46 3-55-5-5-4-1-7 8-10Z" />
           <path className="gfx03-lamp-pool gfx03-lamp-pool--7" d="M638 715c8-5 25-5 35 1 5 3 3 7-4 9-12 4-30 2-36-3-3-3-1-5 5-7Z" />
           <path className="gfx03-lamp-pool gfx03-lamp-pool--8" d="M710 717c8-5 25-5 35 1 5 3 3 7-4 9-12 3-30 1-36-4-3-2-1-4 5-6Z" />
+          <circle className="gfx03-lamp-core gfx03-lamp-core--near" cx="584" cy="808" r="5" />
+          <circle className="gfx03-lamp-core gfx03-lamp-core--near" cx="1014" cy="803" r="5" />
+          <circle className="gfx03-lamp-core gfx03-lamp-core--mid" cx="633" cy="748" r="4" />
+          <circle className="gfx03-lamp-core gfx03-lamp-core--mid" cx="861" cy="744" r="4" />
+          <circle className="gfx03-lamp-core gfx03-lamp-core--far" cx="664" cy="716" r="3" />
+          <circle className="gfx03-lamp-core gfx03-lamp-core--far" cx="808" cy="713" r="3" />
+          <circle className="gfx03-lamp-core gfx03-lamp-core--horizon" cx="687" cy="692" r="2" />
+          <circle className="gfx03-lamp-core gfx03-lamp-core--horizon" cx="782" cy="690" r="2" />
+        </g>
+        <g className="gfx03-day-lamp-neutralizer" aria-hidden="true">
+          <ellipse className="gfx03-day-lamp-glass gfx03-day-lamp-glass--near" cx="584" cy="808" rx="12" ry="15" />
+          <ellipse className="gfx03-day-lamp-glass gfx03-day-lamp-glass--near" cx="1014" cy="803" rx="12" ry="15" />
+          <ellipse className="gfx03-day-lamp-glass gfx03-day-lamp-glass--mid" cx="633" cy="748" rx="9" ry="11" />
+          <ellipse className="gfx03-day-lamp-glass gfx03-day-lamp-glass--mid" cx="861" cy="744" rx="9" ry="11" />
+          <ellipse className="gfx03-day-lamp-glass gfx03-day-lamp-glass--far" cx="664" cy="716" rx="6" ry="8" />
+          <ellipse className="gfx03-day-lamp-glass gfx03-day-lamp-glass--far" cx="808" cy="713" rx="6" ry="8" />
+          <ellipse className="gfx03-day-lamp-glass gfx03-day-lamp-glass--horizon" cx="687" cy="692" rx="4" ry="6" />
+          <ellipse className="gfx03-day-lamp-glass gfx03-day-lamp-glass--horizon" cx="782" cy="690" rx="4" ry="6" />
+          <ellipse className="gfx03-day-lamp-pool-neutralizer" cx="610" cy="830" rx="74" ry="22" />
+          <ellipse className="gfx03-day-lamp-pool-neutralizer" cx="985" cy="828" rx="74" ry="22" />
+          <ellipse className="gfx03-day-lamp-pool-neutralizer gfx03-day-lamp-pool-neutralizer--mid" cx="646" cy="758" rx="47" ry="14" />
+          <ellipse className="gfx03-day-lamp-pool-neutralizer gfx03-day-lamp-pool-neutralizer--mid" cx="818" cy="758" rx="47" ry="14" />
         </g>
         {/* LOT-14 compatibility marker: waterfall__foam is retired and is no longer a rendered layer. */}
         <g className="waterfall" aria-hidden="true">

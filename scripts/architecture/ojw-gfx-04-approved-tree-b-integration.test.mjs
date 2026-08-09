@@ -11,21 +11,21 @@ const solar = read("src/utils/solarDayNight.ts");
 const hook = read("src/hooks/useDayNightMode.ts");
 
 const assets = {
-  day: ["src/assets/immersive/gfx04-r2/scene-day-treeless-panorama.png", "C6EC2B664C915E5ADCDF9870C33172450CA9597B8D063076929734FC499E7CC9"],
-  night: ["src/assets/immersive/gfx04-r2/scene-night-treeless-panorama.png", "93ACF89745223F79C0E00A295E09851BC365ED8E47CF76A601D2330811D77821"],
+  day: ["src/assets/immersive/founder-canonical/founder-canonical-day.png", "AB9BF630E4964C09B7EE88CD1DD53B75005A10E8959668897C6E546489E34CD7", 1586, 429],
+  night: ["src/assets/immersive/founder-canonical/founder-canonical-night-no-moon.png", "B85ED28B4E379C959D148CF12496DF3C16EAA1138A5CB21211B1680CCFA21D12", 1586, 464],
 };
 
-for (const [mode, [file, sha256]] of Object.entries(assets)) {
+for (const [mode, [file, sha256, width, height]] of Object.entries(assets)) {
   const absolute = resolve(root, file);
   assert.ok(existsSync(absolute), `Plaque ${mode} GFX-04-R2 absente.`);
   const data = readFileSync(absolute);
   assert.equal(createHash("sha256").update(data).digest("hex").toUpperCase(), sha256);
-  assert.equal(data.readUInt32BE(16), 1672);
-  assert.equal(data.readUInt32BE(20), 941);
+  assert.equal(data.readUInt32BE(16), width);
+  assert.equal(data.readUInt32BE(20), height);
 }
 
-assert.match(scene, /assets\/immersive\/gfx04-r2\/scene-day-treeless-panorama\.png/);
-assert.match(scene, /assets\/immersive\/gfx04-r2\/scene-night-treeless-panorama\.png/);
+assert.match(scene, /assets\/immersive\/founder-canonical\/founder-canonical-day\.png/);
+assert.match(scene, /assets\/immersive\/founder-canonical\/founder-canonical-night-no-moon\.png/);
 assert.match(scene, /data-gfx04-r2-treeless/);
 assert.equal((scene.match(/<picture>/g) ?? []).length, 2);
 assert.equal((scene.match(/type="image\/avif"/g) ?? []).length, 2);
@@ -40,7 +40,7 @@ assert.match(styles, /prefers-reduced-motion:reduce[\s\S]*animation:none!importa
 assert.match(solar, /resolveLocalCelestialState/);
 assert.doesNotMatch(hook, /navigator\.(?:geolocation|permissions)/);
 assert.match(scene, /className="gfx03-lamp-path-light"/);
-assert.match(styles, /\.tree-hero\.is-night \.gfx03-lamp-path-light\{opacity:1\}/);
+assert.match(styles, /\[data-gfx04-r2-treeless\] \.gfx03-lamp-path-light,[\s\S]*display:none!important/);
 assert.match(styles, /\.tree-scene\[data-gfx03-scene\] \.tree-fruit\{[\s\S]*display:none/);
 
 console.log("OJW-GFX-04-R2: panorama sans arbre, cycle celeste local, lanternes et responsive valides.");

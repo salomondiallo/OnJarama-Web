@@ -616,9 +616,17 @@
 .tree-hero.is-night .gfx03-root-pebbles{fill:rgba(19,38,39,.7);stroke:rgba(4,16,18,.5)}
 .gfx03-lamp-path-light{opacity:0;pointer-events:none;transition:opacity .65s ease}
 .tree-hero.is-night .gfx03-lamp-path-light{opacity:1}
-.gfx03-lamp-pool{fill:#f2b84f;filter:blur(7px);mix-blend-mode:screen;transform-box:fill-box;transform-origin:center}
-.gfx03-lamp-pool--1{opacity:.29}.gfx03-lamp-pool--2{opacity:.24}.gfx03-lamp-pool--3{opacity:.15}.gfx03-lamp-pool--4{opacity:.12}
-.gfx03-lamp-pool--5{opacity:.048}.gfx03-lamp-pool--6{opacity:.038}.gfx03-lamp-pool--7{opacity:.025}.gfx03-lamp-pool--8{opacity:.018}
+.gfx03-lamp-pool{fill:#f2b84f;filter:blur(4px);mix-blend-mode:screen;transform-box:fill-box;transform-origin:center}
+.gfx03-lamp-pool--1{opacity:.2;transform:scale(.46,.2)}.gfx03-lamp-pool--2{opacity:.18;transform:scale(.46,.2)}.gfx03-lamp-pool--3{opacity:.14;transform:scale(.54,.28)}.gfx03-lamp-pool--4{opacity:.12;transform:scale(.54,.28)}
+.gfx03-lamp-pool--5{opacity:.09}.gfx03-lamp-pool--6{opacity:.075}.gfx03-lamp-pool--7{opacity:.05}.gfx03-lamp-pool--8{opacity:.04}
+.gfx03-lamp-core{fill:#ffd679;filter:drop-shadow(0 0 2px rgba(255,184,62,.68));mix-blend-mode:screen;transform-box:fill-box;transform-origin:center}.gfx03-lamp-core--near{opacity:.92}.gfx03-lamp-core--mid{opacity:.76}.gfx03-lamp-core--far{opacity:.6}.gfx03-lamp-core--horizon{opacity:.44}
+.gfx03-day-lamp-neutralizer{opacity:0;pointer-events:none;transition:opacity .12s linear}
+.tree-hero.is-day .gfx03-day-lamp-neutralizer{opacity:1}
+.gfx03-day-lamp-glass{fill:#3f443d;opacity:.8;filter:blur(.5px);mix-blend-mode:multiply}
+.gfx03-day-lamp-glass--near{opacity:.88}.gfx03-day-lamp-glass--mid{opacity:.84}.gfx03-day-lamp-glass--far{opacity:.8}.gfx03-day-lamp-glass--horizon{opacity:.76}
+.gfx03-day-lamp-pool-neutralizer{fill:#42554c;opacity:.27;filter:blur(8px);mix-blend-mode:multiply}
+.gfx03-day-lamp-pool-neutralizer--mid{opacity:.2;filter:blur(5px)}
+.tree-hero.is-night .gfx03-day-lamp-neutralizer{opacity:0!important}
 .gfx03-fruit-zones{
   position:absolute;
   inset:0;
@@ -680,3 +688,116 @@
   .tree-hero__intro--option-b{left:50%;width:calc(100% - 48px);max-width:620px;grid-template-columns:minmax(0,1fr) minmax(190px,auto);column-gap:16px;padding:16px 18px 18px}
 }
 @media(prefers-reduced-motion:reduce){.gfx03-lamp-path-light{transition:none}}
+
+/* OJW-DYNAMIC-SKY-03-FIX5-FIX2: strict canonical founder convergence. */
+@media(min-width:761px){
+  .tree-hero__intro--option-b{top:clamp(38px,4vw,68px);right:clamp(28px,3.4vw,62px);bottom:auto;left:auto;width:clamp(500px,37vw,590px);min-height:292px;grid-template-columns:1fr;grid-template-areas:"eyebrow" "title" "lead" "actions";align-content:center;row-gap:16px;padding:30px 32px 32px;border:1px solid rgba(235,209,140,.32);border-radius:24px;transform:none;background:rgba(5,18,28,.54);box-shadow:0 18px 42px rgba(0,0,0,.22);backdrop-filter:blur(8px) saturate(.9);-webkit-backdrop-filter:blur(8px) saturate(.9)}
+  .tree-hero.is-day .tree-hero__intro--option-b{border-color:rgba(238,220,168,.4);background:rgba(7,25,29,.54);box-shadow:0 18px 40px rgba(13,35,34,.2)}
+  .tree-hero__intro--option-b .tree-hero__eyebrow{color:#e7c66d}
+  .tree-hero__intro--option-b h1,.tree-hero.is-day .tree-hero__intro--option-b h1{color:#f5f7ee;font-size:clamp(1.6rem,2vw,2.1rem);line-height:1.06}
+  .tree-hero__intro--option-b .tree-hero__lead,.tree-hero.is-day .tree-hero__intro--option-b .tree-hero__lead{max-width:48ch;color:#e7eee8;font-size:.92rem;line-height:1.55}
+  .tree-hero__intro--option-b .tree-hero__actions{display:grid;grid-template-columns:1fr 1fr;min-width:0;width:100%;gap:10px}
+  .tree-hero__intro--option-b .tree-hero__cta{min-height:48px;padding-inline:20px;justify-content:center;font-size:.7rem}
+  .tree-hero.is-night .tree-hero__intro.tree-hero__intro--option-b{border-color:rgba(235,209,140,.3);background:rgba(5,18,28,.56);box-shadow:0 18px 42px rgba(0,0,0,.24);backdrop-filter:blur(9px) saturate(.9);-webkit-backdrop-filter:blur(9px) saturate(.9)}
+  .tree-hero.is-day .tree-hero__intro.tree-hero__intro--option-b{border-color:rgba(238,220,168,.4);background:rgba(7,25,29,.52);box-shadow:0 18px 40px rgba(13,35,34,.2);backdrop-filter:blur(9px) saturate(.9);-webkit-backdrop-filter:blur(9px) saturate(.9)}
+}
+@media(min-width:761px) and (max-width:959px){
+  .tree-hero__intro--option-b{top:74px;right:18px;left:auto;width:min(390px,50vw);max-width:none;min-height:0;padding:17px 18px 19px;row-gap:10px}
+  .tree-hero__intro--option-b h1{font-size:clamp(1.3rem,2.8vw,1.58rem)}
+  .tree-hero__intro--option-b .tree-hero__lead{-webkit-line-clamp:3;font-size:.78rem}
+  .tree-hero__intro--option-b .tree-hero__actions{grid-template-columns:1fr}
+}
+
+/* OJW-DYNAMIC-SKY-03-PRE1: internal, parameter-driven atmosphere for the R2 hero. */
+.dynamic-sky{position:absolute;inset:0;z-index:2;overflow:hidden;pointer-events:none;isolation:isolate}
+.dynamic-sky>*{position:absolute;inset:0;opacity:0;transition:opacity 1.2s ease}
+.dynamic-sky__atmosphere{z-index:1;background:linear-gradient(180deg,rgba(113,139,156,.16),transparent 62%)}
+[data-atmosphere="HAZY"] .dynamic-sky__atmosphere{opacity:.48;background:linear-gradient(180deg,rgba(176,184,181,.2),rgba(161,170,166,.13) 52%,transparent 82%)}
+[data-atmosphere="WET"] .dynamic-sky__atmosphere{opacity:.62;background:linear-gradient(180deg,rgba(60,78,94,.28),rgba(79,93,100,.16) 56%,transparent 86%)}
+.dynamic-sky__clouds{z-index:2;inset:0;opacity:0;transition:opacity 1.4s ease}
+.dynamic-sky__clouds i{position:absolute;display:block;width:30%;height:12%;border-radius:48%;background:radial-gradient(ellipse at 38% 55%,rgba(244,246,242,.78),rgba(219,226,224,.38) 52%,transparent 72%);filter:blur(4px);transform:translate3d(0,0,0)}
+.is-scene-night .dynamic-sky__clouds i{background:radial-gradient(ellipse at 38% 55%,rgba(149,169,185,.32),rgba(81,105,128,.2) 55%,transparent 74%)}
+.dynamic-sky__clouds--far i{width:18%;height:7%;filter:blur(5px)}
+.dynamic-sky__clouds--far i:nth-child(1){left:14%;top:12%}.dynamic-sky__clouds--far i:nth-child(2){right:12%;top:21%;transform:scale(.72)}
+.dynamic-sky__clouds--mid i:nth-child(1){left:28%;top:8%}.dynamic-sky__clouds--mid i:nth-child(2){right:18%;top:16%;transform:scale(.82)}.dynamic-sky__clouds--mid i:nth-child(3){left:55%;top:29%;transform:scale(.55)}
+.dynamic-sky__clouds--near i{width:44%;height:16%;filter:blur(8px);background:radial-gradient(ellipse at 42% 52%,rgba(111,125,137,.5),rgba(73,88,101,.35) 55%,transparent 76%)}
+.dynamic-sky__clouds--near i:nth-child(1){left:-8%;top:2%}.dynamic-sky__clouds--near i:nth-child(2){right:-12%;top:4%;transform:scale(1.12)}
+[data-cloud-cover="FEW"] .dynamic-sky__clouds--far{opacity:.5}
+[data-cloud-cover="FEW"] .dynamic-sky__clouds--mid{opacity:.34}
+[data-cloud-cover="SCATTERED"] .dynamic-sky__clouds--far{opacity:.58}
+[data-cloud-cover="SCATTERED"] .dynamic-sky__clouds--mid{opacity:.64}
+[data-cloud-cover="SCATTERED"] .dynamic-sky__clouds--near{opacity:.22}
+[data-cloud-cover="OVERCAST"] .dynamic-sky__clouds--far{opacity:.72}
+[data-cloud-cover="OVERCAST"] .dynamic-sky__clouds--mid{opacity:.86}
+[data-cloud-cover="OVERCAST"] .dynamic-sky__clouds--near{opacity:.72}
+[data-cloud-cover="OVERCAST"] .dynamic-sky__clouds i{transform:scale(1.55);filter:blur(12px)}
+.dynamic-sky__rain{z-index:5;background-image:repeating-linear-gradient(102deg,transparent 0 16px,rgba(207,226,234,.32) 17px 18px,transparent 19px 34px);background-size:120px 170px;transform:translate3d(0,-8%,0)}
+.dynamic-sky__rain--far{opacity:0;filter:blur(.7px);background-size:90px 130px}
+.dynamic-sky__rain--mid{opacity:0;background-size:130px 190px}
+.dynamic-sky__rain--near{opacity:0;filter:blur(.25px);background-size:180px 240px}
+[data-precipitation="LIGHT_RAIN"] .dynamic-sky__rain--far{opacity:.13}
+[data-precipitation="LIGHT_RAIN"] .dynamic-sky__rain--mid{opacity:.1}
+[data-precipitation="LIGHT_RAIN"] .dynamic-sky__rain--near{opacity:.04}
+[data-precipitation="RAIN"] .dynamic-sky__rain--far{opacity:.24}
+[data-precipitation="RAIN"] .dynamic-sky__rain--mid{opacity:.2}
+[data-precipitation="RAIN"] .dynamic-sky__rain--near{opacity:.1}
+.dynamic-sky__mist{z-index:3;inset:auto 0 19% 0;height:28%;background:radial-gradient(ellipse at 48% 70%,rgba(190,203,205,.2),transparent 68%)}
+[data-atmosphere="HAZY"] .dynamic-sky__mist{opacity:.32}[data-atmosphere="WET"] .dynamic-sky__mist{opacity:.46}
+.dynamic-sky__directional-light{z-index:3;opacity:calc(var(--directional-intensity) * .28);background:linear-gradient(calc(180deg + var(--light-source-x) * 18deg),rgba(255,239,190,.22),transparent 54%);mix-blend-mode:soft-light}
+.dynamic-sky__directional-shadow{z-index:4;inset:58% 0 0;opacity:calc((1 - var(--cloud-transmission)) * .12 + var(--directional-intensity) * .08);background:repeating-linear-gradient(calc(90deg + var(--shadow-x) * 28deg),transparent 0 13%,rgba(7,20,25,.18) 17%,transparent 23%);transform:translateX(calc(var(--shadow-x) * 2.2%)) scaleY(var(--shadow-length));transform-origin:50% 100%;mix-blend-mode:multiply}
+[data-cloud-cover="OVERCAST"] .dynamic-sky__directional-shadow{opacity:.025}
+[data-light-source="LUNAR_DIRECTIONAL_LIGHT"] .dynamic-sky__directional-light{background:linear-gradient(calc(180deg + var(--light-source-x) * 14deg),rgba(185,211,224,.14),transparent 58%)}
+.dynamic-sky__day-path-neutralizer{z-index:4;inset:auto 34% 0 34%;height:43%;opacity:0;clip-path:polygon(45% 0,55% 0,78% 100%,22% 100%);background:linear-gradient(180deg,rgba(45,60,55,.04),rgba(45,58,51,.16) 52%,rgba(38,50,44,.22));mix-blend-mode:multiply;filter:blur(3px);pointer-events:none}
+.tree-hero.is-day .dynamic-sky__day-path-neutralizer{opacity:1}
+.tree-hero.is-night .dynamic-sky__day-path-neutralizer{opacity:0!important}
+/* FIX4: daylight is authoritative even while the previous night plate finishes its handoff. */
+.tree-hero.is-day .gfx03-lamp-path-light,
+.tree-scene[data-time-of-day="MORNING"] .gfx03-lamp-path-light,
+.tree-scene[data-time-of-day="DAY"] .gfx03-lamp-path-light,
+.tree-scene[data-time-of-day="EVENING"] .gfx03-lamp-path-light{opacity:0!important;transition-duration:.12s}
+
+/* OJW-DYNAMIC-SKY-03-FIX5-FIX3: exact founder-approved raster panels. */
+.tree-hero__panorama{min-height:0;aspect-ratio:1586/446}
+.tree-scene[data-gfx04-r2-treeless] .gfx02-scene-plate{object-fit:cover;object-position:center center}
+.tree-scene[data-gfx04-r2-treeless] .gfx03-lamp-path-light,
+.tree-scene[data-gfx04-r2-treeless] .gfx03-day-lamp-neutralizer,
+.tree-scene[data-gfx04-r2-treeless] .dynamic-sky__day-path-neutralizer{display:none!important}
+@media(min-width:761px){
+  .tree-scene[data-gfx04-r2-treeless] .dynamic-sky{clip-path:polygon(0 0,67% 0,67% 100%,0 100%)}
+  .tree-hero__intro--option-b{top:8%;right:2.7%;bottom:auto;left:auto;width:30.3%;min-height:56%;padding:0;border:0;transform:none;background:transparent!important;background-image:none!important;box-shadow:none!important;filter:none!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
+  .tree-hero__intro--option-b .tree-hero__eyebrow,
+  .tree-hero__intro--option-b h1,
+  .tree-hero__intro--option-b .tree-hero__lead{visibility:hidden!important;color:transparent!important;text-shadow:none!important;user-select:none}
+  .tree-hero__intro--option-b .tree-hero__actions{position:absolute;right:4.5%;bottom:10%;width:39%;grid-template-columns:1fr;gap:10%}
+  .tree-hero__intro--option-b .tree-hero__cta{min-height:38px;border-color:transparent!important;color:transparent!important;background:transparent!important;box-shadow:none!important}
+  .tree-hero__intro--option-b .tree-hero__cta:focus-visible{outline:3px solid #f2c64f;outline-offset:2px}
+}
+.tree-scene[data-gfx04-r2-treeless] .gfx03-moon-system{transform:translate(-303px,-72px)!important}
+.tree-scene[data-gfx04-r2-treeless] .gfx02-moon-refinement{r:46px}
+@media(min-width:761px) and (max-width:959px){
+  .tree-hero__intro--option-b{top:8%;right:1.5%;width:34%;min-height:55%}
+}
+@media(max-width:760px){
+  .tree-hero__panorama{aspect-ratio:auto}
+  .tree-scene[data-gfx04-r2-treeless]{aspect-ratio:16/9;transform:none;margin-bottom:0}
+  .tree-scene[data-gfx04-r2-treeless] .gfx02-scene-plate{object-position:27% center}
+  .tree-scene[data-gfx04-r2-treeless] .gfx03-moon-system{transform:translate(42px,-72px)!important}
+}
+.dynamic-sky__moon-earthshine{opacity:.09;filter:url(#gfx03MoonTexture)}
+[data-celestial-source="SUN"] .gfx03-sun-system{opacity:1!important}
+[data-celestial-source="SUN"] .gfx03-moon-system{opacity:0!important}
+[data-celestial-source="MOON"] .gfx03-sun-system{opacity:0!important}
+[data-celestial-source="MOON"] .gfx03-moon-system{opacity:.88!important}
+[data-celestial-source="NONE"] .gfx03-sun-system,[data-celestial-source="NONE"] .gfx03-moon-system{opacity:0!important}
+[data-celestial-source] .gfx03-sun-system,[data-celestial-source] .gfx03-moon-system{transition:none!important}
+[data-cloud-cover="OVERCAST"][data-celestial-source="SUN"] .gfx03-sun-system{opacity:.16!important}
+[data-cloud-cover="OVERCAST"][data-celestial-source="MOON"] .gfx03-moon-system{opacity:.16!important}
+[data-precipitation="RAIN"][data-celestial-source="MOON"] .gfx03-moon-system{opacity:.12!important}
+.is-celestial-auto .dynamic-sky__clouds--far i{animation:dynamicSkyDriftFar 150s linear infinite}
+.is-celestial-auto .dynamic-sky__clouds--mid i{animation:dynamicSkyDriftMid 105s linear infinite}
+.is-celestial-auto .dynamic-sky__rain{animation:dynamicSkyRain 1.4s linear infinite}
+@keyframes dynamicSkyDriftFar{to{translate:7vw 0}}
+@keyframes dynamicSkyDriftMid{to{translate:-9vw 0}}
+@keyframes dynamicSkyRain{to{background-position:-28px 170px}}
+@media(max-width:760px){.dynamic-sky__clouds--near{display:none}.dynamic-sky__rain--near{display:none}.dynamic-sky__rain{background-size:150px 230px}.dynamic-sky__directional-shadow{opacity:.035}}
+@media(prefers-reduced-motion:reduce){.dynamic-sky *{animation:none!important;transition:none!important}.dynamic-sky__rain{background-position:0 0}.dynamic-sky__clouds i{transform:none!important}}
