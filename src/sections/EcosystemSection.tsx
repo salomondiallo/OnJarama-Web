@@ -1,36 +1,24 @@
-import { ecosystem } from "../data/ecosystem";
-import ojaEmblem from "../assets/ecosystem/emblems/oja-emblem-a2.png";
-import ojpEmblem from "../assets/ecosystem/emblems/ojp-emblem-a2.png";
-import ojcsEmblem from "../assets/ecosystem/emblems/ojcs-emblem-a2.png";
-import ojwEmblem from "../assets/ecosystem/emblems/ojw-emblem-a2.png";
+import { publicProjects } from "../data/ecosystem";
 
 const PROJECT_ORDER = ["academy", "path", "ojcs-connect", "web"] as const;
 
 const PROJECT_PRESENTATION = {
   academy: {
-    emblem: ojaEmblem,
-    alt: "Emblème organique vert du projet OJA",
     accent: "oja",
   },
   path: {
-    emblem: ojpEmblem,
-    alt: "Emblème-graine bleu et violet du projet OJP",
     accent: "ojp",
   },
   "ojcs-connect": {
-    emblem: ojcsEmblem,
-    alt: "Emblème communautaire orange du projet OJCS",
     accent: "ojcs",
   },
   web: {
-    emblem: ojwEmblem,
-    alt: "Emblème-portail bleu du projet OJW",
     accent: "ojw",
   },
 } as const;
 
 export function EcosystemSection() {
-  const projects = PROJECT_ORDER.map((id) => ecosystem.find((item) => item.id === id)).filter(
+  const projects = PROJECT_ORDER.map((id) => publicProjects.find((item) => item.id === id)).filter(
     (item): item is NonNullable<typeof item> => Boolean(item),
   );
 
@@ -47,12 +35,12 @@ export function EcosystemSection() {
       <div className="ecosystem-grid" data-project-count={projects.length}>
         {projects.map((item) => {
           const presentation = PROJECT_PRESENTATION[item.id as keyof typeof PROJECT_PRESENTATION];
-          const isReady = item.state === "ready" && Boolean(item.href);
+          const hasPublicPage = item.publicPageAvailable;
 
           return (
             <article className={`ecosystem-card ecosystem-card--${presentation.accent} reveal-up`} key={item.id}>
               <div className="ecosystem-card__emblem">
-                <img src={presentation.emblem} alt={presentation.alt} width="1024" height="1024" />
+                <img src={item.emblem} alt={item.emblemAlt} width="1024" height="1024" />
               </div>
               <p className="ecosystem-card__status">{item.statusLabel}</p>
               <h3>
@@ -61,9 +49,9 @@ export function EcosystemSection() {
               </h3>
               <p>{item.description}</p>
               <div className="ecosystem-card__action">
-                {isReady ? (
-                  <a className="ecosystem-card__link" href={item.href} aria-label={`${item.name} — revenir au portail actuel`}>
-                    Portail actuel <span aria-hidden="true">↑</span>
+                {hasPublicPage ? (
+                  <a className="ecosystem-card__link" href={item.publicPagePath} aria-label={`${item.name} — découvrir la page publique`}>
+                    Découvrir le projet <span aria-hidden="true">→</span>
                   </a>
                 ) : (
                   <span className="ecosystem-card__link ecosystem-card__link--pending" aria-disabled="true">
