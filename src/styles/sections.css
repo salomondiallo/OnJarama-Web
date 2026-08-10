@@ -67,3 +67,17 @@
   .quality-grid article,.timeline article{min-height:0;padding:19px}
   .mission-band { padding: 26px; }
 }
+
+.public-page-shell {
+  width: min(1120px, calc(100% - 32px));
+  min-height: calc(100vh - 250px);
+  margin: 0 auto;
+  padding: clamp(36px, 6vw, 72px) 0;
+}
+.public-page-shell__back { display: inline-flex; min-height: 44px; align-items: center; color: var(--oj-gold); text-underline-offset: 4px; }
+.public-page-shell__back:focus-visible { outline: 3px solid rgba(56,189,248,.55); outline-offset: 3px; border-radius: 4px; }
+.public-page-placeholder { max-width: 720px; padding: clamp(42px, 8vw, 88px) 0; }
+.public-page-placeholder h1 { margin-bottom: 18px; font-size: clamp(2.6rem, 8vw, 5.5rem); }
+.public-page-placeholder h1:focus { outline: none; }
+.public-page-placeholder strong { display: block; margin: 24px 0; color: var(--oj-gold); }
+.route-loading { min-height: 100vh; }

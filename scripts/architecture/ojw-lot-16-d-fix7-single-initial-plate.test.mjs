@@ -7,7 +7,7 @@ const scene = read("src/components/TreeScene.tsx");
 const hero = read("src/sections/TreeHeroSection.tsx");
 const toggle = read("src/components/DayNightToggle.tsx");
 const styles = read("src/styles/tree.css");
-const app = read("src/App.tsx");
+const app = read("src/pages/HomePage.tsx");
 const header = read("src/components/Header.tsx");
 
 assert.doesNotMatch(scene, /setTimeout|setInterval|requestIdleCallback/);

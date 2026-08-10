@@ -15,14 +15,14 @@ assert.deepEqual(
   "PUBLIC_PROJECT_ORDER must remain OJA,OJP,OJCS,OJW",
 );
 
-for (const [id, slug] of [["academy", "OJA"], ["path", "OJP"], ["ojcs-connect", "OJCS"], ["web", "OJW"]]) {
+for (const [id, slug, path] of [["academy", "OJA", "oja"], ["path", "OJP", "ojp"], ["ojcs-connect", "OJCS", "ojcs"], ["web", "OJW", "ojw"]]) {
   const start = publicModel.indexOf(`id: "${id}"`);
   const next = publicModel.indexOf("\n  {", start + 1);
   const project = publicModel.slice(start, next === -1 ? undefined : next);
   for (const field of ["slug", "shortName", "name", "description", "status", "publicPagePath", "publicPageAvailable", "productAvailable", "emblem", "emblemAlt"]) {
     assert.match(project, new RegExp(`\\b${field}:`), `${slug} is missing ${field}`);
   }
-  assert.match(project, new RegExp(`publicPagePath:\\s*"/${slug}"`));
+  assert.match(project, new RegExp(`publicPagePath:\\s*"/${path}"`));
   assert.match(project, /publicPageAvailable:\s*false/, `${slug} public page must remain inactive until its route exists`);
 }
 

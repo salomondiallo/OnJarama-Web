@@ -15,7 +15,7 @@ const toggle = read("src/components/DayNightToggle.tsx");
 const scene = read("src/components/TreeScene.tsx");
 const styles = read("src/styles/tree.css");
 const hero = read("src/sections/TreeHeroSection.tsx");
-const app = read("src/App.tsx");
+const app = read("src/pages/HomePage.tsx");
 const ecosystemSection = read("src/sections/EcosystemSection.tsx");
 
 const montreal = { latitude: 45.5017, longitude: -73.5673 };

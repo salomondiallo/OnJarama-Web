@@ -7,6 +7,7 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
+    "test:ojw:ecosystem-02-a": "node scripts/architecture/ojw-ecosystem-02-a-public-routing-foundation.test.mjs",
     "test:ojw:ecosystem-01": "node scripts/architecture/ojw-ecosystem-01-canonical-project-model.test.mjs",
     "test:ojw:dynamic-sky-03": "node scripts/architecture/ojw-dynamic-sky-03-pre1.test.mjs",
     "test:ojw:gfx-05-c": "node scripts/architecture/ojw-gfx-05-c-ecosystem-section.test.mjs",
@@ -21,7 +22,8 @@
   },
   "dependencies": {
     "react": "^19.2.6",
-    "react-dom": "^19.2.6"
+    "react-dom": "^19.2.6",
+    "react-router-dom": "^7.18.2"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",

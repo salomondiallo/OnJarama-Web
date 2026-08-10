@@ -4,7 +4,7 @@ import { resolve } from "node:path";
 
 const root = resolve(import.meta.dirname, "../..");
 const read = (path) => readFileSync(resolve(root, path), "utf8");
-const app = read("src/App.tsx");
+const app = read("src/pages/HomePage.tsx");
 const section = read("src/sections/EcosystemSection.tsx");
 const ecosystem = read("src/data/ecosystem.ts");
 const hero = read("src/sections/TreeHeroSection.tsx");

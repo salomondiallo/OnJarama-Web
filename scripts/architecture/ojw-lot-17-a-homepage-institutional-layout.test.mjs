@@ -4,7 +4,7 @@ import { readFileSync } from "node:fs";
 const read = (file) => readFileSync(new URL(`../../${file}`, import.meta.url), "utf8");
 
 const hero = read("src/sections/TreeHeroSection.tsx");
-const app = read("src/App.tsx");
+const app = read("src/pages/HomePage.tsx");
 const section = read("src/sections/EcosystemSection.tsx");
 const ecosystem = read("src/data/ecosystem.ts");
 const scene = read("src/components/TreeScene.tsx");
@@ -58,7 +58,7 @@ assert.match(scene, /"ojcs-connect":\s*\{\s*x:\s*87,\s*y:\s*51\.8\s*\}/);
 
 assert.doesNotMatch(footer, /href="#"/);
 assert.doesNotMatch(footer, /Confidentialité|Cookies/);
-assert.match(footer, /href="#mission"/);
+assert.match(footer, /isHomePage \? "" : "\/"/);
 assert.match(footerCss, /min-height:44px/);
 assert.match(cardsCss, /@media \(prefers-reduced-motion: reduce\)[\s\S]*\.ecosystem-card/);
 

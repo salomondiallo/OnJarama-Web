@@ -1,0 +1,11 @@
+{
+  "redirects": [
+    { "source": "/OJA", "destination": "/oja", "permanent": true },
+    { "source": "/OJP", "destination": "/ojp", "permanent": true },
+    { "source": "/OJCS", "destination": "/ojcs", "permanent": true },
+    { "source": "/OJW", "destination": "/ojw", "permanent": true }
+  ],
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/index.html" }
+  ]
+}
