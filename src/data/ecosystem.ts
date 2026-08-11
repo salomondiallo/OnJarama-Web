@@ -115,7 +115,7 @@ export const publicProjects: readonly PublicProject[] = [
     status: "ready",
     statusLabel: "Vous êtes ici",
     publicPagePath: "/ojw",
-    publicPageAvailable: false,
+    publicPageAvailable: true,
     productAvailable: true,
     emblem: ojwEmblem,
     emblemAlt: "Emblème-portail bleu du projet OJW",

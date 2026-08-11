@@ -5,6 +5,7 @@ import type { AutoStrategy, DayNightMode, DayNightPreference } from "../hooks/us
 
 type HeaderProps = {
   isHomePage?: boolean;
+  showAmbience?: boolean;
   mode: DayNightMode;
   preference: DayNightPreference;
   autoStrategy: AutoStrategy;
@@ -12,7 +13,7 @@ type HeaderProps = {
   onModePrepare: (mode: DayNightPreference) => void;
 };
 
-export function Header({ isHomePage = false, mode, preference, autoStrategy, onModeChange, onModePrepare }: HeaderProps) {
+export function Header({ isHomePage = false, showAmbience = true, mode, preference, autoStrategy, onModeChange, onModePrepare }: HeaderProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const closeMenu = () => setIsMenuOpen(false);
   const homeHref = (fragment: string) => `${isHomePage ? "" : "/"}${fragment}`;
@@ -44,15 +45,17 @@ export function Header({ isHomePage = false, mode, preference, autoStrategy, onM
           <a href={homeHref("#mission")} onClick={closeMenu}>Mission</a>
           <a href={homeHref("#roadmap")} onClick={closeMenu}>Roadmap</a>
         </nav>
-        <div className={`site-header__ambience is-${mode}`}>
-          <DayNightToggle
-            value={preference}
-            resolvedMode={mode}
-            autoStrategy={autoStrategy}
-            onChange={onModeChange}
-            onPrepare={onModePrepare}
-          />
-        </div>
+        {showAmbience && (
+          <div className={`site-header__ambience is-${mode}`}>
+            <DayNightToggle
+              value={preference}
+              resolvedMode={mode}
+              autoStrategy={autoStrategy}
+              onChange={onModeChange}
+              onPrepare={onModePrepare}
+            />
+          </div>
+        )}
       </div>
     </header>
   );

@@ -23,7 +23,7 @@ for (const [id, slug, path] of [["academy", "OJA", "oja"], ["path", "OJP", "ojp"
     assert.match(project, new RegExp(`\\b${field}:`), `${slug} is missing ${field}`);
   }
   assert.match(project, new RegExp(`publicPagePath:\\s*"/${path}"`));
-  assert.match(project, /publicPageAvailable:\s*false/, `${slug} public page must remain inactive until its route exists`);
+  assert.match(project, id === "web" ? /publicPageAvailable:\s*true/ : /publicPageAvailable:\s*false/, `${slug} public page availability is incorrect`);
 }
 
 assert.match(foundationModel, /entityType:\s*"FOUNDATION"/);

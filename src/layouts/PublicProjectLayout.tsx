@@ -11,6 +11,7 @@ export function PublicProjectLayout({ children }: PublicProjectLayoutProps) {
   return (
     <>
       <Header
+        showAmbience={false}
         mode={mode}
         preference={preference}
         autoStrategy={autoStrategy}
