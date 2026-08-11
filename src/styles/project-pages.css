@@ -79,3 +79,112 @@
 @media (prefers-reduced-motion: reduce) {
   .project-hero__identity img { filter: none; }
 }
+
+.oja-page {
+  --oja-accent: #63d471;
+  --oja-accent-soft: rgba(99, 212, 113, .14);
+  --oja-leaf: #b8e986;
+  display: grid;
+  width: 100%;
+}
+
+body:has(.oja-page) .menu-toggle,
+body:has(.oja-page) .brand { min-width: 44px; }
+body:has(.oja-page) .menu-toggle,
+body:has(.oja-page) .skip-link { min-height: 44px; }
+
+.oja-page .project-hero {
+  border-color: rgba(99, 212, 113, .3);
+  background:
+    radial-gradient(circle at 18% 24%, rgba(99, 212, 113, .24), transparent 34%),
+    linear-gradient(145deg, rgba(12, 55, 48, .96), rgba(5, 24, 31, .98));
+}
+.oja-page .project-hero__identity img { width: min(100%, 320px); filter: drop-shadow(0 24px 40px rgba(18, 112, 75, .38)); }
+.oja-page .project-hero__content h1 span { color: var(--oja-accent); }
+.oja-page .project-status[data-stage="CURRENT"] { color: #c9ffd0; border-color: rgba(99, 212, 113, .38); background: rgba(99, 212, 113, .1); }
+.oja-page .section-kicker { color: var(--oja-leaf); }
+
+.oja-section {
+  border-color: rgba(99, 212, 113, .18);
+  background:
+    linear-gradient(145deg, rgba(16, 49, 49, .9), rgba(7, 25, 38, .96));
+}
+
+.oja-feature-grid,
+.oja-audience-grid,
+.oja-planned-grid,
+.oja-terrain__grid {
+  display: grid;
+  gap: 14px;
+  margin-top: 28px;
+}
+.oja-feature-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.oja-audience-grid,
+.oja-planned-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.oja-terrain__grid { grid-template-columns: .8fr 1.2fr; }
+
+.oja-feature-grid article,
+.oja-audience-grid article,
+.oja-planned-grid article,
+.oja-terrain__grid article {
+  border: 1px solid rgba(99, 212, 113, .2);
+  border-radius: var(--oj-radius-md);
+  padding: 22px;
+  background: linear-gradient(145deg, rgba(99, 212, 113, .07), rgba(255, 255, 255, .035));
+}
+.oja-feature-grid h3,
+.oja-audience-grid h3,
+.oja-planned-grid h3,
+.oja-terrain__grid h3 { margin: 10px 0 9px; color: #f0fbf2; }
+.oja-feature-grid p,
+.oja-audience-grid p,
+.oja-planned-grid p,
+.oja-terrain__grid p { margin: 0; }
+.oja-audience-grid article > span { color: var(--oja-accent); font-size: .76rem; font-weight: 850; letter-spacing: .12em; }
+
+.oja-building { background: linear-gradient(145deg, rgba(22, 50, 46, .94), rgba(10, 27, 39, .97)); }
+.oja-terrain { background: radial-gradient(circle at 84% 20%, rgba(184, 233, 134, .1), transparent 38%), linear-gradient(145deg, rgba(12, 54, 45, .92), rgba(6, 24, 35, .97)); }
+
+.oja-vision {
+  margin-top: clamp(22px, 4vw, 38px);
+  border: 1px solid rgba(185, 167, 255, .32);
+  border-radius: var(--oj-radius);
+  padding: clamp(34px, 6vw, 72px);
+  text-align: center;
+  background:
+    radial-gradient(circle at 50% 0, rgba(99, 212, 113, .18), transparent 44%),
+    linear-gradient(145deg, rgba(21, 51, 48, .96), rgba(14, 25, 44, .98));
+  box-shadow: var(--oj-shadow);
+}
+.oja-vision h2 { max-width: 19ch; margin-inline: auto; font-size: clamp(2.2rem, 5vw, 4.7rem); }
+.oja-vision p:last-child { max-width: 70ch; margin: 0 auto; font-size: clamp(1rem, 1.5vw, 1.18rem); }
+.oja-roadmap { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+.oja-roadmap li:last-child { grid-column: auto; }
+.oja-relations { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.oja-final-cta { border-color: rgba(99, 212, 113, .28); background: linear-gradient(135deg, rgba(99, 212, 113, .16), rgba(242, 207, 99, .08)); }
+
+@media (max-width: 1100px) {
+  .oja-roadmap { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .oja-roadmap li:last-child { grid-column: 1 / -1; }
+}
+
+@media (max-width: 900px) {
+  .oja-feature-grid { grid-template-columns: 1fr; }
+  .oja-relations { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 620px) {
+  .oja-page .project-hero__identity img { width: 160px; }
+  .oja-audience-grid,
+  .oja-planned-grid,
+  .oja-terrain__grid,
+  .oja-roadmap,
+  .oja-relations { grid-template-columns: 1fr; }
+  .oja-roadmap li:last-child { grid-column: auto; }
+  .oja-vision { text-align: left; }
+  .oja-vision h2 { margin-inline: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .oja-page .project-hero__identity img { filter: none; }
+}

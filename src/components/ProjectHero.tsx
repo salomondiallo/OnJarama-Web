@@ -1,9 +1,12 @@
 import type { PublicProjectEditorial } from "../data/projects";
 import { ProjectStatus } from "./ProjectStatus";
 
-type ProjectHeroProps = { project: PublicProjectEditorial };
+type ProjectHeroProps = {
+  project: PublicProjectEditorial;
+  kicker?: string;
+};
 
-export function ProjectHero({ project }: ProjectHeroProps) {
+export function ProjectHero({ project, kicker = "Projet public OnJarama" }: ProjectHeroProps) {
   return (
     <section className="project-hero" aria-labelledby="project-title">
       <div className="project-hero__identity">
@@ -11,7 +14,7 @@ export function ProjectHero({ project }: ProjectHeroProps) {
       </div>
       <div className="project-hero__content">
         <ProjectStatus label={project.projectStatus.label} stage={project.projectStatus.stage} />
-        <p className="section-kicker">Projet public OnJarama</p>
+        <p className="section-kicker">{kicker}</p>
         <h1 id="project-title" data-route-heading tabIndex={-1}>
           <span>{project.shortName}</span>
           {project.name}

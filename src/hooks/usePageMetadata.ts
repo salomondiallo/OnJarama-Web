@@ -4,6 +4,8 @@ type PageMetadata = {
   title: string;
   description: string;
   canonicalUrl: string;
+  ogTitle?: string;
+  ogDescription?: string;
 };
 
 function upsertMeta(property: string, value: string) {
@@ -18,7 +20,7 @@ function upsertMeta(property: string, value: string) {
   element.content = value;
 }
 
-export function usePageMetadata({ title, description, canonicalUrl }: PageMetadata) {
+export function usePageMetadata({ title, description, canonicalUrl, ogTitle = title, ogDescription = description }: PageMetadata) {
   useEffect(() => {
     const initialTitle = document.title;
     const descriptionElement = document.head.querySelector<HTMLMetaElement>('meta[name="description"]');
@@ -26,8 +28,8 @@ export function usePageMetadata({ title, description, canonicalUrl }: PageMetada
 
     document.title = title;
     upsertMeta("description", description);
-    upsertMeta("og:title", title);
-    upsertMeta("og:description", description);
+    upsertMeta("og:title", ogTitle);
+    upsertMeta("og:description", ogDescription);
     upsertMeta("og:url", canonicalUrl);
 
     let canonical = document.head.querySelector<HTMLLinkElement>('link[rel="canonical"]');
@@ -44,5 +46,5 @@ export function usePageMetadata({ title, description, canonicalUrl }: PageMetada
       if (descriptionElement) descriptionElement.content = initialDescription;
       document.head.querySelectorAll('[data-ojw-route-metadata="true"]').forEach((element) => element.remove());
     };
-  }, [canonicalUrl, description, title]);
+  }, [canonicalUrl, description, ogDescription, ogTitle, title]);
 }

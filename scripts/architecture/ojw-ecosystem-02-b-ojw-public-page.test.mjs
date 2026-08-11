@@ -20,8 +20,9 @@ const projectBlock = (id) => {
 
 assert.match(app, /path="\/ojw" element={<OJWPage/);
 assert.match(projectBlock("web"), /publicPagePath:\s*"\/ojw"[\s\S]*publicPageAvailable:\s*true/);
-for (const id of ["academy", "path", "ojcs-connect"]) assert.match(projectBlock(id), /publicPageAvailable:\s*false/);
-assert.equal((publicModel.match(/publicPageAvailable:\s*true/g) ?? []).length, 1, "ACTIVE_PUBLIC_PROJECT_PAGE_COUNT must be 1");
+assert.match(projectBlock("academy"), /publicPageAvailable:\s*true/);
+for (const id of ["path", "ojcs-connect"]) assert.match(projectBlock(id), /publicPageAvailable:\s*false/);
+assert.equal((publicModel.match(/publicPageAvailable:\s*true/g) ?? []).length, 2, "ACTIVE_PUBLIC_PROJECT_PAGE_COUNT must be 2");
 assert.match(section, /href=\{item\.publicPagePath\}/);
 assert.match(hero, /<h1/);
 assert.equal((`${page}\n${hero}`.match(/<h1\b/g) ?? []).length, 1, "OJW_PAGE_SINGLE_H1 must pass");
@@ -34,4 +35,4 @@ assert.match(editorial, /shortName:\s*"OJF"[\s\S]*porteur institutionnel/);
 assert.doesNotMatch(editorial, /date de sortie|utilisateurs actifs|partenaire/i);
 assert.match(editorial, /canonicalUrl:\s*"https:\/\/onjarama\.ca\/ojw"/);
 
-console.log("OJW-ECOSYSTEM-02-B: OJW pilot, single active project page, honest editorial stages and metadata validated.");
+console.log("OJW-ECOSYSTEM-02-B: OJW pilot remains active with honest editorial stages, metadata and project-page isolation validated.");

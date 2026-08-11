@@ -6,6 +6,7 @@ import { NotFoundPage } from "./pages/NotFoundPage";
 import { ProjectPlaceholderPage } from "./pages/ProjectPlaceholderPage";
 
 const HomePage = lazy(() => import("./pages/HomePage"));
+const OJAPage = lazy(() => import("./pages/OJAPage"));
 const OJWPage = lazy(() => import("./pages/OJWPage"));
 
 function App() {
@@ -16,7 +17,7 @@ function App() {
         <Suspense fallback={<main id="main-content" className="route-loading" aria-busy="true" />}>
           <Routes>
             <Route path="/" element={<HomePage />} />
-            <Route caseSensitive path="/oja" element={<ProjectPlaceholderPage projectId="academy" />} />
+            <Route caseSensitive path="/oja" element={<OJAPage />} />
             <Route caseSensitive path="/ojp" element={<ProjectPlaceholderPage projectId="path" />} />
             <Route caseSensitive path="/ojcs" element={<ProjectPlaceholderPage projectId="ojcs-connect" />} />
             <Route caseSensitive path="/ojw" element={<OJWPage />} />

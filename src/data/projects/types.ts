@@ -27,6 +27,8 @@ export type PublicProjectEditorial = {
     title: string;
     description: string;
     canonicalUrl: `https://${string}`;
+    ogTitle?: string;
+    ogDescription?: string;
   };
   mission: string;
   summary: string;

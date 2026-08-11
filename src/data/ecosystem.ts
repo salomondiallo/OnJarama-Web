@@ -70,7 +70,7 @@ export const publicProjects: readonly PublicProject[] = [
     status: "development",
     statusLabel: "En développement",
     publicPagePath: "/oja",
-    publicPageAvailable: false,
+    publicPageAvailable: true,
     productAvailable: false,
     emblem: ojaEmblem,
     emblemAlt: "Emblème organique vert du projet OJA",
