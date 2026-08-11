@@ -4,7 +4,7 @@
 .brand-logo { display: block; width: 54px; height: 54px; aspect-ratio: 1 / 1; flex: 0 0 54px; object-fit: contain; border: 1px solid rgba(242,207,99,.28); border-radius: 50%; box-shadow: 0 0 8px rgba(242,207,99,.12); }
 .brand-text { color: #f3e8c7; }
 .main-nav { grid-column:2; display:flex; align-items:center; justify-content:center; gap:6px; }
-.main-nav a { text-decoration: none; color: var(--oj-muted); padding: 10px 12px; border-radius: 999px; }
+.main-nav a { display:inline-flex; align-items:center; min-height:44px; text-decoration:none; color:var(--oj-muted); padding:10px 12px; border-radius:999px; }
 .main-nav a:hover, .main-nav a:focus-visible { color: var(--oj-text); background: var(--oj-surface); outline: none; }
 .menu-toggle { display:none; }
 .site-header__ambience{grid-column:3;justify-self:end;color:#edf5f3}
