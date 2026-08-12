@@ -85,7 +85,7 @@ export const publicProjects: readonly PublicProject[] = [
     status: "development",
     statusLabel: "En développement",
     publicPagePath: "/ojp",
-    publicPageAvailable: false,
+    publicPageAvailable: true,
     productAvailable: false,
     emblem: ojpEmblem,
     emblemAlt: "Emblème-graine bleu et violet du projet OJP",

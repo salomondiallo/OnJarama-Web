@@ -7,6 +7,7 @@ import { ProjectPlaceholderPage } from "./pages/ProjectPlaceholderPage";
 
 const HomePage = lazy(() => import("./pages/HomePage"));
 const OJAPage = lazy(() => import("./pages/OJAPage"));
+const OJPPage = lazy(() => import("./pages/OJPPage"));
 const OJWPage = lazy(() => import("./pages/OJWPage"));
 
 function App() {
@@ -18,7 +19,7 @@ function App() {
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route caseSensitive path="/oja" element={<OJAPage />} />
-            <Route caseSensitive path="/ojp" element={<ProjectPlaceholderPage projectId="path" />} />
+            <Route caseSensitive path="/ojp" element={<OJPPage />} />
             <Route caseSensitive path="/ojcs" element={<ProjectPlaceholderPage projectId="ojcs-connect" />} />
             <Route caseSensitive path="/ojw" element={<OJWPage />} />
             <Route path="/OJA" element={<Navigate to="/oja" replace />} />

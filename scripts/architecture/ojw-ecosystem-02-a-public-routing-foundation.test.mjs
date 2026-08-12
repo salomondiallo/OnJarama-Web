@@ -15,7 +15,7 @@ const vercel = JSON.parse(read("vercel.json"));
 assert.match(app, /path="\/" element={<HomePage/, "HOME_ROUTE must remain /");
 assert.deepEqual([...app.matchAll(/path="\/(oja|ojp|ojcs|ojw)"/g)].map((match) => `/${match[1]}`), ["/oja", "/ojp", "/ojcs", "/ojw"]);
 assert.deepEqual([...data.matchAll(/publicPagePath:\s*"(\/[^"/]+)"/g)].map((match) => match[1]), ["/oja", "/ojp", "/ojcs", "/ojw"]);
-assert.equal((data.match(/publicPageAvailable:\s*true/g) ?? []).length, 2, "Only the qualified OJA and OJW pages may be public");
+assert.equal((data.match(/publicPageAvailable:\s*true/g) ?? []).length, 3, "Only the qualified OJA, OJP and OJW pages may be public locally");
 assert.doesNotMatch(app, /path="\/ojf"/i, "OJF_PROJECT_ROUTE must remain FALSE");
 assert.match(app, /path="\*" element={<NotFoundPage/);
 assert.match(notFound, /<h1/);

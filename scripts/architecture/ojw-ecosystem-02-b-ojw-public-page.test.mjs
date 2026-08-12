@@ -21,8 +21,9 @@ const projectBlock = (id) => {
 assert.match(app, /path="\/ojw" element={<OJWPage/);
 assert.match(projectBlock("web"), /publicPagePath:\s*"\/ojw"[\s\S]*publicPageAvailable:\s*true/);
 assert.match(projectBlock("academy"), /publicPageAvailable:\s*true/);
-for (const id of ["path", "ojcs-connect"]) assert.match(projectBlock(id), /publicPageAvailable:\s*false/);
-assert.equal((publicModel.match(/publicPageAvailable:\s*true/g) ?? []).length, 2, "ACTIVE_PUBLIC_PROJECT_PAGE_COUNT must be 2");
+assert.match(projectBlock("path"), /publicPageAvailable:\s*true/);
+assert.match(projectBlock("ojcs-connect"), /publicPageAvailable:\s*false/);
+assert.equal((publicModel.match(/publicPageAvailable:\s*true/g) ?? []).length, 3, "ACTIVE_PUBLIC_PROJECT_PAGE_COUNT must be 3 locally");
 assert.match(section, /href=\{item\.publicPagePath\}/);
 assert.match(hero, /<h1/);
 assert.equal((`${page}\n${hero}`.match(/<h1\b/g) ?? []).length, 1, "OJW_PAGE_SINGLE_H1 must pass");

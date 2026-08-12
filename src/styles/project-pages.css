@@ -188,3 +188,178 @@ body:has(.oja-page) .skip-link { min-height: 44px; }
 @media (prefers-reduced-motion: reduce) {
   .oja-page .project-hero__identity img { filter: none; }
 }
+
+.ojp-page {
+  --ojp-turquoise: #63d8d1;
+  --ojp-blue: #5397b8;
+  --ojp-violet: #8d7ae8;
+  --ojp-green: #80d764;
+  --ojp-surface: rgba(19, 55, 76, .42);
+}
+
+body:has(.ojp-page) .menu-toggle,
+body:has(.ojp-page) .brand { min-width: 44px; }
+body:has(.ojp-page) .menu-toggle,
+body:has(.ojp-page) .skip-link { min-height: 44px; }
+
+.ojp-page .project-hero {
+  position: relative;
+  overflow: hidden;
+  border-color: rgba(99, 216, 209, .34);
+  background:
+    radial-gradient(circle at 18% 55%, rgba(141, 122, 232, .2), transparent 31%),
+    linear-gradient(118deg, rgba(10, 50, 68, .98), rgba(22, 25, 65, .96));
+}
+.ojp-page .project-hero::after {
+  position: absolute;
+  inset: auto -8% 13% 42%;
+  height: 2px;
+  transform: rotate(-5deg);
+  background: linear-gradient(90deg, transparent, rgba(99, 216, 209, .72), rgba(128, 215, 100, .26), transparent);
+  content: "";
+}
+.ojp-page .project-hero__identity { position: relative; z-index: 1; }
+.ojp-page .project-hero__identity img {
+  width: min(100%, 310px);
+  filter: drop-shadow(0 26px 42px rgba(25, 35, 82, .48));
+}
+.ojp-page .project-hero__content { position: relative; z-index: 1; }
+.ojp-page .project-hero__content h1 span { color: var(--ojp-turquoise); }
+.ojp-page .project-status[data-stage="CURRENT"] {
+  color: #bff9f2;
+  border-color: rgba(99, 216, 209, .4);
+  background: rgba(99, 216, 209, .1);
+}
+.ojp-page .project-status[data-stage="PLANNED"] {
+  color: #d8d0ff;
+  border-color: rgba(141, 122, 232, .42);
+  background: rgba(141, 122, 232, .1);
+}
+.ojp-page .section-kicker { color: var(--ojp-turquoise); }
+
+.ojp-section {
+  border-color: rgba(83, 151, 184, .28);
+  background:
+    linear-gradient(150deg, rgba(83, 151, 184, .09), transparent 45%),
+    rgba(6, 24, 36, .78);
+}
+.ojp-path-grid,
+.ojp-audience-grid,
+.ojp-planned-grid {
+  display: grid;
+  gap: 15px;
+  margin-top: 28px;
+}
+.ojp-path-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.ojp-audience-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.ojp-planned-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.ojp-path-grid article,
+.ojp-audience-grid article,
+.ojp-planned-grid article {
+  min-width: 0;
+  border: 1px solid rgba(99, 216, 209, .22);
+  border-radius: var(--oj-radius-md);
+  padding: 22px;
+  background: linear-gradient(155deg, rgba(99, 216, 209, .07), rgba(141, 122, 232, .055));
+}
+.ojp-path-grid article { position: relative; padding-top: 48px; }
+.ojp-path-grid article > span {
+  position: absolute;
+  top: 18px;
+  color: rgba(99, 216, 209, .72);
+  font-size: .75rem;
+  font-weight: 850;
+  letter-spacing: .16em;
+}
+.ojp-path-grid h3,
+.ojp-audience-grid h3,
+.ojp-planned-grid h3 { margin: 0 0 10px; color: #effcfd; }
+.ojp-path-grid p,
+.ojp-audience-grid p,
+.ojp-planned-grid p { margin: 0; }
+
+.ojp-current .ojp-capabilities { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.ojp-current .ojp-capabilities article { border-color: rgba(99, 216, 209, .24); background: rgba(30, 92, 105, .12); }
+.ojp-building {
+  background:
+    radial-gradient(circle at 88% 12%, rgba(141, 122, 232, .14), transparent 26%),
+    rgba(8, 20, 41, .88);
+}
+.ojp-planned-grid article { border-color: rgba(141, 122, 232, .26); }
+.ojp-planned-grid .project-status { margin-bottom: 16px; }
+
+.ojp-vision {
+  position: relative;
+  overflow: hidden;
+  margin-top: clamp(22px, 4vw, 38px);
+  border: 1px solid rgba(141, 122, 232, .36);
+  border-radius: var(--oj-radius-lg);
+  padding: clamp(32px, 6vw, 66px);
+  background:
+    linear-gradient(125deg, rgba(25, 35, 82, .96), rgba(12, 56, 68, .91)),
+    var(--oj-surface);
+}
+.ojp-vision::after {
+  position: absolute;
+  right: -7%;
+  bottom: 15%;
+  width: 42%;
+  height: 1px;
+  transform: rotate(-7deg);
+  background: linear-gradient(90deg, transparent, var(--ojp-turquoise), transparent);
+  content: "";
+}
+.ojp-vision h2 { max-width: 17ch; font-size: clamp(2.1rem, 4.5vw, 4rem); }
+.ojp-vision p { position: relative; z-index: 1; max-width: 70ch; }
+
+.ojp-guardrail {
+  display: grid;
+  grid-template-columns: minmax(220px, .65fr) minmax(0, 1.35fr);
+  gap: clamp(24px, 5vw, 64px);
+  align-items: center;
+  margin-top: clamp(22px, 4vw, 38px);
+  border: 1px solid rgba(242, 207, 99, .42);
+  border-left: 5px solid #f2cf63;
+  border-radius: var(--oj-radius-lg);
+  padding: clamp(30px, 5vw, 56px);
+  background: linear-gradient(135deg, rgba(242, 207, 99, .1), rgba(16, 31, 54, .95));
+}
+.ojp-guardrail h2 { margin-bottom: 0; font-size: clamp(2rem, 4vw, 3.5rem); }
+.ojp-guardrail > p { margin: 0; color: #edf4f5; font-size: clamp(1.02rem, 1.6vw, 1.2rem); line-height: 1.75; }
+.ojp-privacy { border-color: rgba(128, 215, 100, .28); }
+.ojp-privacy > p:last-child { color: #a9c4c3; font-size: .92rem; }
+
+.ojp-roadmap li { border-color: rgba(83, 151, 184, .27); }
+.ojp-roadmap li::before { color: rgba(99, 216, 209, .76); }
+.ojp-relations article { border-color: rgba(83, 151, 184, .28); }
+.ojp-final-cta {
+  border-color: rgba(99, 216, 209, .32);
+  background: linear-gradient(135deg, rgba(83, 151, 184, .19), rgba(141, 122, 232, .12));
+}
+.ojp-final-cta .button-primary { background: linear-gradient(135deg, var(--ojp-turquoise), var(--ojp-blue)); color: #061a24; }
+
+@media (max-width: 900px) {
+  .ojp-path-grid,
+  .ojp-audience-grid,
+  .ojp-planned-grid { grid-template-columns: 1fr 1fr; }
+  .ojp-path-grid article:last-child,
+  .ojp-audience-grid article:last-child,
+  .ojp-planned-grid article:last-child { grid-column: 1 / -1; }
+  .ojp-guardrail { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 620px) {
+  .ojp-page .project-hero__identity img { width: 158px; }
+  .ojp-path-grid,
+  .ojp-audience-grid,
+  .ojp-planned-grid,
+  .ojp-current .ojp-capabilities { grid-template-columns: 1fr; }
+  .ojp-path-grid article:last-child,
+  .ojp-audience-grid article:last-child,
+  .ojp-planned-grid article:last-child { grid-column: auto; }
+  .ojp-guardrail { border-left-width: 3px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ojp-page .project-hero__identity img { filter: none; }
+}
