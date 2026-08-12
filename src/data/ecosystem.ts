@@ -100,7 +100,7 @@ export const publicProjects: readonly PublicProject[] = [
     status: "development",
     statusLabel: "En développement",
     publicPagePath: "/ojcs",
-    publicPageAvailable: false,
+    publicPageAvailable: true,
     productAvailable: false,
     emblem: ojcsEmblem,
     emblemAlt: "Emblème communautaire orange du projet OJCS",

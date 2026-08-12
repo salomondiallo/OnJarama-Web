@@ -1,0 +1,30 @@
+import assert from "node:assert/strict";
+import { readFileSync } from "node:fs";
+
+const read = (file) => readFileSync(new URL(`../../${file}`, import.meta.url), "utf8");
+const app=read("src/App.tsx"), data=read("src/data/ecosystem.ts"), page=read("src/pages/OJCSPage.tsx"), editorial=read("src/data/projects/ojcs.ts"), hero=read("src/components/ProjectHero.tsx"), layout=read("src/layouts/PublicProjectLayout.tsx"), styles=read("src/styles/project-pages.css");
+const model=data.slice(data.indexOf("export const publicProjects"),data.indexOf("/**\n * Compatibility projection"));
+const block=(id)=>{const s=model.indexOf(`id: "${id}"`),n=model.indexOf("\n  {",s+1);return model.slice(s,n===-1?undefined:n)};
+
+assert.match(app,/path="\/ojcs" element={<OJCSPage/);
+assert.match(app,/path="\/OJCS" element={<Navigate to="\/ojcs" replace/);
+assert.doesNotMatch(app,/path="\/ojcs" element={<ProjectPlaceholderPage/);
+assert.match(block("ojcs-connect"),/publicPageAvailable:\s*true[\s\S]*productAvailable:\s*false/);
+for(const id of ["academy","path","web"]) assert.match(block(id),/publicPageAvailable:\s*true/);
+assert.equal((model.match(/publicPageAvailable:\s*true/g)??[]).length,4);
+assert.match(page,/<ProjectHero project=\{ojcsProject\}/);
+assert.equal((`${page}\n${hero}`.match(/<h1\b/g)??[]).length,1);
+assert.match(layout,/showAmbience=\{false\}/);
+assert.doesNotMatch(page,/TreeHeroSection|TreeScene|dynamicSky|founder-canonical|scene-day|scene-night/i);
+assert.match(editorial,/canonicalUrl:\s*"https:\/\/onjarama\.ca\/ojcs"/);
+for(const axis of ["Explorer","Localiser","Qualifier","Contacter"]) assert.match(editorial,new RegExp(`title: "${axis}"`));
+assert.match(editorial,/réalités de la Guinée/);
+assert.match(editorial,/sans prétendre à une vérification actuelle/);
+assert.match(editorial,/après qualification des règles nécessaires/);
+assert.doesNotMatch(`${page}\n${editorial}`,/Rejoindre|Créer un profil|Trouver un service|Publier|Acheter|Réserver|S’inscrire/);
+assert.doesNotMatch(`${page}\n${editorial}`,/marketplace|paiement|transaction|commission|Transport|Taxi/i);
+assert.match(editorial,/label:\s*"Découvrir l’écosystème"[\s\S]*href:\s*"\/#ecosystem-projects"/);
+assert.match(editorial,/label:\s*"Voir la roadmap"[\s\S]*href:\s*"\/#roadmap"/);
+assert.match(styles,/\.ojcs-page/);
+assert.match(styles,/@media\(prefers-reduced-motion:reduce\)/);
+console.log("OJW-ECOSYSTEM-02-E3: OJCS public page, Connect axes, trust guardrails, commerce exclusion and Hero isolation validated.");
