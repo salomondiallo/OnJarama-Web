@@ -3,7 +3,7 @@ import { readFileSync } from "node:fs";
 
 const read = (file) => readFileSync(new URL(`../../${file}`, import.meta.url), "utf8");
 const app=read("src/App.tsx"), data=read("src/data/ecosystem.ts"), page=read("src/pages/OJCSPage.tsx"), editorial=read("src/data/projects/ojcs.ts"), hero=read("src/components/ProjectHero.tsx"), layout=read("src/layouts/PublicProjectLayout.tsx"), styles=read("src/styles/project-pages.css");
-const model=data.slice(data.indexOf("export const publicProjects"),data.indexOf("/**\n * Compatibility projection"));
+const model=data.slice(data.indexOf("export const ecosystemEntities"),data.indexOf("export const publicApplications"));
 const block=(id)=>{const s=model.indexOf(`id: "${id}"`),n=model.indexOf("\n  {",s+1);return model.slice(s,n===-1?undefined:n)};
 
 assert.match(app,/path="\/ojcs" element={<OJCSPage/);

@@ -7,6 +7,7 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
+    "test:ojw:ecosystem-03-a": "node scripts/architecture/ojw-ecosystem-03-a-entity-taxonomy.test.mjs",
     "test:ojw:ecosystem-02-e3": "node scripts/architecture/ojw-ecosystem-02-e3-ojcs-public-page.test.mjs",
     "test:ojw:ecosystem-02-d3": "node scripts/architecture/ojw-ecosystem-02-d3-ojp-public-page.test.mjs",
     "test:ojw:ecosystem-02-c3": "node scripts/architecture/ojw-ecosystem-02-c3-oja-public-page.test.mjs",

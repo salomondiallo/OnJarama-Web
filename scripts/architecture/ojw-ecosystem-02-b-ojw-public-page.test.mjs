@@ -11,7 +11,7 @@ const editorial = read("src/data/projects/ojw.ts");
 const layout = read("src/layouts/PublicProjectLayout.tsx");
 const home = read("src/pages/HomePage.tsx");
 
-const publicModel = data.slice(data.indexOf("export const publicProjects"), data.indexOf("/**\n * Compatibility projection"));
+const publicModel = data.slice(data.indexOf("export const ecosystemEntities"), data.indexOf("export const publicApplications"));
 const projectBlock = (id) => {
   const start = publicModel.indexOf(`id: "${id}"`);
   const next = publicModel.indexOf("\n  {", start + 1);

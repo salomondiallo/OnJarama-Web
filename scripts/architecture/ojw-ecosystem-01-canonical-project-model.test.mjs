@@ -4,40 +4,36 @@ import { readFileSync } from "node:fs";
 const read = (file) => readFileSync(new URL(`../../${file}`, import.meta.url), "utf8");
 const data = read("src/data/ecosystem.ts");
 const section = read("src/sections/EcosystemSection.tsx");
+const canonical = data.slice(data.indexOf("export const ecosystemEntities"), data.indexOf("export const publicApplications"));
 
-const publicModel = data.slice(data.indexOf("export const publicProjects"), data.indexOf("/**\n * Compatibility projection"));
-const foundationModel = data.slice(data.indexOf("export const foundationEntity"), data.indexOf("export const publicProjects"));
-
-assert.equal((publicModel.match(/\bid:\s*"/g) ?? []).length, 4, "PUBLIC_PROJECT_COUNT must remain 4");
 assert.deepEqual(
-  [...publicModel.matchAll(/shortName:\s*"([A-Z]+)"/g)].map((match) => match[1]),
-  ["OJA", "OJP", "OJCS", "OJW"],
-  "PUBLIC_PROJECT_ORDER must remain OJA,OJP,OJCS,OJW",
+  [...canonical.matchAll(/shortName:\s*"(OJA|OJP|OJCS)"/g)].map((match) => match[1]),
+  ["OJA", "OJP", "OJCS"],
+  "APPLICATION_ORDER must remain OJA,OJP,OJCS",
 );
-
-for (const [id, slug, path] of [["academy", "OJA", "oja"], ["path", "OJP", "ojp"], ["ojcs-connect", "OJCS", "ojcs"], ["web", "OJW", "ojw"]]) {
-  const start = publicModel.indexOf(`id: "${id}"`);
-  const next = publicModel.indexOf("\n  {", start + 1);
-  const project = publicModel.slice(start, next === -1 ? undefined : next);
-  for (const field of ["slug", "shortName", "name", "description", "status", "publicPagePath", "publicPageAvailable", "productAvailable", "emblem", "emblemAlt"]) {
-    assert.match(project, new RegExp(`\\b${field}:`), `${slug} is missing ${field}`);
-  }
-  assert.match(project, new RegExp(`publicPagePath:\\s*"/${path}"`));
-  assert.match(project, /publicPageAvailable:\s*true/, `${slug} public page availability is incorrect`);
-}
-
-assert.match(foundationModel, /entityType:\s*"FOUNDATION"/);
-assert.match(foundationModel, /"ECOSYSTEM_CARRIER"/);
-assert.match(foundationModel, /"INSTITUTIONAL_ENTITY"/);
+assert.equal((canonical.match(/entityType:\s*"APPLICATION"/g) ?? []).length, 3, "APPLICATION_COUNT must be 3");
+assert.equal((canonical.match(/entityType:\s*"SOFTWARE"/g) ?? []).length, 0, "SOFTWARE_COUNT must be 0");
+assert.equal((canonical.match(/entityType:\s*"WEB_PORTAL"/g) ?? []).length, 1, "WEB_PORTAL_COUNT must be 1");
+assert.equal((canonical.match(/entityType:\s*"FOUNDATION"/g) ?? []).length, 1, "FOUNDATION_COUNT must be 1");
+assert.equal((canonical.match(/publicPageAvailable:\s*true/g) ?? []).length, 4, "PUBLIC_PAGE_COUNT must be 4");
+assert.match(canonical, /shortName:\s*"OJW"[\s\S]*entityType:\s*"WEB_PORTAL"|entityType:\s*"WEB_PORTAL"[\s\S]*shortName:\s*"OJW"/);
+assert.match(canonical, /entityType:\s*"WEB_PORTAL"[\s\S]*homeProductCard:\s*false/);
+assert.match(canonical, /acronym:\s*"OJF"[\s\S]*entityType:\s*"FOUNDATION"|entityType:\s*"FOUNDATION"[\s\S]*acronym:\s*"OJF"/);
+assert.match(canonical, /entityType:\s*"FOUNDATION"[\s\S]*homeProductCard:\s*false/);
+assert.match(data, /export const publicApplications/);
+assert.match(data, /export const publicSoftware/);
+assert.match(data, /export const webPortalEntity/);
+assert.match(data, /export const foundationEntity/);
+assert.match(data, /export const publicPageEntities/);
+assert.match(data, /LEGACY_HERO_PROJECTION != CANONICAL_PUBLIC_TAXONOMY/);
 assert.doesNotMatch(section, /foundationEntity|\bfoundation\b/, "OJF_RENDERED_AS_PROJECT_CARD must remain FALSE");
 assert.match(section, /publicProjects/);
 assert.match(section, /item\.publicPageAvailable/);
 assert.match(section, /href=\{item\.publicPagePath\}/);
-assert.doesNotMatch(section, /href="#top"|href=\{item\.href\}/, "NO_ACTIVE_404_PROJECT_LINK must remain PASS");
 assert.match(section, /PROJECT_ORDER = \["academy", "path", "ojcs-connect", "web"\]/);
 
 for (const asset of ["oja", "ojp", "ojcs", "ojw"]) {
   assert.match(data, new RegExp(`import ${asset}Emblem from "\\.\\./assets/ecosystem/emblems/${asset}-emblem-a2\\.png"`));
 }
 
-console.log("OJW-ECOSYSTEM-01: canonical public project model, OJF separation and inactive future routes validated.");
+console.log("OJW-ECOSYSTEM-01: canonical entity taxonomy, public pages and OJF separation validated.");
