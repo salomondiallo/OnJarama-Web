@@ -10,12 +10,17 @@ export function EcosystemSection() {
   return (
     <section id="ecosystem-projects" className="section ecosystem-section" aria-labelledby="ecosystem-projects-title">
       <div className="section-heading ecosystem-section__heading">
-        <p className="section-kicker">L’écosystème OnJarama</p>
-        <h2 id="ecosystem-projects-title">Un écosystème, plusieurs chemins pour avancer</h2>
-        <p>
-          OnJarama réunit des applications, de futurs logiciels métier, un portail Web public et un socle institutionnel
-          au service d’une même vision.
-        </p>
+        <div>
+          <p className="section-kicker">L’écosystème OnJarama</p>
+          <h2 id="ecosystem-projects-title">Une vision commune, des voies d’action distinctes.</h2>
+          <p>OnJarama relie des applications, une famille de solutions métier, un portail Web public et un socle institutionnel au service d’une même ambition humaine.</p>
+        </div>
+        <dl className="ecosystem-section__map" aria-label="Lecture structurée de l’écosystème">
+          <div><dt>Applications</dt><dd>OJA · OJP · OJCS</dd></div>
+          <div><dt>Solutions métier</dt><dd>Une famille en structuration</dd></div>
+          <div><dt>Portail public</dt><dd>OJW</dd></div>
+          <div><dt>Socle institutionnel</dt><dd>OJF</dd></div>
+        </dl>
       </div>
 
       <div className="ecosystem-territories">
@@ -51,7 +56,12 @@ export function EcosystemSection() {
           </div>
           <div className="ecosystem-software-editorial">
             <span className="ecosystem-software-editorial__mark" aria-hidden="true">⌁</span>
-            <p>Des solutions métier conçues pour aider des organisations et institutions à structurer leurs activités et leurs opérations.</p>
+            <p>Cette famille accueillera les solutions métier OnJarama dédiées à l’organisation, aux opérations et à la coordination.</p>
+            <ul>
+              <li>Chaque solution sera définie à partir d’un besoin qualifié.</li>
+              <li>Son identité sera établie après qualification et ratification.</li>
+              <li>Aucun logiciel n’est actuellement annoncé publiquement.</li>
+            </ul>
           </div>
         </section>
       </div>
@@ -60,17 +70,21 @@ export function EcosystemSection() {
         <article className="ecosystem-role ecosystem-role--portal">
           <div className="ecosystem-role__emblem"><img src={webPortalEntity.emblem} alt={webPortalEntity.emblemAlt} width="1024" height="1024" /></div>
           <div className="ecosystem-role__content">
-            <p className="section-kicker">Point d’entrée officiel</p>
+            <p className="section-kicker">Portail public actif</p>
             <h3>OJW — Le portail public</h3>
-            <p>Le portail Web public d’OnJarama présente les applications, les logiciels et les composantes institutionnelles, et relie la vision d’ensemble.</p>
+            <p>OJW est le point d’entrée Web officiel pour découvrir les applications, les futures solutions métier et la dimension institutionnelle d’OnJarama.</p>
             <a className="ecosystem-role__link" href={webPortalEntity.publicPagePath}>Découvrir OJW <span aria-hidden="true">→</span></a>
           </div>
         </article>
         <article className="ecosystem-role ecosystem-role--foundation">
           <div className="ecosystem-role__content">
-            <p className="section-kicker">Socle institutionnel</p>
-            <h3>{foundationEntity.acronym} — Le socle d’OnJarama</h3>
-            <p>OJF porte le socle institutionnel d’OnJarama : sa vision, ses principes, ses engagements et la future présentation de sa Constitution.</p>
+            <p className="section-kicker">Fondation institutionnelle</p>
+            <h3>{foundationEntity.acronym} — Le socle présent d’OnJarama</h3>
+            <p>OJF porte dès aujourd’hui la continuité institutionnelle de l’écosystème et son introduction publique à la Constitution OnJarama.</p>
+            <ul className="ecosystem-foundation-pillars">
+              <li>Vision et principes</li><li>Valeurs et engagements</li><li>Objectifs institutionnels</li><li>Constitution OnJarama</li>
+            </ul>
+            <p className="ecosystem-role__note">Ces contenus seront approfondis progressivement, sans remettre en cause le rôle institutionnel déjà établi d’OJF.</p>
           </div>
         </article>
       </div>

@@ -146,7 +146,7 @@ export const ecosystemEntities: readonly EcosystemEntity[] = [
     acronym: "OJF",
     name: "OnJarama Foundation",
     statusLabel: "En préparation",
-    description: "Pilier institutionnel et social chargé de structurer l’impact, les partenariats et les futures initiatives d’intérêt collectif d’OnJarama.",
+    description: "Socle institutionnel présent d’OnJarama, porteur de sa vision, de ses principes, de ses engagements, de ses objectifs et de l’introduction publique à sa Constitution.",
     kind: "institutional",
     entityType: "FOUNDATION",
     homeProductCard: false,

@@ -1,5 +1,5 @@
 export const roadmap = [
-  { year: "Maintenant", text: "Portail Web stable, identité premium et base institutionnelle." },
-  { year: "Ensuite", text: "Pages dédiées : écosystème, contact, constitution et services." },
-  { year: "Après", text: "Structuration progressive d’OnJarama Foundation, de sa gouvernance et de ses futurs partenariats institutionnels." },
+  { year: "Ce qui existe", text: "Le portail Web public, les premiers projets et applications, et OJF comme socle institutionnel de l’écosystème." },
+  { year: "Ce qui se consolide", text: "Les applications, les contenus, l’expérience publique, l’architecture de l’écosystème ainsi que la gouvernance et les contenus constitutionnels." },
+  { year: "Ce qui s’étendra", text: "Les solutions métier, les partenariats, l’implantation et l’impact institutionnel et social d’OnJarama." },
 ];

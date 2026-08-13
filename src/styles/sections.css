@@ -4,7 +4,7 @@
   padding: 64px 0;
 }
 .section[id] { scroll-margin-top: 92px; }
-.tree-hero + .section { width: min(1180px, calc(100% - 48px)); padding-top: 48px; }
+.tree-hero + .section { width: min(1180px, calc(100% - 48px)); }
 .section-heading { max-width: 760px; margin-bottom: clamp(24px, 3vw, 34px); }
 .section-heading > p:last-child { max-width: 62ch; font-size: 1rem; line-height: 1.7; }
 .section-split {
@@ -14,10 +14,16 @@
   align-items: start;
 }
 .section-text { max-width: 58ch; color: var(--oj-muted); font-size: clamp(1rem, 1.4vw, 1.15rem); line-height: 1.78; }
-#about { align-items: center; border-bottom: 1px solid rgba(255,255,255,.09); }
+#about { align-items: center; border-block: 1px solid rgba(255,255,255,.09);margin-top:clamp(18px,4vw,54px);padding-block:clamp(72px,9vw,116px) }
 #about h2 { max-width: 12ch; }
 #about .section-text { margin: 0; }
+.institutional-section__body{display:grid;gap:18px}
+.institutional-section__body>p{margin:0;color:var(--oj-muted);line-height:1.75}
 .mission-band {
+  display:grid;
+  grid-template-columns:minmax(0,.9fr) minmax(320px,1.1fr);
+  gap:clamp(32px,6vw,76px);
+  align-items:end;
   border: 1px solid var(--oj-border);
   background: linear-gradient(135deg, rgba(242,207,99,.13), rgba(56,189,248,.08));
   border-radius: var(--oj-radius);
@@ -25,7 +31,7 @@
   box-shadow: var(--oj-shadow);
 }
 .mission-band h2 { max-width: 18ch; }
-.mission-band > p:last-child { max-width: 64ch; margin-bottom: 0; }
+.mission-band > p:last-child { max-width: 54ch; margin:0;color:var(--oj-muted);font-size:clamp(1rem,1.4vw,1.14rem);line-height:1.75 }
 .quality-grid, .timeline {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -39,15 +45,21 @@
   padding: 22px;
   background: var(--oj-surface);
 }
+.quality-grid{gap:clamp(14px,2vw,24px)}
+.quality-grid article{border-width:0 0 0 1px;border-radius:0;min-height:0;padding:8px 22px;background:transparent}
+.timeline{position:relative;gap:0;border-block:1px solid var(--oj-border)}
+.timeline article{border:0;border-right:1px solid var(--oj-border);border-radius:0;min-height:190px;padding:28px;background:transparent}
+.timeline article:last-child{border-right:0}
 .quality-grid article::before,.timeline article::before{content:"";display:block;width:32px;height:2px;margin-bottom:16px;background:linear-gradient(90deg,var(--oj-gold),rgba(56,189,248,.65))}
 .quality-grid strong,.timeline strong{display:block;margin-bottom:9px;font-size:1rem;letter-spacing:.01em}
 .quality-grid p,.timeline p{margin:0;font-size:.92rem;line-height:1.6}
-#vision > .section-text { margin-bottom: 28px; }
+#vision{padding-block:clamp(76px,9vw,116px)}
+#vision > .section-text { margin-bottom: 38px; }
 #roadmap { padding-bottom: clamp(68px, 8vw, 96px); }
 .app:has(.tree-hero.is-day) #about{border-bottom-color:rgba(192,218,207,.22)}
 .app:has(.tree-hero.is-day) .section-heading>p:last-child,.app:has(.tree-hero.is-day) .section-text{color:#c7dad4}
 .app:has(.tree-hero.is-day) .mission-band>p:last-child{color:#345a55}
-.app:has(.tree-hero.is-day) .quality-grid article,.app:has(.tree-hero.is-day) .timeline article{color:#173a36;border-color:rgba(83,119,105,.34);background:linear-gradient(145deg,rgba(235,243,233,.96),rgba(210,226,216,.94));box-shadow:0 16px 34px rgba(2,22,28,.18)}
+.app:has(.tree-hero.is-day) .quality-grid article,.app:has(.tree-hero.is-day) .timeline article{color:#173a36;border-color:rgba(83,119,105,.34);background:rgba(235,243,233,.82)}
 .app:has(.tree-hero.is-day) .quality-grid p,.app:has(.tree-hero.is-day) .timeline p{color:#345a55}
 .app:has(.tree-hero.is-day) .mission-band{color:#173a36;border-color:rgba(104,91,37,.38);background:linear-gradient(135deg,rgba(239,232,199,.96),rgba(207,229,220,.94));box-shadow:0 20px 48px rgba(2,22,28,.2)}
 @media (max-width: 900px) and (min-width: 761px) {
@@ -61,10 +73,13 @@
   .section[id] { scroll-margin-top: 84px; }
   .tree-hero + .section { width: min(100% - 24px, 1120px); padding-top: 38px; }
   .section-split, .quality-grid, .timeline { grid-template-columns: 1fr; }
+  .mission-band{grid-template-columns:1fr;gap:22px}
   .section-heading { margin-bottom: 22px; }
   #about { gap: 20px; }
   #about h2 { max-width: 14ch; }
   .quality-grid article,.timeline article{min-height:0;padding:19px}
+  .timeline article{border-right:0;border-bottom:1px solid var(--oj-border)}
+  .timeline article:last-child{border-bottom:0}
   .mission-band { padding: 26px; }
 }
 

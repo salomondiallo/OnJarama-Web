@@ -3,15 +3,15 @@ export function VisionSection() {
     <section id="vision" className="section" aria-labelledby="vision-title">
       <div className="section-heading">
         <p className="section-kicker">Notre vision</p>
-        <h2 id="vision-title">Lisible, cohérent, durable.</h2>
+        <h2 id="vision-title">Une technologie utile, guidée par une responsabilité humaine.</h2>
       </div>
       <p className="section-text">
-        À terme, OnJarama Foundation portera la dimension institutionnelle et sociale de l’écosystème, en structurant son impact et ses partenariats.
+        OJF porte la vision, les principes et les engagements qui donnent une continuité institutionnelle aux initiatives OnJarama.
       </p>
       <div className="quality-grid">
-        <article><strong>Lisibilité</strong><p>Hiérarchie claire, textes courts, contrastes renforcés.</p></article>
-        <article><strong>Mobile</strong><p>Sections respirantes, navigation simple, boutons accessibles.</p></article>
-        <article><strong>Cohérence</strong><p>Couleurs OnJarama harmonisées avec Path et Foundation.</p></article>
+        <article><strong>Utile et accessible</strong><p>Des outils compréhensibles, adaptés aux réalités d’usage et ouverts au plus grand nombre.</p></article>
+        <article><strong>Autonome et cohérent</strong><p>Des parcours qui renforcent la capacité d’agir tout en reliant les composantes de l’écosystème.</p></article>
+        <article><strong>Humain et durable</strong><p>Des choix responsables, inscrits dans le temps et attentifs aux personnes comme aux institutions.</p></article>
       </div>
     </section>
   );
