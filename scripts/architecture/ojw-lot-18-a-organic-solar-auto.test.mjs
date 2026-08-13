@@ -91,6 +91,6 @@ assert.match(scene, /const targetMode = dynamicSky\.resolvedDayNightMode/);
 assert.match(scene, /const visibleMode = loadedModes\.has\(targetMode\) \? targetMode : lastVisibleMode/);
 assert.doesNotMatch(hero, /<InstitutionalProjectBand/);
 assert.match(app, /<TreeHeroSection mode=\{mode\} preference=\{preference\} preparedMode=\{preparedMode\} \/>[\s\S]*<EcosystemSection \/>/);
-assert.match(ecosystemSection, /PROJECT_ORDER = \["academy", "path", "ojcs-connect", "web"\]/);
+assert.match(ecosystemSection, /publicApplications\.map/);
 
 console.log("OJW-LOT-18-A: calcul solaire saisonnier, confidentialité, timer unique et vie organique validés.");

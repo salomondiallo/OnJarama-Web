@@ -15,8 +15,8 @@ const footerCss = read("src/styles/footer.css");
 const header = read("src/components/Header.tsx");
 const headerCss = read("src/styles/header.css");
 
-assert.match(section, /PROJECT_ORDER\s*=\s*\["academy",\s*"path",\s*"ojcs-connect",\s*"web"\]/);
-assert.match(section, /data-project-count=\{projects\.length\}/);
+assert.match(section, /data-application-count=\{publicApplications\.length\}/);
+assert.match(section, /data-software-count=\{publicSoftware\.length\}/);
 assert.equal((ecosystem.match(/\bid:\s*"/g) ?? []).length, 5, "The ecosystem data source must retain all five institutional records");
 for (const acronym of ["OJF", "OJA", "OJP", "OJCS", "OJW"]) {
   assert.match(ecosystem, new RegExp(`acronym:\\s*"${acronym}"`));
@@ -29,7 +29,7 @@ assert.match(treeCss, /\.tree-hero__intro\{[\s\S]*background:rgba\(5,20,31,\.72\
 assert.doesNotMatch(treeCss, /\.tree-hero__intro\{[^}]*background:\s*(?:#fff|white)/);
 
 assert.doesNotMatch(treeCss, /\.institutional-projects|\.institutional-card|\.tree-hero__institutional/);
-assert.match(cardsCss, /grid-template-columns: repeat\(4, minmax\(0, 1fr\)\)/);
+assert.match(cardsCss, /grid-template-columns: minmax\(0, 1\.65fr\) minmax\(280px, \.85fr\)/);
 assert.match(cardsCss, /@media \(max-width: 620px\)[\s\S]*grid-template-columns: 1fr/);
 assert.match(cardsCss, /\.ecosystem-card__link:focus-visible/);
 assert.match(treeCss, /\.tree-hero__cta\s*\{[^}]*min-height:48px/);

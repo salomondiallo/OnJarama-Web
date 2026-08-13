@@ -20,7 +20,9 @@ assert.doesNotMatch(app, /path="\/ojf"/i, "OJF_PROJECT_ROUTE must remain FALSE")
 assert.match(app, /path="\*" element={<NotFoundPage/);
 assert.match(notFound, /<h1/);
 assert.match(notFound, /href="\/"/);
-assert.match(section, /const hasPublicPage = item\.publicPageAvailable/);
+assert.match(section, /publicApplications\.map/);
+assert.match(section, /href=\{item\.publicPagePath\}/);
+assert.match(section, /href=\{webPortalEntity\.publicPagePath\}/);
 assert.doesNotMatch(section, /publicPageAvailable:\s*true/);
 assert.match(header, /isHomePage \? "" : "\/"/);
 assert.match(home, /<Header\s+isHomePage/);

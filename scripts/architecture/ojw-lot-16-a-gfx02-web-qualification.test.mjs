@@ -148,7 +148,7 @@ assert.match(styles, /\.tree-inscription\{[^}]*left:76%;top:66%/);
 assert.ok(scene.includes('className="tree-inscription"'));
 assert.ok(scene.includes('className="gfx02-lamp-posts"'));
 assert.doesNotMatch(readFileSync(institutionalHeroPath, "utf8"), /<InstitutionalProjectBand|Cinq projets, une vision commune/);
-assert.match(readFileSync(ecosystemSectionPath, "utf8"), /PROJECT_ORDER = \["academy", "path", "ojcs-connect", "web"\]/);
+assert.match(readFileSync(ecosystemSectionPath, "utf8"), /publicApplications\.map/);
 
 assert.doesNotMatch(scene, /https?:\/\//);
 assert.doesNotMatch(styles, /url\(\s*["']?https?:\/\//);

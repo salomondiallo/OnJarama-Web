@@ -26,11 +26,12 @@ assert.match(data, /export const webPortalEntity/);
 assert.match(data, /export const foundationEntity/);
 assert.match(data, /export const publicPageEntities/);
 assert.match(data, /LEGACY_HERO_PROJECTION != CANONICAL_PUBLIC_TAXONOMY/);
-assert.doesNotMatch(section, /foundationEntity|\bfoundation\b/, "OJF_RENDERED_AS_PROJECT_CARD must remain FALSE");
-assert.match(section, /publicProjects/);
-assert.match(section, /item\.publicPageAvailable/);
+assert.match(section, /foundationEntity/);
+assert.doesNotMatch(section.match(/ecosystem-role--foundation[\s\S]*?<\/article>/)?.[0] ?? "", /ecosystem-card|href=/, "OJF_RENDERED_AS_PROJECT_CARD must remain FALSE");
+assert.match(section, /publicApplications/);
+assert.match(section, /publicSoftware/);
 assert.match(section, /href=\{item\.publicPagePath\}/);
-assert.match(section, /PROJECT_ORDER = \["academy", "path", "ojcs-connect", "web"\]/);
+assert.match(section, /href=\{webPortalEntity\.publicPagePath\}/);
 
 for (const asset of ["oja", "ojp", "ojcs", "ojw"]) {
   assert.match(data, new RegExp(`import ${asset}Emblem from "\\.\\./assets/ecosystem/emblems/${asset}-emblem-a2\\.png"`));

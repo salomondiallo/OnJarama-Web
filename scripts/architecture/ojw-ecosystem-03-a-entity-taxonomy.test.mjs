@@ -24,7 +24,11 @@ assert.match(canonical, /entityType: "WEB_PORTAL"[\s\S]*homeProductCard: false[\
 assert.match(canonical, /acronym: "OJF"[\s\S]*entityType: "FOUNDATION"[\s\S]*homeProductCard: false/);
 assert.doesNotMatch(canonical, /\bOJS\b|OnJarama School|\bOJE\b/);
 assert.match(section, /id="ecosystem-projects"/);
-assert.match(section, /PROJECT_ORDER = \["academy", "path", "ojcs-connect", "web"\]/, "03-A must not visually recompose Home");
+assert.match(section, /publicApplications/);
+assert.match(section, /publicSoftware/);
+assert.match(section, /webPortalEntity/);
+assert.match(section, /foundationEntity/);
+assert.doesNotMatch(section, /publicProjects/);
 for (const route of ["oja", "ojp", "ojcs", "ojw"]) assert.match(app, new RegExp(`path="/${route}"`));
 assert.match(data, /LEGACY_HERO_PROJECTION != CANONICAL_PUBLIC_TAXONOMY/);
 

@@ -19,7 +19,7 @@ export const ojwProject: PublicProjectEditorial = {
     "Les visiteurs qui recherchent ses projets, sa vision ou sa trajectoire publique.",
   ],
   currentCapabilities: [
-    { title: "Présenter l’écosystème", description: "La Home donne une vue commune d’OJA, OJP, OJCS et OJW.", stage: "CURRENT" },
+    { title: "Présenter l’écosystème", description: "La Home distingue les applications, les futurs logiciels métier, le portail public OJW et le socle institutionnel OJF.", stage: "CURRENT" },
     { title: "Porter le socle institutionnel", description: "Le portail publie la vision, la mission et la roadmap actuellement disponibles.", stage: "CURRENT" },
     { title: "Offrir une entrée publique", description: "OnJarama Web constitue l’adresse publique principale pour découvrir OnJarama.", stage: "CURRENT" },
   ],
