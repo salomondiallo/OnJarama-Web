@@ -1,4 +1,5 @@
 import { ProjectHero } from "../components/ProjectHero";
+import { PublicProjectExplorer } from "../components/PublicProjectExplorer";
 import { ojwProject } from "../data/projects";
 import { usePageMetadata } from "../hooks/usePageMetadata";
 import { PublicProjectLayout } from "../layouts/PublicProjectLayout";
@@ -86,6 +87,8 @@ export default function OJWPage() {
           <a className="button button-secondary" href={ojwProject.secondaryAction.href}>{ojwProject.secondaryAction.label}</a>
         </div>
       </section>
+
+      <PublicProjectExplorer currentProject="OJW" />
       </div>
     </PublicProjectLayout>
   );

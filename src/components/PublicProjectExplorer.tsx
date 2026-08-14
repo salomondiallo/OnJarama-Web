@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { publicPageEntities } from "../data/ecosystem";
 
 type PublicProjectExplorerProps = {
-  currentProject: "OJA" | "OJP" | "OJCS";
+  currentProject: "OJA" | "OJP" | "OJCS" | "OJW";
 };
 
 const publicNatureLabel = {
