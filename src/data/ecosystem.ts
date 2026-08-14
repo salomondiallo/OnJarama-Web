@@ -16,6 +16,7 @@ type ProductFields = {
   shortName: string;
   acronym: string;
   status: EcosystemState;
+  publicServiceAvailable: boolean;
   productAvailable: boolean;
   emblem: string;
   emblemAlt: string;
@@ -85,6 +86,7 @@ export const ecosystemEntities: readonly EcosystemEntity[] = [
     statusLabel: "En développement",
     publicPagePath: "/oja",
     publicPageAvailable: true,
+    publicServiceAvailable: false,
     productAvailable: false,
     emblem: ojaEmblem,
     emblemAlt: "Emblème organique vert du projet OJA",
@@ -102,6 +104,7 @@ export const ecosystemEntities: readonly EcosystemEntity[] = [
     statusLabel: "En développement",
     publicPagePath: "/ojp",
     publicPageAvailable: true,
+    publicServiceAvailable: false,
     productAvailable: false,
     emblem: ojpEmblem,
     emblemAlt: "Emblème-graine bleu et violet du projet OJP",
@@ -119,6 +122,7 @@ export const ecosystemEntities: readonly EcosystemEntity[] = [
     statusLabel: "En développement",
     publicPagePath: "/ojcs",
     publicPageAvailable: true,
+    publicServiceAvailable: false,
     productAvailable: false,
     emblem: ojcsEmblem,
     emblemAlt: "Emblème communautaire orange du projet OJCS",
@@ -136,7 +140,8 @@ export const ecosystemEntities: readonly EcosystemEntity[] = [
     statusLabel: "Vous êtes ici",
     publicPagePath: "/ojw",
     publicPageAvailable: true,
-    productAvailable: true,
+    publicServiceAvailable: true,
+    productAvailable: false,
     emblem: ojwEmblem,
     emblemAlt: "Emblème-portail bleu du projet OJW",
     legacyHeroHref: "#top",

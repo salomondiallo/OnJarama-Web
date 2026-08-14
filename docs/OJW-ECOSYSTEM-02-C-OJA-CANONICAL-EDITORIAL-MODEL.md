@@ -2,9 +2,9 @@
 
 ## Statut du document
 
-Ce document constitue la représentation éditoriale proposée pour la future page publique `/oja`. Il ne publie pas la page, n'active pas la carte OJA et ne vaut pas déclaration de disponibilité du produit.
+Ce document constitue la représentation éditoriale canonique de la page publique `/oja`. La page éditoriale est désormais active ; cela ne vaut pas déclaration de disponibilité du produit.
 
-- `OJA_PUBLIC_PAGE_AVAILABLE = FALSE`
+- `OJA_PUBLIC_PAGE_AVAILABLE = TRUE`
 - `OJA_PRODUCT_AVAILABLE = FALSE`
 - `OJA_PRODUCT_CTA = NONE`
 - `OFFLINE_FIRST_PUBLIC_CLAIM = SAFE_WITH_QUALIFICATION`

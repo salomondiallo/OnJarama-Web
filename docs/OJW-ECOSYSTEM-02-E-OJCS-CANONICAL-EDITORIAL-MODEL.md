@@ -50,17 +50,17 @@ réutilisée.
 | Page publique disponible | Non |
 | Produit disponible | Non |
 
-La future page présente un projet en développement. Elle ne constitue ni un
+La page éditoriale publique est désormais active et présente un projet en développement. Elle ne constitue ni un
 annuaire public disponible, ni un service commercial, ni une preuve de
 disponibilité produit.
 
 ## Disponibilité et honnêteté produit
 
 Une fondation applicative réelle existe, mais elle n’autorise pas à présenter
-OJCS comme ouvert au public.
+le produit OJCS comme disponible au public.
 
 ```text
-OJCS_PUBLIC_PAGE_AVAILABLE = FALSE
+OJCS_PUBLIC_PAGE_AVAILABLE = TRUE
 OJCS_PRODUCT_AVAILABLE = FALSE
 OJCS_PRODUCT_URL_VERIFIED = FALSE
 OJCS_PRODUCT_CTA = NONE
@@ -404,7 +404,7 @@ progressive doivent former l’identité propre de la page.
 ## Invariants éditoriaux et fonctionnels
 
 ```text
-OJCS_PUBLIC_PAGE_AVAILABLE = FALSE
+OJCS_PUBLIC_PAGE_AVAILABLE = TRUE
 OJCS_PRODUCT_AVAILABLE = FALSE
 OJCS_PRODUCT_CTA = NONE
 

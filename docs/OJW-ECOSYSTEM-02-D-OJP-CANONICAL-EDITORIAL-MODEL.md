@@ -2,14 +2,14 @@
 
 ## Statut du document
 
-Ce document définit le modèle éditorial candidat de la future page publique `/ojp`.
-Il ne constitue ni une activation de la page, ni une annonce de disponibilité du produit.
+Ce document définit le modèle éditorial canonique de la page publique `/ojp`.
+La page éditoriale est désormais active ; cela ne constitue pas une annonce de disponibilité du produit.
 
 - Classification : documentation canonique hors runtime
 - Projet : OJP
 - Nom canonique : OnJarama Path
 - Statut public : Projet en développement actif
-- Page publique disponible : non
+- Page publique disponible : oui
 - Produit disponible : non
 - URL produit vérifiée : aucune
 - CTA produit : aucun
@@ -366,7 +366,7 @@ un simple clone visuel ou rédactionnel d’OJA.
 ## Invariants obligatoires
 
 ```text
-OJP_PUBLIC_PAGE_AVAILABLE = FALSE
+OJP_PUBLIC_PAGE_AVAILABLE = TRUE
 OJP_PRODUCT_AVAILABLE = FALSE
 OJP_PRODUCT_CTA = NONE
 
