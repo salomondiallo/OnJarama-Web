@@ -469,3 +469,62 @@ body:has(.ojcs-page) .skip-link { min-height: 44px; }
 @media(max-width:900px){.ojw-destinations__grid{grid-template-columns:1fr 1fr}.ojw-destinations__grid a:last-child{grid-column:1/-1}.ojw-foundation{grid-template-columns:1fr}}
 @media(max-width:620px){.ojw-presence__facts,.ojw-map__grid,.ojw-destinations__grid{grid-template-columns:1fr}.ojw-destinations__grid a,.ojw-destinations__grid a:last-child{grid-column:auto;min-height:0}.ojw-foundation{border-left-width:3px}}
 @media(prefers-reduced-motion:reduce){.ojw-destinations__grid a:hover,.ojw-destinations__grid a:focus-visible{transform:none}}
+
+.public-project-explorer {
+  margin-top: clamp(24px, 4vw, 42px);
+  border: 1px solid rgba(214, 224, 225, .16);
+  border-radius: var(--oj-radius-lg);
+  padding: clamp(28px, 4vw, 46px);
+  background: linear-gradient(145deg, rgba(255, 255, 255, .045), rgba(7, 23, 35, .9));
+}
+.public-project-explorer__heading { display: grid; grid-template-columns: minmax(230px, .7fr) minmax(0, 1.3fr); column-gap: clamp(28px, 5vw, 72px); align-items: end; }
+.public-project-explorer__heading .section-kicker { grid-column: 1 / -1; }
+.public-project-explorer__heading h2 { max-width: 13ch; margin-bottom: 0; font-size: clamp(1.9rem, 3.4vw, 3rem); }
+.public-project-explorer__heading > p:last-child { max-width: 62ch; margin: 0; color: var(--oj-muted); line-height: 1.7; }
+.public-project-explorer__grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; margin-top: clamp(26px, 4vw, 40px); }
+.public-project-explorer__item {
+  --explorer-accent: #73deef;
+  display: grid;
+  grid-template-columns: 46px minmax(0, 1fr);
+  grid-template-rows: 1fr auto;
+  gap: 12px 14px;
+  min-width: 0;
+  min-height: 170px;
+  border: 1px solid color-mix(in srgb, var(--explorer-accent) 34%, transparent);
+  border-radius: var(--oj-radius-md);
+  padding: 20px;
+  color: inherit;
+  background: linear-gradient(145deg, color-mix(in srgb, var(--explorer-accent) 9%, transparent), rgba(255, 255, 255, .018));
+  text-decoration: none;
+  transition: border-color .2s ease, background-color .2s ease, transform .2s ease;
+}
+.public-project-explorer__item[data-accent="oja"] { --explorer-accent: #79df73; }
+.public-project-explorer__item[data-accent="ojp"] { --explorer-accent: #8d7ae8; }
+.public-project-explorer__item[data-accent="ojcs"] { --explorer-accent: #f18b6b; }
+.public-project-explorer__item[data-accent="ojw"] { --explorer-accent: #73deef; }
+.public-project-explorer__item img { width: 46px; height: 46px; object-fit: contain; }
+.public-project-explorer__identity { display: grid; align-content: start; gap: 3px; min-width: 0; }
+.public-project-explorer__acronym { color: var(--explorer-accent); font-size: .72rem; font-weight: 900; letter-spacing: .14em; }
+.public-project-explorer__identity strong { color: #f7fafb; font-size: 1.02rem; line-height: 1.25; }
+.public-project-explorer__identity > span:last-child { color: var(--oj-muted); font-size: .84rem; line-height: 1.4; }
+.public-project-explorer__action { grid-column: 1 / -1; align-self: end; min-height: 44px; display: flex; align-items: center; border-top: 1px solid color-mix(in srgb, var(--explorer-accent) 24%, transparent); padding-top: 12px; color: var(--explorer-accent); font-size: .82rem; font-weight: 850; }
+.public-project-explorer__item.is-current { border-style: dashed; background: rgba(255, 255, 255, .025); }
+.public-project-explorer__item.is-current .public-project-explorer__action { color: #d8e0e2; }
+.public-project-explorer__item:not(.is-current):hover,
+.public-project-explorer__item:not(.is-current):focus-visible { border-color: var(--explorer-accent); outline: 3px solid color-mix(in srgb, var(--explorer-accent) 30%, transparent); outline-offset: 3px; transform: translateY(-2px); }
+
+@media (max-width: 1000px) {
+  .public-project-explorer__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 620px) {
+  .public-project-explorer__heading { grid-template-columns: 1fr; }
+  .public-project-explorer__heading .section-kicker { grid-column: auto; }
+  .public-project-explorer__heading > p:last-child { margin-top: 16px; }
+  .public-project-explorer__grid { grid-template-columns: 1fr; }
+  .public-project-explorer__item { min-height: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .public-project-explorer__item { transition: none; }
+  .public-project-explorer__item:not(.is-current):hover,
+  .public-project-explorer__item:not(.is-current):focus-visible { transform: none; }
+}

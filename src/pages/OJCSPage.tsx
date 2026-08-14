@@ -1,4 +1,5 @@
 import { ProjectHero } from "../components/ProjectHero";
+import { PublicProjectExplorer } from "../components/PublicProjectExplorer";
 import { ojcsProject } from "../data/projects";
 import { usePageMetadata } from "../hooks/usePageMetadata";
 import { PublicProjectLayout } from "../layouts/PublicProjectLayout";
@@ -15,5 +16,6 @@ export default function OJCSPage() {
     <section className="ojcs-territory" aria-labelledby="ojcs-geography"><div><p className="section-kicker">Guinée et diaspora</p><h2 id="ojcs-geography">La Guinée comme ancrage, la diaspora comme lien</h2><p>{ojcsProject.geography}</p></div><div className="ojcs-trust"><p className="section-kicker">Confiance</p><h3>Qualifier avant d’affirmer</h3><p>{ojcsProject.trustPrinciple}</p></div></section>
     <section className="project-section ojcs-section ojcs-trajectory" aria-labelledby="ojcs-roadmap"><div><p className="section-kicker">Trajectoire OJCS</p><h2 id="ojcs-roadmap">Étendre les connexions avec maîtrise</h2><p>{ojcsProject.vision}</p></div><ol>{ojcsProject.roadmap.map((x,i)=><li key={x.label}><span aria-hidden="true">0{i+1}</span><h3>{x.label}</h3><p>{x.description}</p></li>)}</ol></section>
     <section className="project-final-cta ojcs-final-cta" aria-labelledby="ojcs-cta"><div><p className="section-kicker">Dans OnJarama</p><h2 id="ojcs-cta">Une application en construction, reliée à un écosystème public</h2><p>OJW présente le projet ; OJF en porte le cadre institutionnel. OJCS reste une application en développement, sans service public ouvert.</p></div><div className="project-final-cta__actions"><a className="button button-primary" href={ojcsProject.primaryAction.href}>{ojcsProject.primaryAction.label}</a><a className="button button-secondary" href={ojcsProject.secondaryAction.href}>{ojcsProject.secondaryAction.label}</a></div></section>
+    <PublicProjectExplorer currentProject="OJCS" />
   </div></PublicProjectLayout>;
 }

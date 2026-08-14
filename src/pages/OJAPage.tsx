@@ -1,4 +1,5 @@
 import { ProjectHero } from "../components/ProjectHero";
+import { PublicProjectExplorer } from "../components/PublicProjectExplorer";
 import { ProjectStatus } from "../components/ProjectStatus";
 import { ojaProject } from "../data/projects";
 import { usePageMetadata } from "../hooks/usePageMetadata";
@@ -87,6 +88,8 @@ export default function OJAPage() {
             <a className="button button-secondary" href={ojaProject.secondaryAction.href}>{ojaProject.secondaryAction.label}</a>
           </div>
         </section>
+
+        <PublicProjectExplorer currentProject="OJA" />
       </div>
     </PublicProjectLayout>
   );

@@ -1,4 +1,5 @@
 import { ProjectHero } from "../components/ProjectHero";
+import { PublicProjectExplorer } from "../components/PublicProjectExplorer";
 import { ProjectStatus } from "../components/ProjectStatus";
 import { ojpProject } from "../data/projects";
 import { usePageMetadata } from "../hooks/usePageMetadata";
@@ -76,6 +77,8 @@ export default function OJPPage() {
             <a className="button button-secondary" href={ojpProject.secondaryAction.href}>{ojpProject.secondaryAction.label}</a>
           </div>
         </section>
+
+        <PublicProjectExplorer currentProject="OJP" />
       </div>
     </PublicProjectLayout>
   );
