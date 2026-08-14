@@ -14,6 +14,7 @@
     "test:ojw:public-pages-05-a2-a": "node scripts/architecture/ojw-public-pages-05-a2-a-availability-contract.test.mjs",
     "test:ojw:public-pages-05-a2-b": "node scripts/architecture/ojw-public-pages-05-a2-b-oja-showcase.test.mjs",
     "test:ojw:public-pages-05-a2-c": "node scripts/architecture/ojw-public-pages-05-a2-c-ojp-showcase.test.mjs",
+    "test:ojw:public-pages-05-a2-d": "node scripts/architecture/ojw-public-pages-05-a2-d-ojcs-showcase.test.mjs",
     "test:ojw:ecosystem-02-e3": "node scripts/architecture/ojw-ecosystem-02-e3-ojcs-public-page.test.mjs",
     "test:ojw:ecosystem-02-d3": "node scripts/architecture/ojw-ecosystem-02-d3-ojp-public-page.test.mjs",
     "test:ojw:ecosystem-02-c3": "node scripts/architecture/ojw-ecosystem-02-c3-oja-public-page.test.mjs",

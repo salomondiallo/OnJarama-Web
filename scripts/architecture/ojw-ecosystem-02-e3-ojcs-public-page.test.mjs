@@ -9,7 +9,7 @@ const block=(id)=>{const s=model.indexOf(`id: "${id}"`),n=model.indexOf("\n  {",
 assert.match(app,/path="\/ojcs" element={<OJCSPage/);
 assert.match(app,/path="\/OJCS" element={<Navigate to="\/ojcs" replace/);
 assert.doesNotMatch(app,/path="\/ojcs" element={<ProjectPlaceholderPage/);
-assert.match(block("ojcs-connect"),/publicPageAvailable:\s*true[\s\S]*productAvailable:\s*false/);
+assert.match(block("ojcs-connect"),/publicPageAvailable:\s*true[\s\S]*publicServiceAvailable:\s*false[\s\S]*productAvailable:\s*false/);
 for(const id of ["academy","path","web"]) assert.match(block(id),/publicPageAvailable:\s*true/);
 assert.equal((model.match(/publicPageAvailable:\s*true/g)??[]).length,4);
 assert.match(page,/<ProjectHero project=\{ojcsProject\}/);
@@ -20,7 +20,7 @@ assert.match(editorial,/canonicalUrl:\s*"https:\/\/onjarama\.ca\/ojcs"/);
 for(const axis of ["Explorer","Localiser","Qualifier","Contacter"]) assert.match(editorial,new RegExp(`title: "${axis}"`));
 assert.match(editorial,/réalités de la Guinée/);
 assert.match(editorial,/sans prétendre à une vérification actuelle/);
-assert.match(editorial,/après qualification des règles nécessaires/);
+assert.match(editorial,/lorsque les règles et parcours nécessaires seront qualifiés/);
 assert.doesNotMatch(`${page}\n${editorial}`,/Rejoindre|Créer un profil|Trouver un service|Publier|Acheter|Réserver|S’inscrire/);
 assert.doesNotMatch(`${page}\n${editorial}`,/marketplace|paiement|transaction|commission|Transport|Taxi/i);
 assert.match(editorial,/label:\s*"Découvrir l’écosystème"[\s\S]*href:\s*"\/#ecosystem-projects"/);
