@@ -21,7 +21,7 @@ const projectBlock = (id) => {
 
 assert.match(app, /path="\/oja" element={<OJAPage/);
 assert.match(app, /path="\/OJA" element={<Navigate to="\/oja" replace/);
-assert.match(projectBlock("academy"), /publicPagePath:\s*"\/oja"[\s\S]*publicPageAvailable:\s*true[\s\S]*productAvailable:\s*false/);
+assert.match(projectBlock("academy"), /publicPagePath:\s*"\/oja"[\s\S]*publicPageAvailable:\s*true[\s\S]*publicServiceAvailable:\s*false[\s\S]*productAvailable:\s*false/);
 assert.match(projectBlock("web"), /publicPageAvailable:\s*true/);
 assert.match(projectBlock("path"), /publicPageAvailable:\s*true/);
 assert.match(projectBlock("ojcs-connect"), /publicPageAvailable:\s*true/);
@@ -41,8 +41,8 @@ assert.doesNotMatch(editorial, /Ouvrir OJA|Tester OJA|Accéder à l’applicatio
 assert.doesNotMatch(editorial, /date de sortie|utilisateurs actifs|partenaire/i);
 assert.match(page, /Ce qui est déjà engagé/);
 assert.match(page, /Ce que nous construisons/);
-assert.match(page, /De la Guinée vers le monde/i);
-assert.match(page, /OJF — Fondation/);
+assert.match(page, /La Guinée n’est pas un décor/);
+assert.match(page, /OJF en est le porteur institutionnel/);
 assert.doesNotMatch(page, /OJF[\s\S]*publicPagePath|OJF[\s\S]*Découvrir le projet/);
 assert.match(styles, /\.oja-page/);
 assert.match(styles, /@media \(prefers-reduced-motion: reduce\)/);
