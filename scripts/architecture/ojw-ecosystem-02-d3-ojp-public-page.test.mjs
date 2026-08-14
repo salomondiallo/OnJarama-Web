@@ -21,7 +21,7 @@ const projectBlock = (id) => {
 assert.match(app, /path="\/ojp" element={<OJPPage/);
 assert.match(app, /path="\/OJP" element={<Navigate to="\/ojp" replace/);
 assert.doesNotMatch(app, /path="\/ojp" element={<ProjectPlaceholderPage/);
-assert.match(projectBlock("path"), /publicPagePath:\s*"\/ojp"[\s\S]*publicPageAvailable:\s*true[\s\S]*productAvailable:\s*false/);
+assert.match(projectBlock("path"), /publicPagePath:\s*"\/ojp"[\s\S]*publicPageAvailable:\s*true[\s\S]*publicServiceAvailable:\s*false[\s\S]*productAvailable:\s*false/);
 assert.match(projectBlock("academy"), /publicPageAvailable:\s*true/);
 assert.match(projectBlock("web"), /publicPageAvailable:\s*true/);
 assert.match(projectBlock("ojcs-connect"), /publicPageAvailable:\s*true/);
@@ -34,7 +34,7 @@ assert.doesNotMatch(page, /TreeHeroSection|TreeScene|dynamicSky|founder-canonica
 assert.match(editorial, /canonicalUrl:\s*"https:\/\/onjarama\.ca\/ojp"/);
 assert.match(editorial, /Projet en développement actif/);
 assert.doesNotMatch(editorial, /produit complet (est |déjà )?disponible|product available/i);
-assert.match(page, /Organiser sans promettre/);
+assert.match(page, /Organiser sans conseiller ni promettre/);
 assert.match(editorial, /ne constituent pas un conseil financier, juridique, fiscal ou d’investissement personnalisé/);
 assert.match(editorial, /aucun résultat financier n’est garanti/);
 assert.match(editorial, /exigence de conception future|devront être traitées avec un niveau élevé de confidentialité/);

@@ -15,28 +15,22 @@ export const ojpProject = {
     ogDescription: "Découvrez la mission et la trajectoire d’OnJarama Path, projet OnJarama consacré à l’organisation financière personnelle et à la progression vers des objectifs définis.",
   },
   mission: "Comprendre ses finances, organiser ses priorités et avancer vers ses objectifs avec plus de clarté.",
-  summary: "OnJarama Path est un projet numérique conçu pour aider chacun à mieux comprendre et organiser sa situation financière personnelle, puis à progresser avec plus de clarté vers ses propres objectifs, en transformant budget, priorités et décisions du quotidien en un parcours plus structuré.",
+  summary: "Informations dispersées, objectifs difficiles à relier au quotidien, suivi interrompu : OJP cherche à transformer cette complexité en un parcours personnel plus lisible et plus structuré.",
   audiences: [
     "Personnes et foyers",
     "Personnes ayant des objectifs financiers",
     "Personnes recherchant davantage de clarté",
   ],
   currentCapabilities: [
-    { title: "Un projet réellement en développement", description: "OJP structure son identité, sa mission et son positionnement sans présenter un produit complet comme déjà disponible.", stage: "CURRENT" },
-    { title: "Un modèle de progression financière", description: "Le modèle du projet se construit autour des finances personnelles, des objectifs, du budget et d’une progression guidée.", stage: "CURRENT" },
-    { title: "Organisation et compréhension", description: "Le travail engagé porte sur l’organisation et la compréhension de l’information financière personnelle.", stage: "CURRENT" },
-    { title: "Situation, objectifs et progression", description: "L’architecture recherchée distingue la situation actuelle, les objectifs et la progression dans le temps, sans annoncer cette capacité comme déjà livrée.", stage: "CURRENT" },
+    { title: "Un modèle clarifié", description: "La mission, les publics et la méthode comprendre–organiser–progresser structurent désormais la conception d’OJP.", stage: "CURRENT" },
+    { title: "Une architecture en travail", description: "La situation personnelle, les priorités, les objectifs et leur évolution sont organisés dans un cadre cohérent, encore en développement.", stage: "CURRENT" },
+    { title: "Des principes responsables", description: "La confidentialité, le contrôle utilisateur et l’absence de promesse financière encadrent le projet avant toute ouverture produit.", stage: "CURRENT" },
   ],
   plannedCapabilities: [
-    { title: "Revenus et dépenses", description: "Organisation des revenus et des dépenses.", stage: "PLANNED" },
-    { title: "Budget personnel", description: "Construction et suivi d’un budget personnel.", stage: "PLANNED" },
-    { title: "Objectifs financiers", description: "Définition d’objectifs financiers et de priorités personnelles.", stage: "PLANNED" },
-    { title: "Suivi de progression", description: "Repères permettant de suivre une progression dans le temps.", stage: "PLANNED" },
-    { title: "Projets et priorités", description: "Préparation de projets et de priorités financières.", stage: "PLANNED" },
-    { title: "Organisation de l’épargne", description: "Organisation progressive de l’épargne autour d’objectifs définis.", stage: "PLANNED" },
-    { title: "Visualisations simples", description: "Visualisations simples destinées à rendre une situation plus compréhensible.", stage: "PLANNED" },
-    { title: "Repères pédagogiques", description: "Repères pédagogiques pour mieux comprendre les choix financiers et leurs implications.", stage: "PLANNED" },
-    { title: "Rappels et repères", description: "Rappels et repères de progression après qualification.", stage: "PLANNED" },
+    { title: "Lire sa situation", description: "Regrouper revenus, dépenses et repères simples pour rendre une situation personnelle plus compréhensible.", stage: "PLANNED" },
+    { title: "Organiser ses priorités", description: "Structurer budget, projets, objectifs et organisation de l’épargne sans prescrire de décision financière.", stage: "PLANNED" },
+    { title: "Suivre son évolution", description: "Préparer des visualisations, rappels et repères permettant d’observer une évolution sans garantir de résultat.", stage: "PLANNED" },
+    { title: "Protéger et expliquer", description: "Qualifier le traitement des données et proposer des repères pédagogiques compréhensibles avant toute disponibilité publique.", stage: "PLANNED" },
   ],
   projectStatus: {
     label: "Projet en développement actif",
@@ -44,11 +38,9 @@ export const ojpProject = {
     detail: "Les capacités en construction seront présentées comme disponibles uniquement après qualification réelle.",
   },
   roadmap: [
-    { label: "Fondations", description: "Stabiliser la mission, le positionnement, les publics et l’architecture du projet.", stage: "CURRENT" },
-    { label: "Organisation", description: "Structurer les modèles de revenus, dépenses, budget, objectifs et priorités.", stage: "PLANNED" },
-    { label: "Compréhension", description: "Préparer des visualisations et repères pédagogiques simples.", stage: "PLANNED" },
-    { label: "Qualification", description: "Qualifier chaque capacité et ses garde-fous avant toute disponibilité publique.", stage: "PLANNED" },
-    { label: "Progression", description: "Construire un chemin clair entre situation actuelle, objectifs et décisions du quotidien.", stage: "VISION" },
+    { label: "Cadre et principes", description: "Stabiliser le modèle, les publics et les garde-fous qui donnent sa direction à OJP.", stage: "CURRENT" },
+    { label: "Parcours à qualifier", description: "Construire les expériences de compréhension, d’organisation et de suivi, puis les éprouver avant toute ouverture.", stage: "PLANNED" },
+    { label: "Clarté durable", description: "Faire évoluer OJP vers un parcours personnel compréhensible, sans transformer cette vision en promesse de résultat.", stage: "VISION" },
   ],
   ecosystemRole: {
     projects: [
@@ -65,9 +57,14 @@ export const ojpProject = {
     { title: "Progresser", description: "Construire un chemin réaliste entre une situation actuelle et des objectifs définis, sans promesse de résultat financier." },
   ],
   audienceDetails: [
-    { title: "Personnes et foyers", description: "Celles et ceux qui souhaitent mieux comprendre et structurer leurs finances quotidiennes." },
-    { title: "Personnes ayant des objectifs financiers", description: "Épargne, achat, projet, réduction de dette ou constitution d’une réserve financière." },
-    { title: "Personnes recherchant davantage de clarté", description: "Celles et ceux qui veulent reprendre le contrôle de leur organisation sans exiger de connaissances avancées en finance." },
+    { title: "Personnes et foyers", description: "Pour mieux lire et structurer les réalités financières du quotidien." },
+    { title: "Porteurs d’objectifs", description: "Pour relier des priorités personnelles à un parcours compréhensible." },
+    { title: "Personnes en recherche de clarté", description: "Pour avancer sans exiger de connaissances financières avancées." },
+  ],
+  challenges: [
+    "Voir sa situation sans multiplier les tableaux et informations isolées.",
+    "Relier les décisions du quotidien à des objectifs personnels compréhensibles.",
+    "Maintenir un suivi dans le temps sans pression ni promesse de performance.",
   ],
   vision: {
     title: "Un chemin plus clair pour avancer",
@@ -79,6 +76,7 @@ export const ojpProject = {
 } satisfies PublicProjectEditorial & {
   why: readonly { title: string; description: string }[];
   audienceDetails: readonly { title: string; description: string }[];
+  challenges: readonly string[];
   vision: { title: string; statement: string; detail: string };
   financialGuardrail: string;
   privacyPrinciple: string;

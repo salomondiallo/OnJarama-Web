@@ -12,81 +12,65 @@ export default function OJPPage() {
   return (
     <PublicProjectLayout>
       <div className="ojp-page">
-        <ProjectHero project={ojpProject} kicker="Projet d’organisation et de progression financière OnJarama" />
+        <ProjectHero project={ojpProject} kicker="Application d’organisation financière personnelle" />
 
-        <section className="project-section ojp-section" aria-labelledby="why-ojp-title">
+        <section className="project-section ojp-section ojp-problem" aria-labelledby="why-ojp-title">
           <p className="section-kicker">Pourquoi OJP</p>
-          <h2 id="why-ojp-title">Comprendre, organiser, progresser</h2>
-          <p className="project-section__lead">{ojpProject.summary}</p>
-          <div className="ojp-path-grid">
-            {ojpProject.why.map((item, index) => <article key={item.title}><span aria-hidden="true">0{index + 1}</span><h3>{item.title}</h3><p>{item.description}</p></article>)}
+          <div className="ojp-problem__layout">
+            <div><h2 id="why-ojp-title">Retrouver une lecture claire de ses propres priorités</h2><p className="project-section__lead">{ojpProject.summary}</p></div>
+            <ul className="ojp-challenges">
+              {ojpProject.challenges.map((item) => <li key={item}>{item}</li>)}
+            </ul>
           </div>
         </section>
 
         <section className="project-section ojp-section" aria-labelledby="ojp-audiences-title">
           <p className="section-kicker">Pour qui</p>
-          <h2 id="ojp-audiences-title">Trois profils, un besoin commun de clarté</h2>
-          <div className="ojp-audience-grid">
-            {ojpProject.audienceDetails.map((item) => <article key={item.title}><h3>{item.title}</h3><p>{item.description}</p></article>)}
+          <h2 id="ojp-audiences-title">Des situations différentes, un besoin commun de clarté</h2>
+          <div className="ojp-audience-line">
+            {ojpProject.audienceDetails.map((item, index) => <article key={item.title}><span aria-hidden="true">0{index + 1}</span><div><h3>{item.title}</h3><p>{item.description}</p></div></article>)}
           </div>
         </section>
 
+        <section className="ojp-method" aria-labelledby="ojp-method-title">
+          <div className="ojp-method__heading"><p className="section-kicker">La méthode OJP</p><h2 id="ojp-method-title">Comprendre. Organiser. Progresser.</h2><p>Une direction de conception, pas une promesse de résultat.</p></div>
+          <ol className="ojp-method__steps">
+            {ojpProject.why.map((item, index) => <li key={item.title}><span aria-hidden="true">0{index + 1}</span><h3>{item.title}</h3><p>{item.description}</p></li>)}
+          </ol>
+        </section>
+
         <section className="project-section ojp-section ojp-current" aria-labelledby="ojp-current-title">
-          <p className="section-kicker">État actuel</p>
-          <h2 id="ojp-current-title">Ce qui est déjà engagé</h2>
-          <div className="project-capabilities ojp-capabilities">
-            {ojpProject.currentCapabilities.map((item) => <article key={item.title}><ProjectStatus label="Ce qui est déjà engagé" stage={item.stage} /><h3>{item.title}</h3><p>{item.description}</p></article>)}
+          <div className="ojp-current__intro"><ProjectStatus label="Ce qui est déjà engagé" stage="CURRENT" /><p className="section-kicker">État actuel</p><h2 id="ojp-current-title">Un cadre en construction, aucun service financier ouvert</h2></div>
+          <div className="ojp-current__list">
+            {ojpProject.currentCapabilities.map((item) => <article key={item.title}><h3>{item.title}</h3><p>{item.description}</p></article>)}
           </div>
         </section>
 
         <section className="project-section ojp-section ojp-building" aria-labelledby="ojp-planned-title">
-          <p className="section-kicker">En construction</p>
-          <h2 id="ojp-planned-title">Ce que nous construisons</h2>
-          <div className="ojp-planned-grid">
-            {ojpProject.plannedCapabilities.map((item) => <article key={item.title}><ProjectStatus label="À construire" stage={item.stage} /><h3>{item.title}</h3><p>{item.description}</p></article>)}
+          <div className="ojp-building__heading"><ProjectStatus label="Ce que nous construisons" stage="PLANNED" /><p className="section-kicker">En construction</p><h2 id="ojp-planned-title">Quatre domaines plutôt qu’un catalogue de fonctions</h2></div>
+          <div className="ojp-building__domains">
+            {ojpProject.plannedCapabilities.map((item, index) => <article key={item.title}><span aria-hidden="true">0{index + 1}</span><h3>{item.title}</h3><p>{item.description}</p></article>)}
           </div>
         </section>
 
-        <section className="ojp-vision" aria-labelledby="ojp-vision-title">
-          <ProjectStatus label="Vision" stage="VISION" />
-          <p className="section-kicker">Trajectoire personnelle</p>
-          <h2 id="ojp-vision-title">{ojpProject.vision.title}</h2>
-          <p>{ojpProject.vision.statement}</p>
-          <p>{ojpProject.vision.detail}</p>
-        </section>
-
-        <section className="ojp-guardrail" aria-labelledby="ojp-guardrail-title">
-          <div><p className="section-kicker">Positionnement financier</p><h2 id="ojp-guardrail-title">Organiser sans promettre</h2></div>
-          <p>{ojpProject.financialGuardrail}</p>
-        </section>
-
-        <section className="project-section ojp-section ojp-privacy" aria-labelledby="ojp-privacy-title">
-          <p className="section-kicker">Principe futur</p>
-          <h2 id="ojp-privacy-title">Confidentialité et contrôle utilisateur</h2>
-          <p className="project-section__lead">{ojpProject.privacyPrinciple}</p>
-          <p>Ce principe constitue une exigence de conception future et non une capacité technique déjà livrée.</p>
+        <section className="ojp-responsibility" aria-labelledby="ojp-guardrail-title">
+          <div className="ojp-responsibility__heading"><p className="section-kicker">Un cadre responsable</p><h2 id="ojp-guardrail-title">Organiser sans conseiller ni promettre</h2></div>
+          <div className="ojp-responsibility__principles">
+            <article><h3>Garde-fou financier</h3><p>{ojpProject.financialGuardrail}</p></article>
+            <article><h3>Confidentialité par conception</h3><p>{ojpProject.privacyPrinciple}</p><p>Il s’agit d’une exigence future, pas d’une capacité technique déjà livrée.</p></article>
+          </div>
         </section>
 
         <section className="project-section ojp-section" aria-labelledby="ojp-roadmap-title">
           <p className="section-kicker">Trajectoire OJP</p>
-          <h2 id="ojp-roadmap-title">Cinq phases publiques, sans date artificielle</h2>
+          <h2 id="ojp-roadmap-title">Construire la clarté avant d’ouvrir le produit</h2>
           <ol className="project-roadmap ojp-roadmap">
             {ojpProject.roadmap.map((item) => <li key={item.label}><ProjectStatus label={publicRoadmapStage[item.stage]} stage={item.stage} /><h3>{item.label}</h3><p>{item.description}</p></li>)}
           </ol>
         </section>
 
-        <section className="project-section ojp-section" aria-labelledby="ojp-ecosystem-title">
-          <p className="section-kicker">Dans l’écosystème OnJarama</p>
-          <h2 id="ojp-ecosystem-title">La composante d’organisation financière personnelle</h2>
-          <div className="project-relations ojp-relations">
-            <article><h3>OJP</h3><p>OJP est la composante d’organisation et de progression financière personnelle de l’écosystème OnJarama.</p></article>
-            {ojpProject.ecosystemRole.projects.map((item) => <article key={item.shortName}><h3>{item.shortName}</h3><p>{item.relation}</p></article>)}
-            <article className="project-relations__foundation"><h3>OJF — Fondation</h3><p>{ojpProject.ecosystemRole.foundation.relation}</p></article>
-          </div>
-        </section>
-
         <section className="project-final-cta ojp-final-cta" aria-labelledby="ojp-cta-title">
-          <div><p className="section-kicker">Continuer</p><h2 id="ojp-cta-title">Découvrir l’écosystème et sa trajectoire</h2></div>
+          <div><p className="section-kicker">Dans OnJarama</p><h2 id="ojp-cta-title">OJP explore une relation plus claire aux décisions financières personnelles</h2><p>OJF porte le cadre institutionnel ; OJW organise la présence publique de l’écosystème.</p></div>
           <div className="project-final-cta__actions">
             <a className="button button-primary" href={ojpProject.primaryAction.href}>{ojpProject.primaryAction.label}</a>
             <a className="button button-secondary" href={ojpProject.secondaryAction.href}>{ojpProject.secondaryAction.label}</a>
