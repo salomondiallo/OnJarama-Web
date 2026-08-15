@@ -1,11 +1,15 @@
 import type { ReactNode } from "react";
 import { Footer } from "../components/Footer";
 import { Header } from "../components/Header";
+import { PublicProjectContext, type PublicProjectContextCode } from "../components/PublicProjectContext";
 import { useDayNightMode } from "../hooks/useDayNightMode";
 
-type PublicProjectLayoutProps = { children: ReactNode };
+type PublicProjectLayoutProps = {
+  children: ReactNode;
+  currentProject?: PublicProjectContextCode;
+};
 
-export function PublicProjectLayout({ children }: PublicProjectLayoutProps) {
+export function PublicProjectLayout({ children, currentProject }: PublicProjectLayoutProps) {
   const { mode, preference, setPreference, autoStrategy } = useDayNightMode();
 
   return (
@@ -19,7 +23,11 @@ export function PublicProjectLayout({ children }: PublicProjectLayoutProps) {
         onModePrepare={() => undefined}
       />
       <main id="main-content" className="public-page-shell">
-        <a className="public-page-shell__back" href="/#ecosystem-projects">← Retour à l’écosystème</a>
+        {currentProject ? (
+          <PublicProjectContext currentProject={currentProject} />
+        ) : (
+          <a className="public-page-shell__back" href="/#ecosystem-projects">← Retour à l’écosystème</a>
+        )}
         {children}
       </main>
       <Footer />

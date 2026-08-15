@@ -6,7 +6,7 @@ import { PublicProjectLayout } from "../layouts/PublicProjectLayout";
 
 export default function OJCSPage() {
   usePageMetadata(ojcsProject.seo);
-  return <PublicProjectLayout><div className="ojcs-page">
+  return <PublicProjectLayout currentProject="OJCS"><div className="ojcs-page">
     <ProjectHero project={ojcsProject} kicker="Application de repérage et de connexion utile" />
     <section className="project-section ojcs-section ojcs-problem" aria-labelledby="why-ojcs"><div><p className="section-kicker">Pourquoi OJCS</p><h2 id="why-ojcs">Retrouver des repères dans une information dispersée</h2></div><div><p className="project-section__lead">{ojcsProject.summary}</p><ul><li>Identifier les acteurs pertinents.</li><li>Comprendre où ils se trouvent.</li><li>Distinguer une information claire d’une promesse non qualifiée.</li></ul></div></section>
     <section className="ojcs-connect" aria-labelledby="connect-axes"><p className="section-kicker">Le parcours OJCS</p><h2 id="connect-axes">Explorer. Localiser. Qualifier. Contacter.</h2><p className="ojcs-connect__intro">Quatre axes pour organiser la circulation de l’information — pas quatre services déjà ouverts.</p><ol className="ojcs-axis-grid">{ojcsProject.connectAxes.map((x,i)=><li key={x.title}><span aria-hidden="true">0{i+1}</span><h3>{x.title}</h3><p>{x.description}</p></li>)}</ol></section>

@@ -9,7 +9,7 @@ export default function OJAPage() {
   usePageMetadata(ojaProject.seo);
 
   return (
-    <PublicProjectLayout>
+    <PublicProjectLayout currentProject="OJA">
       <div className="oja-page">
         <ProjectHero project={ojaProject} kicker="Application éducative OnJarama" />
 

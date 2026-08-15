@@ -18,7 +18,7 @@ export default function OJWPage() {
   usePageMetadata(ojwProject.seo);
 
   return (
-    <PublicProjectLayout>
+    <PublicProjectLayout currentProject="OJW">
       <div className="ojw-page">
       <ProjectHero project={ojwProject} kicker="Portail public OnJarama" />
 

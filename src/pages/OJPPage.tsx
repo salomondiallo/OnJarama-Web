@@ -11,7 +11,7 @@ export default function OJPPage() {
   usePageMetadata(ojpProject.seo);
 
   return (
-    <PublicProjectLayout>
+    <PublicProjectLayout currentProject="OJP">
       <div className="ojp-page">
         <ProjectHero project={ojpProject} kicker="Application d’organisation financière personnelle" />
 
