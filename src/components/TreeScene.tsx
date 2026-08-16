@@ -1,10 +1,22 @@
 import dayScene from "../assets/immersive/founder-canonical/founder-canonical-day.png";
 import nightScene from "../assets/immersive/founder-canonical/founder-canonical-night-no-moon.png";
+import dayAvif960 from "../assets/immersive/founder-canonical/optimized/founder-canonical-day-960.avif";
+import dayAvif1280 from "../assets/immersive/founder-canonical/optimized/founder-canonical-day-1280.avif";
+import dayAvif1586 from "../assets/immersive/founder-canonical/optimized/founder-canonical-day-1586.avif";
+import dayWebp960 from "../assets/immersive/founder-canonical/optimized/founder-canonical-day-960.webp";
+import dayWebp1280 from "../assets/immersive/founder-canonical/optimized/founder-canonical-day-1280.webp";
+import dayWebp1586 from "../assets/immersive/founder-canonical/optimized/founder-canonical-day-1586.webp";
+import nightAvif960 from "../assets/immersive/founder-canonical/optimized/founder-canonical-night-no-moon-960.avif";
+import nightAvif1280 from "../assets/immersive/founder-canonical/optimized/founder-canonical-night-no-moon-1280.avif";
+import nightAvif1586 from "../assets/immersive/founder-canonical/optimized/founder-canonical-night-no-moon-1586.avif";
+import nightWebp960 from "../assets/immersive/founder-canonical/optimized/founder-canonical-night-no-moon-960.webp";
+import nightWebp1280 from "../assets/immersive/founder-canonical/optimized/founder-canonical-night-no-moon-1280.webp";
+import nightWebp1586 from "../assets/immersive/founder-canonical/optimized/founder-canonical-night-no-moon-1586.webp";
 import { useMemo, useState, type CSSProperties } from "react";
 import type { EcosystemItem, EcosystemState } from "../data/ecosystem";
 import type { DayNightMode, DayNightPreference } from "../hooks/useDayNightMode";
-import { resolveLocalCelestialState } from "../utils/solarDayNight";
-import { applyDynamicSkyPreview, resolveInternalDynamicSky, resolveLightPhysics } from "../utils/dynamicSky";
+import type { LivingEnvironmentState } from "../hooks/useLivingEnvironment";
+import { applyDynamicSkyPreview, resolveLightPhysics } from "../utils/dynamicSky";
 
 type FruitPosition = { x: number; y: number };
 
@@ -54,6 +66,7 @@ const LAMP_POSTS = [
 type TreeSceneProps = {
   mode: DayNightMode;
   preference: DayNightPreference;
+  environment: LivingEnvironmentState;
   preparedMode: DayNightMode | null;
   foundation: EcosystemItem;
   fruits: EcosystemItem[];
@@ -63,8 +76,7 @@ type TreeSceneProps = {
 };
 
 export function TreeScene({
-  mode,
-  preference,
+  environment,
   preparedMode,
   foundation,
   fruits,
@@ -72,9 +84,10 @@ export function TreeScene({
   onActivate,
   onPreview,
 }: TreeSceneProps) {
+  // Dynamic Sky 03 compatibility: resolveInternalDynamicSky now runs once in useLivingEnvironment.
+  const celestial = { progress: environment.celestialProgress } as const;
   const [loadedModes, setLoadedModes] = useState<Set<DayNightMode>>(() => new Set());
-  const [lastVisibleMode, setLastVisibleMode] = useState<DayNightMode>(mode);
-  const [clock] = useState(() => new Date());
+  const [lastVisibleMode, setLastVisibleMode] = useState<DayNightMode>(environment.resolvedMode);
   const previewToken = typeof window === "undefined" ? null : new URLSearchParams(window.location.search).get("sky-preview");
   const previewProgress = previewToken === "morning" || previewToken === "solar-morning" ? 0.16
     : previewToken === "day" ? 0.5
@@ -82,16 +95,12 @@ export function TreeScene({
         : previewToken === "moon-left" ? 0.2
           : previewToken === "moon-right" ? 0.8
             : null;
-  const celestial = useMemo(() => {
-    if (preference === "auto") return resolveLocalCelestialState(clock);
-    return { phase: mode === "day" ? "day" as const : "night" as const, progress: 0.5 };
-  }, [clock, mode, preference]);
   const dynamicSky = useMemo(
     () => applyDynamicSkyPreview(
-      resolveInternalDynamicSky(clock, celestial.phase, preference === "auto" ? null : mode),
+      environment.dynamicSkyState,
       typeof window === "undefined" ? "" : window.location.search,
     ),
-    [celestial.phase, clock, mode, preference],
+    [environment.dynamicSkyState],
   );
   const targetMode = dynamicSky.resolvedDayNightMode;
   const effectiveProgress = previewProgress ?? celestial.progress;
@@ -118,11 +127,15 @@ export function TreeScene({
 
   return (
     <div
-      className={`tree-scene is-scene-${visibleMode} celestial-phase-${celestial.phase} ${preference === "auto" ? "is-celestial-auto" : "is-celestial-manual"}`}
+      className={`tree-scene is-scene-${visibleMode} celestial-phase-${environment.celestialPhase} ${environment.preference === "auto" ? "is-celestial-auto" : "is-celestial-manual"}`}
       data-gfx02-scene
       data-gfx03-scene
       data-gfx04-r2-treeless
       data-dynamic-sky
+      data-living-environment="active"
+      data-environment-profile={environment.performanceProfile.toLowerCase()}
+      data-reduced-motion={environment.reducedMotion ? "reduce" : "no-preference"}
+      data-day-night-mode={environment.resolvedMode}
       data-time-of-day={dynamicSky.timeOfDay}
       data-cloud-cover={dynamicSky.cloudCover}
       data-precipitation={dynamicSky.precipitation}
@@ -144,12 +157,12 @@ export function TreeScene({
           <picture>
             <source
               type="image/avif"
-              srcSet={`${dayScene} 960w, ${dayScene} 1280w, ${dayScene} 1672w`}
+              srcSet={`${dayAvif960} 960w, ${dayAvif1280} 1280w, ${dayAvif1586} 1586w`}
               sizes="100vw"
             />
             <source
               type="image/webp"
-              srcSet={`${dayScene} 960w, ${dayScene} 1280w, ${dayScene} 1672w`}
+              srcSet={`${dayWebp960} 960w, ${dayWebp1280} 1280w, ${dayWebp1586} 1586w`}
               sizes="100vw"
             />
             <img
@@ -170,12 +183,12 @@ export function TreeScene({
           <picture>
             <source
               type="image/avif"
-              srcSet={`${nightScene} 960w, ${nightScene} 1280w, ${nightScene} 1672w`}
+              srcSet={`${nightAvif960} 960w, ${nightAvif1280} 1280w, ${nightAvif1586} 1586w`}
               sizes="100vw"
             />
             <source
               type="image/webp"
-              srcSet={`${nightScene} 960w, ${nightScene} 1280w, ${nightScene} 1672w`}
+              srcSet={`${nightWebp960} 960w, ${nightWebp1280} 1280w, ${nightWebp1586} 1586w`}
               sizes="100vw"
             />
             <img

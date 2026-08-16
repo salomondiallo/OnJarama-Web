@@ -42,7 +42,8 @@ assert.match(headerCss, /@media \(max-width: 1023px\)[\s\S]*\.menu-toggle \{[^}]
 assert.match(headerCss, /\.main-nav a\s*\{[^}]*display:inline-flex;[^}]*align-items:center;[^}]*min-height:44px/);
 assert.doesNotMatch(hero, /<DayNightToggle/);
 assert.doesNotMatch(hero, /Apps futures|<InstitutionalProjectBand|Cinq projets, une vision commune/);
-assert.match(app, /<TreeHeroSection mode=\{mode\} preference=\{preference\} preparedMode=\{preparedMode\} \/>[\s\S]*<EcosystemSection \/>/);
+assert.match(app, /useLivingEnvironment\(\)/);
+assert.match(app, /<TreeHeroSection environment=\{livingEnvironment\} preparedMode=\{preparedMode\} \/>[\s\S]*<EcosystemSection \/>/);
 assert.doesNotMatch(hero, /EcosystemSidebar|ProjectPreviewCard/);
 
 assert.match(scene, /ojw-gfx-02-scene-day\.png/);

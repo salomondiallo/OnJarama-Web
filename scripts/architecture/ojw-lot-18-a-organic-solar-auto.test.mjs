@@ -11,6 +11,8 @@ import {
 
 const read = (file) => readFileSync(new URL(`../../${file}`, import.meta.url), "utf8");
 const hook = read("src/hooks/useDayNightMode.ts");
+const clock = read("src/hooks/useEnvironmentClock.ts");
+const livingEnvironment = read("src/hooks/useLivingEnvironment.ts");
 const toggle = read("src/components/DayNightToggle.tsx");
 const scene = read("src/components/TreeScene.tsx");
 const styles = read("src/styles/tree.css");
@@ -59,14 +61,21 @@ assert.ok(getNextFallbackBoundary(new Date("2026-01-01T18:00:00")) > new Date("2
 assert.doesNotMatch(hook, /navigator\.(?:permissions|geolocation)/);
 assert.doesNotMatch(hook, /localStorage\.(?:setItem|getItem)\([^)]*(?:latitude|longitude|coordinates)/i);
 assert.doesNotMatch(hook, /fetch\(|XMLHttpRequest|axios|setInterval/);
-assert.equal((hook.match(/window\.setTimeout/g) ?? []).length, 1);
-assert.match(hook, /window\.clearTimeout/);
-assert.match(hook, /getNextLocalMidnight/);
-assert.match(hook, /visibilitychange/);
-assert.match(hook, /window\.addEventListener\("focus"/);
-assert.match(hook, /window\.addEventListener\("pageshow"/);
-assert.match(hook, /getTimezoneOffset/);
-assert.match(hook, /preference !== "auto"[\s\S]*clearBoundaryTimer/);
+assert.doesNotMatch(hook, /setTimeout|setInterval|visibilitychange|pageshow/);
+assert.match(hook, /resolveFallbackDayNightMode\(new Date\(resolvedNowMs\)\)/);
+assert.match(hook, /preference === "auto" \? automaticMode : preference/);
+assert.match(hook, /localStorage\.setItem\(DAY_NIGHT_STORAGE_KEY, next\)/);
+assert.equal((clock.match(/window\.setInterval/g) ?? []).length, 1);
+assert.match(clock, /ENVIRONMENT_CLOCK_INTERVAL_MS = 60_000/);
+assert.match(clock, /window\.clearInterval/);
+assert.match(clock, /visibilitychange/);
+assert.match(clock, /window\.addEventListener\("focus"/);
+assert.match(clock, /window\.addEventListener\("pageshow"/);
+assert.match(clock, /removeEventListener\("visibilitychange"/);
+assert.match(clock, /window\.removeEventListener\("focus"/);
+assert.match(clock, /window\.removeEventListener\("pageshow"/);
+assert.match(livingEnvironment, /useEnvironmentClock\(\)/);
+assert.match(livingEnvironment, /useDayNightMode\(nowMs\)/);
 assert.match(toggle, /Mode automatique/);
 assert.match(toggle, /ambiance actuelle/);
 assert.equal(resolveLocalCelestialState(new Date("2026-01-01T07:00:00")).phase, "morning");
@@ -90,7 +99,8 @@ assert.doesNotMatch(scene, /fix6/i);
 assert.match(scene, /const targetMode = dynamicSky\.resolvedDayNightMode/);
 assert.match(scene, /const visibleMode = loadedModes\.has\(targetMode\) \? targetMode : lastVisibleMode/);
 assert.doesNotMatch(hero, /<InstitutionalProjectBand/);
-assert.match(app, /<TreeHeroSection mode=\{mode\} preference=\{preference\} preparedMode=\{preparedMode\} \/>[\s\S]*<EcosystemSection \/>/);
+assert.match(app, /useLivingEnvironment\(\)/);
+assert.match(app, /<TreeHeroSection environment=\{livingEnvironment\} preparedMode=\{preparedMode\} \/>[\s\S]*<EcosystemSection \/>/);
 assert.match(ecosystemSection, /publicApplications\.map/);
 
 console.log("OJW-LOT-18-A: calcul solaire saisonnier, confidentialité, timer unique et vie organique validés.");

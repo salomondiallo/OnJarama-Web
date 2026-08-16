@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { Footer } from "../components/Footer";
 import { Header } from "../components/Header";
-import { useDayNightMode, type DayNightMode } from "../hooks/useDayNightMode";
+import { type DayNightMode } from "../hooks/useDayNightMode";
+import { useLivingEnvironment } from "../hooks/useLivingEnvironment";
 import { usePageMetadata } from "../hooks/usePageMetadata";
 import { AboutSection } from "../sections/AboutSection";
 import { EcosystemSection } from "../sections/EcosystemSection";
@@ -17,7 +18,8 @@ export default function HomePage() {
     canonicalUrl: "https://onjarama.ca/",
   });
 
-  const { mode, preference, setPreference, autoStrategy } = useDayNightMode();
+  const livingEnvironment = useLivingEnvironment();
+  const { resolvedMode: mode, preference, setPreference, autoStrategy } = livingEnvironment;
   const [preparedMode, setPreparedMode] = useState<DayNightMode | null>(null);
 
   return (
@@ -31,7 +33,7 @@ export default function HomePage() {
         onModePrepare={(next) => setPreparedMode(next === "auto" ? mode : next)}
       />
       <main id="main-content">
-        <TreeHeroSection mode={mode} preference={preference} preparedMode={preparedMode} />
+        <TreeHeroSection environment={livingEnvironment} preparedMode={preparedMode} />
         <EcosystemSection />
         <AboutSection />
         <MissionSection />
