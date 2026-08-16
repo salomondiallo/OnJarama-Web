@@ -10,7 +10,7 @@ export default function OJAPage() {
 
   return (
     <PublicProjectLayout currentProject="OJA">
-      <div className="oja-page">
+      <div className="oja-page a5b-compact-showcase">
         <ProjectHero project={ojaProject} kicker="Application éducative OnJarama" />
 
         <section className="project-section oja-section oja-story" aria-labelledby="why-oja-title">
@@ -31,7 +31,7 @@ export default function OJAPage() {
           <h2 id="oja-audiences-title">Un même parcours, plusieurs accompagnants</h2>
           <div className="oja-audience-strip">
             {ojaProject.audienceDetails.map((item, index) => (
-              <article key={item.title}><span aria-hidden="true">0{index + 1}</span><h3>{item.title}</h3><p>{item.description}</p></article>
+              <div key={item.title}><span aria-hidden="true">0{index + 1}</span><h3>{item.title}</h3><p>{item.description}</p></div>
             ))}
           </div>
         </section>
@@ -45,7 +45,7 @@ export default function OJAPage() {
               <p className="project-section__lead">OJA dispose d’un cadre de conception et d’un travail éducatif engagés. L’application n’est pas encore proposée comme produit public.</p>
             </div>
             <div className="oja-current__proofs">
-              {ojaProject.currentCapabilities.map((item) => <article key={item.title}><h3>{item.title}</h3><p>{item.description}</p></article>)}
+              {ojaProject.currentCapabilities.map((item) => <div key={item.title}><h3>{item.title}</h3><p>{item.description}</p></div>)}
             </div>
           </div>
         </section>

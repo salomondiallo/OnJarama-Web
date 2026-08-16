@@ -4,12 +4,6 @@ import { ojwProject } from "../data/projects";
 import { usePageMetadata } from "../hooks/usePageMetadata";
 import { PublicProjectLayout } from "../layouts/PublicProjectLayout";
 
-const publicDestinations = [
-  { shortName: "OJA", name: "OnJarama Academy", href: "/oja", description: "Éducation, accompagnement et progression." },
-  { shortName: "OJP", name: "OnJarama Path", href: "/ojp", description: "Organisation financière personnelle et clarté." },
-  { shortName: "OJCS", name: "OJCS Connect", href: "/ojcs", description: "Services, ressources et connexions utiles." },
-] as const;
-
 function OJWStatus({ label, stage }: { label: string; stage: "CURRENT" | "PLANNED" | "VISION" }) {
   return <span className="project-status" data-stage={stage}><span aria-hidden="true" />{label}</span>;
 }
@@ -19,7 +13,7 @@ export default function OJWPage() {
 
   return (
     <PublicProjectLayout currentProject="OJW">
-      <div className="ojw-page">
+      <div className="ojw-page a5b-compact-showcase">
       <ProjectHero project={ojwProject} kicker="Portail public OnJarama" />
 
       <section className="project-section ojw-section ojw-presence" aria-labelledby="about-ojw-title">
@@ -37,7 +31,7 @@ export default function OJWPage() {
         <h2 id="current-capabilities-title">Ce qu’un visiteur peut faire maintenant</h2>
         <div className="project-capabilities ojw-actions">
           {ojwProject.currentCapabilities.map((item) => (
-            <article key={item.title}><OJWStatus label="Ce qui existe aujourd’hui" stage={item.stage} /><h3>{item.title}</h3><p>{item.description}</p></article>
+            <div key={item.title}><OJWStatus label="Ce qui existe aujourd’hui" stage={item.stage} /><h3>{item.title}</h3><p>{item.description}</p></div>
           ))}
         </div>
       </section>
@@ -46,22 +40,10 @@ export default function OJWPage() {
         <p className="section-kicker">Cartographie publique</p>
         <h2 id="ecosystem-role-title">Relier sans confondre les composantes</h2>
         <div className="ojw-map__grid">
-          <article><p className="ojw-map__type">Applications</p><h3>OJA · OJP · OJCS</h3><p>Trois applications en développement, chacune présentée par une page publique — sans annoncer un accès produit.</p></article>
-          <article><p className="ojw-map__type">Portail public</p><h3>OJW</h3><p>Le point d’entrée Web qui organise la découverte et l’orientation.</p></article>
-          <article><p className="ojw-map__type">Fondation</p><h3>OJF</h3><p>Le socle institutionnel présent, distinct d’un produit ou d’une application.</p></article>
-          <article><p className="ojw-map__type">Solutions métier</p><h3>Une famille en structuration</h3><p>Aucun logiciel n’est actuellement nommé ou annoncé publiquement.</p></article>
-        </div>
-      </section>
-
-      <section className="project-section ojw-section ojw-destinations" aria-labelledby="ojw-destinations-title">
-        <p className="section-kicker">Pages publiques accessibles</p>
-        <h2 id="ojw-destinations-title">Explorer les applications depuis leur vitrine publique</h2>
-        <div className="ojw-destinations__grid">
-          {publicDestinations.map((destination) => (
-            <a key={destination.shortName} href={destination.href} aria-label={`${destination.name} — découvrir la page publique`}>
-              <span>{destination.shortName}</span><strong>{destination.name}</strong><p>{destination.description}</p><span aria-hidden="true">Découvrir →</span>
-            </a>
-          ))}
+          <div><p className="ojw-map__type">Applications</p><h3>OJA · OJP · OJCS</h3><p>Trois applications en développement, chacune présentée par une page publique — sans annoncer un accès produit.</p></div>
+          <div><p className="ojw-map__type">Portail public</p><h3>OJW</h3><p>Le point d’entrée Web qui organise la découverte et l’orientation.</p></div>
+          <div><p className="ojw-map__type">Fondation</p><h3>OJF</h3><p>Le socle institutionnel présent, distinct d’un produit ou d’une application.</p></div>
+          <div><p className="ojw-map__type">Solutions métier</p><h3>Une famille en structuration</h3><p>Aucun logiciel n’est actuellement nommé ou annoncé publiquement.</p></div>
         </div>
       </section>
 

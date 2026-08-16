@@ -12,7 +12,7 @@ export default function OJPPage() {
 
   return (
     <PublicProjectLayout currentProject="OJP">
-      <div className="ojp-page">
+      <div className="ojp-page a5b-compact-showcase">
         <ProjectHero project={ojpProject} kicker="Application d’organisation financière personnelle" />
 
         <section className="project-section ojp-section ojp-problem" aria-labelledby="why-ojp-title">
@@ -29,7 +29,7 @@ export default function OJPPage() {
           <p className="section-kicker">Pour qui</p>
           <h2 id="ojp-audiences-title">Des situations différentes, un besoin commun de clarté</h2>
           <div className="ojp-audience-line">
-            {ojpProject.audienceDetails.map((item, index) => <article key={item.title}><span aria-hidden="true">0{index + 1}</span><div><h3>{item.title}</h3><p>{item.description}</p></div></article>)}
+            {ojpProject.audienceDetails.map((item, index) => <div key={item.title}><span aria-hidden="true">0{index + 1}</span><div><h3>{item.title}</h3><p>{item.description}</p></div></div>)}
           </div>
         </section>
 
@@ -43,7 +43,7 @@ export default function OJPPage() {
         <section className="project-section ojp-section ojp-current" aria-labelledby="ojp-current-title">
           <div className="ojp-current__intro"><ProjectStatus label="Ce qui est déjà engagé" stage="CURRENT" /><p className="section-kicker">État actuel</p><h2 id="ojp-current-title">Un cadre en construction, aucun service financier ouvert</h2></div>
           <div className="ojp-current__list">
-            {ojpProject.currentCapabilities.map((item) => <article key={item.title}><h3>{item.title}</h3><p>{item.description}</p></article>)}
+            {ojpProject.currentCapabilities.map((item) => <div key={item.title}><h3>{item.title}</h3><p>{item.description}</p></div>)}
           </div>
         </section>
 

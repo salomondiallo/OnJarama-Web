@@ -21,6 +21,7 @@
     "test:ojw:public-pages-05-a3-c": "node scripts/architecture/ojw-public-pages-05-a3-c-cross-navigation-qualification.test.mjs",
     "test:ojw:public-pages-05-a4-a": "node scripts/architecture/ojw-public-pages-05-a4-a-top-context.test.mjs",
     "test:ojw:public-pages-05-a5-a": "node scripts/architecture/ojw-public-pages-05-a5-a-public-evidence-contract.test.mjs",
+    "test:ojw:public-pages-05-a5-b": "node scripts/architecture/ojw-public-pages-05-a5-b-structural-recomposition.test.mjs",
     "test:ojw:ecosystem-02-e3": "node scripts/architecture/ojw-ecosystem-02-e3-ojcs-public-page.test.mjs",
     "test:ojw:ecosystem-02-d3": "node scripts/architecture/ojw-ecosystem-02-d3-ojp-public-page.test.mjs",
     "test:ojw:ecosystem-02-c3": "node scripts/architecture/ojw-ecosystem-02-c3-oja-public-page.test.mjs",

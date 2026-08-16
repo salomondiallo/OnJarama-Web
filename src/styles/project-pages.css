@@ -558,3 +558,98 @@ body:has(.ojcs-page) .skip-link { min-height: 44px; }
   .public-project-explorer__item:not(.is-current):hover,
   .public-project-explorer__item:not(.is-current):focus-visible { transform: none; }
 }
+
+/* A5-B: compact structural rhythm for the narrative body only. */
+.a5b-compact-showcase > .project-section {
+  margin-top: clamp(16px, 2.2vw, 24px);
+  padding: clamp(24px, 3.4vw, 38px);
+}
+.a5b-compact-showcase > .project-section h2 { margin-bottom: 16px; }
+.a5b-compact-showcase > .project-section .project-section__lead { margin-bottom: 0; }
+.a5b-compact-showcase .oja-audience-strip,
+.a5b-compact-showcase .oja-terrain__grid,
+.a5b-compact-showcase .ojp-audience-line,
+.a5b-compact-showcase .ojp-method__steps,
+.a5b-compact-showcase .ojcs-axis-grid,
+.a5b-compact-showcase .ojcs-current-grid,
+.a5b-compact-showcase .ojw-presence__facts,
+.a5b-compact-showcase .ojw-map__grid { margin-top: 20px; }
+.a5b-compact-showcase .oja-terrain__grid article { min-height: 0; padding: 24px; }
+.a5b-compact-showcase .oja-terrain__grid h3 { margin-top: 16px; }
+.a5b-compact-showcase .oja-audience-strip article,
+.a5b-compact-showcase .oja-building__domains article,
+.a5b-compact-showcase .ojp-audience-line article,
+.a5b-compact-showcase .ojp-building__domains article,
+.a5b-compact-showcase .ojcs-current-grid article,
+.a5b-compact-showcase .ojcs-planned-grid article,
+.a5b-compact-showcase .ojw-map__grid article { padding: 16px 18px; }
+.a5b-compact-showcase .oja-current__proofs,
+.a5b-compact-showcase .ojp-current__list,
+.a5b-compact-showcase .ojp-responsibility__principles { gap: 16px; }
+.a5b-compact-showcase .ojp-method,
+.a5b-compact-showcase .ojp-responsibility,
+.a5b-compact-showcase .ojcs-connect,
+.a5b-compact-showcase .ojcs-territory,
+.a5b-compact-showcase .ojw-foundation { margin-top: clamp(16px, 2.2vw, 24px); }
+.a5b-compact-showcase .ojp-method,
+.a5b-compact-showcase .ojp-responsibility,
+.a5b-compact-showcase .ojcs-connect { padding: clamp(24px, 3.8vw, 42px); }
+.a5b-compact-showcase .ojcs-territory > div,
+.a5b-compact-showcase .ojw-foundation { padding: clamp(24px, 3.8vw, 42px); }
+.a5b-compact-showcase .oja-audience-strip > div { min-width: 0; padding: 16px 18px; border-right: 1px solid rgba(99, 212, 113, .2); }
+.a5b-compact-showcase .oja-audience-strip > div:last-child { border-right: 0; }
+.a5b-compact-showcase .oja-audience-strip > div > span { color: var(--oja-accent); font-size: .73rem; font-weight: 850; letter-spacing: .14em; }
+.a5b-compact-showcase .oja-audience-strip > div h3 { margin: 8px 0 6px; color: #f0fbf2; font-size: 1.05rem; }
+.a5b-compact-showcase .oja-audience-strip > div p { margin: 0; font-size: .93rem; }
+.a5b-compact-showcase .oja-current__proofs > div,
+.a5b-compact-showcase .ojp-current__list > div { border-left: 2px solid rgba(99, 212, 113, .5); padding-left: 18px; }
+.a5b-compact-showcase .ojp-current__list > div { border-color: rgba(99, 216, 209, .5); }
+.a5b-compact-showcase .oja-current__proofs > div h3,
+.a5b-compact-showcase .ojp-current__list > div h3 { margin: 0 0 6px; color: #effcfd; }
+.a5b-compact-showcase .oja-current__proofs > div p,
+.a5b-compact-showcase .ojp-current__list > div p { margin: 0; }
+.a5b-compact-showcase .ojp-audience-line > div { display: grid; grid-template-columns: 34px 1fr; gap: 14px; padding: 16px; border-right: 1px solid rgba(99, 216, 209, .2); }
+.a5b-compact-showcase .ojp-audience-line > div > span { color: var(--ojp-turquoise); font-size: .73rem; font-weight: 850; }
+.a5b-compact-showcase .ojp-audience-line > div h3 { margin: 0 0 6px; color: #effcfd; }
+.a5b-compact-showcase .ojp-audience-line > div p { margin: 0; }
+.a5b-compact-showcase .ojcs-current-grid > div { min-width: 0; border-left: 1px solid rgba(244,117,65,.3); padding: 16px 18px; }
+.a5b-compact-showcase .ojcs-current-grid > div > span { color: var(--ojcs-coral); font-size: .75rem; font-weight: 850; letter-spacing: .16em; }
+.a5b-compact-showcase .ojcs-current-grid > div h3 { margin: 10px 0 7px; color: #fff4ed; }
+.a5b-compact-showcase .ojcs-current-grid > div p { margin: 0; }
+.a5b-compact-showcase .ojcs-planned-grid { margin-block: 0; padding: 0; list-style: none; }
+.a5b-compact-showcase .ojcs-planned-grid > li { min-width: 0; border: 1px solid rgba(244,188,99,.2); border-radius: var(--oj-radius-md); padding: 16px 18px; background: rgba(255,255,255,.025); }
+.a5b-compact-showcase .ojcs-planned-grid > li h3 { margin: 0 0 7px; color: #fff4ed; }
+.a5b-compact-showcase .ojcs-planned-grid > li p { margin: 0; }
+.a5b-compact-showcase .ojw-actions > div,
+.a5b-compact-showcase .ojw-map__grid > div { border: 1px solid rgba(115,222,239,.2); border-radius: var(--oj-radius-md); padding: 16px 18px; background: rgba(255,255,255,.035); }
+.a5b-compact-showcase .ojw-actions > div h3,
+.a5b-compact-showcase .ojw-map__grid > div h3 { margin: 10px 0 7px; color: #f5fafb; }
+.a5b-compact-showcase .ojw-actions > div p,
+.a5b-compact-showcase .ojw-map__grid > div > p:last-child { margin: 0; }
+
+@media (max-width: 620px) {
+  .a5b-compact-showcase > .project-section { margin-top: 14px; padding: 20px; }
+  .a5b-compact-showcase .oja-audience-strip article,
+  .a5b-compact-showcase .oja-building__domains article,
+  .a5b-compact-showcase .ojp-audience-line article,
+  .a5b-compact-showcase .ojp-building__domains article,
+  .a5b-compact-showcase .ojcs-current-grid article,
+  .a5b-compact-showcase .ojcs-planned-grid article,
+  .a5b-compact-showcase .ojw-map__grid article { padding: 14px 0; }
+  .a5b-compact-showcase .ojp-method,
+  .a5b-compact-showcase .ojp-responsibility,
+  .a5b-compact-showcase .ojcs-connect,
+  .a5b-compact-showcase .ojcs-territory > div,
+  .a5b-compact-showcase .ojw-foundation { padding: 22px 20px; }
+  .a5b-compact-showcase .oja-audience-strip,
+  .a5b-compact-showcase .ojp-building__domains,
+  .a5b-compact-showcase .ojcs-axis-grid,
+  .a5b-compact-showcase .ojcs-planned-grid,
+  .a5b-compact-showcase .ojw-map__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .a5b-compact-showcase .oja-audience-strip > div:nth-child(2n) { border-right: 0; }
+  .a5b-compact-showcase .ojp-building__domains article { padding: 14px 12px; }
+  .a5b-compact-showcase .ojcs-axis-grid li,
+  .a5b-compact-showcase .ojcs-axis-grid li + li { padding: 8px 10px 22px 30px; }
+  .a5b-compact-showcase .ojcs-planned-grid > li,
+  .a5b-compact-showcase .ojw-map__grid > div { padding: 14px; }
+}
