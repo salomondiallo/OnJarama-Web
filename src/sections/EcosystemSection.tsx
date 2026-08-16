@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { foundationEntity, publicApplications, publicSoftware, webPortalEntity } from "../data/ecosystem";
 
 const APPLICATION_PRESENTATION: Record<string, string> = {
@@ -6,7 +7,32 @@ const APPLICATION_PRESENTATION: Record<string, string> = {
   "ojcs-connect": "ojcs",
 };
 
+const FOUNDATION_DISCLOSURES = [
+  {
+    id: "vision",
+    label: "Vision et principes",
+    content: "OJF porte la vision et les principes qui donnent une continuité institutionnelle aux initiatives OnJarama.",
+  },
+  {
+    id: "values",
+    label: "Valeurs et engagements",
+    content: "Cette section sera approfondie progressivement.",
+  },
+  {
+    id: "objectives",
+    label: "Objectifs institutionnels",
+    content: "Cette section sera approfondie progressivement.",
+  },
+  {
+    id: "constitution",
+    label: "Constitution OnJarama",
+    content: "OJF porte l’introduction publique à la Constitution OnJarama. Cette section sera approfondie progressivement.",
+  },
+] as const;
+
 export function EcosystemSection() {
+  const [openFoundationDisclosure, setOpenFoundationDisclosure] = useState<string | null>(null);
+
   return (
     <section id="ecosystem-projects" className="section ecosystem-section" aria-labelledby="ecosystem-projects-title">
       <div className="section-heading ecosystem-section__heading">
@@ -66,28 +92,53 @@ export function EcosystemSection() {
         </section>
       </div>
 
-      <div className="ecosystem-roles">
-        <article className="ecosystem-role ecosystem-role--portal">
-          <div className="ecosystem-role__emblem"><img src={webPortalEntity.emblem} alt={webPortalEntity.emblemAlt} width="1024" height="1024" /></div>
-          <div className="ecosystem-role__content">
-            <p className="section-kicker">Portail public actif</p>
-            <h3>OJW — Le portail public</h3>
-            <p>OJW est le point d’entrée Web officiel pour découvrir les applications, les futures solutions métier et la dimension institutionnelle d’OnJarama.</p>
-            <a className="ecosystem-role__link" href={webPortalEntity.publicPagePath}>Découvrir OJW <span aria-hidden="true">→</span></a>
-          </div>
-        </article>
-        <article className="ecosystem-role ecosystem-role--foundation">
-          <div className="ecosystem-role__content">
-            <p className="section-kicker">Fondation institutionnelle</p>
-            <h3>{foundationEntity.acronym} — Le socle présent d’OnJarama</h3>
-            <p>OJF porte dès aujourd’hui la continuité institutionnelle de l’écosystème et son introduction publique à la Constitution OnJarama.</p>
-            <ul className="ecosystem-foundation-pillars">
-              <li>Vision et principes</li><li>Valeurs et engagements</li><li>Objectifs institutionnels</li><li>Constitution OnJarama</li>
-            </ul>
-            <p className="ecosystem-role__note">Ces contenus seront approfondis progressivement, sans remettre en cause le rôle institutionnel déjà établi d’OJF.</p>
-          </div>
-        </article>
-      </div>
+      <section className="ecosystem-public-presence" aria-labelledby="public-presence-title">
+        <div className="ecosystem-public-presence__heading">
+          <p className="section-kicker">Portail &amp; Fondation</p>
+          <h3 id="public-presence-title">Notre présence publique</h3>
+          <p>Le portail Web et le socle institutionnel rendent l’écosystème OnJarama accessible, lisible et cohérent.</p>
+        </div>
+        <div className="ecosystem-roles">
+          <article className="ecosystem-role ecosystem-role--portal">
+            <div className="ecosystem-role__emblem"><img src={webPortalEntity.emblem} alt={webPortalEntity.emblemAlt} width="1024" height="1024" /></div>
+            <div className="ecosystem-role__content">
+              <p className="section-kicker">Portail public actif</p>
+              <h4>OJW — Le portail public</h4>
+              <p>OJW est le point d’entrée Web officiel pour découvrir les applications, les futures solutions métier et la dimension institutionnelle d’OnJarama.</p>
+              <a className="ecosystem-role__link" href={webPortalEntity.publicPagePath}>Découvrir OJW <span aria-hidden="true">→</span></a>
+            </div>
+          </article>
+          <article className="ecosystem-role ecosystem-role--foundation">
+            <div className="ecosystem-role__content">
+              <p className="section-kicker">Fondation institutionnelle</p>
+              <h4>{foundationEntity.acronym} — Le socle présent d’OnJarama</h4>
+              <p>OJF porte dès aujourd’hui la continuité institutionnelle de l’écosystème et son introduction publique à la Constitution OnJarama.</p>
+              <div className="ecosystem-foundation-disclosures">
+                {FOUNDATION_DISCLOSURES.map((item) => {
+                  const isOpen = openFoundationDisclosure === item.id;
+                  const panelId = `foundation-${item.id}-panel`;
+                  return (
+                    <div className={`ecosystem-foundation-disclosure${isOpen ? " is-open" : ""}`} key={item.id}>
+                      <button
+                        type="button"
+                        aria-expanded={isOpen}
+                        aria-controls={panelId}
+                        onClick={() => setOpenFoundationDisclosure(isOpen ? null : item.id)}
+                      >
+                        <span>{item.label}</span><span aria-hidden="true">{isOpen ? "−" : "+"}</span>
+                      </button>
+                      <div id={panelId} hidden={!isOpen} className="ecosystem-foundation-disclosure__panel">
+                        <p>{item.content}</p>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+              <p className="ecosystem-role__note">Ces contenus seront approfondis progressivement, sans remettre en cause le rôle institutionnel déjà établi d’OJF.</p>
+            </div>
+          </article>
+        </div>
+      </section>
     </section>
   );
 }

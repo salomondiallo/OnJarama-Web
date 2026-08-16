@@ -139,26 +139,40 @@
 .ecosystem-software-editorial li{position:relative;padding-left:18px;color:#c7dad4;font-size:.88rem;line-height:1.55}
 .ecosystem-software-editorial li::before{position:absolute;left:0;top:.7em;width:7px;height:1px;background:var(--oj-gold);content:""}
 
-.ecosystem-roles { display: grid; grid-template-columns: minmax(0,.78fr) minmax(0,1.22fr); gap: clamp(18px, 2.3vw, 30px); margin-top: clamp(24px, 3.5vw, 44px); }
+.ecosystem-public-presence{margin-top:clamp(24px,3.5vw,44px);border:1px solid rgba(242,207,99,.24);border-radius:var(--oj-radius-lg);padding:clamp(20px,3vw,36px);background:linear-gradient(155deg,rgba(19,51,61,.84),rgba(5,15,26,.9))}
+.ecosystem-public-presence__heading{display:grid;grid-template-columns:minmax(0,.72fr) minmax(0,1.28fr);gap:10px clamp(24px,4vw,64px);align-items:end;margin-bottom:clamp(18px,2.5vw,28px)}
+.ecosystem-public-presence__heading .section-kicker{grid-column:1/-1}
+.ecosystem-public-presence__heading h3{margin:0;font-size:clamp(1.65rem,3vw,2.55rem)}
+.ecosystem-public-presence__heading>p:last-child{margin:0;color:var(--oj-muted);line-height:1.65}
+.ecosystem-roles { display: grid; grid-template-columns: minmax(0,.78fr) minmax(0,1.22fr); gap: clamp(18px, 2.3vw, 30px); }
 .ecosystem-role { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: clamp(18px, 2vw, 28px); align-items: center; padding: clamp(20px, 2.5vw, 30px); }
 .ecosystem-role--portal { --ecosystem-accent: 41, 167, 193; border-color: rgba(41, 167, 193, .36); }
 .ecosystem-role--foundation { border-color: rgba(242, 207, 99, .38); background: linear-gradient(145deg, rgba(242, 207, 99, .13), rgba(5, 15, 26, .86)); }
 .ecosystem-role__emblem { width: clamp(86px, 8vw, 112px); aspect-ratio: 1; }
 .ecosystem-role__eyebrow { margin: 0 0 6px; color: #f2cf63; font-size: .71rem; font-weight: 800; letter-spacing: .11em; text-transform: uppercase; }
-.ecosystem-role h3 { margin: 0 0 8px; font-size: clamp(1.2rem, 1.8vw, 1.55rem); }
+.ecosystem-role h4 { margin: 0 0 8px; font-size: clamp(1.2rem, 1.8vw, 1.55rem); }
 .ecosystem-role__content > p:not(.ecosystem-role__eyebrow) { margin: 0; color: var(--oj-muted); line-height: 1.6; }
 .ecosystem-role__link { margin-top: 18px; }
-.ecosystem-foundation-pillars{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px 18px;margin:22px 0 0;padding:0;list-style:none}
-.ecosystem-foundation-pillars li{border-top:1px solid rgba(242,207,99,.38);padding-top:9px;color:#f1f6f3;font-size:.82rem;font-weight:750}
+.ecosystem-foundation-disclosures{display:grid;gap:8px;margin-top:20px}
+.ecosystem-foundation-disclosure{border-top:1px solid rgba(242,207,99,.38)}
+.ecosystem-foundation-disclosure button{display:flex;justify-content:space-between;align-items:center;width:100%;min-height:48px;border:0;padding:8px 2px;background:transparent;color:#f1f6f3;font:inherit;font-size:.86rem;font-weight:750;text-align:left;cursor:pointer}
+.ecosystem-foundation-disclosure button span:last-child{color:#f2cf63;font-size:1.25rem}
+.ecosystem-foundation-disclosure button:focus-visible{outline:3px solid #f2cf63;outline-offset:3px;border-radius:4px}
+.ecosystem-foundation-disclosure__panel{padding:14px 22px 13px 2px}
+.ecosystem-foundation-disclosure__panel p{margin:0!important;color:#c7dad4!important;font-size:.84rem;line-height:1.6}
 .ecosystem-role__note{margin-top:18px!important;font-size:.82rem}
 
 .app:has(.tree-hero.is-day) .ecosystem-territory,
 .app:has(.tree-hero.is-day) .ecosystem-role { color: #173a36; border-color: rgba(30, 88, 78, .25); background: linear-gradient(155deg, #e9e5d5, #d8e3d8 58%, #c9d9d2); box-shadow: 0 20px 46px rgba(2, 22, 28, .13); }
+.app:has(.tree-hero.is-day) .ecosystem-public-presence{color:#173a36;border-color:rgba(30,88,78,.25);background:linear-gradient(155deg,#e9e5d5,#d8e3d8 58%,#c9d9d2);box-shadow:0 20px 46px rgba(2,22,28,.13)}
+.app:has(.tree-hero.is-day) .ecosystem-public-presence__heading>p:last-child{color:#345a55}
 .app:has(.tree-hero.is-day) .ecosystem-card { color: #173a36; border-color: rgba(var(--ecosystem-accent), .38); background: linear-gradient(145deg, rgba(var(--ecosystem-accent), .16), transparent 42%), rgba(255, 255, 255, .32); box-shadow: 0 18px 38px rgba(2, 22, 28, .12); }
 .app:has(.tree-hero.is-day) .ecosystem-card__acronym { color: #173a36; }
 .app:has(.tree-hero.is-day) :is(.ecosystem-card, .ecosystem-territory, .ecosystem-role) p { color: #345a55; }
 .app:has(.tree-hero.is-day) .ecosystem-section__map dd{color:#dfece5}
-.app:has(.tree-hero.is-day) .ecosystem-foundation-pillars li{color:#173a36;border-top-color:rgba(83,119,105,.42)}
+.app:has(.tree-hero.is-day) .ecosystem-foundation-disclosure{border-top-color:rgba(83,119,105,.42)}
+.app:has(.tree-hero.is-day) .ecosystem-foundation-disclosure button{color:#173a36}
+.app:has(.tree-hero.is-day) .ecosystem-foundation-disclosure__panel p{color:#345a55!important}
 .app:has(.tree-hero.is-day) .ecosystem-software-editorial li{color:#294f4a}
 .app:has(.tree-hero.is-day) :is(.ecosystem-card__link, .ecosystem-role__link) { color: #0a4f62; }
 
@@ -174,6 +188,7 @@
   .ecosystem-section .section-heading{grid-template-columns:1fr;gap:24px}
   .ecosystem-territories,
   .ecosystem-roles { grid-template-columns: 1fr; }
+  .ecosystem-public-presence__heading{grid-template-columns:1fr}
   .ecosystem-territory--applications { order: 1; }
   .ecosystem-territory--software { order: 2; min-height: 260px; }
   .ecosystem-software-editorial { margin-top: 28px; }
@@ -192,7 +207,7 @@
   .ecosystem-card--ojcs .ecosystem-card__emblem { width: 112px; }
   .ecosystem-role { grid-template-columns: 1fr; }
   .ecosystem-role__emblem { width: 94px; }
-  .ecosystem-foundation-pillars{grid-template-columns:1fr}
+  .ecosystem-public-presence{padding:20px 14px}
 }
 
 @media (prefers-reduced-motion: reduce) {
