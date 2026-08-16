@@ -764,20 +764,21 @@
 .tree-scene[data-gfx04-r2-treeless] .dynamic-sky__day-path-neutralizer{display:none!important}
 /* TABLET_768_DAY_GLASS_CONTAINED */
 @media(min-width:761px){
-  .tree-scene[data-gfx04-r2-treeless] .dynamic-sky{clip-path:polygon(0 0,67% 0,67% 100%,0 100%)}
+  .tree-scene[data-gfx04-r2-treeless] .dynamic-sky{clip-path:none;-webkit-mask-image:linear-gradient(to right,#000 0,#000 61%,rgba(0,0,0,.72) 64%,transparent 68%);mask-image:linear-gradient(to right,#000 0,#000 61%,rgba(0,0,0,.72) 64%,transparent 68%)}
   .tree-hero__intro--option-b{top:8%;right:2.7%;bottom:auto;left:auto;width:30.3%;min-height:56%;padding:0;border:0;transform:none;background:transparent!important;background-color:transparent!important;background-image:none!important;box-shadow:none!important;filter:none!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important;transition:none!important}
   .tree-hero__intro--option-b::before,.tree-hero__intro--option-b::after{content:none!important;background:none!important}
   .tree-hero__intro--option-b .tree-hero__eyebrow,
   .tree-hero__intro--option-b h1,
   .tree-hero__intro--option-b .tree-hero__lead{visibility:hidden!important;color:transparent!important;text-shadow:none!important;user-select:none}
-  .tree-hero__intro--option-b .tree-hero__actions{position:absolute;right:4.5%;bottom:10%;width:39%;grid-template-columns:1fr;gap:10%}
-  .tree-hero__intro--option-b .tree-hero__cta{min-height:38px;border-color:transparent!important;color:transparent!important;background:transparent!important;box-shadow:none!important}
+  .tree-hero__intro--option-b .tree-hero__actions{position:absolute;right:4.5%;bottom:10%;grid-area:auto;min-width:0;width:39%;grid-template-columns:1fr;gap:10%}
+  .tree-hero__intro--option-b .tree-hero__cta{box-sizing:border-box;min-width:0;width:100%;min-height:38px;padding-inline:0;border-color:transparent!important;color:transparent!important;background:transparent!important;box-shadow:none!important}
   .tree-hero__intro--option-b .tree-hero__cta:focus-visible{outline:3px solid #f2c64f;outline-offset:2px}
 }
 .tree-scene[data-gfx04-r2-treeless] .gfx03-moon-system{transform:translate(-303px,-72px)!important}
 .tree-scene[data-gfx04-r2-treeless] .gfx02-moon-refinement{r:46px}
 @media(min-width:761px) and (max-width:959px){
-  .tree-hero__intro--option-b{top:8%;right:1.5%;width:34%;min-height:55%}
+  .tree-hero__intro--option-b{top:8%;right:1.5%;width:34%;height:55%;min-height:0}
+  .tree-hero__intro--option-b .tree-hero__actions{top:40%;bottom:auto}
 }
 /* MOBILE_390_EDITORIAL_CARD_NO_OVERFLOW */
 @media(max-width:760px){
