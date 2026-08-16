@@ -6,6 +6,7 @@ const app = read("src/App.tsx");
 const model = read("src/data/ecosystem.ts");
 const editorial = read("src/data/projects/ojw.ts");
 const page = read("src/pages/OJWPage.tsx");
+const explorer = read("src/components/PublicProjectExplorer.tsx");
 const styles = read("src/styles/project-pages.css");
 
 const canonical = model.slice(model.indexOf("export const ecosystemEntities"), model.indexOf("export const publicApplications"));
@@ -34,9 +35,12 @@ assert.match(editorial, /onjarama\.ca est la présence Web publique/);
 assert.match(editorial, /pages publiques OJA, OJP, OJCS et OJW sont accessibles/);
 assert.match(editorial, /ne signifie pas que les applications sont elles-mêmes disponibles comme produits/);
 assert.match(page, /kicker="Portail public OnJarama"/);
-assert.match(page, /href: "\/oja"/);
-assert.match(page, /href: "\/ojp"/);
-assert.match(page, /href: "\/ojcs"/);
+assert.match(page, /<PublicProjectExplorer currentProject="OJW" \/>/);
+assert.match(explorer, /publicPageEntities\.filter/);
+assert.match(explorer, /to=\{project\.publicPagePath\}/);
+for (const [id, route] of [["academy", "/oja"], ["path", "/ojp"], ["ojcs-connect", "/ojcs"]]) {
+  assert.match(entityBlock(id), new RegExp(`publicPagePath: "${route}"[\\s\\S]*publicPageAvailable: true[\\s\\S]*productAvailable: false`));
+}
 assert.match(page, /Une famille en structuration/);
 assert.doesNotMatch(`${page}\n${editorial}`, /Télécharger|Ouvrir l’application|Essayer l’application|Créer un compte|S’inscrire/i);
 assert.doesNotMatch(page, /label=\{item\.stage\}/);

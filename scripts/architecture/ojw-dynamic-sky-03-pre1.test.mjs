@@ -72,7 +72,7 @@ assert.match(styles, /tree-hero__intro--option-b\{[^}]*background-color:transpar
 assert.match(styles, /MOBILE_390_EDITORIAL_CARD_NO_OVERFLOW/);
 assert.match(styles, /width:calc\(100% - 16px\);max-width:calc\(100% - 16px\);min-width:0/);
 assert.match(headerStyles, /MOBILE_390_AMBIENCE_SELECTOR_VISIBLE/);
-assert.match(headerStyles, /grid-template-columns:40px minmax\(110px,1fr\) 40px/);
+assert.match(headerStyles, /grid-template-columns:44px minmax\(110px,1fr\) 44px/);
 assert.match(headerStyles, /HEADER_BREAKPOINT_767_768_769/);
 assert.match(headerStyles, /HEADER_BREAKPOINT_899_900_901/);
 assert.match(headerStyles, /@media \(max-width: 1023px\)/);
