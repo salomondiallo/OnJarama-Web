@@ -25,6 +25,7 @@
     "test:ojw:public-pages-05-a5-b-fix1": "node scripts/architecture/ojw-public-pages-05-a5-b-fix1-scroll-restoration.test.mjs",
     "test:ojw:public-surface-05-a6-a": "node scripts/architecture/ojw-public-surface-05-a6-a-final-qualification.test.mjs",
     "test:ojw:public-surface-05-a6-a-fix1": "node scripts/architecture/ojw-public-surface-05-a6-a-fix1-final-blockers.test.mjs",
+    "test:ojw:living-environment-le-00": "node scripts/architecture/ojw-living-environment-le-00-canonical-reconciliation.test.mjs",
     "test:ojw:ecosystem-02-e3": "node scripts/architecture/ojw-ecosystem-02-e3-ojcs-public-page.test.mjs",
     "test:ojw:ecosystem-02-d3": "node scripts/architecture/ojw-ecosystem-02-d3-ojp-public-page.test.mjs",
     "test:ojw:ecosystem-02-c3": "node scripts/architecture/ojw-ecosystem-02-c3-oja-public-page.test.mjs",
