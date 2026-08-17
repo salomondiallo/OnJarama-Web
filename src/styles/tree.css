@@ -518,20 +518,12 @@
 .tree-scene[data-gfx04-r2-treeless] .gfx03-moon-system{
   transform-box:view-box;
   transform-origin:center;
-  transition:opacity .7s ease,transform 60s linear;
+  transition:opacity .7s ease,transform 58s linear;
 }
-.tree-scene[data-gfx04-r2-treeless].is-celestial-auto.is-scene-day .gfx03-sun-system{animation:gfx04R2SunArc 12h linear infinite}
-.tree-scene[data-gfx04-r2-treeless].is-celestial-auto.is-scene-night .gfx03-moon-system{animation:gfx04R2MoonArc 11h linear infinite}
-@keyframes gfx04R2SunArc{
-  0%{transform:translate(-330px,92px)}
-  50%{transform:translate(0,0)}
-  100%{transform:translate(350px,92px)}
-}
-@keyframes gfx04R2MoonArc{
-  0%{transform:translate(-300px,78px)}
-  50%{transform:translate(20px,0)}
-  100%{transform:translate(340px,78px)}
-}
+/* Historical GFX-04 keyframe names remain as an inert compatibility contract.
+   LE-02 positions both bodies from the shared timestamp; neither keyframe is applied. */
+@keyframes gfx04R2SunArc{from{transform:translate(0,0)}to{transform:translate(0,0)}}
+@keyframes gfx04R2MoonArc{from{transform:translate(0,0)}to{transform:translate(0,0)}}
 .tree-scene[data-gfx03-scene] .gfx02-moon-refinement{filter:url(#gfx03MoonTexture) drop-shadow(0 0 8px rgba(196,218,224,.14))}
 .gfx03-tree-blend{
   position:absolute;
@@ -800,11 +792,27 @@
 [data-cloud-cover="OVERCAST"][data-celestial-source="SUN"] .gfx03-sun-system{opacity:.16!important}
 [data-cloud-cover="OVERCAST"][data-celestial-source="MOON"] .gfx03-moon-system{opacity:.16!important}
 [data-precipitation="RAIN"][data-celestial-source="MOON"] .gfx03-moon-system{opacity:.12!important}
-.is-celestial-auto .dynamic-sky__clouds--far i{animation:dynamicSkyDriftFar 150s linear infinite}
-.is-celestial-auto .dynamic-sky__clouds--mid i{animation:dynamicSkyDriftMid 105s linear infinite}
+.dynamic-sky__clouds--far i{animation:dynamicSkyDriftFar 190s linear infinite}
+.dynamic-sky__clouds--far i:nth-child(2){animation-duration:236s;animation-delay:-91s;animation-direction:reverse}
+.dynamic-sky__clouds--mid i{animation:dynamicSkyDriftMid 138s linear infinite}
+.dynamic-sky__clouds--mid i:nth-child(2){animation-duration:171s;animation-delay:-64s;animation-direction:reverse}
+.dynamic-sky__clouds--mid i:nth-child(3){animation-duration:214s;animation-delay:-127s}
+.dynamic-sky__clouds--near i{animation:dynamicSkyDriftNear 116s ease-in-out infinite}
+.dynamic-sky__clouds--near i:nth-child(2){animation-duration:149s;animation-delay:-73s;animation-direction:reverse}
 .is-celestial-auto .dynamic-sky__rain{animation:dynamicSkyRain 1.4s linear infinite}
-@keyframes dynamicSkyDriftFar{to{translate:7vw 0}}
-@keyframes dynamicSkyDriftMid{to{translate:-9vw 0}}
+@keyframes dynamicSkyDriftFar{0%,100%{translate:-2vw 0}50%{translate:5vw .25vh}}
+@keyframes dynamicSkyDriftMid{0%,100%{translate:4vw 0}50%{translate:-7vw .7vh}}
+@keyframes dynamicSkyDriftNear{0%,100%{translate:-1.5vw 0}50%{translate:3vw .5vh}}
 @keyframes dynamicSkyRain{to{background-position:-28px 170px}}
-@media(max-width:760px){.dynamic-sky__clouds--near{display:none}.dynamic-sky__rain--near{display:none}.dynamic-sky__rain{background-size:150px 230px}.dynamic-sky__directional-shadow{opacity:.035}}
-@media(prefers-reduced-motion:reduce){.dynamic-sky *{animation:none!important;transition:none!important}.dynamic-sky__rain{background-position:0 0}.dynamic-sky__clouds i{transform:none!important}}
+@media(max-width:760px){.dynamic-sky__clouds--near{display:none}.dynamic-sky__clouds--far i:nth-child(2),.dynamic-sky__clouds--mid i:nth-child(3){display:none}.dynamic-sky__rain--near{display:none}.dynamic-sky__rain{background-size:150px 230px}.dynamic-sky__directional-shadow{opacity:.035}}
+[data-environment-profile="compact"] .dynamic-sky__clouds--near,[data-environment-profile="compact"] .scene-bird--three{display:none}
+[data-environment-profile="compact"] .dynamic-sky__clouds--far i:nth-child(2),[data-environment-profile="compact"] .dynamic-sky__clouds--mid i:nth-child(3){display:none}
+
+/* LE-02: spaced, non-synchronous live bird passages. Raster birds remain deferred. */
+.gfx02-life-layers .scene-bird--one{animation:le02BirdPassOne 47s linear -11s infinite}
+.gfx02-life-layers .scene-bird--two{animation:le02BirdPassTwo 61s linear -39s infinite}
+.gfx02-life-layers .scene-bird--three{animation:le02BirdPassThree 73s linear -57s infinite}
+@keyframes le02BirdPassOne{0%,10%,48%,100%{opacity:0;transform:translate(-90px,14px) scale(.88)}16%{opacity:.82}24%{opacity:1;transform:translate(8px,-3px) scale(.96)}40%{opacity:.72;transform:translate(138px,-18px) scale(.9)}}
+@keyframes le02BirdPassTwo{0%,28%,66%,100%{opacity:0;transform:translate(120px,-16px) scale(.72)}34%{opacity:.76}45%{opacity:.92;transform:translate(12px,4px) scale(.8)}59%{opacity:.58;transform:translate(-126px,20px) scale(.74)}}
+@keyframes le02BirdPassThree{0%,52%,84%,100%{opacity:0;transform:translate(-72px,-8px) scale(.58)}58%{opacity:.62}67%{opacity:.78;transform:translate(5px,7px) scale(.64)}78%{opacity:.46;transform:translate(104px,-9px) scale(.6)}}
+@media(prefers-reduced-motion:reduce){.dynamic-sky *{animation:none!important;transition:none!important}.dynamic-sky__rain{background-position:0 0}.dynamic-sky__clouds i{transform:none!important}.gfx02-life-layers .scene-bird{display:none!important}.tree-scene[data-gfx04-r2-treeless] .gfx03-sun-system,.tree-scene[data-gfx04-r2-treeless] .gfx03-moon-system{transition:none!important}}
