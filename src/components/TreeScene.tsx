@@ -207,6 +207,39 @@ export function TreeScene({
         )}
       </div>
 
+      <svg
+        className="living-water"
+        viewBox="0 0 1586 429"
+        preserveAspectRatio="xMidYMid slice"
+        aria-hidden="true"
+        focusable="false"
+        data-water-profile={environment.performanceProfile.toLowerCase()}
+        data-water-motion={environment.reducedMotion ? "static" : "live"}
+        data-waterfall-live="true"
+      >
+        <defs>
+          <clipPath id="le03WaterfallClip">
+            <path d="M252 0h72l17 96-7 83-31 75-48-10-18-76 8-91Z" />
+          </clipPath>
+        </defs>
+        <g className="living-water__waterfall" clipPath="url(#le03WaterfallClip)">
+          <path className="living-water__fall living-water__fall--one" d="M271-10C265 53 279 92 270 145c-6 39 9 69 2 107" />
+          <path className="living-water__fall living-water__fall--two" d="M297-16c-8 61 8 101-1 150-8 43 7 73-2 118" />
+          <path className="living-water__fall living-water__fall--three" d="M317-8c-5 48 7 82 0 127-5 40 5 75-4 126" />
+        </g>
+        <g className="living-water__river">
+          <path className="living-water__current living-water__current--one" d="M306 252c69 7 145 5 223 23-34 27-89 39-136 55-69 24-118 60-192 91" />
+          <path className="living-water__current living-water__current--two" d="M327 268c62 9 117 12 164 26-47 17-88 30-126 51-49 28-93 52-145 71" />
+          <path className="living-water__current living-water__current--three" d="M284 285c53 12 94 17 127 32-41 14-73 33-107 54-35 22-68 39-108 51" />
+        </g>
+        <g className="living-water__foam">
+          <ellipse className="living-water__foam-patch living-water__foam-patch--one" cx="303" cy="255" rx="34" ry="7" />
+          <ellipse className="living-water__foam-patch living-water__foam-patch--two" cx="452" cy="301" rx="27" ry="5" />
+          <ellipse className="living-water__foam-patch living-water__foam-patch--three" cx="286" cy="365" rx="24" ry="5" />
+        </g>
+        <ellipse className="living-water__mist" cx="298" cy="247" rx="61" ry="19" />
+      </svg>
+
       <div className="dynamic-sky" aria-hidden="true">
         <div className="dynamic-sky__atmosphere" />
         <div className="dynamic-sky__clouds dynamic-sky__clouds--far"><i /><i /></div>
