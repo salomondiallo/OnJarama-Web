@@ -240,18 +240,24 @@ export function TreeScene({
         <ellipse className="living-water__mist" cx="298" cy="247" rx="61" ry="19" />
       </svg>
 
-      <div className="dynamic-sky" aria-hidden="true">
+      <div
+        className="dynamic-sky living-atmosphere"
+        aria-hidden="true"
+        data-atmosphere-profile={environment.performanceProfile.toLowerCase()}
+        data-rain-active={dynamicSky.precipitation !== "NONE" ? "true" : "false"}
+        data-ambient-mist={dynamicSky.atmosphere === "CLEAR" ? "subtle" : "present"}
+      >
         <div className="dynamic-sky__atmosphere" />
         <div className="dynamic-sky__clouds dynamic-sky__clouds--far"><i /><i /></div>
         <div className="dynamic-sky__clouds dynamic-sky__clouds--mid"><i /><i /><i /></div>
         <div className="dynamic-sky__clouds dynamic-sky__clouds--near"><i /><i /></div>
-        <div className="dynamic-sky__mist" />
+        <div className="dynamic-sky__mist living-atmosphere__mist" />
         <div className="dynamic-sky__directional-light" />
         <div className="dynamic-sky__directional-shadow" />
         <div className="dynamic-sky__day-path-neutralizer" />
-        <div className="dynamic-sky__rain dynamic-sky__rain--far" />
-        <div className="dynamic-sky__rain dynamic-sky__rain--mid" />
-        <div className="dynamic-sky__rain dynamic-sky__rain--near" />
+        <div className="dynamic-sky__rain dynamic-sky__rain--far living-atmosphere__rain living-atmosphere__rain--far" />
+        <div className="dynamic-sky__rain dynamic-sky__rain--mid living-atmosphere__rain living-atmosphere__rain--mid" />
+        <div className="dynamic-sky__rain dynamic-sky__rain--near living-atmosphere__rain living-atmosphere__rain--near" />
       </div>
 
       <div className="gfx03-tree-blend" aria-hidden="true">
