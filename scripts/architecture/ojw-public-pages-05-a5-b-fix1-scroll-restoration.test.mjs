@@ -32,6 +32,6 @@ assert.doesNotMatch(explorer, /scrollTo|scrollIntoView/);
 assert.doesNotMatch(context, /scrollTo|scrollIntoView/);
 assert.doesNotMatch(projectData, /télécharger|téléchargement|accéder à l'application/i);
 
-assert.deepEqual(Object.keys(packageJson.dependencies).sort(), ["@vitejs/plugin-react", "vite"].filter((name) => name in packageJson.dependencies).concat(["react", "react-dom", "react-router-dom"]).sort());
+assert.deepEqual(Object.keys(packageJson.dependencies).sort(), ["@vitejs/plugin-react", "vite"].filter((name) => name in packageJson.dependencies).concat(["react", "react-dom", "react-router-dom", "suncalc"]).sort());
 
 console.log("OJW PUBLIC-PAGES-05-A5-B-FIX1 scroll restoration architecture: PASS");

@@ -2,6 +2,8 @@ import { useState } from "react";
 import officialLogo from "../assets/brand/onjarama-official-logo.png";
 import { DayNightToggle } from "./DayNightToggle";
 import type { AutoStrategy, DayNightMode, DayNightPreference } from "../hooks/useDayNightMode";
+import type { LocalCelestialLocationStatus } from "../hooks/useLocalCelestialLocation";
+import { LocalSkyControl } from "./LocalSkyControl";
 
 type HeaderProps = {
   isHomePage?: boolean;
@@ -11,9 +13,12 @@ type HeaderProps = {
   autoStrategy: AutoStrategy;
   onModeChange: (mode: DayNightPreference) => void;
   onModePrepare: (mode: DayNightPreference) => void;
+  locationStatus?: LocalCelestialLocationStatus;
+  onSynchronizeLocation?: () => void;
+  onClearLocation?: () => void;
 };
 
-export function Header({ isHomePage = false, showAmbience = true, mode, preference, autoStrategy, onModeChange, onModePrepare }: HeaderProps) {
+export function Header({ isHomePage = false, showAmbience = true, mode, preference, autoStrategy, onModeChange, onModePrepare, locationStatus, onSynchronizeLocation, onClearLocation }: HeaderProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const closeMenu = () => setIsMenuOpen(false);
   const homeHref = (fragment: string) => `${isHomePage ? "" : "/"}${fragment}`;
@@ -54,6 +59,9 @@ export function Header({ isHomePage = false, showAmbience = true, mode, preferen
               onChange={onModeChange}
               onPrepare={onModePrepare}
             />
+            {preference === "auto" && locationStatus && onSynchronizeLocation && onClearLocation && (
+              <LocalSkyControl status={locationStatus} onSynchronize={onSynchronizeLocation} onClear={onClearLocation} />
+            )}
           </div>
         )}
       </div>

@@ -31,6 +31,9 @@ export default function HomePage() {
         autoStrategy={autoStrategy}
         onModeChange={setPreference}
         onModePrepare={(next) => setPreparedMode(next === "auto" ? mode : next)}
+        locationStatus={livingEnvironment.locationStatus}
+        onSynchronizeLocation={livingEnvironment.synchronizeLocation}
+        onClearLocation={livingEnvironment.clearLocation}
       />
       <main id="main-content">
         <TreeHeroSection environment={livingEnvironment} preparedMode={preparedMode} />

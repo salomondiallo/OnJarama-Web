@@ -7,10 +7,21 @@
 .main-nav a { display:inline-flex; align-items:center; min-height:44px; text-decoration:none; color:var(--oj-muted); padding:10px 12px; border-radius:999px; }
 .main-nav a:hover, .main-nav a:focus-visible { color: var(--oj-text); background: var(--oj-surface); outline: none; }
 .menu-toggle { display:none; }
-.site-header__ambience{grid-column:3;justify-self:end;color:#edf5f3}
+.site-header__ambience{position:relative;grid-column:3;justify-self:end;display:flex;align-items:center;gap:7px;color:#edf5f3}
 .site-header__ambience .day-night-toggle{margin:0;background:rgba(0,11,20,.3);border-color:rgba(225,238,241,.3)}
 .site-header__ambience .day-night-toggle button{color:#edf5f3}
 .site-header__ambience .day-night-toggle button.is-selected{color:#14251d;background:#f0ce67}
+.local-sky-control{position:relative}
+.local-sky-control__trigger{display:flex;align-items:center;justify-content:center;gap:5px;min-height:44px;padding:0 11px;border:1px solid rgba(225,238,241,.3);border-radius:999px;color:#edf5f3;background:rgba(0,11,20,.3);cursor:pointer}
+.local-sky-control__trigger:focus-visible,.local-sky-control__panel button:focus-visible{outline:3px solid #68d7f4;outline-offset:3px}
+.local-sky-control__panel{position:absolute;z-index:30;top:calc(100% + 10px);right:0;width:min(330px,calc(100vw - 24px));box-sizing:border-box;padding:16px;border:1px solid rgba(226,238,235,.28);border-radius:16px;color:#edf5f3;background:rgba(4,20,29,.97);box-shadow:0 18px 50px rgba(0,0,0,.38)}
+.local-sky-control__panel strong{display:block;color:#f3cf68;font-size:.9rem}
+.local-sky-control__panel p{margin:8px 0;font-size:.78rem;line-height:1.45}
+.local-sky-control__status{color:#cbdedb}
+.local-sky-control__actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.local-sky-control__actions button{min-height:44px;padding:0 12px;border:1px solid rgba(240,206,103,.45);border-radius:999px;color:#10231e;background:#f0ce67;cursor:pointer}
+.local-sky-control__actions button:disabled{cursor:wait;opacity:.65}
+.local-sky-control__actions .local-sky-control__close{color:#edf5f3;background:transparent}
 .skip-link { position: absolute; left: -999px; top: 8px; background: var(--oj-gold); color: #111827; padding: 10px 14px; border-radius: 999px; }
 .skip-link:focus { left: 16px; }
 @media (max-width: 1023px) {
@@ -23,6 +34,8 @@
   .site-header__ambience .day-night-toggle{gap:2px;padding:3px}
   .site-header__ambience .day-night-toggle button{min-width:38px;min-height:38px;padding:0 7px;font-size:0}
   .site-header__ambience .day-night-toggle button span{font-size:1rem}
+  .local-sky-control__trigger{width:44px;min-height:44px;padding:0;font-size:0}
+  .local-sky-control__trigger>span:first-child{font-size:1rem}
   .menu-toggle span { display:block; width:21px; height:2px; border-radius:2px; background:currentColor; transition:transform .2s ease,opacity .2s ease; }
   .menu-toggle[aria-expanded="true"] span:first-child { transform:translateY(7px) rotate(45deg); }
   .menu-toggle[aria-expanded="true"] span:nth-child(2) { opacity:0; }
@@ -41,5 +54,7 @@
   .site-header__ambience{min-width:0;justify-self:center}
   .site-header__ambience .day-night-toggle{width:auto;max-width:100%;gap:1px;padding:2px}
   .site-header__ambience .day-night-toggle button{min-width:32px;min-height:38px;padding:0 5px}
+  .local-sky-control__trigger{width:44px;min-height:44px}
+  .local-sky-control__panel{position:fixed;top:76px;right:8px;left:8px;width:auto}
   .menu-toggle{width:44px;height:44px}
 }

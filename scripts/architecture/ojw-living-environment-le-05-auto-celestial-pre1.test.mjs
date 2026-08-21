@@ -8,8 +8,10 @@ const environment = readFileSync("src/hooks/useLivingEnvironment.ts", "utf8");
 const solar = readFileSync("src/utils/solarDayNight.ts", "utf8");
 const sky = readFileSync("src/utils/dynamicSky.ts", "utf8");
 const scene = readFileSync("src/components/TreeScene.tsx", "utf8");
+const location = readFileSync("src/hooks/useLocalCelestialLocation.ts", "utf8");
+const locationControl = readFileSync("src/components/LocalSkyControl.tsx", "utf8");
 const pkg = JSON.parse(readFileSync("package.json", "utf8"));
-const runtime = `${clock}\n${mode}\n${environment}\n${solar}\n${sky}\n${scene}`;
+const runtime = `${clock}\n${mode}\n${environment}\n${solar}\n${sky}\n${scene}\n${location}\n${locationControl}`;
 
 assert.match(doc, /AUTO_CURRENT = ARTISTIC_TIME_BASED/);
 assert.match(doc, /LOCATION_TRANSMISSION = NONE/);
@@ -53,8 +55,10 @@ assert.match(environment, /useDayNightMode/);
 assert.match(environment, /resolveInternalDynamicSky/);
 assert.match(solar, /resolveLocalCelestialState/);
 assert.match(sky, /resolveMoonPhase/);
-assert.doesNotMatch(runtime, /navigator\.geolocation|getCurrentPosition|watchPosition/i);
-assert.equal(pkg.dependencies.suncalc, undefined);
+assert.match(locationControl, /Autoriser la localisation/);
+assert.match(location, /navigator\.geolocation\.getCurrentPosition/);
+assert.doesNotMatch(runtime, /watchPosition|fetch\(|XMLHttpRequest|sendBeacon|WebSocket/i);
+assert.equal(pkg.dependencies.suncalc, "2.0.1");
 assert.equal(pkg.dependencies["astronomy-engine"], undefined);
 
-console.log("OJW-LIVING-ENVIRONMENT-LE-05-PRE1: current artistic Auto and proposed local astronomical contract documented without runtime implementation.");
+console.log("OJW-LIVING-ENVIRONMENT-LE-05-PRE1: approved local astronomical decisions remain locked through implementation.");

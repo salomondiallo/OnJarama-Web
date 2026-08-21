@@ -154,7 +154,7 @@ assert.match(readFileSync(ecosystemSectionPath, "utf8"), /publicApplications\.ma
 assert.doesNotMatch(scene, /https?:\/\//);
 assert.doesNotMatch(styles, /url\(\s*["']?https?:\/\//);
 assert.equal(existsSync(resolve(root, "src/assets/immersive/phase1")), false);
-assert.deepEqual(Object.keys(packageJson.dependencies), ["react", "react-dom", "react-router-dom"]);
+assert.deepEqual(Object.keys(packageJson.dependencies), ["react", "react-dom", "react-router-dom", "suncalc"]);
 assert.ok(packageJson.scripts["test:ojw:lot-16-a"]);
 
 console.log("OJW-LOT-16-A: plaques GFX-02, couches Web, interactions et géométrie qualifiées.");

@@ -792,6 +792,20 @@
 [data-cloud-cover="OVERCAST"][data-celestial-source="SUN"] .gfx03-sun-system{opacity:.16!important}
 [data-cloud-cover="OVERCAST"][data-celestial-source="MOON"] .gfx03-moon-system{opacity:.16!important}
 [data-precipitation="RAIN"][data-celestial-source="MOON"] .gfx03-moon-system{opacity:.12!important}
+.astronomical-celestial{position:absolute;inset:0;z-index:4;overflow:hidden;pointer-events:none}
+.astronomical-celestial__sun,.astronomical-celestial__moon{position:absolute;display:block;transform:translate(-50%,-50%);opacity:0;pointer-events:none}
+.astronomical-celestial__sun{width:34px;height:34px;border-radius:50%;background:radial-gradient(circle,#fffdf0 0 16%,rgba(255,242,190,.72) 26%,rgba(255,218,125,.18) 54%,transparent 72%);filter:drop-shadow(0 0 10px rgba(255,222,137,.2))}
+.astronomical-celestial__moon{width:28px;height:28px;border-radius:50%;filter:drop-shadow(0 0 5px rgba(198,225,234,.24))}
+.astronomical-celestial__moon svg{display:block;width:100%;height:100%;overflow:visible}
+.astronomical-celestial__moon-earthshine{fill:#263844;opacity:.72}
+.astronomical-celestial__moon-light{fill:#dce3da}
+.astronomical-celestial__moon-rim{fill:none;stroke:rgba(220,235,235,.58);stroke-width:.65}
+[data-auto-celestial="local"] .gfx03-sun-system,[data-auto-celestial="local"] .gfx03-moon-system{opacity:0!important}
+[data-auto-celestial="local"][data-sun-visible="true"] .astronomical-celestial__sun{opacity:1}
+[data-auto-celestial="local"][data-moon-visible="true"] .astronomical-celestial__moon{opacity:.9}
+[data-auto-celestial="local"][data-cloud-cover="OVERCAST"] .astronomical-celestial__sun,[data-auto-celestial="local"][data-cloud-cover="OVERCAST"] .astronomical-celestial__moon{opacity:.16}
+[data-auto-celestial="local"][data-precipitation="RAIN"] .astronomical-celestial__moon{opacity:.12}
+@media(max-width:760px){.astronomical-celestial__moon{width:20px;height:20px}.astronomical-celestial__sun{width:28px;height:28px}}
 .dynamic-sky__clouds--far i{animation:dynamicSkyDriftFar 190s linear infinite}
 .dynamic-sky__clouds--far i:nth-child(2){animation-duration:236s;animation-delay:-91s;animation-direction:reverse}
 .dynamic-sky__clouds--mid i{animation:dynamicSkyDriftMid 138s linear infinite}

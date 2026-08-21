@@ -30,7 +30,7 @@ assert.match(hero, /href="#ecosystem-projects"/);
 assert.match(hero, /href="#roadmap"/);
 assert.doesNotMatch(runtime, /navigator\.geolocation|VITE_WEATHER_|OpenWeather|WeatherKit|Meteostat|requestAnimationFrame|<canvas|<video|WebGLRenderingContext/i);
 assert.doesNotMatch(`${scene}\n${css}`, /snowflake|flurry|winter precipitation/i);
-assert.deepEqual(Object.keys(pkg.dependencies).sort(), ["react", "react-dom", "react-router-dom"]);
+assert.deepEqual(Object.keys(pkg.dependencies).sort(), ["react", "react-dom", "react-router-dom", "suncalc"]);
 assert.equal(sha("src/assets/immersive/founder-canonical/founder-canonical-day.png"), "AB9BF630E4964C09B7EE88CD1DD53B75005A10E8959668897C6E546489E34CD7");
 assert.equal(sha("src/assets/immersive/founder-canonical/founder-canonical-night-no-moon.png"), "B85ED28B4E379C959D148CF12496DF3C16EAA1138A5CB21211B1680CCFA21D12");
 

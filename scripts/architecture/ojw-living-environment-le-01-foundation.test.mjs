@@ -45,7 +45,7 @@ assert.match(dynamicSky, /export function resolveInternalDynamicSky/);
 const runtime = [clock, living, dayNight, home, hero, scene, dynamicSky].join("\n");
 assert.doesNotMatch(runtime, /navigator\.geolocation|VITE_WEATHER|WebSocket\(|axios|<canvas|webgl|<video/iu);
 assert.doesNotMatch(runtime, /snow|className="waterfall__foam/iu);
-assert.equal(Object.keys(packageJson.dependencies).sort().join(","), "react,react-dom,react-router-dom");
+assert.equal(Object.keys(packageJson.dependencies).sort().join(","), "react,react-dom,react-router-dom,suncalc");
 assert.equal(packageJson.scripts["test:ojw:living-environment-le-01"], "node scripts/architecture/ojw-living-environment-le-01-foundation.test.mjs");
 
 console.log("OJW-LIVING-ENVIRONMENT-LE-01: shared clock, orchestrator, authority, profile and reduced-motion foundation validated.");

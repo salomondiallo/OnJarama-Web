@@ -17,6 +17,7 @@ import type { EcosystemItem, EcosystemState } from "../data/ecosystem";
 import type { DayNightMode, DayNightPreference } from "../hooks/useDayNightMode";
 import type { LivingEnvironmentState } from "../hooks/useLivingEnvironment";
 import { applyDynamicSkyPreview, resolveLightPhysics } from "../utils/dynamicSky";
+import { buildMoonIlluminationPath } from "../lib/astronomicalSky";
 
 type FruitPosition = { x: number; y: number };
 
@@ -88,7 +89,18 @@ export function TreeScene({
   const celestial = { progress: environment.celestialProgress } as const;
   const [loadedModes, setLoadedModes] = useState<Set<DayNightMode>>(() => new Set());
   const [lastVisibleMode, setLastVisibleMode] = useState<DayNightMode>(environment.resolvedMode);
-  const previewToken = typeof window === "undefined" ? null : new URLSearchParams(window.location.search).get("sky-preview");
+  const searchParams = typeof window === "undefined" ? null : new URLSearchParams(window.location.search);
+  const previewToken = searchParams?.get("sky-preview") ?? null;
+  const moonPhasePreviewToken = import.meta.env.DEV ? searchParams?.get("moon-phase-preview") : null;
+  const moonPhasePreviewValue = moonPhasePreviewToken === "new" ? 0
+    : moonPhasePreviewToken === "waxing-crescent" ? 0.125
+      : moonPhasePreviewToken === "first-quarter" ? 0.25
+        : moonPhasePreviewToken === "waxing-gibbous" ? 0.375
+          : moonPhasePreviewToken === "full" ? 0.5
+            : moonPhasePreviewToken === "waning-gibbous" ? 0.625
+              : moonPhasePreviewToken === "last-quarter" ? 0.75
+                : moonPhasePreviewToken === "waning-crescent" ? 0.875
+                  : null;
   const previewProgress = previewToken === "morning" || previewToken === "solar-morning" ? 0.16
     : previewToken === "day" ? 0.5
       : previewToken === "evening" || previewToken === "solar-evening" ? 0.84
@@ -111,6 +123,9 @@ export function TreeScene({
   const sunY = 92 * Math.pow(Math.abs(effectiveProgress - 0.5) * 2, 1.6) + diagnosticSunLift;
   const moonX = -300 + effectiveProgress * 640;
   const moonY = 78 * Math.pow(Math.abs(effectiveProgress - 0.5) * 2, 1.5);
+  const astronomicalSky = previewToken ? null : environment.astronomicalSky;
+  const astronomicalMoonPath = astronomicalSky ? buildMoonIlluminationPath(moonPhasePreviewValue ?? astronomicalSky.moonPhaseValue) : "";
+  const astronomicalMoonPreview = astronomicalSky && moonPhasePreviewValue !== null;
   const visibleMode = loadedModes.has(targetMode) ? targetMode : lastVisibleMode;
   const dayMounted = targetMode === "day" || preparedMode === "day" || loadedModes.has("day");
   const nightMounted = targetMode === "night" || preparedMode === "night" || loadedModes.has("night");
@@ -142,6 +157,15 @@ export function TreeScene({
       data-moon-phase={dynamicSky.moonPhase}
       data-atmosphere={dynamicSky.atmosphere}
       data-celestial-source={dynamicSky.celestialSource}
+      data-auto-celestial={astronomicalSky ? "local" : "fallback"}
+      data-sun-visible={astronomicalSky?.sunVisible ? "true" : "false"}
+      data-moon-visible={astronomicalMoonPreview || astronomicalSky?.moonVisible ? "true" : "false"}
+      data-sun-altitude={astronomicalSky?.solarAltitude.toFixed(3)}
+      data-sun-azimuth={astronomicalSky?.solarAzimuth.toFixed(3)}
+      data-moon-altitude={astronomicalSky?.moonAltitude.toFixed(3)}
+      data-moon-azimuth={astronomicalSky?.moonAzimuth.toFixed(3)}
+      data-moon-orientation={astronomicalSky?.moonOrientation.toFixed(3)}
+      data-local-sky-mode={astronomicalSky?.localSkyMode}
       data-light-source={lightPhysics.primarySource}
       style={{
         "--light-source-x": lightPhysics.sourceX,
@@ -259,6 +283,35 @@ export function TreeScene({
         <div className="dynamic-sky__rain dynamic-sky__rain--mid living-atmosphere__rain living-atmosphere__rain--mid" />
         <div className="dynamic-sky__rain dynamic-sky__rain--near living-atmosphere__rain living-atmosphere__rain--near" />
       </div>
+
+      {astronomicalSky && (
+        <div className="astronomical-celestial" aria-hidden="true" data-local-sky-mode={astronomicalSky.localSkyMode}>
+          <span
+            className="astronomical-celestial__sun"
+            style={{ left: `${astronomicalSky.sunX}%`, top: `${astronomicalSky.sunY}%` }}
+          />
+          <span
+            className="astronomical-celestial__moon"
+            style={{
+              left: `${astronomicalMoonPreview ? 27 : astronomicalSky.moonX}%`,
+              top: `${astronomicalMoonPreview ? 52 : astronomicalSky.moonY}%`,
+            }}
+          >
+            <svg viewBox="0 0 32 32" focusable="false">
+              <defs>
+                <clipPath id="astronomicalMoonDisc">
+                  <circle cx="16" cy="16" r="14" />
+                </clipPath>
+              </defs>
+              <circle className="astronomical-celestial__moon-earthshine" cx="16" cy="16" r="14" />
+              <g clipPath="url(#astronomicalMoonDisc)" transform={`rotate(${astronomicalMoonPreview ? 49.113 : -astronomicalSky.moonOrientation} 16 16)`}>
+                {astronomicalMoonPath && <path className="astronomical-celestial__moon-light" d={astronomicalMoonPath} />}
+              </g>
+              <circle className="astronomical-celestial__moon-rim" cx="16" cy="16" r="14" />
+            </svg>
+          </span>
+        </div>
+      )}
 
       <div className="gfx03-tree-blend" aria-hidden="true">
         <span className="gfx03-tree-blend__canopy" />
