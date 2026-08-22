@@ -19,8 +19,8 @@ for (const invariant of [
 ]) assert.match(canon, new RegExp(invariant));
 
 assert.match(scene, /data-gfx04-r2-treeless/);
-assert.match(scene, /founder-canonical-day\.png/);
-assert.match(scene, /founder-canonical-night-no-moon\.png/);
+assert.match(scene, /founder-canonical-day-clean\.png/);
+assert.match(scene, /founder-canonical-night-no-moon-clean\.png/);
 assert.match(styles, /\.tree-scene\[data-gfx03-scene\][\s\S]*?\.tree-fruit\{[\s\S]*?display:none/);
 assert.match(canon, /ne pas réactiver `\.tree-fruit`/);
 assert.doesNotMatch(

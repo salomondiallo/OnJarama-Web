@@ -94,7 +94,7 @@ assert.match(styles, /@media\(prefers-reduced-motion:reduce\)/);
 assert.match(styles, /\.gfx02-city-light__accent,.gfx02-lamp-post__cap,.tree-fruit__visual\{animation:none!important\}/);
 
 assert.match(scene, /type="image\/avif"[\s\S]*type="image\/webp"[\s\S]*src=\{dayScene\}/);
-assert.match(scene, /founder-canonical-night-no-moon\.png/);
+assert.match(scene, /founder-canonical-night-no-moon-clean\.png/);
 assert.doesNotMatch(scene, /fix6/i);
 assert.match(scene, /const targetMode = dynamicSky\.resolvedDayNightMode/);
 assert.match(scene, /const visibleMode = loadedModes\.has\(targetMode\) \? targetMode : lastVisibleMode/);

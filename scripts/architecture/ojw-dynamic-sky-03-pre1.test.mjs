@@ -45,8 +45,8 @@ assert.match(styles, /\.tree-hero\.is-day \.gfx03-day-lamp-neutralizer\{opacity:
 assert.match(styles, /\.tree-hero\.is-night \.gfx03-day-lamp-neutralizer\{opacity:0!important\}/);
 assert.match(styles, /\.tree-hero\.is-day \.dynamic-sky__day-path-neutralizer\{opacity:1\}/);
 assert.match(styles, /\.tree-hero\.is-night \.dynamic-sky__day-path-neutralizer\{opacity:0!important\}/);
-assert.match(scene, /founder-canonical-day\.png/);
-assert.match(scene, /founder-canonical-night-no-moon\.png/);
+assert.match(scene, /founder-canonical-day-clean\.png/);
+assert.match(scene, /founder-canonical-night-no-moon-clean\.png/);
 assert.doesNotMatch(scene, /dynamic-sky__moon-backing/);
 assert.match(scene, /data-celestial-source=\{dynamicSky\.celestialSource\}/);
 assert.match(engine, /type CelestialSource = "SUN" \| "MOON" \| "NONE"/);

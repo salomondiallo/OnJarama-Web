@@ -24,8 +24,8 @@ for (const [mode, [file, sha256, width, height]] of Object.entries(assets)) {
   assert.equal(data.readUInt32BE(20), height);
 }
 
-assert.match(scene, /assets\/immersive\/founder-canonical\/founder-canonical-day\.png/);
-assert.match(scene, /assets\/immersive\/founder-canonical\/founder-canonical-night-no-moon\.png/);
+assert.match(scene, /assets\/immersive\/founder-canonical\/founder-canonical-day-clean\.png/);
+assert.match(scene, /assets\/immersive\/founder-canonical\/founder-canonical-night-no-moon-clean\.png/);
 assert.match(scene, /data-gfx04-r2-treeless/);
 assert.equal((scene.match(/<picture>/g) ?? []).length, 2);
 assert.equal((scene.match(/type="image\/avif"/g) ?? []).length, 2);
