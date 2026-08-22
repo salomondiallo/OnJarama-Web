@@ -29,7 +29,7 @@ assert.match(living, /useEnvironmentClock\(\)/);
 assert.match(living, /useDayNightMode\(nowMs\)/);
 assert.match(living, /resolveInternalDynamicSky/);
 assert.match(living, /prefers-reduced-motion: reduce/);
-assert.match(living, /max-width: 767px/);
+assert.match(living, /max-width: 768px/);
 assert.match(living, /"COMPACT"/);
 assert.match(living, /"STANDARD"/);
 assert.match(dayNight, /resolveFallbackDayNightMode/);

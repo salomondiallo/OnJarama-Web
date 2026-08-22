@@ -33,7 +33,7 @@ assert.match(cardsCss, /grid-template-columns: minmax\(0, 1\.65fr\) minmax\(280p
 assert.match(cardsCss, /@media \(max-width: 620px\)[\s\S]*grid-template-columns: 1fr/);
 assert.match(cardsCss, /\.ecosystem-card__link:focus-visible/);
 assert.match(treeCss, /\.tree-hero__cta\s*\{[^}]*min-height:48px/);
-assert.match(treeCss, /\.day-night-toggle button\s*\{[^}]*min-height:42px/);
+assert.match(treeCss, /\.day-night-toggle button\s*\{[^}]*min-height:44px/);
 assert.match(treeCss, /@media\(max-width:760px\)\{[\s\S]*\.day-night-toggle button\{[^}]*min-height:44px/);
 
 assert.match(header, /<DayNightToggle[\s\S]*value=\{preference\}[\s\S]*onChange=\{onModeChange\}/);

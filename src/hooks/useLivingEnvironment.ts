@@ -52,7 +52,7 @@ export function useLivingEnvironment(): LivingEnvironmentState {
   const nowMs = useEnvironmentClock();
   const dayNight = useDayNightMode(nowMs);
   const reducedMotion = useMediaQuery("(prefers-reduced-motion: reduce)");
-  const compactViewport = useMediaQuery("(max-width: 767px)");
+  const compactViewport = useMediaQuery("(max-width: 768px)");
   const localLocation = useLocalCelestialLocation();
 
   return useMemo(() => {
