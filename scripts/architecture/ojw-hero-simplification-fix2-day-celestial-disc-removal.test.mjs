@@ -27,8 +27,9 @@ assert.match(location, /navigator\.geolocation\.getCurrentPosition/);
 assert.doesNotMatch(location, /watchPosition/);
 assert.match(clock, /visibilitychange/);
 assert.match(clock, /pageshow/);
-assert.match(hero, /tree-hero__intro tree-hero__intro--option-b/);
-assert.doesNotMatch(scene, /card-free/, "card-free assets must remain unreferenced by runtime");
+assert.doesNotMatch(hero, /tree-hero__intro tree-hero__intro--option-b/);
+assert.match(scene, /founder-canonical-day-card-free\.png/, "approved card-free DAY-A must remain the runtime source");
+assert.match(scene, /founder-canonical-night-no-moon-card-free\.png/, "approved card-free NIGHT-B must remain the runtime source");
 assert.equal(pkg.dependencies.suncalc, "2.0.1");
 assert.equal(Object.keys(pkg.dependencies).length, 4, "FIX2 must not add a dependency");
 assert.doesNotMatch(`${scene}\n${styles}`, /requestAnimationFrame|setInterval\s*\(/);
@@ -43,4 +44,4 @@ const hashes = {
 };
 for (const [file, hash] of Object.entries(hashes)) assert.equal(sha256(file), hash, `${file} must remain unchanged`);
 
-console.log("OJW-HERO-SIMPLIFICATION-FIX2: all effective-Day celestial discs are removed while Night moon, local astronomy, Hero card and card-free isolation remain protected.");
+console.log("OJW-HERO-SIMPLIFICATION-FIX2: all effective-Day celestial discs are removed while Night moon, local astronomy and card-free runtime remain protected.");

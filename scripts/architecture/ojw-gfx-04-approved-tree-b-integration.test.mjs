@@ -28,8 +28,10 @@ assert.match(scene, /assets\/immersive\/founder-canonical\/founder-canonical-day
 assert.match(scene, /assets\/immersive\/founder-canonical\/founder-canonical-night-no-moon-clean\.png/);
 assert.match(scene, /data-gfx04-r2-treeless/);
 assert.equal((scene.match(/<picture>/g) ?? []).length, 2);
-assert.equal((scene.match(/type="image\/avif"/g) ?? []).length, 2);
-assert.equal((scene.match(/type="image\/webp"/g) ?? []).length, 2);
+assert.equal((scene.match(/type="image\/avif"/g) ?? []).length, 6);
+assert.equal((scene.match(/type="image\/webp"/g) ?? []).length, 6);
+assert.equal((scene.match(/media="\(min-width: 1587px\)"/g) ?? []).length, 4);
+assert.equal((scene.match(/media="\(min-width: 1024px\)"/g) ?? []).length, 4);
 assert.match(styles, /\.tree-scene\[data-gfx03-scene\] \.gfx02-scene-plate\{[^}]*object-fit:cover[^}]*object-position:center bottom/);
 assert.match(styles, /\[data-gfx04-r2-treeless\] \.gfx03-tree-blend,[\s\S]*\.gfx03-root-integration\{display:none\}/);
 assert.match(scene, /className="gfx03-sun-system" style=\{\{ transform:/);

@@ -62,15 +62,13 @@ assert.match(styles, /data-cloud-cover="OVERCAST"\]\[data-celestial-source="SUN"
 assert.match(styles, /data-cloud-cover="OVERCAST"\]\[data-celestial-source="MOON"\][^}]*gfx03-moon-system/);
 assert.doesNotMatch(styles, /data-cloud-cover="OVERCAST"\][^{]*gfx03-sun-system,[^{]*gfx03-moon-system/);
 assert.equal((scene.match(/gfx03-lamp-core gfx03-lamp-core--/g) ?? []).length, 8);
-assert.match(styles, /tree-hero__intro--option-b\{top:8%;right:2\.7%/);
+assert.doesNotMatch(hero, /tree-hero__intro--option-b/);
 assert.match(styles, /\[data-gfx04-r2-treeless\] \.gfx03-lamp-path-light,[\s\S]*display:none!important/);
 assert.doesNotMatch(scene + styles, /gfx03-wet-reflections/);
 assert.match(styles, /prefers-reduced-motion:reduce[\s\S]*\.dynamic-sky \*/);
 assert.doesNotMatch(engine + scene, /fetch\(|XMLHttpRequest|geolocation|navigator\.permissions/);
-assert.match(styles, /TABLET_768_DAY_GLASS_CONTAINED/);
-assert.match(styles, /tree-hero__intro--option-b\{[^}]*background-color:transparent!important[^}]*transition:none!important/);
-assert.match(styles, /MOBILE_390_EDITORIAL_CARD_NO_OVERFLOW/);
-assert.match(styles, /width:calc\(100% - 16px\);max-width:calc\(100% - 16px\);min-width:0/);
+assert.doesNotMatch(styles, /TABLET_768_DAY_GLASS_CONTAINED|MOBILE_390_EDITORIAL_CARD_NO_OVERFLOW/);
+assert.doesNotMatch(styles, /mask-image:linear-gradient\(to right,#000 0,#000 61%/);
 assert.match(headerStyles, /MOBILE_390_AMBIENCE_SELECTOR_VISIBLE/);
 assert.match(headerStyles, /grid-template-columns:44px minmax\(110px,1fr\) 44px/);
 assert.match(headerStyles, /HEADER_BREAKPOINT_767_768_769/);

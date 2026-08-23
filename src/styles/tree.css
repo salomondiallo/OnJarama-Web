@@ -458,32 +458,6 @@
   .gfx02-city-light__accent,.gfx02-lamp-post__cap,.tree-fruit__visual{animation:none!important}
 }
 
-/* OJW-LOT-17-A — institutional homepage composition; qualified scene layers stay unchanged. */
-.tree-hero__intro{
-  width:clamp(440px,32vw,520px);
-  border-color:rgba(238,220,174,.25);
-  border-radius:20px;
-  background:rgba(5,20,31,.72);
-  box-shadow:0 16px 42px rgba(0,0,0,.2);
-  backdrop-filter:blur(8px);
-}
-.tree-hero.is-day .tree-hero__intro{
-  border-color:rgba(40,68,58,.28);
-  background:rgba(239,246,235,.76);
-  box-shadow:0 14px 36px rgba(13,42,39,.16);
-}
-@media(max-width:760px){
-  .tree-hero__intro{
-    width:auto;
-    margin:8px 10px 0;
-    padding:15px;
-    border-radius:17px;
-    background:rgba(5,20,31,.82);
-    backdrop-filter:blur(6px);
-  }
-  .tree-hero.is-day .tree-hero__intro{background:rgba(239,246,235,.86)}
-}
-
 /* OJW-GFX-04: approved GFX-03-G Tree B master and future fruit anchors. */
 .tree-scene[data-gfx03-scene]{
   background:#071523;
@@ -662,41 +636,7 @@
   .gfx03-sun-core{transform:scale(2.2)}
 }
 
-/* FIX7-FIX1: founder-selected editorial option B. */
-@media(min-width:761px){
-  .tree-hero__intro--option-b{top:auto;left:42%;bottom:clamp(22px,3.25vw,46px);z-index:5;display:grid;grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"eyebrow eyebrow" "title title" "lead actions";column-gap:22px;row-gap:9px;width:clamp(570px,41vw,650px);padding:18px 22px 20px;border-radius:18px;transform:translateX(-50%);backdrop-filter:blur(7px) saturate(.9)}
-  .tree-hero__intro--option-b .tree-hero__eyebrow{grid-area:eyebrow;margin:0}
-  .tree-hero__intro--option-b h1{font-size:clamp(1.35rem,1.75vw,1.8rem);line-height:1.02}
-  .tree-hero__intro--option-b h1 br{display:none}
-  .tree-hero__intro--option-b h1{grid-area:title}
-  .tree-hero__intro--option-b .tree-hero__lead{grid-area:lead;align-self:center;margin:2px 0 0;max-width:34ch;padding:0;font-size:.82rem;line-height:1.45}
-  .tree-hero__intro--option-b .tree-hero__actions{position:static;grid-area:actions;display:grid;grid-template-columns:1fr;align-self:end;min-width:205px;max-width:none;gap:9px;justify-content:stretch}
-  .tree-hero__intro--option-b .tree-hero__cta[href="#roadmap"]{order:-1}
-  .tree-hero__intro--option-b .tree-hero__cta{min-height:42px;padding:0 16px;font-size:.66rem}
-}
-@media(min-width:761px) and (max-width:959px){
-  .tree-hero__intro--option-b{left:50%;width:calc(100% - 48px);max-width:620px;grid-template-columns:minmax(0,1fr) minmax(190px,auto);column-gap:16px;padding:16px 18px 18px}
-}
 @media(prefers-reduced-motion:reduce){.gfx03-lamp-path-light{transition:none}}
-
-/* OJW-DYNAMIC-SKY-03-FIX5-FIX2: strict canonical founder convergence. */
-@media(min-width:761px){
-  .tree-hero__intro--option-b{top:clamp(38px,4vw,68px);right:clamp(28px,3.4vw,62px);bottom:auto;left:auto;width:clamp(500px,37vw,590px);min-height:292px;grid-template-columns:1fr;grid-template-areas:"eyebrow" "title" "lead" "actions";align-content:center;row-gap:16px;padding:30px 32px 32px;border:1px solid rgba(235,209,140,.32);border-radius:24px;transform:none;background:rgba(5,18,28,.54);box-shadow:0 18px 42px rgba(0,0,0,.22);backdrop-filter:blur(8px) saturate(.9);-webkit-backdrop-filter:blur(8px) saturate(.9)}
-  .tree-hero.is-day .tree-hero__intro--option-b{border-color:rgba(238,220,168,.4);background:rgba(7,25,29,.54);box-shadow:0 18px 40px rgba(13,35,34,.2)}
-  .tree-hero__intro--option-b .tree-hero__eyebrow{color:#e7c66d}
-  .tree-hero__intro--option-b h1,.tree-hero.is-day .tree-hero__intro--option-b h1{color:#f5f7ee;font-size:clamp(1.6rem,2vw,2.1rem);line-height:1.06}
-  .tree-hero__intro--option-b .tree-hero__lead,.tree-hero.is-day .tree-hero__intro--option-b .tree-hero__lead{max-width:48ch;color:#e7eee8;font-size:.92rem;line-height:1.55}
-  .tree-hero__intro--option-b .tree-hero__actions{display:grid;grid-template-columns:1fr 1fr;min-width:0;width:100%;gap:10px}
-  .tree-hero__intro--option-b .tree-hero__cta{min-height:48px;padding-inline:20px;justify-content:center;font-size:.7rem}
-  .tree-hero.is-night .tree-hero__intro.tree-hero__intro--option-b{border-color:rgba(235,209,140,.3);background:rgba(5,18,28,.56);box-shadow:0 18px 42px rgba(0,0,0,.24);backdrop-filter:blur(9px) saturate(.9);-webkit-backdrop-filter:blur(9px) saturate(.9)}
-  .tree-hero.is-day .tree-hero__intro.tree-hero__intro--option-b{border-color:rgba(238,220,168,.4);background:rgba(7,25,29,.52);box-shadow:0 18px 40px rgba(13,35,34,.2);backdrop-filter:blur(9px) saturate(.9);-webkit-backdrop-filter:blur(9px) saturate(.9)}
-}
-@media(min-width:761px) and (max-width:959px){
-  .tree-hero__intro--option-b{top:74px;right:18px;left:auto;width:min(390px,50vw);max-width:none;min-height:0;padding:17px 18px 19px;row-gap:10px}
-  .tree-hero__intro--option-b h1{font-size:clamp(1.3rem,2.8vw,1.58rem)}
-  .tree-hero__intro--option-b .tree-hero__lead{-webkit-line-clamp:3;font-size:.78rem}
-  .tree-hero__intro--option-b .tree-hero__actions{grid-template-columns:1fr}
-}
 
 /* OJW-DYNAMIC-SKY-03-PRE1: internal, parameter-driven atmosphere for the R2 hero. */
 .dynamic-sky{position:absolute;inset:0;z-index:2;overflow:hidden;pointer-events:none;isolation:isolate}
@@ -752,30 +692,10 @@
 .tree-scene[data-gfx04-r2-treeless] .gfx03-lamp-path-light,
 .tree-scene[data-gfx04-r2-treeless] .gfx03-day-lamp-neutralizer,
 .tree-scene[data-gfx04-r2-treeless] .dynamic-sky__day-path-neutralizer{display:none!important}
-/* TABLET_768_DAY_GLASS_CONTAINED */
-@media(min-width:761px){
-  .tree-scene[data-gfx04-r2-treeless] .dynamic-sky{clip-path:none;-webkit-mask-image:linear-gradient(to right,#000 0,#000 61%,rgba(0,0,0,.72) 64%,transparent 68%);mask-image:linear-gradient(to right,#000 0,#000 61%,rgba(0,0,0,.72) 64%,transparent 68%)}
-  .tree-hero__intro--option-b{top:8%;right:2.7%;bottom:auto;left:auto;width:30.3%;min-height:56%;padding:0;border:0;transform:none;background:transparent!important;background-color:transparent!important;background-image:none!important;box-shadow:none!important;filter:none!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important;transition:none!important}
-  .tree-hero__intro--option-b::before,.tree-hero__intro--option-b::after{content:none!important;background:none!important}
-  .tree-hero__intro--option-b .tree-hero__eyebrow,
-  .tree-hero__intro--option-b h1,
-  .tree-hero__intro--option-b .tree-hero__lead{visibility:hidden!important;color:transparent!important;text-shadow:none!important;user-select:none}
-  .tree-hero__intro--option-b .tree-hero__actions{position:absolute;right:4.5%;bottom:10%;grid-area:auto;min-width:0;width:39%;grid-template-columns:1fr;gap:10%}
-  .tree-hero__intro--option-b .tree-hero__cta{box-sizing:border-box;min-width:0;width:100%;min-height:38px;padding-inline:0;border-color:transparent!important;color:transparent!important;background:transparent!important;box-shadow:none!important}
-  .tree-hero__intro--option-b .tree-hero__cta:focus-visible{outline:3px solid #f2c64f;outline-offset:2px}
-}
 .tree-scene[data-gfx04-r2-treeless] .gfx03-moon-system{transform:translate(-303px,-72px)!important}
 .tree-scene[data-gfx04-r2-treeless] .gfx02-moon-refinement{r:46px}
-@media(min-width:761px) and (max-width:959px){
-  .tree-hero__intro--option-b{top:8%;right:1.5%;width:34%;height:55%;min-height:0}
-  .tree-hero__intro--option-b .tree-hero__actions{top:40%;bottom:auto}
-}
-/* MOBILE_390_EDITORIAL_CARD_NO_OVERFLOW */
 @media(max-width:760px){
   .tree-hero__panorama{aspect-ratio:auto}
-  .tree-hero__intro--option-b{box-sizing:border-box;width:calc(100% - 16px);max-width:calc(100% - 16px);min-width:0;margin-inline:8px;overflow:hidden}
-  .tree-hero__intro--option-b h1{max-width:100%;overflow-wrap:normal;word-break:normal}
-  .tree-hero__intro--option-b .tree-hero__actions{min-width:0;width:100%}
   .tree-scene[data-gfx04-r2-treeless]{aspect-ratio:16/9;transform:none;margin-bottom:0}
   .tree-scene[data-gfx04-r2-treeless] .gfx02-scene-plate{object-position:27% center}
   .tree-scene[data-gfx04-r2-treeless] .gfx03-moon-system{transform:translate(42px,-72px)!important}

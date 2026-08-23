@@ -8,6 +8,7 @@ const app = read("src/pages/HomePage.tsx");
 const section = read("src/sections/EcosystemSection.tsx");
 const ecosystem = read("src/data/ecosystem.ts");
 const hero = read("src/sections/TreeHeroSection.tsx");
+const header = read("src/components/Header.tsx");
 const cards = read("src/styles/cards.css");
 const tree = read("src/styles/tree.css");
 
@@ -20,7 +21,8 @@ assert.match(ecosystem, /emblemAlt: "[^"]*OJA/);
 assert.match(ecosystem, /emblemAlt: "[^"]*OJP/);
 assert.match(ecosystem, /emblemAlt: "[^"]*OJCS/);
 assert.match(ecosystem, /emblemAlt: "[^"]*OJW/);
-assert.match(hero, /href="#ecosystem-projects"/);
+assert.doesNotMatch(hero, /tree-hero__cta|href="#ecosystem-projects"/);
+assert.match(header, /#ecosystem-projects/);
 assert.doesNotMatch(hero, /InstitutionalProjectBand|Cinq projets, une vision commune|institutional-projects-title/);
 assert.doesNotMatch(tree, /\.tree-hero__institutional|\.institutional-card|\.institutional-projects/);
 assert.match(section, /ecosystem-role--foundation/);

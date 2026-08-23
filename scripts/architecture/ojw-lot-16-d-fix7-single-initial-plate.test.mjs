@@ -31,13 +31,15 @@ assert.match(styles, /\.tree-scene\.is-scene-day \.gfx02-scene-plate--day\{opaci
 assert.match(styles, /\.tree-scene\.is-scene-night \.gfx02-scene-plate--night\{opacity:1\}/);
 
 assert.equal((scene.match(/<picture>/g) ?? []).length, 2);
-assert.equal((scene.match(/type="image\/avif"/g) ?? []).length, 2);
-assert.equal((scene.match(/type="image\/webp"/g) ?? []).length, 2);
-assert.equal((scene.match(/960w,/g) ?? []).length, 4);
+assert.equal((scene.match(/type="image\/avif"/g) ?? []).length, 6);
+assert.equal((scene.match(/type="image\/webp"/g) ?? []).length, 6);
+assert.equal((scene.match(/960w/g) ?? []).length, 4);
 assert.equal((scene.match(/1280w,/g) ?? []).length, 4);
 assert.equal((scene.match(/1586w/g) ?? []).length, 4);
-assert.doesNotMatch(scene, /(?:158[7-9]|15[9-9]\d|1[6-9]\d{2}|[2-9]\d{3,})w/);
-assert.equal((scene.match(/sizes="100vw"/g) ?? []).length, 4);
+assert.equal((scene.match(/1920w,/g) ?? []).length, 4);
+assert.equal((scene.match(/2560w,/g) ?? []).length, 4);
+assert.equal((scene.match(/3172w/g) ?? []).length, 4);
+assert.equal((scene.match(/sizes="100vw"/g) ?? []).length, 12);
 assert.match(scene, /founder-canonical-day-clean\.png/);
 assert.match(scene, /founder-canonical-night-no-moon-clean\.png/);
 assert.equal((scene.match(/src=\{(?:dayScene|nightScene)\}/g) ?? []).length, 2);

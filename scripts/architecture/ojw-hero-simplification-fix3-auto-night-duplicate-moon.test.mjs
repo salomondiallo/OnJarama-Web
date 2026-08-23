@@ -19,7 +19,8 @@ assert.match(styles, /\.tree-hero\.is-day \.gfx03-sun-system,[\s\S]*\.tree-hero\
 assert.match(styles, /\.tree-hero\.is-night \.gfx03-moon-system\{opacity:\.88\}/, "manual and fallback Night must preserve the artistic moon");
 assert.match(styles, /\[data-auto-celestial="local"\]\[data-moon-visible="true"\] \.astronomical-celestial__moon\{opacity:\.9\}/, "Auto local must preserve its astronomical moon authority");
 assert.match(astronomy, /getPosition|getMoonPosition|getMoonIllumination/);
-assert.doesNotMatch(scene, /card-free/, "GFX-03 card-free assets must remain outside runtime");
+assert.match(scene, /founder-canonical-day-card-free\.png/, "approved card-free DAY-A must remain the runtime source");
+assert.match(scene, /founder-canonical-night-no-moon-card-free\.png/, "approved card-free NIGHT-B must remain the runtime source");
 assert.equal(pkg.dependencies.suncalc, "2.0.1");
 assert.equal(Object.keys(pkg.dependencies).length, 4, "FIX3 must add no dependency");
 assert.doesNotMatch(`${scene}\n${styles}`, /requestAnimationFrame|setInterval\s*\(/);

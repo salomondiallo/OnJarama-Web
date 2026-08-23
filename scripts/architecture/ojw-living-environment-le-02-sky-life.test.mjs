@@ -13,6 +13,7 @@ const dayNight = text("src/hooks/useDayNightMode.ts");
 const sky = text("src/utils/dynamicSky.ts");
 const scene = text("src/components/TreeScene.tsx");
 const hero = text("src/sections/TreeHeroSection.tsx");
+const header = text("src/components/Header.tsx");
 const ecosystem = text("src/sections/EcosystemSection.tsx");
 const canon = text("docs/OJW-LIVING-ENVIRONMENT-LE-00-CANONICAL-HERO.md");
 const css = text("src/styles/tree.css");
@@ -40,7 +41,8 @@ assert.match(css, /le02BirdPassThree 73s/);
 assert.match(css, /data-environment-profile="compact"/);
 assert.match(css, /prefers-reduced-motion:reduce[\s\S]*?\.gfx02-life-layers \.scene-bird\{display:none!important\}/);
 assert.doesNotMatch(css, /animation:[^;]*gfx04R2(?:Sun|Moon)Arc|animation:[^;]*(?:11h|12h)/);
-assert.match(hero, /href="#ecosystem-projects"/);
+assert.doesNotMatch(hero, /tree-hero__cta|href="#ecosystem-projects"/);
+assert.match(header, /#ecosystem-projects/);
 assert.match(ecosystem, /id="ecosystem-projects"/);
 
 assert.doesNotMatch(runtime, /requestAnimationFrame|<canvas|WebGL|three\.js|<video|navigator\.geolocation|VITE_WEATHER|snow/iu);

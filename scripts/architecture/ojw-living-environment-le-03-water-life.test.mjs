@@ -10,6 +10,7 @@ const sha256 = (file) => createHash("sha256").update(read(file)).digest("hex").t
 const scene = text("src/components/TreeScene.tsx");
 const css = text("src/styles/tree.css");
 const hero = text("src/sections/TreeHeroSection.tsx");
+const header = text("src/components/Header.tsx");
 const sky = text("src/utils/dynamicSky.ts");
 const packageJson = JSON.parse(text("package.json"));
 const water = scene + css;
@@ -33,7 +34,8 @@ assert.match(css, /@keyframes le03FoamPulse/);
 assert.match(css, /@keyframes le03WaterMist/);
 assert.doesNotMatch(water, /<canvas|WebGL|three\.js|<video|requestAnimationFrame/);
 assert.doesNotMatch(water, /navigator\.geolocation|VITE_WEATHER|realWeather/);
-assert.match(hero, /href="#ecosystem-projects"/);
+assert.doesNotMatch(hero, /tree-hero__cta|href="#ecosystem-projects"/);
+assert.match(header, /#ecosystem-projects/);
 assert.match(sky, /resolveInternalDynamicSky/);
 assert.equal(sha256("src/assets/immersive/founder-canonical/founder-canonical-day.png"), "AB9BF630E4964C09B7EE88CD1DD53B75005A10E8959668897C6E546489E34CD7");
 assert.equal(sha256("src/assets/immersive/founder-canonical/founder-canonical-night-no-moon.png"), "B85ED28B4E379C959D148CF12496DF3C16EAA1138A5CB21211B1680CCFA21D12");

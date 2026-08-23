@@ -23,10 +23,9 @@ for (const acronym of ["OJF", "OJA", "OJP", "OJCS", "OJW"]) {
 }
 assert.equal((`${hero}\n${section}`.match(/<h1\b/g) ?? []).length, 1, "The immersive homepage must render one H1");
 
-assert.match(hero, /className="tree-hero__intro tree-hero__intro--option-b"/);
+assert.doesNotMatch(hero, /className="tree-hero__intro tree-hero__intro--option-b"/);
 assert.doesNotMatch(hero, /hero-card|data-editorial-layout|option-a/);
-assert.match(treeCss, /\.tree-hero__intro\{[\s\S]*background:rgba\(5,20,31,\.72\)/);
-assert.doesNotMatch(treeCss, /\.tree-hero__intro\{[^}]*background:\s*(?:#fff|white)/);
+assert.match(hero, /<h1 className="sr-only">OnJarama<\/h1>/);
 
 assert.doesNotMatch(treeCss, /\.institutional-projects|\.institutional-card|\.tree-hero__institutional/);
 assert.match(cardsCss, /grid-template-columns: minmax\(0, 1\.65fr\) minmax\(280px, \.85fr\)/);
@@ -49,8 +48,8 @@ assert.doesNotMatch(hero, /EcosystemSidebar|ProjectPreviewCard/);
 assert.match(scene, /ojw-gfx-02-scene-day\.png/);
 assert.match(scene, /ojw-gfx-02-scene-night-natural-city-lights\.png/);
 assert.equal((scene.match(/<picture>/g) ?? []).length, 2);
-assert.equal((scene.match(/type="image\/avif"/g) ?? []).length, 2);
-assert.equal((scene.match(/type="image\/webp"/g) ?? []).length, 2);
+assert.equal((scene.match(/type="image\/avif"/g) ?? []).length, 6);
+assert.equal((scene.match(/type="image\/webp"/g) ?? []).length, 6);
 assert.match(scene, /loading=\{targetMode === "day" \|\| preparedMode === "day" \? "eager" : "lazy"\}/);
 assert.match(scene, /loading=\{targetMode === "night" \|\| preparedMode === "night" \? "eager" : "lazy"\}/);
 assert.match(scene, /path:\s*\{\s*x:\s*71\.2,\s*y:\s*31\.8\s*\}/);
