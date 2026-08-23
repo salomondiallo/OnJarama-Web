@@ -803,6 +803,10 @@
 [data-auto-celestial="local"][data-moon-visible="true"] .astronomical-celestial__moon{opacity:.9}
 [data-auto-celestial="local"][data-cloud-cover="OVERCAST"] .astronomical-celestial__sun,[data-auto-celestial="local"][data-cloud-cover="OVERCAST"] .astronomical-celestial__moon{opacity:.16}
 [data-auto-celestial="local"][data-precipitation="RAIN"] .astronomical-celestial__moon{opacity:.12}
+.tree-hero.is-day .gfx03-sun-system,
+.tree-hero.is-day .gfx03-moon-system,
+.tree-hero.is-day .astronomical-celestial__sun,
+.tree-hero.is-day .astronomical-celestial__moon{display:none!important}
 @media(max-width:760px){.astronomical-celestial__moon{width:20px;height:20px}.astronomical-celestial__sun{width:28px;height:28px}}
 .dynamic-sky__clouds--far i{animation:dynamicSkyDriftFar 190s linear infinite}
 .dynamic-sky__clouds--far i:nth-child(2){animation-duration:236s;animation-delay:-91s;animation-direction:reverse}

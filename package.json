@@ -38,6 +38,7 @@
     "test:ojw:living-environment-le-05-fix1": "node --experimental-strip-types scripts/architecture/ojw-living-environment-le-05-fix1-moon-phase.test.mjs",
     "test:ojw:living-environment-le-06-gfx-02": "node scripts/architecture/ojw-living-environment-le-06-gfx-02-clean-derivatives.test.mjs",
     "test:ojw:living-environment-le-06-gfx-03": "node scripts/architecture/ojw-living-environment-le-06-gfx-03-runtime-clean-switch.test.mjs",
+    "test:ojw:hero-simplification-fix2": "node scripts/architecture/ojw-hero-simplification-fix2-day-celestial-disc-removal.test.mjs",
     "test:ojw:living-environment-le-07-fix1": "node scripts/architecture/ojw-living-environment-le-07-fix1-responsive-accessibility.test.mjs",
     "test:ojw:ecosystem-02-e3": "node scripts/architecture/ojw-ecosystem-02-e3-ojcs-public-page.test.mjs",
     "test:ojw:ecosystem-02-d3": "node scripts/architecture/ojw-ecosystem-02-d3-ojp-public-page.test.mjs",
