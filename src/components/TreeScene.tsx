@@ -126,6 +126,17 @@ export function TreeScene({
   const astronomicalSky = previewToken ? null : environment.astronomicalSky;
   const astronomicalMoonPath = astronomicalSky ? buildMoonIlluminationPath(moonPhasePreviewValue ?? astronomicalSky.moonPhaseValue) : "";
   const astronomicalMoonPreview = astronomicalSky && moonPhasePreviewValue !== null;
+  const celestialViewportWidth = typeof document === "undefined" ? 0 : document.documentElement.clientWidth;
+  const astronomicalMoonRadius = environment.performanceProfile === "COMPACT" ? 10 : 14;
+  const astronomicalMoonRadiusPercent = celestialViewportWidth > 0
+    ? (astronomicalMoonRadius / celestialViewportWidth) * 100
+    : 50;
+  const astronomicalMoonFullyVisible = Boolean(
+    astronomicalSky
+    && (astronomicalMoonPreview || astronomicalSky.moonVisible)
+    && astronomicalSky.moonX >= astronomicalMoonRadiusPercent
+    && astronomicalSky.moonX <= 100 - astronomicalMoonRadiusPercent,
+  );
   const visibleMode = loadedModes.has(targetMode) ? targetMode : lastVisibleMode;
   const dayMounted = targetMode === "day" || preparedMode === "day" || loadedModes.has("day");
   const nightMounted = targetMode === "night" || preparedMode === "night" || loadedModes.has("night");
@@ -159,7 +170,7 @@ export function TreeScene({
       data-celestial-source={dynamicSky.celestialSource}
       data-auto-celestial={astronomicalSky ? "local" : "fallback"}
       data-sun-visible={astronomicalSky?.sunVisible ? "true" : "false"}
-      data-moon-visible={astronomicalMoonPreview || astronomicalSky?.moonVisible ? "true" : "false"}
+      data-moon-visible={astronomicalMoonFullyVisible ? "true" : "false"}
       data-sun-altitude={astronomicalSky?.solarAltitude.toFixed(3)}
       data-sun-azimuth={astronomicalSky?.solarAzimuth.toFixed(3)}
       data-moon-altitude={astronomicalSky?.moonAltitude.toFixed(3)}
@@ -290,7 +301,7 @@ export function TreeScene({
             className="astronomical-celestial__sun"
             style={{ left: `${astronomicalSky.sunX}%`, top: `${astronomicalSky.sunY}%` }}
           />
-          <span
+          {astronomicalMoonFullyVisible && <span
             className="astronomical-celestial__moon"
             style={{
               left: `${astronomicalMoonPreview ? 27 : astronomicalSky.moonX}%`,
@@ -309,7 +320,7 @@ export function TreeScene({
               </g>
               <circle className="astronomical-celestial__moon-rim" cx="16" cy="16" r="14" />
             </svg>
-          </span>
+          </span>}
         </div>
       )}
 
@@ -390,7 +401,7 @@ export function TreeScene({
             <stop offset="1" stopColor="#405c70" stopOpacity="0" />
           </radialGradient>
         </defs>
-        <g className="gfx03-moon-system" style={{ transform: `translate(${moonX}px, ${moonY}px)` }}>
+        {!astronomicalSky && <g className="gfx03-moon-system" style={{ transform: `translate(${moonX}px, ${moonY}px)` }}>
           <circle cx="440" cy="134" r="88" fill="url(#gfx03MoonHalo)" />
           <circle
             className="gfx02-moon-refinement"
@@ -402,11 +413,11 @@ export function TreeScene({
             mask="url(#dynamicSkyMoonPhaseMask)"
           />
           <circle className="dynamic-sky__moon-earthshine" cx="440" cy="134" r="46" fill="url(#gfx02MoonSurface)" />
-        </g>
-        <g className="gfx03-sun-system" style={{ transform: `translate(${sunX}px, ${sunY}px)` }}>
+        </g>}
+        {!astronomicalSky && <g className="gfx03-sun-system" style={{ transform: `translate(${sunX}px, ${sunY}px)` }}>
           <circle className="gfx03-sun-refinement gfx03-sun-halo" cx="825" cy="135" r="100" fill="url(#gfx03SunHalo)" />
           <circle className="gfx03-sun-core" cx="825" cy="135" r="18" fill="url(#gfx03SunCore)" />
-        </g>
+        </g>}
         <g className="gfx03-tree-atmosphere gfx03-tree-atmosphere--day">
           <ellipse cx="1332" cy="388" rx="430" ry="315" fill="url(#gfx03TreeAtmosphereDay)" />
           <ellipse cx="1370" cy="678" rx="285" ry="282" fill="url(#gfx03TreeAtmosphereDay)" />
