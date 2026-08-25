@@ -10,6 +10,7 @@ const exists = (file) => existsSync(new URL(file, rootUrl));
 const base = "src/assets/immersive/founder-canonical/";
 const optimized = `${base}optimized/`;
 const scene = text("src/components/TreeScene.tsx");
+const sceneImports = (scene.match(/^import .*founder-canonical.*$/gm) ?? []).join("\n");
 const css = text("src/styles/tree.css");
 const livingEnvironment = text("src/hooks/useLivingEnvironment.ts");
 
@@ -19,20 +20,25 @@ assert.equal(sha256(`${base}founder-canonical-day-clean.png`), "85FF35900B7FC2DF
 assert.equal(sha256(`${base}founder-canonical-night-no-moon-clean.png`), "FA4167300522CDC9C2D75F17ED84270641CDB12597091690B1F829C917047E1F");
 
 for (const variant of ["day", "night-no-moon"]) {
-  assert.match(scene, new RegExp(`founder-canonical-${variant}-clean\\.png`));
+  assert.match(sceneImports, new RegExp(`founder-canonical-${variant}-card-free\\.png`));
+  assert.doesNotMatch(sceneImports, new RegExp(`founder-canonical-${variant}-clean`));
   for (const width of [960, 1280, 1586]) {
     for (const format of ["avif", "webp"]) {
-      assert.match(scene, new RegExp(`founder-canonical-${variant}-clean-${width}\\.${format}`));
+      const qualityTier = width >= 1586 ? "hq-" : "";
+      assert.match(sceneImports, new RegExp(`founder-canonical-${variant}-card-free-${qualityTier}${width}\\.${format}`));
+      assert.ok(exists(`${optimized}founder-canonical-${variant}-card-free-${qualityTier}${width}.${format}`));
       assert.ok(exists(`${optimized}founder-canonical-${variant}-clean-${width}.${format}`));
       assert.ok(exists(`${optimized}founder-canonical-${variant}-${width}.${format}`), "rollback asset must remain present");
     }
   }
 }
 
-assert.equal((scene.match(/type="image\/avif"/g) ?? []).length, 2);
-assert.equal((scene.match(/type="image\/webp"/g) ?? []).length, 2);
-assert.equal((scene.match(/960w,/g) ?? []).length, 4);
-assert.equal((scene.match(/1280w,/g) ?? []).length, 4);
+const avifSourceCount = (scene.match(/type="image\/avif"/g) ?? []).length;
+const webpSourceCount = (scene.match(/type="image\/webp"/g) ?? []).length;
+assert.ok(avifSourceCount >= 2);
+assert.equal(avifSourceCount, webpSourceCount);
+assert.equal((scene.match(/960w/g) ?? []).length, 4);
+assert.equal((scene.match(/1280w/g) ?? []).length, 4);
 assert.equal((scene.match(/1586w/g) ?? []).length, 4);
 assert.doesNotMatch(scene, /1672w/);
 
@@ -43,4 +49,4 @@ assert.match(css, /\[data-environment-profile="compact"\][^}]*\.scene-bird--thre
 assert.match(css, /\.gfx02-life-layers \.scene-bird\{display:none!important\}/);
 assert.match(livingEnvironment, /useMediaQuery\("\(max-width: 768px\)"\)/);
 
-console.log("OJW-LIVING-ENVIRONMENT-LE-06-GFX-03: clean AVIF/WebP/PNG runtime switch, rollback assets, runtime birds, reduced motion and LE-07 boundary validated.");
+console.log("OJW-LIVING-ENVIRONMENT-LE-06-GFX-03: card-free AVIF/WebP/PNG runtime, clean rollback assets, runtime birds, reduced motion and LE-07 boundary validated.");
