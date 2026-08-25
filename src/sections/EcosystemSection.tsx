@@ -18,17 +18,17 @@ const FOUNDATION_DISCLOSURES = [
   {
     id: "values",
     label: "Valeurs et engagements",
-    content: "Cette section sera approfondie progressivement.",
+    content: "OJF rassemble les valeurs et les engagements qui orientent les décisions et la conduite de l’écosystème OnJarama.",
   },
   {
     id: "objectives",
     label: "Objectifs institutionnels",
-    content: "Cette section sera approfondie progressivement.",
+    content: "OJF formule les objectifs institutionnels communs qui donnent un cap durable aux initiatives OnJarama.",
   },
   {
     id: "constitution",
     label: "Constitution OnJarama",
-    content: "OJF porte l’introduction publique à la Constitution OnJarama. Cette section sera approfondie progressivement.",
+    content: "OJF porte l’introduction publique à la Constitution OnJarama et en explique la fonction institutionnelle.",
   },
 ] as const;
 

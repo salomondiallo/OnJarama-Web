@@ -17,6 +17,8 @@ assert.doesNotMatch(section.match(/ecosystem-public-presence[\s\S]*?<\/section>/
 for (const label of ["Vision et principes", "Valeurs et engagements", "Objectifs institutionnels", "Constitution OnJarama"]) {
   assert.match(section, new RegExp(label));
 }
+assert.doesNotMatch(section, /Cette section sera approfondie progressivement/);
+assert.equal((section.match(/approfondis progressivement/g) ?? []).length, 1);
 assert.equal((section.match(/aria-expanded=/g) ?? []).length, 1);
 assert.match(section, /aria-controls=\{panelId\}/);
 assert.match(section, /<button[\s\S]*?type="button"/);
