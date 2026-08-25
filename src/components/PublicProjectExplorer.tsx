@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 import { publicPageEntities } from "../data/ecosystem";
+import { ResponsiveImage } from "./ResponsiveImage";
+import { getProjectEmblemSources } from "../data/responsiveAssets";
 
 type PublicProjectExplorerProps = {
   currentProject: "OJA" | "OJP" | "OJCS" | "OJW";
@@ -28,7 +30,16 @@ export function PublicProjectExplorer({ currentProject }: PublicProjectExplorerP
           const isCurrent = project.acronym === currentProject;
           const content = (
             <>
-              <img src={project.emblem} alt="" aria-hidden="true" />
+              <ResponsiveImage
+                sources={getProjectEmblemSources(project.acronym)}
+                sizes="46px"
+                alt=""
+                aria-hidden="true"
+                width="1024"
+                height="1024"
+                loading="lazy"
+                decoding="async"
+              />
               <span className="public-project-explorer__identity">
                 <span className="public-project-explorer__acronym">{project.acronym}</span>
                 <strong>{project.name}</strong>

@@ -1,5 +1,7 @@
 import type { PublicProjectEditorial } from "../data/projects";
 import { ProjectStatus } from "./ProjectStatus";
+import { ResponsiveImage } from "./ResponsiveImage";
+import { getProjectEmblemSources } from "../data/responsiveAssets";
 
 type ProjectHeroProps = {
   project: PublicProjectEditorial;
@@ -10,7 +12,15 @@ export function ProjectHero({ project, kicker = "Projet public OnJarama" }: Proj
   return (
     <section className="project-hero" aria-labelledby="project-title">
       <div className="project-hero__identity">
-        <img src={project.emblem} alt={project.emblemAlt} width="1024" height="1024" />
+        <ResponsiveImage
+          sources={getProjectEmblemSources(project.shortName)}
+          sizes="(max-width: 760px) 160px, 320px"
+          alt={project.emblemAlt}
+          width="1024"
+          height="1024"
+          decoding="async"
+          fetchPriority="high"
+        />
       </div>
       <div className="project-hero__content">
         <ProjectStatus label={project.projectStatus.label} stage={project.projectStatus.stage} />

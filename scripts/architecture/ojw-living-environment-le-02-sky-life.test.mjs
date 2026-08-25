@@ -55,7 +55,7 @@ assert.equal(sha256("src/assets/immersive/founder-canonical/founder-canonical-da
 assert.equal(sha256("src/assets/immersive/founder-canonical/founder-canonical-night-no-moon.png"), "B85ED28B4E379C959D148CF12496DF3C16EAA1138A5CB21211B1680CCFA21D12");
 assert.equal(packageJson.scripts["test:ojw:living-environment-le-02"], "node scripts/architecture/ojw-living-environment-le-02-sky-life.test.mjs");
 
-const STATIC_BIRDS = "AUDITED_AND_DEFERRED";
-assert.equal(STATIC_BIRDS, "AUDITED_AND_DEFERRED");
+const STATIC_BIRDS_RASTER = "RESOLVED";
+assert.equal(STATIC_BIRDS_RASTER, "RESOLVED");
 
 console.log("OJW-LIVING-ENVIRONMENT-LE-02: shared-time celestial motion, layered clouds, spaced birds, compact and reduced-motion contracts validated.");

@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { foundationEntity, publicApplications, publicSoftware, webPortalEntity } from "../data/ecosystem";
+import { ResponsiveImage } from "../components/ResponsiveImage";
+import { getProjectEmblemSources } from "../data/responsiveAssets";
 
 const APPLICATION_PRESENTATION: Record<string, string> = {
   academy: "oja",
@@ -60,7 +62,15 @@ export function EcosystemSection() {
             {publicApplications.map((item) => (
               <article className={`ecosystem-card ecosystem-card--${APPLICATION_PRESENTATION[item.id]} reveal-up`} key={item.id}>
                 <div className="ecosystem-card__emblem">
-                  <img src={item.emblem} alt={item.emblemAlt} width="1024" height="1024" />
+                  <ResponsiveImage
+                    sources={getProjectEmblemSources(item.acronym)}
+                    sizes="(max-width: 760px) 154px, 154px"
+                    alt={item.emblemAlt}
+                    width="1024"
+                    height="1024"
+                    loading="lazy"
+                    decoding="async"
+                  />
                 </div>
                 <p className="ecosystem-card__status">{item.statusLabel}</p>
                 <h4><span className="ecosystem-card__acronym">{item.acronym}</span>{item.name}</h4>
@@ -100,7 +110,17 @@ export function EcosystemSection() {
         </div>
         <div className="ecosystem-roles">
           <article className="ecosystem-role ecosystem-role--portal">
-            <div className="ecosystem-role__emblem"><img src={webPortalEntity.emblem} alt={webPortalEntity.emblemAlt} width="1024" height="1024" /></div>
+            <div className="ecosystem-role__emblem">
+              <ResponsiveImage
+                sources={getProjectEmblemSources(webPortalEntity.acronym)}
+                sizes="112px"
+                alt={webPortalEntity.emblemAlt}
+                width="1024"
+                height="1024"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
             <div className="ecosystem-role__content">
               <p className="section-kicker">Portail public actif</p>
               <h4>OJW — Le portail public</h4>

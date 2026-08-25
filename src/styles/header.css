@@ -22,7 +22,7 @@
 .local-sky-control__actions button{min-height:44px;padding:0 12px;border:1px solid rgba(240,206,103,.45);border-radius:999px;color:#10231e;background:#f0ce67;cursor:pointer}
 .local-sky-control__actions button:disabled{cursor:wait;opacity:.65}
 .local-sky-control__actions .local-sky-control__close{color:#edf5f3;background:transparent}
-.skip-link { position: absolute; left: -999px; top: 8px; background: var(--oj-gold); color: #111827; padding: 10px 14px; border-radius: 999px; }
+.skip-link { position: absolute; left: -999px; top: 8px; min-height: 44px; background: var(--oj-gold); color: #111827; padding: 10px 14px; border-radius: 999px; }
 .skip-link:focus { left: 16px; }
 @media (max-width: 1023px) {
   .site-header__inner { width:100%; min-height:76px; grid-template-columns:1fr auto auto; gap:8px; padding:0 14px; }

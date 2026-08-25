@@ -1,9 +1,10 @@
 import { useState } from "react";
-import officialLogo from "../assets/brand/onjarama-official-logo.png";
 import { DayNightToggle } from "./DayNightToggle";
 import type { AutoStrategy, DayNightMode, DayNightPreference } from "../hooks/useDayNightMode";
 import type { LocalCelestialLocationStatus } from "../hooks/useLocalCelestialLocation";
 import { LocalSkyControl } from "./LocalSkyControl";
+import { ResponsiveImage } from "./ResponsiveImage";
+import { brandLogoSources } from "../data/responsiveAssets";
 
 type HeaderProps = {
   isHomePage?: boolean;
@@ -28,7 +29,15 @@ export function Header({ isHomePage = false, showAmbience = true, mode, preferen
       <a className="skip-link" href="#main-content">Aller au contenu</a>
       <div className="site-header__inner">
         <a className="brand" href={isHomePage ? "#top" : "/"} aria-label="Accueil OnJarama">
-          <img className="brand-logo" src={officialLogo} alt="Logo officiel OnJarama" />
+          <ResponsiveImage
+            className="brand-logo"
+            sources={brandLogoSources}
+            sizes="(max-width: 520px) 40px, (max-width: 820px) 44px, 54px"
+            alt="Logo officiel OnJarama"
+            width="1254"
+            height="1254"
+            decoding="async"
+          />
           <span className="brand-text">ONJARAMA</span>
         </a>
         <button
