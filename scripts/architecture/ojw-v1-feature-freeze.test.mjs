@@ -19,7 +19,8 @@ const canonical = data.slice(data.indexOf("export const ecosystemEntities"), dat
 
 assert.match(freeze, /V1_FUNCTIONAL_BASELINE = d7734a931ef4281442b1bf3a3cb5af3c9b61a91f/);
 assert.match(freeze, /V1_FREEZE_BASELINE = d7734a931ef4281442b1bf3a3cb5af3c9b61a91f/);
-assert.match(freeze, /V1_FREEZE_RECORD_COMMIT = PENDING_FOUNDER_APPROVAL_AND_GIT_CLOSURE/);
+assert.match(freeze, /V1_FREEZE_RECORD_COMMIT = 5e31ab804a0bca811b8605c2a79008388d2e4595/);
+assert.match(freeze, /FEATURE_FREEZE_V1 = ACTIVE/);
 
 assert.equal((canonical.match(/entityType: "APPLICATION"/g) ?? []).length, 3);
 assert.deepEqual([...canonical.matchAll(/shortName: "(OJA|OJP|OJCS)"/g)].map((match) => match[1]), ["OJA", "OJP", "OJCS"]);

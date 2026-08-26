@@ -7,12 +7,12 @@ GATE = OJW-V1-FEATURE-FREEZE
 FREEZE_DATE = 2026-08-25
 V1_FUNCTIONAL_BASELINE = d7734a931ef4281442b1bf3a3cb5af3c9b61a91f
 V1_FREEZE_BASELINE = d7734a931ef4281442b1bf3a3cb5af3c9b61a91f
-V1_FREEZE_RECORD_COMMIT = PENDING_FOUNDER_APPROVAL_AND_GIT_CLOSURE
-FEATURE_FREEZE_V1 = READY_LOCAL
+V1_FREEZE_RECORD_COMMIT = 5e31ab804a0bca811b8605c2a79008388d2e4595
+FEATURE_FREEZE_V1 = ACTIVE
 PRODUCTION_BASELINE = QUALIFIED
 ```
 
-Ce document est une pièce de gouvernance technique. La baseline fonctionnelle V1 demeure le commit ci-dessus. Le futur commit documentaire enregistrera le gel sans devenir une nouvelle baseline fonctionnelle.
+Ce document est une pièce de gouvernance technique. La baseline fonctionnelle V1 demeure le commit ci-dessus. Le commit documentaire de gel enregistre cette décision sans devenir une nouvelle baseline fonctionnelle.
 
 ## Portée du gel
 
