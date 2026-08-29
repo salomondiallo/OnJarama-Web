@@ -25,8 +25,8 @@ assert.match(styles, /\.tree-hero\.is-night \.gfx03-moon-system\{opacity:\.88\}/
 assert.equal(pkg.dependencies.suncalc, "2.0.1");
 assert.equal(Object.keys(pkg.dependencies).length, 4);
 assert.doesNotMatch(`${scene}\n${styles}`, /requestAnimationFrame|setInterval\s*\(/);
-assert.match(scene, /founder-canonical-day-card-free\.png/);
-assert.match(scene, /founder-canonical-night-no-moon-card-free\.png/);
+assert.match(scene, /coastal-hero-day-3840\.png/);
+assert.match(scene, /coastal-hero-night-3840\.png/);
 
 const hashes = {
   "src/assets/immersive/founder-canonical/founder-canonical-day.png": "AB9BF630E4964C09B7EE88CD1DD53B75005A10E8959668897C6E546489E34CD7",

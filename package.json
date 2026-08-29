@@ -48,6 +48,7 @@
     "test:ojw:v1-q1": "node scripts/architecture/ojw-v1-q1-public-asset-delivery-and-semantic-closure.test.mjs",
     "test:ojw:v1-q2-fix-01": "node scripts/architecture/ojw-v1-q2-fix-01-http-404-and-cache-hygiene.test.mjs",
     "test:ojw:v1-feature-freeze": "node scripts/architecture/ojw-v1-feature-freeze.test.mjs",
+    "test:ojw:post-v1-coastal-hero": "node scripts/architecture/ojw-post-v1-coastal-hero-local-insertion.test.mjs",
     "test:ojw:ecosystem-02-e3": "node scripts/architecture/ojw-ecosystem-02-e3-ojcs-public-page.test.mjs",
     "test:ojw:ecosystem-02-d3": "node scripts/architecture/ojw-ecosystem-02-d3-ojp-public-page.test.mjs",
     "test:ojw:ecosystem-02-c3": "node scripts/architecture/ojw-ecosystem-02-c3-oja-public-page.test.mjs",

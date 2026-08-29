@@ -65,8 +65,8 @@ assert.ok(cardFreeFiles.every((name) => !name.includes("1672")), "1672 and upsca
 
 const scene = text("src/components/TreeScene.tsx");
 const hero = text("src/sections/TreeHeroSection.tsx");
-assert.match(scene, /founder-canonical-day-card-free\.png/, "the approved switch gate must use the DAY-A card-free source");
-assert.match(scene, /founder-canonical-night-no-moon-card-free\.png/, "the approved switch gate must use the NIGHT-B card-free source");
+assert.match(scene, /coastal-hero-day-3840\.png/, "the post-V1 switch must use the approved coastal DAY source");
+assert.match(scene, /coastal-hero-night-3840\.png/, "the post-V1 switch must use the approved coastal NIGHT source");
 assert.doesNotMatch(hero, /tree-hero__intro tree-hero__intro--option-b/, "the approved switch gate removes the editorial DOM card");
 assert.match(scene, /gfx03-sun-system/);
 assert.match(scene, /astronomical-celestial__sun/);

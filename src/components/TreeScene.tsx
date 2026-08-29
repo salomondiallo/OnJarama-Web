@@ -1,29 +1,29 @@
-import dayScene from "../assets/immersive/founder-canonical/founder-canonical-day-card-free.png";
-import nightScene from "../assets/immersive/founder-canonical/founder-canonical-night-no-moon-card-free.png";
-import dayAvif960 from "../assets/immersive/founder-canonical/optimized/founder-canonical-day-card-free-960.avif";
-import dayAvif1280 from "../assets/immersive/founder-canonical/optimized/founder-canonical-day-card-free-1280.avif";
-import dayAvif1586 from "../assets/immersive/founder-canonical/optimized/founder-canonical-day-card-free-hq-1586.avif";
-import dayAvif1920 from "../assets/immersive/founder-canonical/optimized/founder-canonical-day-card-free-hq-1920.avif";
-import dayAvif2560 from "../assets/immersive/founder-canonical/optimized/founder-canonical-day-card-free-hq-2560.avif";
-import dayAvif3172 from "../assets/immersive/founder-canonical/optimized/founder-canonical-day-card-free-hq-3172.avif";
-import dayWebp960 from "../assets/immersive/founder-canonical/optimized/founder-canonical-day-card-free-960.webp";
-import dayWebp1280 from "../assets/immersive/founder-canonical/optimized/founder-canonical-day-card-free-1280.webp";
-import dayWebp1586 from "../assets/immersive/founder-canonical/optimized/founder-canonical-day-card-free-hq-1586.webp";
-import dayWebp1920 from "../assets/immersive/founder-canonical/optimized/founder-canonical-day-card-free-hq-1920.webp";
-import dayWebp2560 from "../assets/immersive/founder-canonical/optimized/founder-canonical-day-card-free-hq-2560.webp";
-import dayWebp3172 from "../assets/immersive/founder-canonical/optimized/founder-canonical-day-card-free-hq-3172.webp";
-import nightAvif960 from "../assets/immersive/founder-canonical/optimized/founder-canonical-night-no-moon-card-free-960.avif";
-import nightAvif1280 from "../assets/immersive/founder-canonical/optimized/founder-canonical-night-no-moon-card-free-1280.avif";
-import nightAvif1586 from "../assets/immersive/founder-canonical/optimized/founder-canonical-night-no-moon-card-free-hq-1586.avif";
-import nightAvif1920 from "../assets/immersive/founder-canonical/optimized/founder-canonical-night-no-moon-card-free-hq-1920.avif";
-import nightAvif2560 from "../assets/immersive/founder-canonical/optimized/founder-canonical-night-no-moon-card-free-hq-2560.avif";
-import nightAvif3172 from "../assets/immersive/founder-canonical/optimized/founder-canonical-night-no-moon-card-free-hq-3172.avif";
-import nightWebp960 from "../assets/immersive/founder-canonical/optimized/founder-canonical-night-no-moon-card-free-960.webp";
-import nightWebp1280 from "../assets/immersive/founder-canonical/optimized/founder-canonical-night-no-moon-card-free-1280.webp";
-import nightWebp1586 from "../assets/immersive/founder-canonical/optimized/founder-canonical-night-no-moon-card-free-hq-1586.webp";
-import nightWebp1920 from "../assets/immersive/founder-canonical/optimized/founder-canonical-night-no-moon-card-free-hq-1920.webp";
-import nightWebp2560 from "../assets/immersive/founder-canonical/optimized/founder-canonical-night-no-moon-card-free-hq-2560.webp";
-import nightWebp3172 from "../assets/immersive/founder-canonical/optimized/founder-canonical-night-no-moon-card-free-hq-3172.webp";
+import dayScene from "../assets/immersive/post-v1/coastal-hero/coastal-hero-day-3840.png";
+import nightScene from "../assets/immersive/post-v1/coastal-hero/coastal-hero-night-3840.png";
+import dayAvif960 from "../assets/immersive/post-v1/coastal-hero/optimized/coastal-hero-day-960.avif";
+import dayAvif1280 from "../assets/immersive/post-v1/coastal-hero/optimized/coastal-hero-day-1280.avif";
+import dayAvif1586 from "../assets/immersive/post-v1/coastal-hero/optimized/coastal-hero-day-1586.avif";
+import dayAvif1920 from "../assets/immersive/post-v1/coastal-hero/optimized/coastal-hero-day-1920.avif";
+import dayAvif2560 from "../assets/immersive/post-v1/coastal-hero/optimized/coastal-hero-day-2560.avif";
+import dayAvif3840 from "../assets/immersive/post-v1/coastal-hero/optimized/coastal-hero-day-3840.avif";
+import dayWebp960 from "../assets/immersive/post-v1/coastal-hero/optimized/coastal-hero-day-960.webp";
+import dayWebp1280 from "../assets/immersive/post-v1/coastal-hero/optimized/coastal-hero-day-1280.webp";
+import dayWebp1586 from "../assets/immersive/post-v1/coastal-hero/optimized/coastal-hero-day-1586.webp";
+import dayWebp1920 from "../assets/immersive/post-v1/coastal-hero/optimized/coastal-hero-day-1920.webp";
+import dayWebp2560 from "../assets/immersive/post-v1/coastal-hero/optimized/coastal-hero-day-2560.webp";
+import dayWebp3840 from "../assets/immersive/post-v1/coastal-hero/optimized/coastal-hero-day-3840.webp";
+import nightAvif960 from "../assets/immersive/post-v1/coastal-hero/optimized/coastal-hero-night-960.avif";
+import nightAvif1280 from "../assets/immersive/post-v1/coastal-hero/optimized/coastal-hero-night-1280.avif";
+import nightAvif1586 from "../assets/immersive/post-v1/coastal-hero/optimized/coastal-hero-night-1586.avif";
+import nightAvif1920 from "../assets/immersive/post-v1/coastal-hero/optimized/coastal-hero-night-1920.avif";
+import nightAvif2560 from "../assets/immersive/post-v1/coastal-hero/optimized/coastal-hero-night-2560.avif";
+import nightAvif3840 from "../assets/immersive/post-v1/coastal-hero/optimized/coastal-hero-night-3840.avif";
+import nightWebp960 from "../assets/immersive/post-v1/coastal-hero/optimized/coastal-hero-night-960.webp";
+import nightWebp1280 from "../assets/immersive/post-v1/coastal-hero/optimized/coastal-hero-night-1280.webp";
+import nightWebp1586 from "../assets/immersive/post-v1/coastal-hero/optimized/coastal-hero-night-1586.webp";
+import nightWebp1920 from "../assets/immersive/post-v1/coastal-hero/optimized/coastal-hero-night-1920.webp";
+import nightWebp2560 from "../assets/immersive/post-v1/coastal-hero/optimized/coastal-hero-night-2560.webp";
+import nightWebp3840 from "../assets/immersive/post-v1/coastal-hero/optimized/coastal-hero-night-3840.webp";
 import { useMemo, useState, type CSSProperties } from "react";
 import type { EcosystemItem, EcosystemState } from "../data/ecosystem";
 import type { DayNightMode, DayNightPreference } from "../hooks/useDayNightMode";
@@ -172,6 +172,7 @@ export function TreeScene({
       data-gfx02-scene
       data-gfx03-scene
       data-gfx04-r2-treeless
+      data-post-v1-coastal-hero
       data-dynamic-sky
       data-living-environment="active"
       data-environment-profile={environment.performanceProfile.toLowerCase()}
@@ -205,37 +206,13 @@ export function TreeScene({
       <div className="gfx02-scene-plates" aria-hidden="true">
         {dayMounted && (
           <picture>
-            <source
-              type="image/avif"
-              media="(min-width: 1587px)"
-              srcSet={`${dayAvif1920} 1920w, ${dayAvif2560} 2560w, ${dayAvif3172} 3172w`}
-              sizes="100vw"
-            />
-            <source
-              type="image/avif"
-              media="(min-width: 1024px)"
-              srcSet={`${dayAvif1280} 1280w, ${dayAvif1586} 1586w`}
-              sizes="100vw"
-            />
-            <source type="image/avif" srcSet={`${dayAvif960} 960w`} sizes="100vw" />
-            <source
-              type="image/webp"
-              media="(min-width: 1587px)"
-              srcSet={`${dayWebp1920} 1920w, ${dayWebp2560} 2560w, ${dayWebp3172} 3172w`}
-              sizes="100vw"
-            />
-            <source
-              type="image/webp"
-              media="(min-width: 1024px)"
-              srcSet={`${dayWebp1280} 1280w, ${dayWebp1586} 1586w`}
-              sizes="100vw"
-            />
-            <source type="image/webp" srcSet={`${dayWebp960} 960w`} sizes="100vw" />
+            <source type="image/avif" srcSet={`${dayAvif960} 960w, ${dayAvif1280} 1280w, ${dayAvif1586} 1586w, ${dayAvif1920} 1920w, ${dayAvif2560} 2560w, ${dayAvif3840} 3840w`} sizes="100vw" />
+            <source type="image/webp" srcSet={`${dayWebp960} 960w, ${dayWebp1280} 1280w, ${dayWebp1586} 1586w, ${dayWebp1920} 1920w, ${dayWebp2560} 2560w, ${dayWebp3840} 3840w`} sizes="100vw" />
             <img
               className="gfx02-scene-plate gfx02-scene-plate--day"
               src={dayScene}
-              width="1586"
-              height="429"
+              width="3840"
+              height="2161"
               alt=""
               aria-hidden="true"
               decoding="async"
@@ -247,37 +224,13 @@ export function TreeScene({
         )}
         {nightMounted && (
           <picture>
-            <source
-              type="image/avif"
-              media="(min-width: 1587px)"
-              srcSet={`${nightAvif1920} 1920w, ${nightAvif2560} 2560w, ${nightAvif3172} 3172w`}
-              sizes="100vw"
-            />
-            <source
-              type="image/avif"
-              media="(min-width: 1024px)"
-              srcSet={`${nightAvif1280} 1280w, ${nightAvif1586} 1586w`}
-              sizes="100vw"
-            />
-            <source type="image/avif" srcSet={`${nightAvif960} 960w`} sizes="100vw" />
-            <source
-              type="image/webp"
-              media="(min-width: 1587px)"
-              srcSet={`${nightWebp1920} 1920w, ${nightWebp2560} 2560w, ${nightWebp3172} 3172w`}
-              sizes="100vw"
-            />
-            <source
-              type="image/webp"
-              media="(min-width: 1024px)"
-              srcSet={`${nightWebp1280} 1280w, ${nightWebp1586} 1586w`}
-              sizes="100vw"
-            />
-            <source type="image/webp" srcSet={`${nightWebp960} 960w`} sizes="100vw" />
+            <source type="image/avif" srcSet={`${nightAvif960} 960w, ${nightAvif1280} 1280w, ${nightAvif1586} 1586w, ${nightAvif1920} 1920w, ${nightAvif2560} 2560w, ${nightAvif3840} 3840w`} sizes="100vw" />
+            <source type="image/webp" srcSet={`${nightWebp960} 960w, ${nightWebp1280} 1280w, ${nightWebp1586} 1586w, ${nightWebp1920} 1920w, ${nightWebp2560} 2560w, ${nightWebp3840} 3840w`} sizes="100vw" />
             <img
               className="gfx02-scene-plate gfx02-scene-plate--night"
               src={nightScene}
-              width="1586"
-              height="464"
+              width="3840"
+              height="2161"
               alt=""
               aria-hidden="true"
               decoding="async"

@@ -727,6 +727,27 @@
 .tree-hero.is-day .gfx03-moon-system,
 .tree-hero.is-day .astronomical-celestial__sun,
 .tree-hero.is-day .astronomical-celestial__moon{display:none!important}
+
+/* OJW-POST-V1-COASTAL-HERO-LOCAL-INSERTION-01: preserve the validated 4K frame
+   and retire only overlays calibrated to the previous panorama geometry. */
+.tree-hero__panorama:has(.tree-scene[data-post-v1-coastal-hero]){aspect-ratio:3840/2161}
+.tree-scene[data-post-v1-coastal-hero] .gfx02-scene-plate{object-fit:contain;object-position:center center}
+.tree-scene[data-post-v1-coastal-hero] .dynamic-sky,
+.tree-scene[data-post-v1-coastal-hero] .living-water,
+.tree-scene[data-post-v1-coastal-hero] .astronomical-celestial,
+.tree-scene[data-post-v1-coastal-hero] .gfx03-sun-system,
+.tree-scene[data-post-v1-coastal-hero] .gfx03-moon-system,
+.tree-scene[data-post-v1-coastal-hero] .gfx02-natural-texture,
+.tree-scene[data-post-v1-coastal-hero] .gfx02-city-light,
+.tree-scene[data-post-v1-coastal-hero] .gfx02-lamp-posts,
+.tree-scene[data-post-v1-coastal-hero] .gfx03-tree-blend,
+.tree-scene[data-post-v1-coastal-hero] .gfx03-tree-atmosphere,
+.tree-scene[data-post-v1-coastal-hero] .gfx03-root-integration{display:none!important}
+@media(max-width:767px){
+  .tree-hero__panorama:has(.tree-scene[data-post-v1-coastal-hero]){height:280px;aspect-ratio:auto}
+  .tree-scene[data-post-v1-coastal-hero]{height:280px;aspect-ratio:auto}
+  .tree-scene[data-post-v1-coastal-hero] .gfx02-scene-plate{object-fit:cover;object-position:70% center}
+}
 @media(max-width:760px){.astronomical-celestial__moon{width:20px;height:20px}.astronomical-celestial__sun{width:28px;height:28px}}
 .dynamic-sky__clouds--far i{animation:dynamicSkyDriftFar 190s linear infinite}
 .dynamic-sky__clouds--far i:nth-child(2){animation-duration:236s;animation-delay:-91s;animation-direction:reverse}

@@ -13,12 +13,11 @@ const styles = read("src/styles/tree.css");
 const pkg = JSON.parse(read("package.json"));
 const base = "src/assets/immersive/founder-canonical/";
 
-for (const mode of ["day", "night-no-moon"]) {
-  assert.match(scene, new RegExp(`founder-canonical-${mode}-card-free\\.png`));
+for (const mode of ["day", "night"]) {
+  assert.match(scene, new RegExp(`coastal-hero-${mode}-3840\\.png`));
   for (const width of [960, 1280, 1586]) {
-    const qualityTier = width === 1586 ? "(?:hq-)?" : "";
-    assert.match(scene, new RegExp(`founder-canonical-${mode}-card-free-${qualityTier}${width}\\.avif`));
-    assert.match(scene, new RegExp(`founder-canonical-${mode}-card-free-${qualityTier}${width}\\.webp`));
+    assert.match(scene, new RegExp(`coastal-hero-${mode}-${width}\\.avif`));
+    assert.match(scene, new RegExp(`coastal-hero-${mode}-${width}\\.webp`));
   }
 }
 assert.doesNotMatch(sceneImports, /founder-canonical-(?:day|night-no-moon)-clean(?:-|\.png)/);

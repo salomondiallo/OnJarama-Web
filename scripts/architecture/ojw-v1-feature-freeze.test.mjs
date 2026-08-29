@@ -39,8 +39,8 @@ for (const route of ["/", "/oja", "/ojp", "/ojcs", "/ojw"]) {
 assert.doesNotMatch(app, /path="\/ojf"|path:\s*"\/ojf"/i);
 
 assert.doesNotMatch(hero, /tree-hero__intro|tree-hero__cta/);
-const sceneImports = (scene.match(/^import .*founder-canonical.*$/gm) ?? []).join("\n");
-assert.match(sceneImports, /card-free/);
+const sceneImports = (scene.match(/^import .*post-v1\/coastal-hero.*$/gm) ?? []).join("\n");
+assert.match(sceneImports, /coastal-hero/);
 assert.doesNotMatch(sceneImports, /-clean/);
 assert.match(le00, /HERO_TREE = ABSENT/);
 assert.match(le00, /TREE_FRUITS = ABSENT/);

@@ -10,7 +10,7 @@ const exists = (file) => existsSync(new URL(file, rootUrl));
 const base = "src/assets/immersive/founder-canonical/";
 const optimized = `${base}optimized/`;
 const scene = text("src/components/TreeScene.tsx");
-const sceneImports = (scene.match(/^import .*founder-canonical.*$/gm) ?? []).join("\n");
+const sceneImports = (scene.match(/^import .*post-v1\/coastal-hero.*$/gm) ?? []).join("\n");
 const css = text("src/styles/tree.css");
 const livingEnvironment = text("src/hooks/useLivingEnvironment.ts");
 
@@ -19,16 +19,16 @@ assert.equal(sha256(`${base}founder-canonical-night-no-moon.png`), "B85ED28B4E37
 assert.equal(sha256(`${base}founder-canonical-day-clean.png`), "85FF35900B7FC2DFBD9A168C49FAA1E8BB3491ECA2885250BA0A51F0478E1D0A");
 assert.equal(sha256(`${base}founder-canonical-night-no-moon-clean.png`), "FA4167300522CDC9C2D75F17ED84270641CDB12597091690B1F829C917047E1F");
 
-for (const variant of ["day", "night-no-moon"]) {
-  assert.match(sceneImports, new RegExp(`founder-canonical-${variant}-card-free\\.png`));
+for (const [variant, legacyVariant] of [["day", "day"], ["night", "night-no-moon"]]) {
+  assert.match(sceneImports, new RegExp(`coastal-hero-${variant}-3840\\.png`));
   assert.doesNotMatch(sceneImports, new RegExp(`founder-canonical-${variant}-clean`));
   for (const width of [960, 1280, 1586]) {
     for (const format of ["avif", "webp"]) {
       const qualityTier = width >= 1586 ? "hq-" : "";
-      assert.match(sceneImports, new RegExp(`founder-canonical-${variant}-card-free-${qualityTier}${width}\\.${format}`));
-      assert.ok(exists(`${optimized}founder-canonical-${variant}-card-free-${qualityTier}${width}.${format}`));
-      assert.ok(exists(`${optimized}founder-canonical-${variant}-clean-${width}.${format}`));
-      assert.ok(exists(`${optimized}founder-canonical-${variant}-${width}.${format}`), "rollback asset must remain present");
+      assert.match(sceneImports, new RegExp(`coastal-hero-${variant}-${width}\\.${format}`));
+      assert.ok(exists(`${optimized}founder-canonical-${legacyVariant}-card-free-${qualityTier}${width}.${format}`));
+      assert.ok(exists(`${optimized}founder-canonical-${legacyVariant}-clean-${width}.${format}`));
+      assert.ok(exists(`${optimized}founder-canonical-${legacyVariant}-${width}.${format}`), "rollback asset must remain present");
     }
   }
 }
