@@ -19,6 +19,13 @@
   content: "";
 }
 
+.app:has(.tree-hero.is-day) .ecosystem-section{
+  background:linear-gradient(180deg,rgba(183,207,195,.72),rgba(219,231,223,.32) clamp(78px,9vw,136px),transparent 208px);
+}
+.app:has(.tree-hero.is-day) .ecosystem-section::before{
+  background:linear-gradient(180deg,rgba(168,196,184,.72),rgba(207,224,215,.28) 58%,transparent),linear-gradient(90deg,transparent 8%,rgba(154,119,28,.13),transparent 92%);
+}
+
 .ecosystem-section .section-heading { display:grid;grid-template-columns:minmax(0,1.25fr) minmax(300px,.75fr);gap:clamp(36px,6vw,88px);max-width:none;align-items:end;margin-bottom:clamp(36px,5vw,62px) }
 .ecosystem-section .section-heading h2 { max-width: 16ch; }
 .ecosystem-section__map{display:grid;gap:0;margin:0;border-block:1px solid rgba(242,207,99,.24)}
@@ -169,7 +176,9 @@
 .app:has(.tree-hero.is-day) .ecosystem-card { color: #173a36; border-color: rgba(var(--ecosystem-accent), .38); background: linear-gradient(145deg, rgba(var(--ecosystem-accent), .16), transparent 42%), rgba(255, 255, 255, .32); box-shadow: 0 18px 38px rgba(2, 22, 28, .12); }
 .app:has(.tree-hero.is-day) .ecosystem-card__acronym { color: #173a36; }
 .app:has(.tree-hero.is-day) :is(.ecosystem-card, .ecosystem-territory, .ecosystem-role) p { color: #345a55; }
-.app:has(.tree-hero.is-day) .ecosystem-section__map dd{color:#dfece5}
+.app:has(.tree-hero.is-day) .ecosystem-section__map{border-block-color:rgba(128,96,22,.25)}
+.app:has(.tree-hero.is-day) .ecosystem-section__map div{border-bottom-color:rgba(55,98,87,.16)}
+.app:has(.tree-hero.is-day) .ecosystem-section__map dd{color:#244b43}
 .app:has(.tree-hero.is-day) .ecosystem-foundation-disclosure{border-top-color:rgba(83,119,105,.42)}
 .app:has(.tree-hero.is-day) .ecosystem-foundation-disclosure button{color:#173a36}
 .app:has(.tree-hero.is-day) .ecosystem-foundation-disclosure__panel p{color:#345a55!important}

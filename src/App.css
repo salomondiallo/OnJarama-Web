@@ -18,5 +18,34 @@ body {
   color: var(--oj-text);
 }
 a { color: inherit; }
-.app { min-height: 100vh; overflow-x: hidden; }
-main { background:linear-gradient(180deg,var(--oj-bg) 0,#081827 56%,#06111f 100%); }
+.app {
+  --home-page-bg: #06111f;
+  --home-page-bg-soft: #081827;
+  --home-page-bg-deep: #06111f;
+  min-height: 100vh;
+  overflow-x: hidden;
+  background: var(--home-page-bg);
+  color: var(--oj-text);
+  transition: background-color .45s ease, color .45s ease;
+}
+main {
+  background: linear-gradient(180deg, var(--home-page-bg) 0, var(--home-page-bg-soft) 56%, var(--home-page-bg-deep) 100%);
+  transition: background .45s ease;
+}
+
+.app:has(.tree-hero.is-day) {
+  --oj-bg: #dbe7df;
+  --oj-bg-soft: #d0dfd7;
+  --oj-surface: rgba(255,255,255,.54);
+  --oj-surface-strong: rgba(255,255,255,.74);
+  --oj-border: rgba(42,84,74,.22);
+  --oj-text: #163a34;
+  --oj-muted: #42645d;
+  --oj-soft: #5d776f;
+  --oj-gold: #765600;
+  --oj-gold-strong: #5b4300;
+  --oj-shadow: 0 24px 64px rgba(17,49,42,.15);
+  --home-page-bg: #dbe7df;
+  --home-page-bg-soft: #edf1e7;
+  --home-page-bg-deep: #c8dad1;
+}

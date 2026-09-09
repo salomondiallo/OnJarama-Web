@@ -56,8 +56,8 @@
 #vision{padding-block:clamp(76px,9vw,116px)}
 #vision > .section-text { margin-bottom: 38px; }
 #roadmap { padding-bottom: clamp(68px, 8vw, 96px); }
-.app:has(.tree-hero.is-day) #about{border-bottom-color:rgba(192,218,207,.22)}
-.app:has(.tree-hero.is-day) .section-heading>p:last-child,.app:has(.tree-hero.is-day) .section-text{color:#c7dad4}
+.app:has(.tree-hero.is-day) #about{border-block-color:rgba(55,98,87,.2)}
+.app:has(.tree-hero.is-day) .section-heading>p:last-child,.app:has(.tree-hero.is-day) .section-text{color:#42645d}
 .app:has(.tree-hero.is-day) .mission-band>p:last-child{color:#345a55}
 .app:has(.tree-hero.is-day) .quality-grid article,.app:has(.tree-hero.is-day) .timeline article{color:#173a36;border-color:rgba(83,119,105,.34);background:rgba(235,243,233,.82)}
 .app:has(.tree-hero.is-day) .quality-grid p,.app:has(.tree-hero.is-day) .timeline p{color:#345a55}

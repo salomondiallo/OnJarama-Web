@@ -24,6 +24,16 @@
 .local-sky-control__actions .local-sky-control__close{color:#edf5f3;background:transparent}
 .skip-link { position: absolute; left: -999px; top: 8px; min-height: 44px; background: var(--oj-gold); color: #111827; padding: 10px 14px; border-radius: 999px; }
 .skip-link:focus { left: 16px; }
+.site-header{box-shadow:0 8px 30px rgba(0,0,0,.08);transition:background-color .45s ease,border-color .45s ease,box-shadow .45s ease}
+.app:has(.tree-hero.is-day) .site-header{background:rgba(225,235,226,.88);border-bottom-color:rgba(39,79,70,.22);box-shadow:0 10px 30px rgba(24,58,50,.1)}
+.app:has(.tree-hero.is-day) .brand-text{color:#173a34}
+.app:has(.tree-hero.is-day) .brand-logo{border-color:rgba(128,96,22,.32);box-shadow:0 0 10px rgba(128,96,22,.1)}
+.app:has(.tree-hero.is-day) .site-header__ambience{color:#173a34}
+.app:has(.tree-hero.is-day) .site-header__ambience .day-night-toggle,
+.app:has(.tree-hero.is-day) .local-sky-control__trigger{border-color:rgba(39,79,70,.27);background:rgba(255,255,255,.5)}
+.app:has(.tree-hero.is-day) .site-header__ambience .day-night-toggle button,
+.app:has(.tree-hero.is-day) .local-sky-control__trigger{color:#254a43}
+.app:has(.tree-hero.is-day) .menu-toggle{color:#173a34;border-color:rgba(128,96,22,.32);background:rgba(255,255,255,.46)}
 @media (max-width: 1023px) {
   .site-header__inner { width:100%; min-height:76px; grid-template-columns:1fr auto auto; gap:8px; padding:0 14px; }
   .brand { gap:9px; min-height:76px; }
@@ -43,6 +53,7 @@
   .menu-toggle:focus-visible { outline:3px solid #68d7f4; outline-offset:3px; }
   .main-nav { position:absolute; top:68px; right:14px; left:14px; z-index:2; display:none; padding:8px; border:1px solid var(--oj-border); border-radius:16px; background:rgba(6,17,31,.97); box-shadow:0 18px 40px rgba(0,0,0,.35); }
   .main-nav.is-open { display:grid; }
+  .app:has(.tree-hero.is-day) .main-nav{background:rgba(231,239,231,.98);box-shadow:0 18px 40px rgba(24,58,50,.18)}
   .main-nav a { display:flex; align-items:center; min-height:44px; padding:0 14px; }
 }
 /* MOBILE_390_AMBIENCE_SELECTOR_VISIBLE; HEADER_BREAKPOINT_767_768_769; HEADER_BREAKPOINT_899_900_901 */
