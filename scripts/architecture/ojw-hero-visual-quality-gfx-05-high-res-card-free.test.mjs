@@ -7,7 +7,7 @@ const scene = readFileSync(join(root, "src/components/TreeScene.tsx"), "utf8");
 const optimized = join(root, "src/assets/immersive/post-v1/coastal-hero/optimized");
 
 for (const mode of ["day", "night"]) {
-  for (const width of [1586, 1920, 2560, 3840]) {
+  for (const width of [1586, 1920, 2560, 2880, 3840]) {
     for (const format of ["avif", "webp"]) {
       const name = `coastal-hero-${mode}-${width}.${format}`;
       assert.ok(existsSync(join(optimized, name)), `${name} must exist`);
@@ -17,7 +17,7 @@ for (const mode of ["day", "night"]) {
   }
 }
 
-assert.match(scene, /1920w[\s\S]*2560w[\s\S]*3840w/);
+assert.match(scene, /1920w[\s\S]*2560w[\s\S]*2880w[\s\S]*3840w/);
 assert.match(scene, /1280w[\s\S]*1586w/);
 assert.match(scene, /960w/);
 assert.doesNotMatch(scene, /1672w/);

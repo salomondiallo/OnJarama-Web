@@ -23,7 +23,7 @@ for (const [mode, [name, expectedHash]] of Object.entries(masters)) {
 }
 
 for (const mode of ["day", "night"]) {
-  for (const width of [960, 1280, 1586, 1920, 2560, 3840]) {
+  for (const width of [960, 1280, 1586, 1920, 2560, 2880, 3840]) {
     for (const format of ["avif", "webp"]) {
       const name = `coastal-hero-${mode}-${width}.${format}`;
       assert.ok(existsSync(join(optimizedRoot, name)), `${name} must exist`);

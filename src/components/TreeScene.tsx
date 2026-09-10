@@ -5,24 +5,28 @@ import dayAvif1280 from "../assets/immersive/post-v1/coastal-hero/optimized/coas
 import dayAvif1586 from "../assets/immersive/post-v1/coastal-hero/optimized/coastal-hero-day-1586.avif";
 import dayAvif1920 from "../assets/immersive/post-v1/coastal-hero/optimized/coastal-hero-day-1920.avif";
 import dayAvif2560 from "../assets/immersive/post-v1/coastal-hero/optimized/coastal-hero-day-2560.avif";
+import dayAvif2880 from "../assets/immersive/post-v1/coastal-hero/optimized/coastal-hero-day-2880.avif";
 import dayAvif3840 from "../assets/immersive/post-v1/coastal-hero/optimized/coastal-hero-day-3840.avif";
 import dayWebp960 from "../assets/immersive/post-v1/coastal-hero/optimized/coastal-hero-day-960.webp";
 import dayWebp1280 from "../assets/immersive/post-v1/coastal-hero/optimized/coastal-hero-day-1280.webp";
 import dayWebp1586 from "../assets/immersive/post-v1/coastal-hero/optimized/coastal-hero-day-1586.webp";
 import dayWebp1920 from "../assets/immersive/post-v1/coastal-hero/optimized/coastal-hero-day-1920.webp";
 import dayWebp2560 from "../assets/immersive/post-v1/coastal-hero/optimized/coastal-hero-day-2560.webp";
+import dayWebp2880 from "../assets/immersive/post-v1/coastal-hero/optimized/coastal-hero-day-2880.webp";
 import dayWebp3840 from "../assets/immersive/post-v1/coastal-hero/optimized/coastal-hero-day-3840.webp";
 import nightAvif960 from "../assets/immersive/post-v1/coastal-hero/optimized/coastal-hero-night-960.avif";
 import nightAvif1280 from "../assets/immersive/post-v1/coastal-hero/optimized/coastal-hero-night-1280.avif";
 import nightAvif1586 from "../assets/immersive/post-v1/coastal-hero/optimized/coastal-hero-night-1586.avif";
 import nightAvif1920 from "../assets/immersive/post-v1/coastal-hero/optimized/coastal-hero-night-1920.avif";
 import nightAvif2560 from "../assets/immersive/post-v1/coastal-hero/optimized/coastal-hero-night-2560.avif";
+import nightAvif2880 from "../assets/immersive/post-v1/coastal-hero/optimized/coastal-hero-night-2880.avif";
 import nightAvif3840 from "../assets/immersive/post-v1/coastal-hero/optimized/coastal-hero-night-3840.avif";
 import nightWebp960 from "../assets/immersive/post-v1/coastal-hero/optimized/coastal-hero-night-960.webp";
 import nightWebp1280 from "../assets/immersive/post-v1/coastal-hero/optimized/coastal-hero-night-1280.webp";
 import nightWebp1586 from "../assets/immersive/post-v1/coastal-hero/optimized/coastal-hero-night-1586.webp";
 import nightWebp1920 from "../assets/immersive/post-v1/coastal-hero/optimized/coastal-hero-night-1920.webp";
 import nightWebp2560 from "../assets/immersive/post-v1/coastal-hero/optimized/coastal-hero-night-2560.webp";
+import nightWebp2880 from "../assets/immersive/post-v1/coastal-hero/optimized/coastal-hero-night-2880.webp";
 import nightWebp3840 from "../assets/immersive/post-v1/coastal-hero/optimized/coastal-hero-night-3840.webp";
 import { useMemo, useState, type CSSProperties } from "react";
 import type { EcosystemItem, EcosystemState } from "../data/ecosystem";
@@ -206,8 +210,8 @@ export function TreeScene({
       <div className="gfx02-scene-plates" aria-hidden="true">
         {dayMounted && (
           <picture>
-            <source type="image/avif" srcSet={`${dayAvif960} 960w, ${dayAvif1280} 1280w, ${dayAvif1586} 1586w, ${dayAvif1920} 1920w, ${dayAvif2560} 2560w, ${dayAvif3840} 3840w`} sizes="100vw" />
-            <source type="image/webp" srcSet={`${dayWebp960} 960w, ${dayWebp1280} 1280w, ${dayWebp1586} 1586w, ${dayWebp1920} 1920w, ${dayWebp2560} 2560w, ${dayWebp3840} 3840w`} sizes="100vw" />
+            <source type="image/avif" srcSet={`${dayAvif960} 960w, ${dayAvif1280} 1280w, ${dayAvif1586} 1586w, ${dayAvif1920} 1920w, ${dayAvif2560} 2560w, ${dayAvif2880} 2880w, ${dayAvif3840} 3840w`} sizes="100vw" />
+            <source type="image/webp" srcSet={`${dayWebp960} 960w, ${dayWebp1280} 1280w, ${dayWebp1586} 1586w, ${dayWebp1920} 1920w, ${dayWebp2560} 2560w, ${dayWebp2880} 2880w, ${dayWebp3840} 3840w`} sizes="100vw" />
             <img
               className="gfx02-scene-plate gfx02-scene-plate--day"
               src={dayScene}
@@ -224,8 +228,8 @@ export function TreeScene({
         )}
         {nightMounted && (
           <picture>
-            <source type="image/avif" srcSet={`${nightAvif960} 960w, ${nightAvif1280} 1280w, ${nightAvif1586} 1586w, ${nightAvif1920} 1920w, ${nightAvif2560} 2560w, ${nightAvif3840} 3840w`} sizes="100vw" />
-            <source type="image/webp" srcSet={`${nightWebp960} 960w, ${nightWebp1280} 1280w, ${nightWebp1586} 1586w, ${nightWebp1920} 1920w, ${nightWebp2560} 2560w, ${nightWebp3840} 3840w`} sizes="100vw" />
+            <source type="image/avif" srcSet={`${nightAvif960} 960w, ${nightAvif1280} 1280w, ${nightAvif1586} 1586w, ${nightAvif1920} 1920w, ${nightAvif2560} 2560w, ${nightAvif2880} 2880w, ${nightAvif3840} 3840w`} sizes="100vw" />
+            <source type="image/webp" srcSet={`${nightWebp960} 960w, ${nightWebp1280} 1280w, ${nightWebp1586} 1586w, ${nightWebp1920} 1920w, ${nightWebp2560} 2560w, ${nightWebp2880} 2880w, ${nightWebp3840} 3840w`} sizes="100vw" />
             <img
               className="gfx02-scene-plate gfx02-scene-plate--night"
               src={nightScene}
