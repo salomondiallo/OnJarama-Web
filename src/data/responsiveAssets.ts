@@ -2,7 +2,7 @@ import logo64Avif from "../assets/brand/optimized/onjarama-official-logo-64.avif
 import logo128Avif from "../assets/brand/optimized/onjarama-official-logo-128.avif";
 import logo64Webp from "../assets/brand/optimized/onjarama-official-logo-64.webp";
 import logo128Webp from "../assets/brand/optimized/onjarama-official-logo-128.webp";
-import officialLogo from "../assets/brand/onjarama-official-logo.png";
+import officialLogoFallback from "../assets/brand/onjarama-official-logo-256.png";
 
 import oja160Avif from "../assets/ecosystem/emblems/optimized/oja-emblem-a2-160.avif";
 import oja320Avif from "../assets/ecosystem/emblems/optimized/oja-emblem-a2-320.avif";
@@ -45,7 +45,7 @@ export type ResponsiveImageSources = {
 export const brandLogoSources: ResponsiveImageSources = {
   avif: `${logo64Avif} 64w, ${logo128Avif} 128w`,
   webp: `${logo64Webp} 64w, ${logo128Webp} 128w`,
-  fallback: officialLogo,
+  fallback: officialLogoFallback,
 };
 
 const projectEmblemSources: Record<string, ResponsiveImageSources> = {
