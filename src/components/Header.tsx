@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { DayNightToggle } from "./DayNightToggle";
 import type { AutoStrategy, DayNightMode, DayNightPreference } from "../hooks/useDayNightMode";
 import type { LocalCelestialLocationStatus } from "../hooks/useLocalCelestialLocation";
@@ -21,8 +21,35 @@ type HeaderProps = {
 
 export function Header({ isHomePage = false, showAmbience = true, mode, preference, autoStrategy, onModeChange, onModePrepare, locationStatus, onSynchronizeLocation, onClearLocation }: HeaderProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const menuToggleRef = useRef<HTMLButtonElement>(null);
+  const menuRef = useRef<HTMLElement>(null);
   const closeMenu = () => setIsMenuOpen(false);
   const homeHref = (fragment: string) => `${isHomePage ? "" : "/"}${fragment}`;
+
+  useEffect(() => {
+    if (!isMenuOpen) return;
+
+    const dismissMenu = (returnFocus: boolean) => {
+      setIsMenuOpen(false);
+      if (returnFocus) menuToggleRef.current?.focus();
+    };
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") dismissMenu(true);
+    };
+    const handlePointerDown = (event: PointerEvent) => {
+      const target = event.target;
+      if (!(target instanceof Node)) return;
+      if (menuToggleRef.current?.contains(target) || menuRef.current?.contains(target)) return;
+      dismissMenu(menuRef.current?.contains(document.activeElement) ?? false);
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+    document.addEventListener("pointerdown", handlePointerDown);
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+      document.removeEventListener("pointerdown", handlePointerDown);
+    };
+  }, [isMenuOpen]);
 
   return (
     <header className="site-header" aria-label="Navigation principale OnJarama">
@@ -41,6 +68,7 @@ export function Header({ isHomePage = false, showAmbience = true, mode, preferen
           <span className="brand-text">ONJARAMA</span>
         </a>
         <button
+          ref={menuToggleRef}
           className="menu-toggle"
           type="button"
           aria-expanded={isMenuOpen}
@@ -52,7 +80,7 @@ export function Header({ isHomePage = false, showAmbience = true, mode, preferen
           <span aria-hidden="true" />
           <span aria-hidden="true" />
         </button>
-        <nav id="main-navigation" className={`main-nav ${isMenuOpen ? "is-open" : ""}`} aria-label="Sections du portail">
+        <nav ref={menuRef} id="main-navigation" className={`main-nav ${isMenuOpen ? "is-open" : ""}`} aria-label="Sections du portail">
           <a href={homeHref("#about")} onClick={closeMenu}>Pourquoi</a>
           <a href={homeHref("#ecosystem-projects")} onClick={closeMenu}>Écosystème</a>
           <a href={homeHref("#vision")} onClick={closeMenu}>Vision</a>
