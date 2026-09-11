@@ -542,6 +542,7 @@ body:has(.ojcs-page) .skip-link { min-height: 44px; }
 .public-project-explorer__item.is-current .public-project-explorer__action { color: #d8e0e2; }
 .public-project-explorer__item:not(.is-current):hover,
 .public-project-explorer__item:not(.is-current):focus-visible { border-color: var(--explorer-accent); outline: 3px solid color-mix(in srgb, var(--explorer-accent) 30%, transparent); outline-offset: 3px; transform: translateY(-2px); }
+.public-project-explorer__item:not(.is-current):active { border-color:var(--explorer-accent);background:color-mix(in srgb,var(--explorer-accent) 15%,rgba(255,255,255,.018));transform:translateY(0) scale(.99);transition-duration:.1s }
 
 @media (max-width: 1000px) {
   .public-project-explorer__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -556,7 +557,8 @@ body:has(.ojcs-page) .skip-link { min-height: 44px; }
 @media (prefers-reduced-motion: reduce) {
   .public-project-explorer__item { transition: none; }
   .public-project-explorer__item:not(.is-current):hover,
-  .public-project-explorer__item:not(.is-current):focus-visible { transform: none; }
+  .public-project-explorer__item:not(.is-current):focus-visible,
+  .public-project-explorer__item:not(.is-current):active { transform: none; }
 }
 
 /* A5-B: compact structural rhythm for the narrative body only. */
