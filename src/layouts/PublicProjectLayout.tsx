@@ -3,6 +3,7 @@ import { Footer } from "../components/Footer";
 import { Header } from "../components/Header";
 import { PublicProjectContext, type PublicProjectContextCode } from "../components/PublicProjectContext";
 import { useDayNightMode } from "../hooks/useDayNightMode";
+import { useTranslation } from "../i18n/useTranslation";
 
 type PublicProjectLayoutProps = {
   children: ReactNode;
@@ -10,6 +11,7 @@ type PublicProjectLayoutProps = {
 };
 
 export function PublicProjectLayout({ children, currentProject }: PublicProjectLayoutProps) {
+  const { t } = useTranslation();
   const { mode, preference, setPreference, autoStrategy } = useDayNightMode();
 
   return (
@@ -26,7 +28,7 @@ export function PublicProjectLayout({ children, currentProject }: PublicProjectL
         {currentProject ? (
           <PublicProjectContext currentProject={currentProject} />
         ) : (
-          <a className="public-page-shell__back" href="/#ecosystem-projects">← Retour à l’écosystème</a>
+          <a className="public-page-shell__back" href="/#ecosystem-projects">{t("global.projectContext.backToEcosystem")}</a>
         )}
         {children}
       </main>

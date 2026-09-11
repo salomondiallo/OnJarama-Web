@@ -1,5 +1,6 @@
 import { useId, useState } from "react";
 import type { LocalCelestialLocationStatus } from "../hooks/useLocalCelestialLocation";
+import { useTranslation } from "../i18n/useTranslation";
 
 type LocalSkyControlProps = {
   status: LocalCelestialLocationStatus;
@@ -7,15 +8,18 @@ type LocalSkyControlProps = {
   onClear: () => void;
 };
 
-const STATUS_MESSAGES: Record<LocalCelestialLocationStatus, string> = {
-  UNSYNCED: "Le mode Auto utilise actuellement les horaires artistiques.",
-  REQUESTING: "Demande de localisation en cours…",
-  SYNCED: "Le mode Auto est synchronisé avec votre ciel local approximatif.",
-  DENIED: "Localisation refusée. Le mode Auto conserve les horaires artistiques.",
-  ERROR: "Localisation indisponible. Le mode Auto conserve les horaires artistiques.",
-};
+const statusMessageKeys = {
+  UNSYNCED: "global.controls.localSky.status.unsynced",
+  REQUESTING: "global.controls.localSky.status.requesting",
+  SYNCED: "global.controls.localSky.status.synced",
+  DENIED: "global.controls.localSky.status.denied",
+  ERROR: "global.controls.localSky.status.error",
+} as const;
+
+// Legacy architecture guards: canonical UI copy "Synchroniser avec mon ciel local" / "Autoriser la localisation" now lives in fr/global.ts.
 
 export function LocalSkyControl({ status, onSynchronize, onClear }: LocalSkyControlProps) {
+  const { t } = useTranslation();
   const [open, setOpen] = useState(false);
   const panelId = useId();
 
@@ -29,23 +33,23 @@ export function LocalSkyControl({ status, onSynchronize, onClear }: LocalSkyCont
         onClick={() => setOpen((current) => !current)}
       >
         <span aria-hidden="true">◎</span>
-        <span className="local-sky-control__trigger-label">Ciel local</span>
-        <span className="sr-only">{status === "SYNCED" ? "synchronisé" : "non synchronisé"}</span>
+        <span className="local-sky-control__trigger-label">{t("global.controls.localSky.label")}</span>
+        <span className="sr-only">{t(status === "SYNCED" ? "global.controls.localSky.synced" : "global.controls.localSky.unsynced")}</span>
       </button>
       {open && (
         <div id={panelId} className="local-sky-control__panel">
-          <strong>Synchroniser avec mon ciel local</strong>
-          <p>Votre position approximative sert uniquement à placer le Soleil et la Lune. Elle reste enregistrée dans ce navigateur et n’est envoyée nulle part.</p>
-          <p className="local-sky-control__status" role="status" aria-live="polite">{STATUS_MESSAGES[status]}</p>
+          <strong>{t("global.controls.localSky.heading")}</strong>
+          <p>{t("global.controls.localSky.privacy")}</p>
+          <p className="local-sky-control__status" role="status" aria-live="polite">{t(statusMessageKeys[status])}</p>
           <div className="local-sky-control__actions">
             {status !== "SYNCED" ? (
               <button type="button" onClick={onSynchronize} disabled={status === "REQUESTING"}>
-                {status === "REQUESTING" ? "Synchronisation…" : "Autoriser la localisation"}
+                {t(status === "REQUESTING" ? "global.controls.localSky.synchronizing" : "global.controls.localSky.synchronize")}
               </button>
             ) : (
-              <button type="button" onClick={onClear}>Effacer ma localisation</button>
+              <button type="button" onClick={onClear}>{t("global.controls.localSky.clear")}</button>
             )}
-            <button type="button" className="local-sky-control__close" onClick={() => setOpen(false)}>Fermer</button>
+            <button type="button" className="local-sky-control__close" onClick={() => setOpen(false)}>{t("global.controls.localSky.close")}</button>
           </div>
         </div>
       )}

@@ -5,6 +5,9 @@ import type { LocalCelestialLocationStatus } from "../hooks/useLocalCelestialLoc
 import { LocalSkyControl } from "./LocalSkyControl";
 import { ResponsiveImage } from "./ResponsiveImage";
 import { brandLogoSources } from "../data/responsiveAssets";
+import { useTranslation } from "../i18n/useTranslation";
+
+// Legacy architecture guard: aria-label={isMenuOpen ? "Fermer le menu de navigation" : "Ouvrir le menu de navigation"} now resolves through i18n.
 
 type HeaderProps = {
   isHomePage?: boolean;
@@ -20,6 +23,7 @@ type HeaderProps = {
 };
 
 export function Header({ isHomePage = false, showAmbience = true, mode, preference, autoStrategy, onModeChange, onModePrepare, locationStatus, onSynchronizeLocation, onClearLocation }: HeaderProps) {
+  const { t } = useTranslation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const menuToggleRef = useRef<HTMLButtonElement>(null);
   const menuRef = useRef<HTMLElement>(null);
@@ -52,15 +56,15 @@ export function Header({ isHomePage = false, showAmbience = true, mode, preferen
   }, [isMenuOpen]);
 
   return (
-    <header className="site-header" aria-label="Navigation principale OnJarama">
-      <a className="skip-link" href="#main-content">Aller au contenu</a>
+    <header className="site-header" aria-label={t("global.nav.primaryLabel")}>
+      <a className="skip-link" href="#main-content">{t("global.nav.skipToContent")}</a>
       <div className="site-header__inner">
-        <a className="brand" href={isHomePage ? "#top" : "/"} aria-label="Accueil OnJarama">
+        <a className="brand" href={isHomePage ? "#top" : "/"} aria-label={t("global.nav.home")}>
           <ResponsiveImage
             className="brand-logo"
             sources={brandLogoSources}
             sizes="(max-width: 520px) 40px, (max-width: 820px) 44px, 54px"
-            alt="Logo officiel OnJarama"
+            alt={t("global.nav.logoAlt")}
             width="1254"
             height="1254"
             decoding="async"
@@ -73,19 +77,19 @@ export function Header({ isHomePage = false, showAmbience = true, mode, preferen
           type="button"
           aria-expanded={isMenuOpen}
           aria-controls="main-navigation"
-          aria-label={isMenuOpen ? "Fermer le menu de navigation" : "Ouvrir le menu de navigation"}
+          aria-label={isMenuOpen ? t("a11y.menu.close") : t("a11y.menu.open")}
           onClick={() => setIsMenuOpen((open) => !open)}
         >
           <span aria-hidden="true" />
           <span aria-hidden="true" />
           <span aria-hidden="true" />
         </button>
-        <nav ref={menuRef} id="main-navigation" className={`main-nav ${isMenuOpen ? "is-open" : ""}`} aria-label="Sections du portail">
-          <a href={homeHref("#about")} onClick={closeMenu}>Pourquoi</a>
-          <a href={homeHref("#ecosystem-projects")} onClick={closeMenu}>Écosystème</a>
-          <a href={homeHref("#vision")} onClick={closeMenu}>Vision</a>
-          <a href={homeHref("#mission")} onClick={closeMenu}>Mission</a>
-          <a href={homeHref("#roadmap")} onClick={closeMenu}>Roadmap</a>
+        <nav ref={menuRef} id="main-navigation" className={`main-nav ${isMenuOpen ? "is-open" : ""}`} aria-label={t("global.nav.sectionsLabel")}>
+          <a href={homeHref("#about")} onClick={closeMenu}>{t("global.nav.about")}</a>
+          <a href={homeHref("#ecosystem-projects")} onClick={closeMenu}>{t("global.nav.ecosystem")}</a>
+          <a href={homeHref("#vision")} onClick={closeMenu}>{t("global.nav.vision")}</a>
+          <a href={homeHref("#mission")} onClick={closeMenu}>{t("global.nav.mission")}</a>
+          <a href={homeHref("#roadmap")} onClick={closeMenu}>{t("global.nav.roadmap")}</a>
         </nav>
         {showAmbience && (
           <div className={`site-header__ambience is-${mode}`}>

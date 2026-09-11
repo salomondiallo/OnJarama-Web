@@ -19,8 +19,10 @@ export type LocaleConfiguration = {
 export type TranslationDictionary = {
   global: {
     nav: {
+      primaryLabel: string;
       skipToContent: string;
       home: string;
+      logoAlt: string;
       sectionsLabel: string;
       about: string;
       ecosystem: string;
@@ -29,10 +31,54 @@ export type TranslationDictionary = {
       roadmap: string;
     };
     controls: {
-      theme: { label: string; auto: string; day: string; night: string };
-      localSky: string;
+      theme: {
+        label: string;
+        legend: string;
+        auto: string;
+        day: string;
+        night: string;
+        autoSolarDay: string;
+        autoSolarNight: string;
+        autoFallbackDay: string;
+        autoFallbackNight: string;
+        dayMode: string;
+        nightMode: string;
+      };
+      localSky: {
+        label: string;
+        synced: string;
+        unsynced: string;
+        heading: string;
+        privacy: string;
+        status: {
+          unsynced: string;
+          requesting: string;
+          synced: string;
+          denied: string;
+          error: string;
+        };
+        synchronize: string;
+        synchronizing: string;
+        clear: string;
+        close: string;
+      };
     };
     footer: { motto: string; aboutLabel: string; missionLink: string; locations: string };
+    projectContext: {
+      label: string;
+      ecosystem: string;
+      backToEcosystem: string;
+    };
+    projectExplorer: {
+      kicker: string;
+      title: string;
+      description: string;
+      applicationNature: string;
+      portalNature: string;
+      currentProject: string;
+      discoverPortal: string;
+      discover: string;
+    };
   };
   a11y: {
     menu: { open: string; close: string };

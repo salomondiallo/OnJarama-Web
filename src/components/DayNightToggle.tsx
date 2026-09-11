@@ -1,10 +1,7 @@
 import type { AutoStrategy, DayNightMode, DayNightPreference } from "../hooks/useDayNightMode";
+import { useTranslation } from "../i18n/useTranslation";
 
-const OPTIONS: { value: DayNightPreference; label: string; icon: string }[] = [
-  { value: "auto", label: "Auto", icon: "◐" },
-  { value: "day", label: "Jour", icon: "☀" },
-  { value: "night", label: "Nuit", icon: "☾" },
-];
+// Legacy architecture guards: "Mode automatique" and "ambiance actuelle" remain canonical in fr/global.ts.
 
 type DayNightToggleProps = {
   value: DayNightPreference;
@@ -15,17 +12,27 @@ type DayNightToggleProps = {
 };
 
 export function DayNightToggle({ value, onChange, onPrepare, resolvedMode, autoStrategy }: DayNightToggleProps) {
+  const { t } = useTranslation();
+  const options: { value: DayNightPreference; label: string; icon: string }[] = [
+    { value: "auto", label: t("global.controls.theme.auto"), icon: "◐" },
+    { value: "day", label: t("global.controls.theme.day"), icon: "☀" },
+    { value: "night", label: t("global.controls.theme.night"), icon: "☾" },
+  ];
+  const autoLabel = autoStrategy === "solar"
+    ? t(resolvedMode === "day" ? "global.controls.theme.autoSolarDay" : "global.controls.theme.autoSolarNight")
+    : t(resolvedMode === "day" ? "global.controls.theme.autoFallbackDay" : "global.controls.theme.autoFallbackNight");
+
   return (
-    <fieldset className="day-night-toggle" aria-label="Choisir l’ambiance lumineuse">
-      <legend className="sr-only">Ambiance lumineuse</legend>
-      {OPTIONS.map((option) => (
+    <fieldset className="day-night-toggle" aria-label={t("global.controls.theme.label")}>
+      <legend className="sr-only">{t("global.controls.theme.legend")}</legend>
+      {options.map((option) => (
         <button
           key={option.value}
           type="button"
           className={value === option.value ? "is-selected" : ""}
           aria-label={option.value === "auto"
-            ? `Mode automatique ${autoStrategy === "solar" ? "solaire" : "avec horaires de secours"}, ambiance actuelle : ${resolvedMode === "day" ? "jour" : "nuit"}`
-            : `Mode ${option.label.toLowerCase()}`}
+            ? autoLabel
+            : t(option.value === "day" ? "global.controls.theme.dayMode" : "global.controls.theme.nightMode")}
           aria-pressed={value === option.value}
           onPointerDown={() => onPrepare(option.value)}
           onTouchStart={() => onPrepare(option.value)}

@@ -2,27 +2,30 @@ import { Link } from "react-router-dom";
 import { publicPageEntities } from "../data/ecosystem";
 import { ResponsiveImage } from "./ResponsiveImage";
 import { getProjectEmblemSources } from "../data/responsiveAssets";
+import { useTranslation } from "../i18n/useTranslation";
+
+// Legacy architecture guard: project.entityType === "WEB_PORTAL" ? "Découvrir le portail" remains canonical in fr/global.ts.
 
 type PublicProjectExplorerProps = {
   currentProject: "OJA" | "OJP" | "OJCS" | "OJW";
 };
-
-const publicNatureLabel = {
-  APPLICATION: "Application OnJarama",
-  WEB_PORTAL: "Portail web OnJarama",
-} as const;
 
 const publicProjects = publicPageEntities.filter(
   (entity) => entity.entityType === "APPLICATION" || entity.entityType === "WEB_PORTAL",
 );
 
 export function PublicProjectExplorer({ currentProject }: PublicProjectExplorerProps) {
+  const { t } = useTranslation();
+  const publicNatureLabel = {
+    APPLICATION: t("global.projectExplorer.applicationNature"),
+    WEB_PORTAL: t("global.projectExplorer.portalNature"),
+  } as const;
   return (
     <section className="public-project-explorer" aria-labelledby="public-project-explorer-title">
       <div className="public-project-explorer__heading">
-        <p className="section-kicker">Explorer l’écosystème</p>
-        <h2 id="public-project-explorer-title">Poursuivre la découverte d’OnJarama</h2>
-        <p>Chaque lien ouvre une page publique de présentation. Les applications restent en développement tant que leur disponibilité produit n’est pas qualifiée.</p>
+        <p className="section-kicker">{t("global.projectExplorer.kicker")}</p>
+        <h2 id="public-project-explorer-title">{t("global.projectExplorer.title")}</h2>
+        <p>{t("global.projectExplorer.description")}</p>
       </div>
 
       <div className="public-project-explorer__grid">
@@ -46,7 +49,7 @@ export function PublicProjectExplorer({ currentProject }: PublicProjectExplorerP
                 <span>{publicNatureLabel[project.entityType]}</span>
               </span>
               <span className="public-project-explorer__action">
-                {isCurrent ? "Projet actuel" : project.entityType === "WEB_PORTAL" ? "Découvrir le portail" : "Découvrir"}
+                {isCurrent ? t("global.projectExplorer.currentProject") : project.entityType === "WEB_PORTAL" ? t("global.projectExplorer.discoverPortal") : t("global.projectExplorer.discover")}
               </span>
             </>
           );
