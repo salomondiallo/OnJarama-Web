@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useMemo, useState, type ReactNode } from "react";
-import { CANONICAL_CONTENT_LANGUAGE, DEFAULT_LANGUAGE, FALLBACK_LANGUAGE, getTextDirection } from "./config";
+import { CANONICAL_CONTENT_LANGUAGE, DEFAULT_LANGUAGE, FALLBACK_LANGUAGE, getTextDirection, isPublicLocale } from "./config";
 import { I18nContext } from "./I18nContext";
 import { frenchGlobalMessages } from "./locales/fr/global";
 import { translate } from "./translate";
@@ -70,13 +70,19 @@ export function I18nProvider({ children, initialLocale = DEFAULT_LANGUAGE }: I18
     (key: Parameters<typeof translate>[1]) => translate(bundle.messages, key),
     [bundle.messages],
   );
+  const setPublicLocale = useCallback((locale: Locale) => {
+    if (!isPublicLocale(locale)) return false;
+    setRequestedLocale(locale);
+    return true;
+  }, []);
   const value = useMemo(() => ({
     locale: bundle.locale,
     requestedLocale,
     direction,
     setLocale: setRequestedLocale,
+    setPublicLocale,
     t,
-  }), [bundle.locale, direction, requestedLocale, t]);
+  }), [bundle.locale, direction, requestedLocale, setPublicLocale, t]);
 
   return <I18nContext.Provider value={value}>{children}</I18nContext.Provider>;
 }

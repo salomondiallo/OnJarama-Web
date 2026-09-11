@@ -2,13 +2,17 @@ export type Locale = "fr" | "en" | "es" | "pt" | "ar" | "zh-CN";
 
 export type TextDirection = "ltr" | "rtl";
 export type TranslationStatus = "MISSING" | "DRAFT" | "REVIEWED" | "APPROVED" | "CANONICAL_APPROVED";
-export type LocaleAvailability = "CANONICAL" | "REGISTERED_NOT_AVAILABLE";
+export type LocaleRoutePrefix = "" | Exclude<Locale, "fr">;
 
 export type LocaleConfiguration = {
   code: Locale;
   name: string;
   dir: TextDirection;
-  availability: LocaleAvailability;
+  registered: true;
+  translationStatus: TranslationStatus;
+  editoriallyApproved: boolean;
+  publiclyAvailable: boolean;
+  routePrefix: LocaleRoutePrefix;
   fallback: Locale;
 };
 
@@ -56,5 +60,6 @@ export type I18nContextValue = {
   requestedLocale: Locale;
   direction: TextDirection;
   setLocale: (locale: Locale) => void;
+  setPublicLocale: (locale: Locale) => boolean;
   t: TranslationFunction;
 };
