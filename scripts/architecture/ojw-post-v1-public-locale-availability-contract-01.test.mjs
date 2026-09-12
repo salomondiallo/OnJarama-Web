@@ -13,7 +13,9 @@ for (const field of ["registered", "translationStatus", "editoriallyApproved", "
   assert.match(types, new RegExp(`\\b${field}:`, "u"), `LocaleConfiguration must expose ${field}.`);
 }
 assert.match(config, /fr: \{[^\n]*translationStatus: "CANONICAL_APPROVED"[^\n]*editoriallyApproved: true[^\n]*publiclyAvailable: true[^\n]*routePrefix: ""/u, "French must remain canonical, approved and public without a prefix.");
-for (const locale of ["en", "es", "pt", "ar", "zh-CN"]) {
+assert.match(config, /en: \{[^\n]*translationStatus: "DRAFT"[^\n]*editoriallyApproved: false[^\n]*publiclyAvailable: false[^\n]*routePrefix: "en"/u, "English may be drafted but must remain unapproved and non-public.");
+assert.equal(existsSync(new URL("../../src/i18n/locales/en/global.ts", import.meta.url)), true, "The English GLOBAL draft must remain dormant.");
+for (const locale of ["es", "pt", "ar", "zh-CN"]) {
   assert.match(config, new RegExp(`"?${locale}"?: \\{[^\\n]*translationStatus: "MISSING"[^\\n]*editoriallyApproved: false[^\\n]*publiclyAvailable: false[^\\n]*routePrefix: "${locale}"`, "u"), `${locale} must remain missing, unapproved and non-public.`);
   assert.equal(existsSync(new URL(`../../src/i18n/locales/${locale}/global.ts`, import.meta.url)), false, `${locale} must not contain a translation module.`);
 }

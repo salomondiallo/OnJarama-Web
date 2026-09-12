@@ -14,7 +14,12 @@ type LocaleLoader = () => Promise<LocaleBundle>;
 
 // Reviewed non-default locales will be registered here with dynamic imports.
 // French stays synchronous so the canonical experience never flashes.
-const localeLoaders: Partial<Record<Locale, LocaleLoader>> = {};
+const localeLoaders: Partial<Record<Locale, LocaleLoader>> = {
+  en: async () => ({
+    locale: "en",
+    messages: (await import("./locales/en/global")).englishGlobalMessages,
+  }),
+};
 
 const frenchBundle: LocaleBundle = {
   locale: CANONICAL_CONTENT_LANGUAGE,

@@ -41,8 +41,8 @@ for (const copy of [
 
 assert.match(config, /PUBLIC_LOCALE_COUNT\s*=\s*PUBLIC_LOCALES\.length/);
 assert.match(config, /return PUBLIC_LOCALE_COUNT >= 2/);
-assert.match(config, /en:.*translationStatus: "MISSING".*publiclyAvailable: false/);
-assert.equal(existsSync(join(root, "src/i18n/locales/en")), false, "no English locale files may exist");
+assert.match(config, /en:.*translationStatus: "DRAFT".*editoriallyApproved: false.*publiclyAvailable: false/);
+assert.equal(existsSync(join(root, "src/i18n/locales/en/global.ts")), true, "the English GLOBAL draft may exist without becoming public");
 
 const app = read("src/App.tsx");
 assert.doesNotMatch(app, /path=["']\/(en|es|pt|ar|zh-CN)/);

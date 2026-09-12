@@ -34,7 +34,8 @@ assert.match(provider, /document\.documentElement\.lang = bundle\.locale/u, "The
 assert.match(provider, /document\.documentElement\.dir = direction/u, "The provider must centrally prepare document direction.");
 assert.match(main, /<I18nProvider>[\s\S]*<App \/>[\s\S]*<\/I18nProvider>/u, "The provider must wrap the unchanged application tree.");
 
-for (const locale of ["en", "es", "pt", "ar", "zh-CN"]) {
+assert.ok(existsSync(new URL("../../src/i18n/locales/en/global.ts", import.meta.url)), "The reviewed English GLOBAL draft may exist while remaining non-public.");
+for (const locale of ["es", "pt", "ar", "zh-CN"]) {
   assert.equal(existsSync(new URL(`../../src/i18n/locales/${locale}/global.ts`, import.meta.url)), false, `${locale} must not contain placeholder translations.`);
 }
 
@@ -49,6 +50,6 @@ for (const path of protectedFiles) {
   assert.ok(existsSync(new URL(`../../${path}`, import.meta.url)), `${path} must remain present and outside the i18n foundation migration.`);
 }
 
-assert.doesNotMatch([config, types, provider, french, translate, main].join("\n"), /react-i18next|from "i18next"|navigator\.languages|localStorage|\/en\//u, "Dependencies, detection, persistence and foreign routes remain outside this lot.");
+assert.doesNotMatch([config, types, provider, french, translate, main].join("\n"), /react-i18next|from "i18next"|navigator\.languages|localStorage/u, "Dependencies, detection and persistence remain outside this lot.");
 
 console.log("OJW post-V1 public i18n foundations: typed French canon, locale registry, fallback, lazy readiness and RTL contracts validated.");

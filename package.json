@@ -54,6 +54,7 @@
     "test:ojw:post-v1-mobile-menu-focus-and-dismissal-01": "node scripts/architecture/ojw-post-v1-mobile-menu-focus-and-dismissal-01.test.mjs",
     "test:ojw:post-v1-public-locale-availability-contract-01": "node scripts/architecture/ojw-post-v1-public-locale-availability-contract-01.test.mjs",
     "test:ojw:post-v1-public-fr-global-string-migration-01": "node scripts/architecture/ojw-post-v1-public-fr-global-string-migration-01.test.mjs",
+    "test:ojw:post-v1-public-en-global-draft-01": "node scripts/architecture/ojw-post-v1-public-en-global-draft-01.test.mjs",
     "test:ojw:ecosystem-02-e3": "node scripts/architecture/ojw-ecosystem-02-e3-ojcs-public-page.test.mjs",
     "test:ojw:ecosystem-02-d3": "node scripts/architecture/ojw-ecosystem-02-d3-ojp-public-page.test.mjs",
     "test:ojw:ecosystem-02-c3": "node scripts/architecture/ojw-ecosystem-02-c3-oja-public-page.test.mjs",
