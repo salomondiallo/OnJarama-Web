@@ -66,7 +66,7 @@ for (const [key, value] of Object.entries(reviewedCorrections)) {
 }
 
 const config = read("src/i18n/config.ts");
-assert.match(config, /en:.*translationStatus: "DRAFT".*editoriallyApproved: false.*publiclyAvailable: false/);
+assert.match(config, /en:.*translationStatus: "REVIEWED".*editoriallyApproved: false.*publiclyAvailable: false/);
 assert.match(config, /return PUBLIC_LOCALE_COUNT >= 2/);
 
 const provider = read("src/i18n/I18nProvider.tsx");

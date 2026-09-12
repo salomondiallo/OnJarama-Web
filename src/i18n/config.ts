@@ -10,7 +10,7 @@ export const RTL_LANGUAGES = ["ar"] as const satisfies readonly Locale[];
 
 export const LOCALE_REGISTRY = {
   fr: { code: "fr", name: "Français", dir: "ltr", registered: true, translationStatus: "CANONICAL_APPROVED", editoriallyApproved: true, publiclyAvailable: true, routePrefix: "", fallback: "fr" },
-  en: { code: "en", name: "English", dir: "ltr", registered: true, translationStatus: "DRAFT", editoriallyApproved: false, publiclyAvailable: false, routePrefix: "en", fallback: "fr" },
+  en: { code: "en", name: "English", dir: "ltr", registered: true, translationStatus: "REVIEWED", editoriallyApproved: false, publiclyAvailable: false, routePrefix: "en", fallback: "fr" },
   es: { code: "es", name: "Español", dir: "ltr", registered: true, translationStatus: "MISSING", editoriallyApproved: false, publiclyAvailable: false, routePrefix: "es", fallback: "fr" },
   pt: { code: "pt", name: "Português", dir: "ltr", registered: true, translationStatus: "MISSING", editoriallyApproved: false, publiclyAvailable: false, routePrefix: "pt", fallback: "fr" },
   ar: { code: "ar", name: "العربية", dir: "rtl", registered: true, translationStatus: "MISSING", editoriallyApproved: false, publiclyAvailable: false, routePrefix: "ar", fallback: "fr" },
