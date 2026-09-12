@@ -46,6 +46,25 @@ for (const [key, value] of english) {
   assert.ok(value !== french.get(key) || allowedIdentical.has(value) || /OnJarama|Canada/.test(value), `${key} must not silently copy French`);
 }
 
+const reviewedCorrections = {
+  "global.controls.theme.label": "Choose the lighting mode",
+  "global.controls.theme.legend": "Lighting mode",
+  "global.controls.theme.autoSolarDay": "Automatic mode based on the Sun; currently Day",
+  "global.controls.theme.autoSolarNight": "Automatic mode based on the Sun; currently Night",
+  "global.controls.theme.autoFallbackDay": "Automatic mode using fallback times; currently Day",
+  "global.controls.theme.autoFallbackNight": "Automatic mode using fallback times; currently Night",
+  "global.controls.localSky.status.unsynced": "Auto mode is currently using the artistic day/night schedule.",
+  "global.controls.localSky.status.synced": "Auto mode is synchronized with your local sky using your approximate location.",
+  "global.controls.localSky.status.denied": "Location declined. Auto mode will keep using the artistic day/night schedule.",
+  "global.controls.localSky.status.error": "Location unavailable. Auto mode will keep using the artistic day/night schedule.",
+  "global.footer.motto": "Let’s build the future together.",
+  "global.projectContext.label": "Public project page navigation",
+  "global.projectExplorer.description": "Each link opens a public project overview page. The applications remain in development until their availability as products is formally confirmed.",
+};
+for (const [key, value] of Object.entries(reviewedCorrections)) {
+  assert.equal(english.get(key), value, `${key} must retain its editorially reviewed correction`);
+}
+
 const config = read("src/i18n/config.ts");
 assert.match(config, /en:.*translationStatus: "DRAFT".*editoriallyApproved: false.*publiclyAvailable: false/);
 assert.match(config, /return PUBLIC_LOCALE_COUNT >= 2/);
