@@ -1,4 +1,4 @@
-import type { TranslationDictionary } from "../../types";
+import type { TranslationDictionary, TranslationMessages } from "../../types";
 
 export const englishGlobalMessages = {
   global: {
@@ -75,4 +75,4 @@ export const englishGlobalMessages = {
       close: "Close the navigation menu",
     },
   },
-} as const satisfies TranslationDictionary;
+} as const satisfies TranslationMessages<TranslationDictionary>;

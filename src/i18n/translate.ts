@@ -1,4 +1,4 @@
-import { frenchGlobalMessages } from "./locales/fr/global";
+import { frenchMessages } from "./locales/fr";
 import type { TranslationDictionary, TranslationKey, TranslationMessages } from "./types";
 
 function resolvePath(messages: TranslationMessages<TranslationDictionary>, key: TranslationKey): string | undefined {
@@ -16,7 +16,7 @@ export function translate(
 ): string {
   const localized = resolvePath(messages, key);
   if (localized) return localized;
-  const fallback = resolvePath(frenchGlobalMessages, key);
+  const fallback = resolvePath(frenchMessages, key);
   if (warn) console.warn(`[i18n] Missing translation key "${key}"; using French fallback.`);
   return fallback ?? key;
 }

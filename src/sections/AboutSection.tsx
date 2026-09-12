@@ -1,13 +1,16 @@
+import { useTranslation } from "../i18n/useTranslation";
+
 export function AboutSection() {
+  const { t } = useTranslation();
   return (
     <section id="about" className="section section-split" aria-labelledby="about-title">
       <div className="institutional-section__lead">
-        <p className="section-kicker">Pourquoi OnJarama</p>
-        <h2 id="about-title">Rendre les parcours utiles plus accessibles et plus lisibles.</h2>
+        <p className="section-kicker">{t("home.about.kicker")}</p>
+        <h2 id="about-title">{t("home.about.title")}</h2>
       </div>
       <div className="institutional-section__body">
-        <p className="section-text">OnJarama existe pour aider chacun à mieux comprendre ses possibilités, gagner en autonomie et progresser dans des contextes où l’accès, l’information et la coordination restent souvent fragmentés.</p>
-        <p>La technologie est un moyen : elle doit rapprocher les personnes, les projets et les institutions sans remplacer la responsabilité humaine.</p>
+        <p className="section-text">{t("home.about.purpose")}</p>
+        <p>{t("home.about.technology")}</p>
       </div>
     </section>
   );

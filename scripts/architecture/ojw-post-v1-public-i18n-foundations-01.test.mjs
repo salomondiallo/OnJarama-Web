@@ -28,7 +28,7 @@ for (const key of ["global", "nav", "controls", "a11y"]) {
 
 assert.match(provider, /Partial<Record<Locale, LocaleLoader>>/u, "Future locale modules must have a typed lazy-loader registry.");
 assert.match(provider, /if \(!loader\)[\s\S]*return frenchBundle/u, "An unavailable locale must fall back to French.");
-assert.match(translate, /const fallback = resolvePath\(frenchGlobalMessages, key\)/u, "A missing key must fall back to its French value.");
+assert.match(translate, /const fallback = resolvePath\(frenchMessages, key\)/u, "A missing key must fall back to its composed French value.");
 assert.match(translate, /if \(warn\) console\.warn/u, "Missing keys must warn in development.");
 assert.match(provider, /document\.documentElement\.lang = bundle\.locale/u, "The provider must centrally prepare document lang.");
 assert.match(provider, /document\.documentElement\.dir = direction/u, "The provider must centrally prepare document direction.");

@@ -14,6 +14,7 @@ const footer = read("src/components/Footer.tsx");
 const footerCss = read("src/styles/footer.css");
 const header = read("src/components/Header.tsx");
 const headerCss = read("src/styles/header.css");
+const homeMessages = read("src/i18n/locales/fr/home.ts");
 
 assert.match(section, /data-application-count=\{publicApplications\.length\}/);
 assert.match(section, /data-software-count=\{publicSoftware\.length\}/);
@@ -25,7 +26,8 @@ assert.equal((`${hero}\n${section}`.match(/<h1\b/g) ?? []).length, 1, "The immer
 
 assert.doesNotMatch(hero, /className="tree-hero__intro tree-hero__intro--option-b"/);
 assert.doesNotMatch(hero, /hero-card|data-editorial-layout|option-a/);
-assert.match(hero, /<h1 className="sr-only">OnJarama<\/h1>/);
+assert.match(hero, /<h1 className="sr-only">\{t\("home\.hero\.title"\)\}<\/h1>/);
+assert.match(homeMessages, /title: "OnJarama"/);
 
 assert.doesNotMatch(treeCss, /\.institutional-projects|\.institutional-card|\.tree-hero__institutional/);
 assert.match(cardsCss, /grid-template-columns: minmax\(0, 1\.65fr\) minmax\(280px, \.85fr\)/);

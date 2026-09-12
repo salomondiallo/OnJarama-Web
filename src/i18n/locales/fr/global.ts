@@ -75,4 +75,4 @@ export const frenchGlobalMessages = {
       close: "Fermer le menu de navigation",
     },
   },
-} as const satisfies TranslationDictionary;
+} as const satisfies Pick<TranslationDictionary, "global" | "a11y">;

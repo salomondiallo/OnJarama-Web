@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useMemo, useState, type ReactNode } from "react";
 import { CANONICAL_CONTENT_LANGUAGE, DEFAULT_LANGUAGE, FALLBACK_LANGUAGE, getTextDirection, isPublicLocale } from "./config";
 import { I18nContext } from "./I18nContext";
-import { frenchGlobalMessages } from "./locales/fr/global";
+import { frenchMessages } from "./locales/fr";
 import { translate } from "./translate";
 import type { Locale, TranslationDictionary, TranslationMessages } from "./types";
 
@@ -23,7 +23,7 @@ const localeLoaders: Partial<Record<Locale, LocaleLoader>> = {
 
 const frenchBundle: LocaleBundle = {
   locale: CANONICAL_CONTENT_LANGUAGE,
-  messages: frenchGlobalMessages,
+  messages: frenchMessages,
 };
 
 async function loadLocale(locale: Locale): Promise<LocaleBundle> {

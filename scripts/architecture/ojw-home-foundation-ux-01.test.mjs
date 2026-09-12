@@ -5,10 +5,13 @@ const section = readFileSync("src/sections/EcosystemSection.tsx", "utf8");
 const styles = readFileSync("src/styles/cards.css", "utf8");
 const entities = readFileSync("src/data/ecosystem.ts", "utf8");
 const app = readFileSync("src/App.tsx", "utf8");
+const home = readFileSync("src/i18n/locales/fr/home.ts", "utf8");
 
 assert.match(section, /ecosystem-public-presence/);
-assert.match(section, /Notre présence publique/);
-assert.match(section, /OJW — Le portail public/);
+assert.match(section, /home\.ecosystem\.publicPresence\.title/);
+assert.match(home, /title: "Notre présence publique"/);
+assert.match(section, /webPortalEntity\.acronym.*home\.ecosystem\.publicPresence\.portalTitle/);
+assert.match(home, /portalTitle: "Le portail public"/);
 assert.match(section, /foundationEntity\.acronym/);
 assert.match(entities, /entityType: "WEB_PORTAL"/);
 assert.match(entities, /entityType: "FOUNDATION"/);

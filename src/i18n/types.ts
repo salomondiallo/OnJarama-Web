@@ -83,6 +83,54 @@ export type TranslationDictionary = {
   a11y: {
     menu: { open: string; close: string };
   };
+  home: {
+    hero: {
+      label: string;
+      title: string;
+    };
+    ecosystem: {
+      kicker: string;
+      title: string;
+      description: string;
+      mapLabel: string;
+      map: {
+        applications: string;
+        software: string;
+        softwareStatus: string;
+        portal: string;
+        foundation: string;
+      };
+      applications: {
+        kicker: string;
+        title: string;
+        description: string;
+        cardLinkLabel: string;
+        discoverProject: string;
+      };
+      software: {
+        kicker: string;
+        title: string;
+        description: string;
+        qualifiedNeed: string;
+        ratifiedIdentity: string;
+        noneAnnounced: string;
+      };
+      publicPresence: {
+        kicker: string;
+        title: string;
+        description: string;
+        portalKicker: string;
+        portalTitle: string;
+        discover: string;
+      };
+    };
+    about: {
+      kicker: string;
+      title: string;
+      purpose: string;
+      technology: string;
+    };
+  };
 };
 
 export type TranslationMessages<T> = {
