@@ -47,7 +47,7 @@ assert.match(english.source, /noneAnnounced: "No software has been publicly anno
 assert.match(english.source, /purpose: "OnJarama exists to help people better understand the possibilities available to them, gain greater autonomy, and move forward in contexts where access, information, and coordination often remain fragmented\."/);
 
 const config = read("src/i18n/config.ts");
-assert.match(config, /en: .*domainStatuses: \{ \.\.\.missingDomainStatuses, global: "REVIEWED", home: "DRAFT" \}.*editoriallyApproved: false.*publiclyAvailable: false/);
+assert.match(config, /en: .*domainStatuses: \{ \.\.\.missingDomainStatuses, global: "REVIEWED", home: "REVIEWED" \}.*editoriallyApproved: false.*publiclyAvailable: false/);
 assert.match(config, /PUBLIC_LOCALE_COUNT >= 2/);
 const provider = read("src/i18n/I18nProvider.tsx");
 assert.match(provider, /import\("\.\/locales\/en"\)/);

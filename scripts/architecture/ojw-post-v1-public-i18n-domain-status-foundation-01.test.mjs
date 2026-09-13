@@ -9,7 +9,7 @@ const app = read("src/App.tsx");
 assert.match(types, /type I18nDomain = "global" \| "home" \| "foundation" \| "oja" \| "ojp" \| "ojcs" \| "ojw" \| "metadata"/);
 assert.match(types, /type AggregatedTranslationStatus = "MISSING" \| "PARTIAL" \| "REVIEWED" \| "APPROVED" \| "CANONICAL_APPROVED"/);
 assert.match(config, /fr: .*domainStatuses: \{ \.\.\.missingDomainStatuses, global: "CANONICAL_APPROVED", home: "CANONICAL_APPROVED" \}/);
-assert.match(config, /en: .*domainStatuses: \{ \.\.\.missingDomainStatuses, global: "REVIEWED", home: "DRAFT" \}/);
+assert.match(config, /en: .*domainStatuses: \{ \.\.\.missingDomainStatuses, global: "REVIEWED", home: "REVIEWED" \}/);
 assert.match(config, /deriveLocaleTranslationStatus/);
 assert.match(config, /statuses\.every\(\(status\) => status === "MISSING"\)\) return "MISSING"/);
 assert.match(config, /statuses\.some\(\(status\) => status === "MISSING" \|\| status === "DRAFT"\)\) return "PARTIAL"/);
