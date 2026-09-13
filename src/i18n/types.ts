@@ -2,6 +2,9 @@ export type Locale = "fr" | "en" | "es" | "pt" | "ar" | "zh-CN";
 
 export type TextDirection = "ltr" | "rtl";
 export type TranslationStatus = "MISSING" | "DRAFT" | "REVIEWED" | "APPROVED" | "CANONICAL_APPROVED";
+export type I18nDomain = "global" | "home" | "foundation" | "oja" | "ojp" | "ojcs" | "ojw" | "metadata";
+export type I18nDomainStatuses = Readonly<Record<I18nDomain, TranslationStatus>>;
+export type AggregatedTranslationStatus = "MISSING" | "PARTIAL" | "REVIEWED" | "APPROVED" | "CANONICAL_APPROVED";
 export type LocaleRoutePrefix = "" | Exclude<Locale, "fr">;
 
 export type LocaleConfiguration = {
@@ -9,7 +12,7 @@ export type LocaleConfiguration = {
   name: string;
   dir: TextDirection;
   registered: true;
-  translationStatus: TranslationStatus;
+  domainStatuses: I18nDomainStatuses;
   editoriallyApproved: boolean;
   publiclyAvailable: boolean;
   routePrefix: LocaleRoutePrefix;

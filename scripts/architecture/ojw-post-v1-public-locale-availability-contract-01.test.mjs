@@ -9,14 +9,14 @@ const header = read("src/components/Header.tsx");
 const app = read("src/App.tsx");
 
 assert.match(config, /REGISTERED_LOCALES = \["fr", "en", "es", "pt", "ar", "zh-CN"\]/u, "All six locales must remain registered.");
-for (const field of ["registered", "translationStatus", "editoriallyApproved", "publiclyAvailable", "routePrefix"]) {
+for (const field of ["registered", "domainStatuses", "editoriallyApproved", "publiclyAvailable", "routePrefix"]) {
   assert.match(types, new RegExp(`\\b${field}:`, "u"), `LocaleConfiguration must expose ${field}.`);
 }
-assert.match(config, /fr: \{[^\n]*translationStatus: "CANONICAL_APPROVED"[^\n]*editoriallyApproved: true[^\n]*publiclyAvailable: true[^\n]*routePrefix: ""/u, "French must remain canonical, approved and public without a prefix.");
-assert.match(config, /en: \{[^\n]*translationStatus: "REVIEWED"[^\n]*editoriallyApproved: false[^\n]*publiclyAvailable: false[^\n]*routePrefix: "en"/u, "Reviewed English must remain unapproved and non-public.");
+assert.match(config, /fr: \{[^\n]*domainStatuses: \{ \.\.\.missingDomainStatuses, global: "CANONICAL_APPROVED", home: "CANONICAL_APPROVED" \}[^\n]*editoriallyApproved: true[^\n]*publiclyAvailable: true[^\n]*routePrefix: ""/u, "French migrated domains must remain canonical while the locale stays approved and public.");
+assert.match(config, /en: \{[^\n]*domainStatuses: \{ \.\.\.missingDomainStatuses, global: "REVIEWED" \}[^\n]*editoriallyApproved: false[^\n]*publiclyAvailable: false[^\n]*routePrefix: "en"/u, "Reviewed English GLOBAL must remain unapproved and non-public.");
 assert.equal(existsSync(new URL("../../src/i18n/locales/en/global.ts", import.meta.url)), true, "The English GLOBAL draft must remain dormant.");
 for (const locale of ["es", "pt", "ar", "zh-CN"]) {
-  assert.match(config, new RegExp(`"?${locale}"?: \\{[^\\n]*translationStatus: "MISSING"[^\\n]*editoriallyApproved: false[^\\n]*publiclyAvailable: false[^\\n]*routePrefix: "${locale}"`, "u"), `${locale} must remain missing, unapproved and non-public.`);
+  assert.match(config, new RegExp(`"?${locale}"?: \\{[^\\n]*domainStatuses: missingDomainStatuses[^\\n]*editoriallyApproved: false[^\\n]*publiclyAvailable: false[^\\n]*routePrefix: "${locale}"`, "u"), `${locale} must remain missing, unapproved and non-public.`);
   assert.equal(existsSync(new URL(`../../src/i18n/locales/${locale}/global.ts`, import.meta.url)), false, `${locale} must not contain a translation module.`);
 }
 assert.match(config, /PUBLIC_LOCALE_COUNT = PUBLIC_LOCALES\.length/u, "The public locale count must derive from filtered registry data.");
