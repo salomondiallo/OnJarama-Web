@@ -17,7 +17,7 @@ type LocaleLoader = () => Promise<LocaleBundle>;
 const localeLoaders: Partial<Record<Locale, LocaleLoader>> = {
   en: async () => ({
     locale: "en",
-    messages: (await import("./locales/en/global")).englishGlobalMessages,
+    messages: (await import("./locales/en")).englishMessages,
   }),
 };
 

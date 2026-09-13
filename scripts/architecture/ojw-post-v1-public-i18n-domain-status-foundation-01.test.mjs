@@ -9,7 +9,7 @@ const app = read("src/App.tsx");
 assert.match(types, /type I18nDomain = "global" \| "home" \| "foundation" \| "oja" \| "ojp" \| "ojcs" \| "ojw" \| "metadata"/);
 assert.match(types, /type AggregatedTranslationStatus = "MISSING" \| "PARTIAL" \| "REVIEWED" \| "APPROVED" \| "CANONICAL_APPROVED"/);
 assert.match(config, /fr: .*domainStatuses: \{ \.\.\.missingDomainStatuses, global: "CANONICAL_APPROVED", home: "CANONICAL_APPROVED" \}/);
-assert.match(config, /en: .*domainStatuses: \{ \.\.\.missingDomainStatuses, global: "REVIEWED" \}/);
+assert.match(config, /en: .*domainStatuses: \{ \.\.\.missingDomainStatuses, global: "REVIEWED", home: "DRAFT" \}/);
 assert.match(config, /deriveLocaleTranslationStatus/);
 assert.match(config, /statuses\.every\(\(status\) => status === "MISSING"\)\) return "MISSING"/);
 assert.match(config, /statuses\.some\(\(status\) => status === "MISSING" \|\| status === "DRAFT"\)\) return "PARTIAL"/);
@@ -23,6 +23,6 @@ assert.match(config, /isLocaleTranslationComplete/);
 assert.match(config, /en: .*editoriallyApproved: false, publiclyAvailable: false/);
 assert.match(config, /PUBLIC_LOCALE_COUNT >= 2/);
 assert.doesNotMatch(app, /path=["']\/(en|es|pt|ar|zh-CN)/);
-assert.equal(existsSync("src/i18n/locales/en/home.ts"), false);
+assert.equal(existsSync("src/i18n/locales/en/home.ts"), true);
 
 console.log("OJW post-V1 i18n domain statuses: typed domains, deterministic aggregation and publication independence validated.");

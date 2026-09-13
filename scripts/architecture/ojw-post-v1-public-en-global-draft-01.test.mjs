@@ -66,12 +66,12 @@ for (const [key, value] of Object.entries(reviewedCorrections)) {
 }
 
 const config = read("src/i18n/config.ts");
-assert.match(config, /en:.*domainStatuses: \{ \.\.\.missingDomainStatuses, global: "REVIEWED" \}.*editoriallyApproved: false.*publiclyAvailable: false/);
+assert.match(config, /en:.*domainStatuses: \{ \.\.\.missingDomainStatuses, global: "REVIEWED", home: "DRAFT" \}.*editoriallyApproved: false.*publiclyAvailable: false/);
 assert.match(config, /return PUBLIC_LOCALE_COUNT >= 2/);
 
 const provider = read("src/i18n/I18nProvider.tsx");
 assert.match(provider, /en: async \(\) =>/);
-assert.match(provider, /await import\("\.\/locales\/en\/global"\)/);
+assert.match(provider, /await import\("\.\/locales\/en"\)/);
 assert.match(provider, /if \(!isPublicLocale\(locale\)\) return false/);
 
 const app = read("src/App.tsx");

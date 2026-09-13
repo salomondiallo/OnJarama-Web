@@ -56,8 +56,8 @@ assert.match(ecosystem, /publicSoftware = ecosystemEntities\.filter/);
 
 const app = read("src/App.tsx");
 assert.doesNotMatch(app, /path=["']\/(en|es|pt|ar|zh-CN)/);
-assert.equal(existsSync("src/i18n/locales/en/home.ts"), false);
+assert.equal(existsSync("src/i18n/locales/en/home.ts"), true);
 assert.match(read("src/pages/HomePage.tsx"), /OnJarama — Votre parcours\. Votre rythme\./);
-assert.match(read("src/i18n/config.ts"), /en:.*domainStatuses: \{ \.\.\.missingDomainStatuses, global: "REVIEWED" \}.*editoriallyApproved: false.*publiclyAvailable: false/);
+assert.match(read("src/i18n/config.ts"), /en:.*domainStatuses: \{ \.\.\.missingDomainStatuses, global: "REVIEWED", home: "DRAFT" \}.*editoriallyApproved: false.*publiclyAvailable: false/);
 
 console.log("OJW post-V1 French HOME migration: 32 typed keys, boundaries, taxonomy and immutable public contracts validated.");
