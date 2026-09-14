@@ -20,5 +20,24 @@ export const frenchFoundationMessages = {
         humanBody: "Des choix responsables, inscrits dans le temps et attentifs aux personnes comme aux institutions.",
       },
     },
+    roadmap: {
+      kicker: "Roadmap",
+      title: "Une trajectoire progressive et durable.",
+      description: "OnJarama avance par qualification progressive : consolider ce qui existe avant d’étendre ce qui peut servir durablement.",
+      steps: {
+        exists: {
+          label: "Ce qui existe",
+          description: "Le portail Web public, les premiers projets et applications, et OJF comme socle institutionnel de l’écosystème.",
+        },
+        consolidates: {
+          label: "Ce qui se consolide",
+          description: "Les applications, les contenus, l’expérience publique, l’architecture de l’écosystème ainsi que la gouvernance et les contenus constitutionnels.",
+        },
+        extends: {
+          label: "Ce qui s’étendra",
+          description: "Les solutions métier, les partenariats, l’implantation et l’impact institutionnel et social d’OnJarama.",
+        },
+      },
+    },
   },
 } as const satisfies Pick<TranslationDictionary, "foundation">;

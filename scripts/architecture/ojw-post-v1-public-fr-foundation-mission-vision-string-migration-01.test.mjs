@@ -31,9 +31,10 @@ const visit = (node, prefix = "") => {
 visit(declaration.initializer);
 assert.equal(leaves.filter(([key]) => key.startsWith("foundation.mission.")).length, 3);
 assert.equal(leaves.filter(([key]) => key.startsWith("foundation.vision.")).length, 9);
-assert.equal(leaves.length, 12);
+assert.equal(leaves.filter(([key]) => key.startsWith("foundation.mission.") || key.startsWith("foundation.vision.")).length, 12);
 
-for (const forbidden of ["roadmap", "constitution", "disclosure", "hero", "OnJarama Academy", "OnJarama Path", "OJCS Connect"]) assert.doesNotMatch(source, new RegExp(forbidden, "iu"));
+for (const forbidden of ["disclosure", "hero", "OnJarama Academy", "OnJarama Path", "OJCS Connect"]) assert.doesNotMatch(source, new RegExp(forbidden, "iu"));
+assert.doesNotMatch(source, /\bconstitution\s*:/iu);
 const mission = read("src/sections/MissionSection.tsx");
 const vision = read("src/sections/VisionSection.tsx");
 assert.match(mission, /foundation\.mission\./);

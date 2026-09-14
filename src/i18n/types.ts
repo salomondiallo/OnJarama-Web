@@ -153,6 +153,16 @@ export type TranslationDictionary = {
         humanBody: string;
       };
     };
+    roadmap: {
+      kicker: string;
+      title: string;
+      description: string;
+      steps: {
+        exists: { label: string; description: string };
+        consolidates: { label: string; description: string };
+        extends: { label: string; description: string };
+      };
+    };
   };
 };
 

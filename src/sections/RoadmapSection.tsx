@@ -1,18 +1,20 @@
-﻿import { roadmap } from "../data/roadmap";
+import { roadmap } from "../data/roadmap";
+import { useTranslation } from "../i18n/useTranslation";
 
 export function RoadmapSection() {
+  const { t } = useTranslation();
   return (
     <section id="roadmap" className="section" aria-labelledby="roadmap-title">
       <div className="section-heading">
-        <p className="section-kicker">Roadmap</p>
-        <h2 id="roadmap-title">Une trajectoire progressive et durable.</h2>
-        <p>OnJarama avance par qualification progressive : consolider ce qui existe avant d’étendre ce qui peut servir durablement.</p>
+        <p className="section-kicker">{t("foundation.roadmap.kicker")}</p>
+        <h2 id="roadmap-title">{t("foundation.roadmap.title")}</h2>
+        <p>{t("foundation.roadmap.description")}</p>
       </div>
       <div className="timeline">
         {roadmap.map((item) => (
-          <article key={item.year}>
-            <strong>{item.year}</strong>
-            <p>{item.text}</p>
+          <article key={item.id}>
+            <strong>{t(`foundation.roadmap.steps.${item.id}.label`)}</strong>
+            <p>{t(`foundation.roadmap.steps.${item.id}.description`)}</p>
           </article>
         ))}
       </div>
