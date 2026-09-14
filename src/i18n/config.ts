@@ -20,7 +20,7 @@ const missingDomainStatuses = {
 } as const satisfies I18nDomainStatuses;
 
 export const LOCALE_REGISTRY = {
-  fr: { code: "fr", name: "Français", dir: "ltr", registered: true, domainStatuses: { ...missingDomainStatuses, global: "CANONICAL_APPROVED", home: "CANONICAL_APPROVED" }, editoriallyApproved: true, publiclyAvailable: true, routePrefix: "", fallback: "fr" },
+  fr: { code: "fr", name: "Français", dir: "ltr", registered: true, domainStatuses: { ...missingDomainStatuses, global: "CANONICAL_APPROVED", home: "CANONICAL_APPROVED", foundation: "PARTIAL" }, editoriallyApproved: true, publiclyAvailable: true, routePrefix: "", fallback: "fr" },
   en: { code: "en", name: "English", dir: "ltr", registered: true, domainStatuses: { ...missingDomainStatuses, global: "REVIEWED", home: "REVIEWED" }, editoriallyApproved: false, publiclyAvailable: false, routePrefix: "en", fallback: "fr" },
   es: { code: "es", name: "Español", dir: "ltr", registered: true, domainStatuses: missingDomainStatuses, editoriallyApproved: false, publiclyAvailable: false, routePrefix: "es", fallback: "fr" },
   pt: { code: "pt", name: "Português", dir: "ltr", registered: true, domainStatuses: missingDomainStatuses, editoriallyApproved: false, publiclyAvailable: false, routePrefix: "pt", fallback: "fr" },
@@ -31,7 +31,7 @@ export const LOCALE_REGISTRY = {
 export function deriveLocaleTranslationStatus(domainStatuses: I18nDomainStatuses): AggregatedTranslationStatus {
   const statuses = Object.values(domainStatuses) as TranslationStatus[];
   if (statuses.every((status) => status === "MISSING")) return "MISSING";
-  if (statuses.some((status) => status === "MISSING" || status === "DRAFT")) return "PARTIAL";
+  if (statuses.some((status) => status === "MISSING" || status === "PARTIAL" || status === "DRAFT")) return "PARTIAL";
   if (statuses.every((status) => status === "CANONICAL_APPROVED")) return "CANONICAL_APPROVED";
   if (statuses.every((status) => status === "APPROVED" || status === "CANONICAL_APPROVED")) return "APPROVED";
   return "REVIEWED";
@@ -46,7 +46,8 @@ export function getAggregatedLocaleTranslationStatus(locale: Locale): Aggregated
 }
 
 export function isDomainAtLeastDraft(locale: Locale, domain: I18nDomain): boolean {
-  return getDomainTranslationStatus(locale, domain) !== "MISSING";
+  const status = getDomainTranslationStatus(locale, domain);
+  return status === "DRAFT" || status === "REVIEWED" || status === "APPROVED" || status === "CANONICAL_APPROVED";
 }
 
 export function isLocaleTranslationComplete(locale: Locale): boolean {

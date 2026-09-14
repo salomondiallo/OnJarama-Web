@@ -1,7 +1,7 @@
 export type Locale = "fr" | "en" | "es" | "pt" | "ar" | "zh-CN";
 
 export type TextDirection = "ltr" | "rtl";
-export type TranslationStatus = "MISSING" | "DRAFT" | "REVIEWED" | "APPROVED" | "CANONICAL_APPROVED";
+export type TranslationStatus = "MISSING" | "PARTIAL" | "DRAFT" | "REVIEWED" | "APPROVED" | "CANONICAL_APPROVED";
 export type I18nDomain = "global" | "home" | "foundation" | "oja" | "ojp" | "ojcs" | "ojw" | "metadata";
 export type I18nDomainStatuses = Readonly<Record<I18nDomain, TranslationStatus>>;
 export type AggregatedTranslationStatus = "MISSING" | "PARTIAL" | "REVIEWED" | "APPROVED" | "CANONICAL_APPROVED";
@@ -132,6 +132,26 @@ export type TranslationDictionary = {
       title: string;
       purpose: string;
       technology: string;
+    };
+  };
+  foundation: {
+    mission: {
+      kicker: string;
+      title: string;
+      body: string;
+    };
+    vision: {
+      kicker: string;
+      title: string;
+      body: string;
+      principles: {
+        usefulTitle: string;
+        usefulBody: string;
+        autonomousTitle: string;
+        autonomousBody: string;
+        humanTitle: string;
+        humanBody: string;
+      };
     };
   };
 };
